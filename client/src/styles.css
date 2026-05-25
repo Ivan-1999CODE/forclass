@@ -210,13 +210,40 @@ p {
 }
 
 .student-row,
-.rank-row {
+.rank-row,
+.history-row {
   align-items: center;
   background: #f5f7fa;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
   padding: 10px 12px;
+}
+
+.section-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.history-row p {
+  color: #617083;
+  margin: 4px 0 0;
+}
+
+.history-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
 .game-status {
@@ -324,6 +351,16 @@ p {
 
   .copy-line {
     grid-template-columns: 1fr;
+  }
+
+  .section-header,
+  .history-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .history-meta {
+    justify-content: flex-start;
   }
 
   .question-panel h2 {

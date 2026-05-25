@@ -6,6 +6,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import express from "express";
 import { Server } from "socket.io";
+import {
+  getSessionExports,
+  listSessions,
+  persistenceEnabled,
+  saveAnswer,
+  saveSessionCreated,
+  saveSessionStatus,
+  saveStudent
+} from "./persistence.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,6 +48,42 @@ app.get("/api/quizzes", async (_req, res) => {
   }
 });
 
+app.get("/api/persistence/status", (_req, res) => {
+  res.json({ enabled: persistenceEnabled });
+});
+
+app.get("/api/history", async (_req, res) => {
+  try {
+    res.json({ enabled: persistenceEnabled, sessions: await listSessions() });
+  } catch (error) {
+    res.status(500).json({ enabled: persistenceEnabled, error: error.message, sessions: [] });
+  }
+});
+
+app.get("/api/history/:sessionId/summary.csv", async (req, res) => {
+  try {
+    const session = await getSessionExports(req.params.sessionId);
+    if (!session) return res.status(404).send("Session not found");
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="${session.room_code}-summary.csv"`);
+    res.send(toCsv(session.summary || []));
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+app.get("/api/history/:sessionId/responses.csv", async (req, res) => {
+  try {
+    const session = await getSessionExports(req.params.sessionId);
+    if (!session) return res.status(404).send("Session not found");
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="${session.room_code}-responses.csv"`);
+    res.send(toCsv(session.responses || []));
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 app.get("/api/rooms/:roomCode/summary.csv", (req, res) => {
   const room = getAuthorizedRoom(req.params.roomCode, req.query.token);
   if (!room) return res.status(403).send("Invalid room or token");
@@ -60,6 +105,7 @@ io.on("connection", (socket) => {
     try {
       const quiz = await loadQuizById(quizId);
       const room = createRoom(quiz);
+      void saveSessionCreated(room);
       socket.join(roomChannel(room.code));
       room.hostSocketId = socket.id;
       callback?.({
@@ -142,6 +188,7 @@ io.on("connection", (socket) => {
       };
       room.students.set(id, student);
     }
+    void saveStudent(room, student);
 
     socket.join(roomChannel(room.code));
     socket.data.roomCode = room.code;
@@ -176,6 +223,7 @@ io.on("connection", (socket) => {
       answeredAt: now
     });
     student.totalScore += score;
+    void saveAnswer(room, student, room.currentQuestionIndex, student.answers.get(room.currentQuestionIndex));
     callback?.({ ok: true, snapshot: buildStudentSnapshot(room, student.id) });
     broadcastRoom(room);
   });
@@ -229,6 +277,7 @@ server.listen(port, "0.0.0.0", () => {
     console.log("未偵測到區網 IPv4。請確認 Wi-Fi 或網路介面。");
   }
   console.log("");
+  console.log(`Supabase history: ${persistenceEnabled ? "enabled" : "disabled (set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY)"}`);
 });
 
 async function loadQuizList() {
@@ -289,6 +338,7 @@ function createRoom(quiz) {
   } while (rooms.has(code));
   const room = {
     code,
+    sessionId: crypto.randomUUID(),
     hostToken: crypto.randomUUID(),
     quiz,
     status: "waiting",
@@ -297,7 +347,10 @@ function createRoom(quiz) {
     questionEndsAt: null,
     timer: null,
     students: new Map(),
-    createdAt: Date.now()
+    createdAt: Date.now(),
+    startedAt: null,
+    summaryRowsBuilder: buildSummaryRows,
+    responseRowsBuilder: buildResponseRows
   };
   rooms.set(code, room);
   return room;
@@ -310,6 +363,7 @@ function startQuestion(room, index) {
   room.questionStartedAt = Date.now();
   room.questionEndsAt = room.questionStartedAt + getQuestionLimitMs(room, index);
   room.timer = setTimeout(() => closeQuestion(room), getQuestionLimitMs(room, index));
+  void saveSessionStatus(room);
   broadcastRoom(room);
 }
 
@@ -317,12 +371,14 @@ function closeQuestion(room) {
   if (room.status !== "question") return;
   clearRoomTimer(room);
   room.status = "results";
+  void saveSessionStatus(room);
   broadcastRoom(room);
 }
 
 function finishRoom(room) {
   clearRoomTimer(room);
   room.status = "finished";
+  void saveSessionStatus(room);
   broadcastRoom(room);
 }
 

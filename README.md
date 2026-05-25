@@ -59,3 +59,19 @@ quizzes/2026-05-26-present-simple-review.json
 ```
 
 儲存後重新整理老師頁，新的測驗就會出現在下拉選單。檔案名稱可以自訂，但 JSON 裡的 `id` 不要和其他測驗重複。
+
+## Supabase 歷史場次保存
+
+如果要讓完成的場次在 Render 睡著、重啟或重新部署後仍然保留：
+
+1. 到 Supabase 專案的 SQL Editor。
+2. 貼上並執行 `supabase/schema.sql`。
+3. 到 Supabase `Project Settings` -> `API` 複製：
+   - Project URL
+   - service_role key
+4. 到 Render 服務的 `Environment` 新增：
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+5. 在 Render 按 `Manual Deploy` -> `Deploy latest commit`。
+
+`service_role key` 只能放在 Render 後端環境變數，不要放到前端或公開貼給學生。

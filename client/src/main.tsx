@@ -37,6 +37,18 @@ type NetworkInfo = {
   lan: string[];
 };
 
+type HistorySession = {
+  id: string;
+  room_code: string;
+  quiz_title: string;
+  quiz_date: string;
+  status: Snapshot["status"];
+  total_questions: number;
+  created_at: string;
+  finished_at: string | null;
+  summary: Array<{ studentName: string; totalScore: number }>;
+};
+
 const socket: Socket = io();
 const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
@@ -66,6 +78,7 @@ function HostPage() {
   const [selectedQuizId, setSelectedQuizId] = useState("");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
+  const [history, setHistory] = useState<{ enabled: boolean; sessions: HistorySession[] }>({ enabled: false, sessions: [] });
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -81,6 +94,8 @@ function HostPage() {
       .then((response) => response.json())
       .then(setNetworkInfo)
       .catch(() => undefined);
+
+    fetchHistory(setHistory);
 
     const saved = readJson<{ roomCode: string; hostToken: string }>(hostStorageKey);
     if (saved?.roomCode && saved?.hostToken) {
@@ -185,6 +200,33 @@ function HostPage() {
           <RoomPanel snapshot={snapshot} />
         </section>
       )}
+
+      <section className="panel">
+        <div className="section-header">
+          <div>
+            <h2>歷史場次</h2>
+            <p className="hint">接上 Supabase 後，已完成的場次會保留在這裡，Render 睡著或重啟也不會消失。</p>
+          </div>
+          <button className="secondary" onClick={() => fetchHistory(setHistory)}>重新整理</button>
+        </div>
+        {!history.enabled && <p className="notice">尚未設定 Supabase 環境變數，歷史場次目前不會永久保存。</p>}
+        {history.enabled && history.sessions.length === 0 && <p className="empty">目前還沒有歷史場次。</p>}
+        <div className="history-list">
+          {history.sessions.map((session) => (
+            <div className="history-row" key={session.id}>
+              <div>
+                <strong>{session.quiz_title}</strong>
+                <p>{session.quiz_date} / 加入碼 {session.room_code} / {statusText(session.status)}</p>
+              </div>
+              <div className="history-meta">
+                <span>{session.summary?.length || 0} 人</span>
+                <a className="button-link secondary" href={`/api/history/${session.id}/summary.csv`}>summary.csv</a>
+                <a className="button-link secondary" href={`/api/history/${session.id}/responses.csv`}>responses.csv</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
@@ -501,6 +543,13 @@ function readJson<T>(key: string): T | null {
   } catch {
     return null;
   }
+}
+
+function fetchHistory(setHistory: React.Dispatch<React.SetStateAction<{ enabled: boolean; sessions: HistorySession[] }>>) {
+  fetch("/api/history")
+    .then((response) => response.json())
+    .then((data) => setHistory({ enabled: Boolean(data.enabled), sessions: data.sessions || [] }))
+    .catch(() => setHistory({ enabled: false, sessions: [] }));
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
