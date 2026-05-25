@@ -1,0 +1,308 @@
+{
+  "id": "2026-05-26-present-simple-50",
+  "title": "現在簡單式 50 題",
+  "date": "2026-05-26",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "She ____ coffee every morning.",
+      "options": ["drink", "drinks", "drinking", "drank"],
+      "answerIndex": 1,
+      "explanation": "主詞 She 是第三人稱單數，現在簡單式動詞要加 -s。"
+    },
+    {
+      "prompt": "They ____ basketball after school.",
+      "options": ["plays", "play", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "主詞 They 是複數，現在簡單式用原形動詞。"
+    },
+    {
+      "prompt": "My father ____ to work by bus.",
+      "options": ["go", "goes", "going", "went"],
+      "answerIndex": 1,
+      "explanation": "My father 是第三人稱單數，go 要變成 goes。"
+    },
+    {
+      "prompt": "We ____ English on Tuesdays.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "主詞 We 是複數，現在簡單式用原形動詞 study。"
+    },
+    {
+      "prompt": "Tom ____ TV at night.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 1,
+      "explanation": "Tom 是第三人稱單數，watch 要變成 watches。"
+    },
+    {
+      "prompt": "I ____ breakfast at 7:00.",
+      "options": ["eats", "eat", "ate", "eating"],
+      "answerIndex": 1,
+      "explanation": "主詞 I 用原形動詞 eat。"
+    },
+    {
+      "prompt": "The dog ____ in the park.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "The dog 是第三人稱單數，run 要加 -s。"
+    },
+    {
+      "prompt": "You ____ very hard every day.",
+      "options": ["works", "work", "worked", "working"],
+      "answerIndex": 1,
+      "explanation": "主詞 You 在現在簡單式中用原形動詞 work。"
+    },
+    {
+      "prompt": "Mary ____ her homework after dinner.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 1,
+      "explanation": "Mary 是第三人稱單數，do 要變成 does。"
+    },
+    {
+      "prompt": "The students ____ to music in class.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 0,
+      "explanation": "The students 是複數，現在簡單式用原形動詞 listen。"
+    },
+    {
+      "prompt": "He ____ a new book every month.",
+      "options": ["read", "reads", "reading", "readed"],
+      "answerIndex": 1,
+      "explanation": "主詞 He 是第三人稱單數，read 要加 -s。"
+    },
+    {
+      "prompt": "My friends ____ in Taipei.",
+      "options": ["lives", "live", "lived", "living"],
+      "answerIndex": 1,
+      "explanation": "My friends 是複數，現在簡單式用原形動詞 live。"
+    },
+    {
+      "prompt": "The baby ____ a lot.",
+      "options": ["cry", "cries", "cried", "crying"],
+      "answerIndex": 1,
+      "explanation": "The baby 是第三人稱單數，cry 要去 y 加 ies。"
+    },
+    {
+      "prompt": "I ____ my room on weekends.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 用原形動詞 clean。"
+    },
+    {
+      "prompt": "She ____ lunch at school.",
+      "options": ["have", "has", "had", "having"],
+      "answerIndex": 1,
+      "explanation": "She 是第三人稱單數，have 要變成 has。"
+    },
+    {
+      "prompt": "The train ____ at 8:30.",
+      "options": ["arrive", "arrives", "arrived", "arriving"],
+      "answerIndex": 1,
+      "explanation": "The train 是第三人稱單數，arrive 要加 -s。"
+    },
+    {
+      "prompt": "We ____ lunch together every Friday.",
+      "options": ["has", "have", "had", "having"],
+      "answerIndex": 1,
+      "explanation": "主詞 We 是複數，用 have。"
+    },
+    {
+      "prompt": "Jack ____ his bike to school.",
+      "options": ["ride", "rides", "rode", "riding"],
+      "answerIndex": 1,
+      "explanation": "Jack 是第三人稱單數，ride 要加 -s。"
+    },
+    {
+      "prompt": "They ____ dinner at home.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 0,
+      "explanation": "They 是複數，現在簡單式用原形動詞 cook。"
+    },
+    {
+      "prompt": "My sister ____ piano lessons.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 1,
+      "explanation": "My sister 是第三人稱單數，take 要加 -s。"
+    },
+    {
+      "prompt": "I ____ to bed at ten.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 用原形動詞 go。"
+    },
+    {
+      "prompt": "The teacher ____ clearly.",
+      "options": ["speak", "speaks", "spoke", "speaking"],
+      "answerIndex": 1,
+      "explanation": "The teacher 是第三人稱單數，speak 要加 -s。"
+    },
+    {
+      "prompt": "Cats ____ fish.",
+      "options": ["likes", "like", "liked", "liking"],
+      "answerIndex": 1,
+      "explanation": "Cats 是複數，現在簡單式用原形動詞 like。"
+    },
+    {
+      "prompt": "Peter ____ computer games after school.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "Peter 是第三人稱單數，play 要加 -s。"
+    },
+    {
+      "prompt": "We ____ our grandparents on Sundays.",
+      "options": ["visit", "visits", "visited", "visiting"],
+      "answerIndex": 0,
+      "explanation": "We 是複數，現在簡單式用原形動詞 visit。"
+    },
+    {
+      "prompt": "She ____ her teeth before bed.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 1,
+      "explanation": "She 是第三人稱單數，brush 要變成 brushes。"
+    },
+    {
+      "prompt": "The store ____ at 9 p.m.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 1,
+      "explanation": "The store 是第三人稱單數，close 要加 -s。"
+    },
+    {
+      "prompt": "I ____ a shower every morning.",
+      "options": ["takes", "take", "took", "taking"],
+      "answerIndex": 1,
+      "explanation": "主詞 I 用原形動詞 take。"
+    },
+    {
+      "prompt": "The boys ____ fast.",
+      "options": ["runs", "run", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "The boys 是複數，現在簡單式用原形動詞 run。"
+    },
+    {
+      "prompt": "Lisa ____ a letter to her friend.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 1,
+      "explanation": "Lisa 是第三人稱單數，write 要加 -s。"
+    },
+    {
+      "prompt": "You ____ many questions in class.",
+      "options": ["ask", "asks", "asked", "asking"],
+      "answerIndex": 0,
+      "explanation": "主詞 You 用原形動詞 ask。"
+    },
+    {
+      "prompt": "The sun ____ in the east.",
+      "options": ["rise", "rises", "rose", "rising"],
+      "answerIndex": 1,
+      "explanation": "The sun 是第三人稱單數，rise 要加 -s。"
+    },
+    {
+      "prompt": "My parents ____ tea after dinner.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "My parents 是複數，現在簡單式用原形動詞 drink。"
+    },
+    {
+      "prompt": "He ____ his keys every week.",
+      "options": ["lose", "loses", "lost", "losing"],
+      "answerIndex": 1,
+      "explanation": "He 是第三人稱單數，lose 要加 -s。"
+    },
+    {
+      "prompt": "We ____ the classroom after class.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "We 是複數，現在簡單式用原形動詞 clean。"
+    },
+    {
+      "prompt": "Anna ____ Japanese very well.",
+      "options": ["speak", "speaks", "spoke", "speaking"],
+      "answerIndex": 1,
+      "explanation": "Anna 是第三人稱單數，speak 要加 -s。"
+    },
+    {
+      "prompt": "The children ____ in the yard.",
+      "options": ["plays", "play", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "The children 是複數，現在簡單式用原形動詞 play。"
+    },
+    {
+      "prompt": "He ____ his mother every day.",
+      "options": ["call", "calls", "called", "calling"],
+      "answerIndex": 1,
+      "explanation": "He 是第三人稱單數，call 要加 -s。"
+    },
+    {
+      "prompt": "I ____ a diary every night.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 用原形動詞 write。"
+    },
+    {
+      "prompt": "The library ____ many books.",
+      "options": ["have", "has", "had", "having"],
+      "answerIndex": 1,
+      "explanation": "The library 是第三人稱單數，have 要變成 has。"
+    },
+    {
+      "prompt": "They ____ early on weekdays.",
+      "options": ["gets up", "get up", "got up", "getting up"],
+      "answerIndex": 1,
+      "explanation": "They 是複數，片語動詞用 get up。"
+    },
+    {
+      "prompt": "Sally ____ her hair every morning.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 1,
+      "explanation": "Sally 是第三人稱單數，wash 要變成 washes。"
+    },
+    {
+      "prompt": "We ____ the bus to school.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 0,
+      "explanation": "We 是複數，現在簡單式用原形動詞 take。"
+    },
+    {
+      "prompt": "The bird ____ in the tree.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 1,
+      "explanation": "The bird 是第三人稱單數，sing 要加 -s。"
+    },
+    {
+      "prompt": "My classmates ____ lunch in the cafeteria.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "My classmates 是複數，現在簡單式用原形動詞 eat。"
+    },
+    {
+      "prompt": "He ____ math every evening.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 1,
+      "explanation": "He 是第三人稱單數，study 要去 y 加 ies。"
+    },
+    {
+      "prompt": "I ____ my email after work.",
+      "options": ["check", "checks", "checked", "checking"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 用原形動詞 check。"
+    },
+    {
+      "prompt": "The bus ____ near my house.",
+      "options": ["stop", "stops", "stopped", "stopping"],
+      "answerIndex": 1,
+      "explanation": "The bus 是第三人稱單數，stop 要加 -s。"
+    },
+    {
+      "prompt": "Our teacher ____ us homework.",
+      "options": ["give", "gives", "gave", "giving"],
+      "answerIndex": 1,
+      "explanation": "Our teacher 是第三人稱單數，give 要加 -s。"
+    },
+    {
+      "prompt": "The girls ____ songs together.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "The girls 是複數，現在簡單式用原形動詞 sing。"
+    }
+  ]
+}

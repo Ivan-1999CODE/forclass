@@ -1,0 +1,308 @@
+{
+  "id": "2026-05-26-simple-past-50",
+  "title": "過去式 50 題",
+  "date": "2026-05-26",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "She ____ coffee yesterday morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，drink 的過去式是 drank。"
+    },
+    {
+      "prompt": "They ____ basketball after school last Friday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 2,
+      "explanation": "last Friday 表示過去時間，規則動詞 play 加 -ed。"
+    },
+    {
+      "prompt": "My father ____ to work by bus yesterday.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 2,
+      "explanation": "go 的過去式是 went。"
+    },
+    {
+      "prompt": "We ____ English last Tuesday.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 2,
+      "explanation": "study 的過去式是 studied。"
+    },
+    {
+      "prompt": "Tom ____ TV last night.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，watch 加 -ed。"
+    },
+    {
+      "prompt": "I ____ breakfast at 7:00 yesterday.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 2,
+      "explanation": "eat 的過去式是 ate。"
+    },
+    {
+      "prompt": "The dog ____ in the park this morning.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 2,
+      "explanation": "run 的過去式是 ran。"
+    },
+    {
+      "prompt": "You ____ very hard last week.",
+      "options": ["work", "works", "worked", "working"],
+      "answerIndex": 2,
+      "explanation": "last week 表示過去時間，work 加 -ed。"
+    },
+    {
+      "prompt": "Mary ____ her homework after dinner yesterday.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 2,
+      "explanation": "do 的過去式是 did。"
+    },
+    {
+      "prompt": "The students ____ to music in class yesterday.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 2,
+      "explanation": "listen 是規則動詞，過去式是 listened。"
+    },
+    {
+      "prompt": "He ____ a new book last month.",
+      "options": ["read", "reads", "reading", "readed"],
+      "answerIndex": 0,
+      "explanation": "read 的過去式拼法仍是 read，但發音不同。"
+    },
+    {
+      "prompt": "My friends ____ in Taipei five years ago.",
+      "options": ["live", "lives", "lived", "living"],
+      "answerIndex": 2,
+      "explanation": "five years ago 是過去時間，live 加 -d。"
+    },
+    {
+      "prompt": "The baby ____ a lot last night.",
+      "options": ["cry", "cries", "cried", "crying"],
+      "answerIndex": 2,
+      "explanation": "cry 的過去式是 cried。"
+    },
+    {
+      "prompt": "I ____ my room yesterday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，clean 加 -ed。"
+    },
+    {
+      "prompt": "She ____ lunch at school yesterday.",
+      "options": ["have", "has", "had", "having"],
+      "answerIndex": 2,
+      "explanation": "have 的過去式是 had。"
+    },
+    {
+      "prompt": "The train ____ at 8:30 yesterday.",
+      "options": ["arrive", "arrives", "arrived", "arriving"],
+      "answerIndex": 2,
+      "explanation": "arrive 的過去式是 arrived。"
+    },
+    {
+      "prompt": "We ____ lunch together last Friday.",
+      "options": ["have", "has", "had", "having"],
+      "answerIndex": 2,
+      "explanation": "have 的過去式是 had。"
+    },
+    {
+      "prompt": "Jack ____ his bike to school yesterday.",
+      "options": ["ride", "rides", "rode", "riding"],
+      "answerIndex": 2,
+      "explanation": "ride 的過去式是 rode。"
+    },
+    {
+      "prompt": "They ____ dinner at home last night.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 2,
+      "explanation": "cook 是規則動詞，過去式是 cooked。"
+    },
+    {
+      "prompt": "My sister ____ piano lessons last year.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 2,
+      "explanation": "take 的過去式是 took。"
+    },
+    {
+      "prompt": "I ____ to bed at ten last night.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 2,
+      "explanation": "go 的過去式是 went。"
+    },
+    {
+      "prompt": "The teacher ____ clearly yesterday.",
+      "options": ["speak", "speaks", "spoke", "speaking"],
+      "answerIndex": 2,
+      "explanation": "speak 的過去式是 spoke。"
+    },
+    {
+      "prompt": "The cats ____ fish yesterday.",
+      "options": ["like", "likes", "liked", "liking"],
+      "answerIndex": 2,
+      "explanation": "like 的過去式是 liked。"
+    },
+    {
+      "prompt": "Peter ____ computer games after school yesterday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 2,
+      "explanation": "play 是規則動詞，過去式是 played。"
+    },
+    {
+      "prompt": "We ____ our grandparents last Sunday.",
+      "options": ["visit", "visits", "visited", "visiting"],
+      "answerIndex": 2,
+      "explanation": "visit 是規則動詞，過去式是 visited。"
+    },
+    {
+      "prompt": "She ____ her teeth before bed last night.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 2,
+      "explanation": "brush 的過去式是 brushed。"
+    },
+    {
+      "prompt": "The store ____ at 9 p.m. yesterday.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 2,
+      "explanation": "close 的過去式是 closed。"
+    },
+    {
+      "prompt": "I ____ a shower this morning.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 2,
+      "explanation": "take 的過去式是 took。"
+    },
+    {
+      "prompt": "The boys ____ fast in the race.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 2,
+      "explanation": "run 的過去式是 ran。"
+    },
+    {
+      "prompt": "Lisa ____ a letter to her friend last night.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 2,
+      "explanation": "write 的過去式是 wrote。"
+    },
+    {
+      "prompt": "You ____ many questions yesterday.",
+      "options": ["ask", "asks", "asked", "asking"],
+      "answerIndex": 2,
+      "explanation": "ask 是規則動詞，過去式是 asked。"
+    },
+    {
+      "prompt": "The sun ____ at 6:00 this morning.",
+      "options": ["rise", "rises", "rose", "rising"],
+      "answerIndex": 2,
+      "explanation": "rise 的過去式是 rose。"
+    },
+    {
+      "prompt": "My parents ____ tea after dinner yesterday.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 2,
+      "explanation": "drink 的過去式是 drank。"
+    },
+    {
+      "prompt": "He ____ his keys last week.",
+      "options": ["lose", "loses", "lost", "losing"],
+      "answerIndex": 2,
+      "explanation": "lose 的過去式是 lost。"
+    },
+    {
+      "prompt": "We ____ the classroom after class yesterday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "clean 是規則動詞，過去式是 cleaned。"
+    },
+    {
+      "prompt": "Anna ____ Japanese very well last year.",
+      "options": ["speak", "speaks", "spoke", "speaking"],
+      "answerIndex": 2,
+      "explanation": "speak 的過去式是 spoke。"
+    },
+    {
+      "prompt": "The children ____ in the yard yesterday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 2,
+      "explanation": "play 是規則動詞，過去式是 played。"
+    },
+    {
+      "prompt": "He ____ his mother last night.",
+      "options": ["call", "calls", "called", "calling"],
+      "answerIndex": 2,
+      "explanation": "call 是規則動詞，過去式是 called。"
+    },
+    {
+      "prompt": "I ____ a diary last night.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 2,
+      "explanation": "write 的過去式是 wrote。"
+    },
+    {
+      "prompt": "The library ____ many old books before the fire.",
+      "options": ["have", "has", "had", "having"],
+      "answerIndex": 2,
+      "explanation": "have 的過去式是 had。"
+    },
+    {
+      "prompt": "They ____ early yesterday.",
+      "options": ["get up", "gets up", "got up", "getting up"],
+      "answerIndex": 2,
+      "explanation": "get up 的過去式是 got up。"
+    },
+    {
+      "prompt": "Sally ____ her hair this morning.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 2,
+      "explanation": "wash 的過去式是 washed。"
+    },
+    {
+      "prompt": "We ____ the bus to school yesterday.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 2,
+      "explanation": "take 的過去式是 took。"
+    },
+    {
+      "prompt": "The bird ____ in the tree this morning.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 2,
+      "explanation": "sing 的過去式是 sang。"
+    },
+    {
+      "prompt": "My classmates ____ lunch in the cafeteria yesterday.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 2,
+      "explanation": "eat 的過去式是 ate。"
+    },
+    {
+      "prompt": "He ____ math last night.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 2,
+      "explanation": "study 的過去式是 studied。"
+    },
+    {
+      "prompt": "I ____ my email after work yesterday.",
+      "options": ["check", "checks", "checked", "checking"],
+      "answerIndex": 2,
+      "explanation": "check 是規則動詞，過去式是 checked。"
+    },
+    {
+      "prompt": "The bus ____ near my house this morning.",
+      "options": ["stop", "stops", "stopped", "stopping"],
+      "answerIndex": 2,
+      "explanation": "stop 的過去式是 stopped。"
+    },
+    {
+      "prompt": "Our teacher ____ us homework yesterday.",
+      "options": ["give", "gives", "gave", "giving"],
+      "answerIndex": 2,
+      "explanation": "give 的過去式是 gave。"
+    },
+    {
+      "prompt": "The girls ____ songs together at the party.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 2,
+      "explanation": "sing 的過去式是 sang。"
+    }
+  ]
+}
