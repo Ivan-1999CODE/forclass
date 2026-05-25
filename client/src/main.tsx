@@ -122,6 +122,12 @@ function HostPage() {
     });
   };
 
+  const resetRoom = () => {
+    localStorage.removeItem(hostStorageKey);
+    setSnapshot(null);
+    setMessage("");
+  };
+
   const hostAction = (eventName: string) => {
     if (!snapshot?.hostToken) return;
     setMessage("");
@@ -157,7 +163,7 @@ function HostPage() {
           </select>
           <div className="actions">
             <button onClick={createRoom} disabled={!selectedQuizId}>建立場次</button>
-            <button className="secondary" onClick={() => localStorage.removeItem(hostStorageKey)}>清除本機場次記錄</button>
+            <button className="secondary" onClick={resetRoom}>建立新場次</button>
           </div>
           {message && <p className="notice error">{message}</p>}
         </div>
