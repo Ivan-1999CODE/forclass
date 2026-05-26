@@ -148,6 +148,35 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("host:createReviewRoom", async ({ sessionIds }, callback) => {
+    try {
+      const sessions = await Promise.all((Array.isArray(sessionIds) ? sessionIds : []).map((id) => getSessionDetail(id)));
+      const validSessions = sessions.filter(Boolean);
+      if (validSessions.length === 0) {
+        callback?.({ ok: false, error: "請先勾選至少一個歷史場次。" });
+        return;
+      }
+      const quiz = buildReviewQuiz(validSessions);
+      if (quiz.questions.length === 0) {
+        callback?.({ ok: false, error: "勾選的場次沒有可重練的錯題。" });
+        return;
+      }
+      const room = createRoom(selectQuestionsForSession(quiz, "all"));
+      void saveSessionCreated(room);
+      socket.join(roomChannel(room.code));
+      room.hostSocketId = socket.id;
+      callback?.({
+        ok: true,
+        roomCode: room.code,
+        hostToken: room.hostToken,
+        snapshot: buildHostSnapshot(room)
+      });
+      broadcastRoom(room);
+    } catch (error) {
+      callback?.({ ok: false, error: error.message });
+    }
+  });
+
   socket.on("host:resume", ({ roomCode, hostToken }, callback) => {
     const room = getRoom(roomCode);
     if (!room || room.hostToken !== hostToken) {
@@ -399,6 +428,89 @@ function selectQuestionsForSession(quiz, requestedQuestionCount) {
   };
 }
 
+function buildReviewQuiz(sessions) {
+  const questionMap = new Map();
+  for (const session of sessions) {
+    const summaryCount = Math.max(...(session.summary || []).map((row) => Number(row.totalQuestions) || 0), 0);
+    const totalStudents = Math.max((session.summary || []).length, 0);
+    const responsesByQuestion = new Map();
+    for (const response of session.responses || []) {
+      if (!responsesByQuestion.has(response.questionIndex)) responsesByQuestion.set(response.questionIndex, []);
+      responsesByQuestion.get(response.questionIndex).push(response);
+    }
+    for (const [questionIndex, responses] of responsesByQuestion.entries()) {
+      const first = responses[0];
+      const correctResponse = responses.find((response) => response.correctIndex !== undefined) || first;
+      const answered = responses.length;
+      const wrongAnswers = responses.filter((response) => !response.isCorrect).length;
+      const unanswered = Math.max(0, totalStudents - answered);
+      const mistakeCount = wrongAnswers + unanswered;
+      if (mistakeCount <= 0) continue;
+
+      const key = first.prompt;
+      const existing = questionMap.get(key);
+      const options = buildReviewOptions(responses, correctResponse);
+      if (options.length !== 4) continue;
+      const question = {
+        prompt: first.prompt,
+        options,
+        answerIndex: correctResponse.correctIndex,
+        explanation: `錯題重練：這題在先前場次共有 ${mistakeCount} 人答錯或未作答。`
+      };
+      if (existing) {
+        existing.mistakeCount += mistakeCount;
+        existing.appearances += 1;
+      } else {
+        questionMap.set(key, {
+          question,
+          mistakeCount,
+          appearances: 1,
+          sourceQuestionIndex: questionIndex,
+          sourceTotalQuestions: summaryCount
+        });
+      }
+    }
+  }
+
+  const selected = [...questionMap.values()]
+    .sort((a, b) => b.mistakeCount - a.mistakeCount || a.sourceQuestionIndex - b.sourceQuestionIndex)
+    .slice(0, 10)
+    .map((entry) => ({
+      ...entry.question,
+      explanation: `${entry.question.explanation}（累計 ${entry.appearances} 場）`
+    }));
+
+  const now = new Date();
+  const title = sessions.length === 1
+    ? `錯題重練｜${sessions[0].quiz_title}`
+    : `錯題重練｜${sessions.length} 場整合`;
+
+  return {
+    id: `review-${now.getTime()}`,
+    title,
+    date: now.toISOString().slice(0, 10),
+    defaultTimeLimitSec: 20,
+    questions: selected
+  };
+}
+
+function buildReviewOptions(responses, correctResponse) {
+  if (Array.isArray(correctResponse.options) && correctResponse.options.length === 4) {
+    return correctResponse.options;
+  }
+  const options = [];
+  const correctText = correctResponse.correctText || responses.find((response) => response.selectedIndex === response.correctIndex)?.selectedText;
+  if (correctText) {
+    options[correctResponse.correctIndex] = correctText;
+  }
+  for (const response of responses) {
+    if (response.selectedText && options[response.selectedIndex] === undefined) {
+      options[response.selectedIndex] = response.selectedText;
+    }
+  }
+  return options.filter((option) => option !== undefined).length === 4 ? options : [];
+}
+
 function shuffleQuestionOptions(question) {
   const optionEntries = question.options.map((option, index) => ({
     option,
@@ -589,9 +701,11 @@ function buildResponseRows(room) {
         studentName: student.name,
         questionIndex,
         prompt: question.prompt,
+        options: question.options,
         selectedIndex: answer?.selectedIndex ?? "",
         selectedText: answer ? question.options[answer.selectedIndex] : "",
         correctIndex: question.answerIndex,
+        correctText: question.options[question.answerIndex],
         isCorrect: answer?.isCorrect ?? false,
         responseMs: answer?.responseMs ?? "",
         score: answer?.score ?? 0

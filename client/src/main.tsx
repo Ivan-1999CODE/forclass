@@ -55,9 +55,11 @@ type HistoryDetail = HistorySession & {
     studentName: string;
     questionIndex: number;
     prompt: string;
+    options?: string[];
     selectedIndex: number | "";
     selectedText: string;
     correctIndex: number;
+    correctText?: string;
     isCorrect: boolean;
     responseMs: number | "";
     score: number;
@@ -106,6 +108,7 @@ function HostPage() {
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
   const [history, setHistory] = useState<{ enabled: boolean; sessions: HistorySession[] }>({ enabled: false, sessions: [] });
   const [historyDetails, setHistoryDetails] = useState<Record<string, HistoryDetail>>({});
+  const [selectedHistoryIds, setSelectedHistoryIds] = useState<string[]>([]);
   const [savedHost, setSavedHost] = useState<{ roomCode: string; hostToken: string; quizTitle?: string } | null>(null);
   const [resumeMessage, setResumeMessage] = useState("");
   const [message, setMessage] = useState("");
@@ -180,6 +183,20 @@ function HostPage() {
       localStorage.setItem(hostStorageKey, JSON.stringify({ roomCode: reply.roomCode, hostToken: reply.hostToken, quizTitle: reply.snapshot?.quiz.title }));
       setSavedHost(null);
       setSnapshot(reply.snapshot);
+    });
+  };
+
+  const createReviewRoom = () => {
+    setMessage("");
+    socket.emit("host:createReviewRoom", { sessionIds: selectedHistoryIds }, (reply: SocketReply) => {
+      if (!reply.ok) {
+        setMessage(reply.error || "建立錯題重練場次失敗。");
+        return;
+      }
+      localStorage.setItem(hostStorageKey, JSON.stringify({ roomCode: reply.roomCode, hostToken: reply.hostToken, quizTitle: reply.snapshot?.quiz.title }));
+      setSavedHost(null);
+      setSnapshot(reply.snapshot);
+      setSelectedHistoryIds([]);
     });
   };
 
@@ -342,16 +359,29 @@ function HostPage() {
             <h2>歷史場次</h2>
             <p className="hint">接上 Supabase 後，已完成的場次會保留在這裡，Render 睡著或重啟也不會消失。</p>
           </div>
-          <button className="secondary" onClick={() => fetchHistory(setHistory)}>重新整理</button>
+          <div className="actions compact">
+            <button onClick={createReviewRoom} disabled={selectedHistoryIds.length === 0 || Boolean(snapshot)}>從勾選場次建立錯題重練</button>
+            <button className="secondary" onClick={() => fetchHistory(setHistory)}>重新整理</button>
+          </div>
         </div>
+        {selectedHistoryIds.length > 0 && <p className="hint">已勾選 {selectedHistoryIds.length} 場；錯題重練會整合答錯和未作答題目，最多 10 題。</p>}
         {!history.enabled && <p className="notice">尚未設定 Supabase 環境變數，歷史場次目前不會永久保存。</p>}
         {history.enabled && history.sessions.length === 0 && <p className="empty">目前還沒有歷史場次。</p>}
         <div className="history-list">
           {history.sessions.map((session) => (
             <div className="history-row" key={session.id}>
               <div>
-                <strong>{session.quiz_title}</strong>
-                <p>{session.quiz_date} / 加入碼 {session.room_code} / {statusText(session.status)}</p>
+                <label className="history-check">
+                  <input
+                    type="checkbox"
+                    checked={selectedHistoryIds.includes(session.id)}
+                    onChange={(event) => toggleSelectedHistory(session.id, event.target.checked, setSelectedHistoryIds)}
+                  />
+                  <span>
+                    <strong>{formatDateTime(session.created_at)}｜{session.quiz_title}</strong>
+                    <p>加入碼 {session.room_code} / {statusText(session.status)}</p>
+                  </span>
+                </label>
               </div>
               <div className="history-meta">
                 <span>{session.summary?.length || 0} 人</span>
@@ -646,8 +676,24 @@ function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compac
 
 function HistoryDetailPanel({ detail }: { detail: HistoryDetail }) {
   const questions = groupResponsesByQuestion(detail.responses || []);
+  const mistakeSummaries = buildMistakeSummaries(detail);
   return (
     <div className="history-detail">
+      <h3>錯題重練建議</h3>
+      {mistakeSummaries.length === 0 ? (
+        <p className="empty">這一場沒有錯題。</p>
+      ) : (
+        <div className="mistake-list">
+          {mistakeSummaries.slice(0, 5).map((item) => (
+            <div className="mistake-row" key={`${item.questionIndex}-${item.prompt}`}>
+              <span>第 {item.questionIndex + 1} 題</span>
+              <strong>{item.prompt}</strong>
+              <span>{item.mistakeCount} 人錯/未答</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       <h3>排行榜</h3>
       <div className="history-table">
         <div className="history-table-head">
@@ -683,6 +729,22 @@ function HistoryDetailPanel({ detail }: { detail: HistoryDetail }) {
       ))}
     </div>
   );
+}
+
+function buildMistakeSummaries(detail: HistoryDetail) {
+  const totalStudents = detail.summary.length;
+  return groupResponsesByQuestion(detail.responses || [])
+    .map((question) => {
+      const wrongAnswers = question.responses.filter((response) => !response.isCorrect).length;
+      const unanswered = Math.max(0, totalStudents - question.responses.length);
+      return {
+        questionIndex: question.questionIndex,
+        prompt: question.prompt,
+        mistakeCount: wrongAnswers + unanswered
+      };
+    })
+    .filter((item) => item.mistakeCount > 0)
+    .sort((a, b) => b.mistakeCount - a.mistakeCount || a.questionIndex - b.questionIndex);
 }
 
 function CopyLine({ label, value }: { label: string; value: string }) {
@@ -759,6 +821,28 @@ function toggleHistoryDetail(
         setDetails((current) => ({ ...current, [sessionId]: data.session }));
       }
     });
+}
+
+function toggleSelectedHistory(
+  sessionId: string,
+  selected: boolean,
+  setSelected: React.Dispatch<React.SetStateAction<string[]>>
+) {
+  setSelected((current) => {
+    if (selected) return current.includes(sessionId) ? current : [...current, sessionId];
+    return current.filter((id) => id !== sessionId);
+  });
+}
+
+function formatDateTime(value: string) {
+  if (!value) return "";
+  return new Intl.DateTimeFormat("zh-TW", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(new Date(value));
 }
 
 function fetchHistory(setHistory: React.Dispatch<React.SetStateAction<{ enabled: boolean; sessions: HistorySession[] }>>) {
