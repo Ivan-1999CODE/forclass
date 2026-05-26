@@ -198,12 +198,7 @@ function HostPage() {
               <button className="danger" onClick={() => hostAction("host:endGame")} disabled={snapshot.status === "finished"}>結束遊戲</button>
             </div>
             <p className="hint">每題會依題目設定自動倒數，時間到自動公布答案。通常只需要按「下一題」。</p>
-            {snapshot.csv && (
-              <div className="actions">
-                <a className="button-link secondary" href={snapshot.csv.summaryUrl}>下載 summary.csv</a>
-                <a className="button-link secondary" href={snapshot.csv.responsesUrl}>下載 responses.csv</a>
-              </div>
-            )}
+            <p className="hint">成績會自動保存到 Supabase。需要匯出時，請到下方「歷史場次」下載 CSV。</p>
           </div>
           <RoomPanel snapshot={snapshot} />
         </section>

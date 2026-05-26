@@ -104,7 +104,7 @@ io.on("connection", (socket) => {
   socket.on("host:createRoom", async ({ quizId }, callback) => {
     try {
       const quiz = await loadQuizById(quizId);
-      const room = createRoom(quiz);
+      const room = createRoom(selectQuestionsForSession(quiz));
       void saveSessionCreated(room);
       socket.join(roomChannel(room.code));
       room.hostSocketId = socket.id;
@@ -354,6 +354,26 @@ function createRoom(quiz) {
   };
   rooms.set(code, room);
   return room;
+}
+
+function selectQuestionsForSession(quiz) {
+  const questionLimit = Number(process.env.QUIZ_QUESTION_LIMIT || 10);
+  if (!Number.isInteger(questionLimit) || questionLimit <= 0 || quiz.questions.length <= questionLimit) {
+    return quiz;
+  }
+  return {
+    ...quiz,
+    questions: shuffleArray(quiz.questions).slice(0, questionLimit)
+  };
+}
+
+function shuffleArray(items) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = crypto.randomInt(index + 1);
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
 }
 
 function startQuestion(room, index) {
