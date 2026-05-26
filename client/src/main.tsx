@@ -779,11 +779,26 @@ function buildMistakeSummaries(detail: HistoryDetail) {
 }
 
 function CopyLine({ label, value }: { label: string; value: string }) {
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+
+  const copy = async () => {
+    setCopyFailed(false);
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopyFailed(true);
+      window.setTimeout(() => setCopyFailed(false), 1800);
+    }
+  };
+
   return (
     <div className="copy-line">
       <span>{label}</span>
       <input value={value} readOnly />
-      <button className="secondary" onClick={() => navigator.clipboard?.writeText(value)}>複製</button>
+      <button className="secondary" onClick={copy}>{copied ? "已複製網址" : copyFailed ? "複製失敗" : "複製"}</button>
     </div>
   );
 }
