@@ -79,6 +79,8 @@ function HostPage() {
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
   const [history, setHistory] = useState<{ enabled: boolean; sessions: HistorySession[] }>({ enabled: false, sessions: [] });
+  const [savedHost, setSavedHost] = useState<{ roomCode: string; hostToken: string; quizTitle?: string } | null>(null);
+  const [resumeMessage, setResumeMessage] = useState("");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -97,16 +99,9 @@ function HostPage() {
 
     fetchHistory(setHistory);
 
-    const saved = readJson<{ roomCode: string; hostToken: string }>(hostStorageKey);
+    const saved = readJson<{ roomCode: string; hostToken: string; quizTitle?: string }>(hostStorageKey);
     if (saved?.roomCode && saved?.hostToken) {
-      socket.emit("host:resume", saved, (reply: SocketReply) => {
-        if (reply.ok) {
-          setSnapshot(reply.snapshot);
-        } else {
-          localStorage.removeItem(hostStorageKey);
-          setMessage("原本的場次已失效，可能是 Render 重新部署、重啟或睡著後清掉了進行中場次。請重新建立場次。");
-        }
-      });
+      setSavedHost(saved);
     }
 
     socket.on("host:update", setSnapshot);
@@ -122,14 +117,30 @@ function HostPage() {
         setMessage(reply.error || "建立房間失敗。");
         return;
       }
-      localStorage.setItem(hostStorageKey, JSON.stringify({ roomCode: reply.roomCode, hostToken: reply.hostToken }));
+      localStorage.setItem(hostStorageKey, JSON.stringify({ roomCode: reply.roomCode, hostToken: reply.hostToken, quizTitle: reply.snapshot?.quiz.title }));
+      setSavedHost(null);
       setSnapshot(reply.snapshot);
+    });
+  };
+
+  const resumeRoom = () => {
+    if (!savedHost) return;
+    setResumeMessage("");
+    socket.emit("host:resume", savedHost, (reply: SocketReply) => {
+      if (reply.ok) {
+        setSnapshot(reply.snapshot);
+        setSavedHost(null);
+      } else {
+        setResumeMessage("上一個場次已失效，可能是 Render 重新部署、重啟或睡著後清掉了進行中場次。請建立新場次。");
+      }
     });
   };
 
   const resetRoom = () => {
     localStorage.removeItem(hostStorageKey);
     setSnapshot(null);
+    setSavedHost(null);
+    setResumeMessage("");
     setMessage("");
   };
 
@@ -160,6 +171,17 @@ function HostPage() {
         <div className="panel">
           <h2>選擇測驗</h2>
           <p className="hint">題目 JSON 放在專案的 quizzes 資料夾。新增檔案後重新整理此頁，就會出現在這裡。</p>
+          {savedHost && !snapshot && (
+            <div className="resume-card">
+              <strong>偵測到上一個場次</strong>
+              <p>{savedHost.quizTitle || "上一個測驗"} / 加入碼 {savedHost.roomCode}</p>
+              <div className="actions">
+                <button onClick={resumeRoom}>返回剛剛那場</button>
+                <button className="secondary" onClick={resetRoom}>建立新場次</button>
+              </div>
+              {resumeMessage && <p className="notice error">{resumeMessage}</p>}
+            </div>
+          )}
           <select value={selectedQuizId} onChange={(event) => setSelectedQuizId(event.target.value)} disabled={Boolean(snapshot)}>
             {quizzes.map((quiz) => (
               <option value={quiz.id} key={quiz.id}>

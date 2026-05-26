@@ -191,6 +191,19 @@ p {
   color: #9f2525;
 }
 
+.resume-card {
+  background: #f5f7fa;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  margin: 14px 0;
+  padding: 14px;
+}
+
+.resume-card p {
+  color: #526173;
+  margin: 6px 0 0;
+}
+
 .big-code {
   background: #172033;
   border-radius: 8px;
