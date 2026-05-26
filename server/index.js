@@ -23,6 +23,7 @@ const quizzesDir = path.join(rootDir, "quizzes");
 const clientDir = path.join(rootDir, "client");
 const port = Number(process.env.PORT || 3000);
 const isProduction = process.env.NODE_ENV === "production";
+const teacherPassword = process.env.TEACHER_PASSWORD || "";
 
 const app = express();
 const server = http.createServer(app);
@@ -50,6 +51,22 @@ app.get("/api/quizzes", async (_req, res) => {
 
 app.get("/api/persistence/status", (_req, res) => {
   res.json({ enabled: persistenceEnabled });
+});
+
+app.get("/api/auth/status", (_req, res) => {
+  res.json({ teacherPasswordRequired: Boolean(teacherPassword) });
+});
+
+app.post("/api/auth/teacher", (req, res) => {
+  if (!teacherPassword) {
+    res.json({ ok: true });
+    return;
+  }
+  if (req.body?.password === teacherPassword) {
+    res.json({ ok: true });
+    return;
+  }
+  res.status(401).json({ ok: false, error: "老師密碼錯誤。" });
 });
 
 app.get("/api/history", async (_req, res) => {
@@ -101,10 +118,10 @@ app.get("/api/rooms/:roomCode/responses.csv", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("host:createRoom", async ({ quizId }, callback) => {
+  socket.on("host:createRoom", async ({ quizId, questionCount }, callback) => {
     try {
       const quiz = await loadQuizById(quizId);
-      const room = createRoom(selectQuestionsForSession(quiz));
+      const room = createRoom(selectQuestionsForSession(quiz, questionCount));
       void saveSessionCreated(room);
       socket.join(roomChannel(room.code));
       room.hostSocketId = socket.id;
@@ -356,8 +373,8 @@ function createRoom(quiz) {
   return room;
 }
 
-function selectQuestionsForSession(quiz) {
-  const questionLimit = Number(process.env.QUIZ_QUESTION_LIMIT || 10);
+function selectQuestionsForSession(quiz, requestedQuestionCount) {
+  const questionLimit = normalizeQuestionLimit(requestedQuestionCount);
   if (!Number.isInteger(questionLimit) || questionLimit <= 0 || quiz.questions.length <= questionLimit) {
     return quiz;
   }
@@ -365,6 +382,12 @@ function selectQuestionsForSession(quiz) {
     ...quiz,
     questions: shuffleArray(quiz.questions).slice(0, questionLimit)
   };
+}
+
+function normalizeQuestionLimit(requestedQuestionCount) {
+  if (requestedQuestionCount === "all") return Number.POSITIVE_INFINITY;
+  const parsed = Number(requestedQuestionCount || process.env.QUIZ_QUESTION_LIMIT || 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 10;
 }
 
 function shuffleArray(items) {

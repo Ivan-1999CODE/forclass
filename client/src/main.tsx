@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { io, Socket } from "socket.io-client";
+import { QRCodeSVG } from "qrcode.react";
 import "./styles.css";
 
 type QuizSummary = {
@@ -52,6 +53,7 @@ type HistorySession = {
 const socket: Socket = io();
 const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
+const teacherAuthStorageKey = "classroom-live-quiz-teacher-auth";
 
 function App() {
   const path = window.location.pathname;
@@ -76,14 +78,32 @@ function HomePage() {
 function HostPage() {
   const [quizzes, setQuizzes] = useState<QuizSummary[]>([]);
   const [selectedQuizId, setSelectedQuizId] = useState("");
+  const [questionCount, setQuestionCount] = useState("10");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
   const [history, setHistory] = useState<{ enabled: boolean; sessions: HistorySession[] }>({ enabled: false, sessions: [] });
   const [savedHost, setSavedHost] = useState<{ roomCode: string; hostToken: string; quizTitle?: string } | null>(null);
   const [resumeMessage, setResumeMessage] = useState("");
   const [message, setMessage] = useState("");
+  const [authReady, setAuthReady] = useState(false);
+  const [authenticated, setAuthenticated] = useState(() => localStorage.getItem(teacherAuthStorageKey) === "ok");
+  const [passwordRequired, setPasswordRequired] = useState(false);
+  const [password, setPassword] = useState("");
+  const [authMessage, setAuthMessage] = useState("");
 
   useEffect(() => {
+    fetch("/api/auth/status")
+      .then((response) => response.json())
+      .then((data) => {
+        const required = Boolean(data.teacherPasswordRequired);
+        setPasswordRequired(required);
+        if (!required || localStorage.getItem(teacherAuthStorageKey) === "ok") {
+          setAuthenticated(true);
+        }
+        setAuthReady(true);
+      })
+      .catch(() => setAuthReady(true));
+
     fetch("/api/quizzes")
       .then((response) => response.json())
       .then((data) => {
@@ -110,9 +130,25 @@ function HostPage() {
     };
   }, []);
 
+  const loginTeacher = () => {
+    setAuthMessage("");
+    fetch("/api/auth/teacher", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password })
+    })
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok || !data.ok) throw new Error(data.error || "老師密碼錯誤。");
+        localStorage.setItem(teacherAuthStorageKey, "ok");
+        setAuthenticated(true);
+      })
+      .catch((error) => setAuthMessage(error.message));
+  };
+
   const createRoom = () => {
     setMessage("");
-    socket.emit("host:createRoom", { quizId: selectedQuizId }, (reply: SocketReply) => {
+    socket.emit("host:createRoom", { quizId: selectedQuizId, questionCount }, (reply: SocketReply) => {
       if (!reply.ok) {
         setMessage(reply.error || "建立房間失敗。");
         return;
@@ -157,6 +193,34 @@ function HostPage() {
   const lanJoinUrls = snapshot && networkInfo && isLocalOrigin ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
   const displayUrl = snapshot ? `${window.location.origin}/display/${snapshot.roomCode}` : "";
 
+  if (!authReady) {
+    return (
+      <main className="center-page">
+        <section className="panel narrow">
+          <h1>老師控制頁</h1>
+          <p>正在檢查老師權限...</p>
+        </section>
+      </main>
+    );
+  }
+
+  if (passwordRequired && !authenticated) {
+    return (
+      <main className="center-page">
+        <section className="panel narrow">
+          <h1>老師控制頁</h1>
+          <p className="hint">請輸入老師管理密碼。</p>
+          <label>
+            老師密碼
+            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} onKeyDown={(event) => event.key === "Enter" && loginTeacher()} />
+          </label>
+          <button onClick={loginTeacher}>登入</button>
+          {authMessage && <p className="notice error">{authMessage}</p>}
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="app-shell">
       <header className="topbar">
@@ -189,6 +253,16 @@ function HostPage() {
               </option>
             ))}
           </select>
+          <label>
+            每場題數
+            <select value={questionCount} onChange={(event) => setQuestionCount(event.target.value)} disabled={Boolean(snapshot)}>
+              <option value="10">隨機 10 題</option>
+              <option value="5">隨機 5 題</option>
+              <option value="15">隨機 15 題</option>
+              <option value="20">隨機 20 題</option>
+              <option value="all">全部題目</option>
+            </select>
+          </label>
           <div className="actions">
             <button onClick={createRoom} disabled={!selectedQuizId}>建立場次</button>
             <button className="secondary" onClick={resetRoom}>建立新場次</button>
@@ -203,6 +277,10 @@ function HostPage() {
               <CopyLine label="學生連結" value={joinUrl} />
               {lanJoinUrls.map((url) => <CopyLine key={url} label="同 Wi-Fi 手機測試" value={url} />)}
               <CopyLine label="投影頁" value={displayUrl} />
+              <div className="qr-panel">
+                <QRCodeSVG value={joinUrl} size={180} />
+                <p>學生掃 QR code 後輸入姓名即可加入。</p>
+              </div>
               <p className="hint">把「學生連結」傳給學生即可加入；如果學生只開 /join，也可以手動輸入加入碼 {snapshot.roomCode}。</p>
               <p className="hint">「投影頁」是給老師投影到教室螢幕用，只顯示等待室、題目、統計和排行榜，不能控制遊戲。</p>
               {isLocalOrigin && <p className="hint">本機測試時，手機需和老師電腦連同一個 Wi-Fi。Windows 防火牆跳出時，請允許 Node.js 在私人網路通訊。</p>}

@@ -72,6 +72,9 @@ quizzes/2026-05-26-present-simple-review.json
 4. 到 Render 服務的 `Environment` 新增：
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
+   - `TEACHER_PASSWORD`
 5. 在 Render 按 `Manual Deploy` -> `Deploy latest commit`。
 
 `service_role key` 只能放在 Render 後端環境變數，不要放到前端或公開貼給學生。
+
+`TEACHER_PASSWORD` 是老師控制頁密碼。設定後，進入 `/host-teacher-panel` 需要先輸入這組密碼。

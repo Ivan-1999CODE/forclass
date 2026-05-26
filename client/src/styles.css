@@ -178,6 +178,29 @@ p {
   color: #617083;
 }
 
+.qr-panel {
+  align-items: center;
+  background: #f5f7fa;
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  margin: 14px 0;
+  padding: 14px;
+}
+
+.qr-panel svg {
+  background: #fff;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  padding: 8px;
+}
+
+.qr-panel p {
+  color: #526173;
+  font-weight: 700;
+  margin: 0;
+}
+
 .notice {
   background: #e7f3ef;
   border-radius: 8px;
@@ -364,6 +387,11 @@ p {
 
   .copy-line {
     grid-template-columns: 1fr;
+  }
+
+  .qr-panel {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .section-header,
