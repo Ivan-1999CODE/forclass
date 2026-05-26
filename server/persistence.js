@@ -111,6 +111,17 @@ export async function getSessionExports(sessionId) {
   return data;
 }
 
+export async function getSessionDetail(sessionId) {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from("quiz_sessions")
+    .select("id, room_code, quiz_id, quiz_title, quiz_date, status, total_questions, created_at, started_at, finished_at, summary, responses")
+    .eq("id", sessionId)
+    .single();
+  if (error) throw error;
+  return data;
+}
+
 function buildSummaryForStorage(room) {
   return room.summaryRowsBuilder ? room.summaryRowsBuilder(room) : [];
 }

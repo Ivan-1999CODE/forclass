@@ -8,6 +8,7 @@ import express from "express";
 import { Server } from "socket.io";
 import {
   getSessionExports,
+  getSessionDetail,
   listSessions,
   persistenceEnabled,
   saveAnswer,
@@ -86,6 +87,16 @@ app.get("/api/history/:sessionId/summary.csv", async (req, res) => {
     res.send(toCsv(session.summary || []));
   } catch (error) {
     res.status(500).send(error.message);
+  }
+});
+
+app.get("/api/history/:sessionId", async (req, res) => {
+  try {
+    const session = await getSessionDetail(req.params.sessionId);
+    if (!session) return res.status(404).json({ error: "Session not found" });
+    res.json({ session });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

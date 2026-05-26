@@ -248,12 +248,16 @@ p {
 .student-row,
 .rank-row,
 .history-row {
+  align-items: stretch;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-row > div:first-child,
+.history-meta {
   align-items: center;
-  background: #f5f7fa;
-  border-radius: 8px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 12px;
 }
 
 .section-header {
@@ -280,6 +284,67 @@ p {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
+}
+
+.history-detail {
+  background: #fff;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.history-table {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.history-table-head,
+.history-table-row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 64px minmax(120px, 1fr) 90px 90px 90px;
+}
+
+.history-table-head {
+  color: #617083;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.history-table-row {
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.question-review {
+  border-top: 1px solid #d7e0e8;
+  padding: 12px 0;
+}
+
+.answer-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.answer-chip {
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 6px 10px;
+}
+
+.answer-chip.correct {
+  background: #dff2ea;
+  color: #176b5d;
+}
+
+.answer-chip.wrong {
+  background: #f8e2e2;
+  color: #9f2525;
 }
 
 .game-status {
@@ -402,6 +467,14 @@ p {
 
   .history-meta {
     justify-content: flex-start;
+  }
+
+  .history-table-head {
+    display: none;
+  }
+
+  .history-table-row {
+    grid-template-columns: 1fr 1fr;
   }
 
   .question-panel h2 {

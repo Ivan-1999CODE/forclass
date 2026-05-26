@@ -50,6 +50,29 @@ type HistorySession = {
   summary: Array<{ studentName: string; totalScore: number }>;
 };
 
+type HistoryDetail = HistorySession & {
+  responses: Array<{
+    studentName: string;
+    questionIndex: number;
+    prompt: string;
+    selectedIndex: number | "";
+    selectedText: string;
+    correctIndex: number;
+    isCorrect: boolean;
+    responseMs: number | "";
+    score: number;
+  }>;
+  summary: Array<{
+    rank: number;
+    studentName: string;
+    totalScore: number;
+    correctCount: number;
+    totalQuestions: number;
+    accuracy: string;
+    avgResponseMs: number;
+  }>;
+};
+
 const socket: Socket = io();
 const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
@@ -82,6 +105,7 @@ function HostPage() {
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
   const [history, setHistory] = useState<{ enabled: boolean; sessions: HistorySession[] }>({ enabled: false, sessions: [] });
+  const [historyDetails, setHistoryDetails] = useState<Record<string, HistoryDetail>>({});
   const [savedHost, setSavedHost] = useState<{ roomCode: string; hostToken: string; quizTitle?: string } | null>(null);
   const [resumeMessage, setResumeMessage] = useState("");
   const [message, setMessage] = useState("");
@@ -173,6 +197,7 @@ function HostPage() {
   };
 
   const resetRoom = () => {
+    if (snapshot && !window.confirm("確定要建立新場次嗎？目前控制頁會離開現在這場。")) return;
     localStorage.removeItem(hostStorageKey);
     setSnapshot(null);
     setSavedHost(null);
@@ -182,6 +207,7 @@ function HostPage() {
 
   const hostAction = (eventName: string) => {
     if (!snapshot?.hostToken) return;
+    if (eventName === "host:endGame" && !window.confirm("確定要結束遊戲嗎？結束後不能回到這一題繼續作答。")) return;
     setMessage("");
     socket.emit(eventName, { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken }, (reply: SocketReply) => {
       if (!reply.ok) setMessage(reply.error || "操作失敗。");
@@ -329,9 +355,11 @@ function HostPage() {
               </div>
               <div className="history-meta">
                 <span>{session.summary?.length || 0} 人</span>
-                <a className="button-link secondary" href={`/api/history/${session.id}/summary.csv`}>summary.csv</a>
-                <a className="button-link secondary" href={`/api/history/${session.id}/responses.csv`}>responses.csv</a>
+                <button className="secondary" onClick={() => toggleHistoryDetail(session.id, historyDetails, setHistoryDetails)}>
+                  {historyDetails[session.id] ? "收合紀錄" : "查看紀錄"}
+                </button>
               </div>
+              {historyDetails[session.id] && <HistoryDetailPanel detail={historyDetails[session.id]} />}
             </div>
           ))}
         </div>
@@ -616,6 +644,47 @@ function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compac
   );
 }
 
+function HistoryDetailPanel({ detail }: { detail: HistoryDetail }) {
+  const questions = groupResponsesByQuestion(detail.responses || []);
+  return (
+    <div className="history-detail">
+      <h3>排行榜</h3>
+      <div className="history-table">
+        <div className="history-table-head">
+          <span>名次</span>
+          <span>姓名</span>
+          <span>分數</span>
+          <span>答對</span>
+          <span>正確率</span>
+        </div>
+        {detail.summary.map((row) => (
+          <div className="history-table-row" key={`${row.rank}-${row.studentName}`}>
+            <span>#{row.rank}</span>
+            <span>{row.studentName}</span>
+            <span>{row.totalScore}</span>
+            <span>{row.correctCount} / {row.totalQuestions}</span>
+            <span>{row.accuracy}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>每題答題狀況</h3>
+      {questions.map((question) => (
+        <div className="question-review" key={question.questionIndex}>
+          <strong>第 {question.questionIndex + 1} 題：{question.prompt}</strong>
+          <div className="answer-chip-list">
+            {question.responses.map((response) => (
+              <span className={`answer-chip ${response.isCorrect ? "correct" : "wrong"}`} key={`${response.studentName}-${response.questionIndex}`}>
+                {response.studentName}: {response.isCorrect ? "答對" : "答錯"}{response.selectedText ? ` (${response.selectedText})` : " (未作答)"}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function CopyLine({ label, value }: { label: string; value: string }) {
   return (
     <div className="copy-line">
@@ -652,6 +721,44 @@ function readJson<T>(key: string): T | null {
   } catch {
     return null;
   }
+}
+
+function groupResponsesByQuestion(responses: HistoryDetail["responses"]) {
+  const groups = new Map<number, { questionIndex: number; prompt: string; responses: HistoryDetail["responses"] }>();
+  for (const response of responses) {
+    if (!groups.has(response.questionIndex)) {
+      groups.set(response.questionIndex, {
+        questionIndex: response.questionIndex,
+        prompt: response.prompt,
+        responses: []
+      });
+    }
+    groups.get(response.questionIndex)?.responses.push(response);
+  }
+  return [...groups.values()].sort((a, b) => a.questionIndex - b.questionIndex);
+}
+
+function toggleHistoryDetail(
+  sessionId: string,
+  details: Record<string, HistoryDetail>,
+  setDetails: React.Dispatch<React.SetStateAction<Record<string, HistoryDetail>>>
+) {
+  if (details[sessionId]) {
+    setDetails((current) => {
+      const next = { ...current };
+      delete next[sessionId];
+      return next;
+    });
+    return;
+  }
+
+  fetch(`/api/history/${sessionId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.session) {
+        setDetails((current) => ({ ...current, [sessionId]: data.session }));
+      }
+    });
 }
 
 function fetchHistory(setHistory: React.Dispatch<React.SetStateAction<{ enabled: boolean; sessions: HistorySession[] }>>) {
