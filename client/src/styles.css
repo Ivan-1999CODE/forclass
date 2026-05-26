@@ -244,7 +244,8 @@ p {
 
 .student-list,
 .leaderboard,
-.stats-list {
+.stats-list,
+.answer-stat-grid {
   display: grid;
   gap: 8px;
 }
@@ -252,9 +253,47 @@ p {
 .student-row,
 .rank-row,
 .history-row {
+  background: #f5f7fa;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.student-row,
+.rank-row {
+  align-items: center;
+  flex-direction: row;
+}
+
+.student-name {
+  font-weight: 800;
+}
+
+.student-status {
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  min-width: 64px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.student-status.online {
+  background: #dff2ea;
+  color: #176b5d;
+}
+
+.student-status.offline {
+  background: #f8e2e2;
+  color: #b73535;
+}
+
+.history-row {
   align-items: stretch;
   flex-direction: column;
-  gap: 12px;
 }
 
 .history-row > div:first-child,
@@ -308,6 +347,85 @@ p {
   border: 1px solid #d7e0e8;
   border-radius: 8px;
   padding: 14px;
+}
+
+.live-answer-panel {
+  grid-column: 1 / -1;
+}
+
+.answer-stat-card {
+  align-items: center;
+  background: #f5f7fa;
+  border: 2px solid #d7e0e8;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 42px minmax(0, 1fr) 56px;
+  padding: 10px 12px;
+}
+
+.answer-stat-card.correct {
+  background: #dff2ea;
+  border-color: #176b5d;
+}
+
+.answer-stat-card.unanswered {
+  background: #f8e2e2;
+  border-color: #d9a3a3;
+}
+
+.answer-letter,
+.rank-badge,
+.score-badge {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  font-weight: 900;
+  justify-content: center;
+}
+
+.answer-letter {
+  background: #172033;
+  color: #fff;
+  height: 34px;
+  width: 34px;
+}
+
+.answer-text {
+  font-weight: 800;
+}
+
+.answer-count {
+  background: #fff;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.answer-progress {
+  color: #526173;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.rank-badge {
+  background: #172033;
+  color: #fff;
+  min-width: 54px;
+  padding: 6px 10px;
+}
+
+.rank-name {
+  flex: 1;
+}
+
+.score-badge {
+  background: #edf4f2;
+  color: #176b5d;
+  min-width: 92px;
+  padding: 6px 10px;
 }
 
 .history-table {

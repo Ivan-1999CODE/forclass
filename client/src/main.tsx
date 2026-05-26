@@ -350,6 +350,7 @@ function HostPage() {
             <p className="hint">成績會自動保存到 Supabase。需要匯出時，請到下方「歷史場次」下載 CSV。</p>
           </div>
           <RoomPanel snapshot={snapshot} />
+          <LiveAnswerPanel snapshot={snapshot} />
         </section>
       )}
 
@@ -604,8 +605,10 @@ function RoomPanel({ snapshot }: { snapshot: Snapshot }) {
       <div className="student-list">
         {snapshot.students.map((student) => (
           <div className="student-row" key={student.id}>
-            <span>{student.name}</span>
-            <span>{student.answeredCurrent ? "已答" : student.connected ? "在線" : "離線"}</span>
+            <span className="student-name">{student.name}</span>
+            <span className={`student-status ${student.connected ? "online" : "offline"}`}>
+              {student.answeredCurrent ? "已答" : student.connected ? "在線" : "離線"}
+            </span>
           </div>
         ))}
         {snapshot.students.length === 0 && <p className="empty">尚無學生加入。</p>}
@@ -638,22 +641,50 @@ function GameStatus({ snapshot }: { snapshot: Snapshot }) {
   );
 }
 
+function LiveAnswerPanel({ snapshot }: { snapshot: Snapshot }) {
+  if (!snapshot.question || snapshot.currentQuestionIndex < 0 || snapshot.status === "waiting") return null;
+  return (
+    <div className="live-answer-panel">
+      <h3>本題即時作答</h3>
+      <AnswerStats snapshot={snapshot} revealCorrect={snapshot.status !== "question"} />
+      <div className="answer-progress">
+        已作答 {snapshot.stats?.answered || 0} / {snapshot.students.length}，未作答 {snapshot.stats?.unanswered || 0}
+      </div>
+    </div>
+  );
+}
+
 function ResultBlock({ snapshot }: { snapshot: Snapshot }) {
   return (
     <div className="results-grid">
       <div>
         <h3>作答統計</h3>
-        <div className="stats-list">
-          {snapshot.question?.options.map((option, index) => (
-            <div key={option}>
-              {String.fromCharCode(65 + index)}. {option}: {snapshot.stats?.optionCounts[index] || 0}
-            </div>
-          ))}
-          <div>未作答: {snapshot.stats?.unanswered || 0}</div>
-        </div>
+        <AnswerStats snapshot={snapshot} revealCorrect />
         {snapshot.question?.explanation && <p className="explanation">{snapshot.question.explanation}</p>}
       </div>
       <Leaderboard snapshot={snapshot} compact />
+    </div>
+  );
+}
+
+function AnswerStats({ snapshot, revealCorrect }: { snapshot: Snapshot; revealCorrect: boolean }) {
+  return (
+    <div className="answer-stat-grid">
+      {snapshot.question?.options.map((option, index) => {
+        const isCorrect = revealCorrect && snapshot.question?.answerIndex === index;
+        return (
+          <div className={`answer-stat-card ${isCorrect ? "correct" : ""}`} key={`${index}-${option}`}>
+            <span className="answer-letter">{String.fromCharCode(65 + index)}</span>
+            <span className="answer-text">{option}</span>
+            <span className="answer-count">{snapshot.stats?.optionCounts[index] || 0}</span>
+          </div>
+        );
+      })}
+      <div className="answer-stat-card unanswered">
+        <span className="answer-letter">-</span>
+        <span className="answer-text">未作答</span>
+        <span className="answer-count">{snapshot.stats?.unanswered || 0}</span>
+      </div>
     </div>
   );
 }
@@ -664,9 +695,9 @@ function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compac
     <div className="leaderboard">
       {rows.map((student) => (
         <div className="rank-row" key={student.id}>
-          <span>#{student.rank}</span>
-          <strong>{student.name}</strong>
-          <span>{student.totalScore} 分</span>
+          <span className="rank-badge">#{student.rank}</span>
+          <strong className="rank-name">{student.name}</strong>
+          <span className="score-badge">{student.totalScore} 分</span>
         </div>
       ))}
       {rows.length === 0 && <p className="empty">尚無排名。</p>}
