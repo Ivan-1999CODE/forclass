@@ -41,10 +41,12 @@ export async function saveSessionStatus(room) {
     room.startedAt = Date.now();
     patch.started_at = new Date(room.startedAt).toISOString();
   }
-  if (room.status === "finished") {
-    patch.finished_at = new Date().toISOString();
+  if (room.status === "results" || room.status === "finished") {
     patch.summary = buildSummaryForStorage(room);
     patch.responses = buildResponsesForStorage(room);
+  }
+  if (room.status === "finished") {
+    patch.finished_at = new Date().toISOString();
   }
   await reportError(
     supabase.from("quiz_sessions").update(patch).eq("id", room.sessionId),
