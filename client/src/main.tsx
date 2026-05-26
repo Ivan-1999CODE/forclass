@@ -136,8 +136,9 @@ function HostPage() {
     });
   };
 
+  const isLocalOrigin = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
   const joinUrl = snapshot ? `${window.location.origin}/join?room=${snapshot.roomCode}` : "";
-  const lanJoinUrls = snapshot && networkInfo ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
+  const lanJoinUrls = snapshot && networkInfo && isLocalOrigin ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
   const displayUrl = snapshot ? `${window.location.origin}/display/${snapshot.roomCode}` : "";
 
   return (
@@ -172,11 +173,12 @@ function HostPage() {
           <h2>學生加入方式</h2>
           {snapshot ? (
             <>
-              <CopyLine label="本機測試" value={joinUrl} />
-              {lanJoinUrls.map((url) => <CopyLine key={url} label="手機測試" value={url} />)}
+              <CopyLine label="學生連結" value={joinUrl} />
+              {lanJoinUrls.map((url) => <CopyLine key={url} label="同 Wi-Fi 手機測試" value={url} />)}
               <CopyLine label="投影頁" value={displayUrl} />
-              <p className="hint">傳連結給學生即可加入；如果學生只開 /join，也可以手動輸入加入碼 {snapshot.roomCode}。手機需和老師電腦連同一個 Wi-Fi。</p>
-              <p className="hint">Windows 防火牆跳出時，請允許 Node.js 在私人網路通訊。</p>
+              <p className="hint">把「學生連結」傳給學生即可加入；如果學生只開 /join，也可以手動輸入加入碼 {snapshot.roomCode}。</p>
+              <p className="hint">「投影頁」是給老師投影到教室螢幕用，只顯示等待室、題目、統計和排行榜，不能控制遊戲。</p>
+              {isLocalOrigin && <p className="hint">本機測試時，手機需和老師電腦連同一個 Wi-Fi。Windows 防火牆跳出時，請允許 Node.js 在私人網路通訊。</p>}
             </>
           ) : (
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
