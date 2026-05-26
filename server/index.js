@@ -386,12 +386,29 @@ function createRoom(quiz) {
 
 function selectQuestionsForSession(quiz, requestedQuestionCount) {
   const questionLimit = normalizeQuestionLimit(requestedQuestionCount);
+  const prepareQuestion = (question) => shuffleQuestionOptions(question);
   if (!Number.isInteger(questionLimit) || questionLimit <= 0 || quiz.questions.length <= questionLimit) {
-    return quiz;
+    return {
+      ...quiz,
+      questions: quiz.questions.map(prepareQuestion)
+    };
   }
   return {
     ...quiz,
-    questions: shuffleArray(quiz.questions).slice(0, questionLimit)
+    questions: shuffleArray(quiz.questions).slice(0, questionLimit).map(prepareQuestion)
+  };
+}
+
+function shuffleQuestionOptions(question) {
+  const optionEntries = question.options.map((option, index) => ({
+    option,
+    originalIndex: index
+  }));
+  const shuffledOptions = shuffleArray(optionEntries);
+  return {
+    ...question,
+    options: shuffledOptions.map((entry) => entry.option),
+    answerIndex: shuffledOptions.findIndex((entry) => entry.originalIndex === question.answerIndex)
   };
 }
 
