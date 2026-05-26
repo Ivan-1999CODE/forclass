@@ -100,7 +100,12 @@ function HostPage() {
     const saved = readJson<{ roomCode: string; hostToken: string }>(hostStorageKey);
     if (saved?.roomCode && saved?.hostToken) {
       socket.emit("host:resume", saved, (reply: SocketReply) => {
-        if (reply.ok) setSnapshot(reply.snapshot);
+        if (reply.ok) {
+          setSnapshot(reply.snapshot);
+        } else {
+          localStorage.removeItem(hostStorageKey);
+          setMessage("原本的場次已失效，可能是 Render 重新部署、重啟或睡著後清掉了進行中場次。請重新建立場次。");
+        }
       });
     }
 
@@ -183,6 +188,7 @@ function HostPage() {
           ) : (
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
           )}
+          <p className="hint">老師頁重新整理通常可以恢復；但 Render 重新部署、重啟或免費方案睡著後，進行中的場次會失效。已保存到 Supabase 的歷史資料不會消失。</p>
         </div>
       </section>
 
