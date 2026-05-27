@@ -7,7 +7,6 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { Server } from "socket.io";
 import {
-  getSessionExports,
   getSessionDetail,
   listSessions,
   persistenceEnabled,
@@ -31,6 +30,11 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const rooms = new Map();
+const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS || 2 * 60 * 60 * 1000);
+const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
+const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
+const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
+roomCleanupTimer.unref?.();
 
 app.use(express.json({ limit: "1mb" }));
 
@@ -79,18 +83,6 @@ app.get("/api/history", async (_req, res) => {
   }
 });
 
-app.get("/api/history/:sessionId/summary.csv", async (req, res) => {
-  try {
-    const session = await getSessionExports(req.params.sessionId);
-    if (!session) return res.status(404).send("Session not found");
-    res.setHeader("Content-Type", "text/csv; charset=utf-8");
-    res.setHeader("Content-Disposition", `attachment; filename="${session.room_code}-summary.csv"`);
-    res.send(toCsv(session.summary || []));
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
 app.get("/api/history/:sessionId", async (req, res) => {
   try {
     const session = await getSessionDetail(req.params.sessionId);
@@ -99,34 +91,6 @@ app.get("/api/history/:sessionId", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
-
-app.get("/api/history/:sessionId/responses.csv", async (req, res) => {
-  try {
-    const session = await getSessionExports(req.params.sessionId);
-    if (!session) return res.status(404).send("Session not found");
-    res.setHeader("Content-Type", "text/csv; charset=utf-8");
-    res.setHeader("Content-Disposition", `attachment; filename="${session.room_code}-responses.csv"`);
-    res.send(toCsv(session.responses || []));
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-app.get("/api/rooms/:roomCode/summary.csv", (req, res) => {
-  const room = getAuthorizedRoom(req.params.roomCode, req.query.token);
-  if (!room) return res.status(403).send("Invalid room or token");
-  res.setHeader("Content-Type", "text/csv; charset=utf-8");
-  res.setHeader("Content-Disposition", `attachment; filename="${room.code}-summary.csv"`);
-  res.send(toCsv(buildSummaryRows(room)));
-});
-
-app.get("/api/rooms/:roomCode/responses.csv", (req, res) => {
-  const room = getAuthorizedRoom(req.params.roomCode, req.query.token);
-  if (!room) return res.status(403).send("Invalid room or token");
-  res.setHeader("Content-Type", "text/csv; charset=utf-8");
-  res.setHeader("Content-Disposition", `attachment; filename="${room.code}-responses.csv"`);
-  res.send(toCsv(buildResponseRows(room)));
 });
 
 io.on("connection", (socket) => {
@@ -223,7 +187,7 @@ io.on("connection", (socket) => {
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     const nextIndex = room.currentQuestionIndex + 1;
     if (nextIndex >= room.quiz.questions.length) {
-      finishRoom(room);
+      return callback?.({ ok: false, error: "已經是最後一題，請按「結束遊戲」。" });
     } else {
       startQuestion(room, nextIndex);
     }
@@ -425,6 +389,7 @@ function createRoom(quiz) {
     students: new Map(),
     createdAt: Date.now(),
     startedAt: null,
+    finishedAt: null,
     summaryRowsBuilder: buildSummaryRows,
     responseRowsBuilder: buildResponseRows
   };
@@ -580,6 +545,7 @@ function closeQuestion(room) {
 function finishRoom(room) {
   clearRoomTimer(room);
   room.status = "finished";
+  room.finishedAt = Date.now();
   void saveSessionStatus(room);
   broadcastRoom(room);
 }
@@ -617,11 +583,7 @@ function attachHostSocket(room, socket) {
 function buildHostSnapshot(room) {
   return {
     ...buildDisplaySnapshot(room),
-    hostToken: room.hostToken,
-    csv: {
-      summaryUrl: `/api/rooms/${room.code}/summary.csv?token=${encodeURIComponent(room.hostToken)}`,
-      responsesUrl: `/api/rooms/${room.code}/responses.csv?token=${encodeURIComponent(room.hostToken)}`
-    }
+    hostToken: room.hostToken
   };
 }
 
@@ -749,22 +711,6 @@ function buildResponseRows(room) {
   return rows;
 }
 
-function toCsv(rows) {
-  if (rows.length === 0) return "";
-  const headers = Object.keys(rows[0]);
-  const lines = [headers.join(",")];
-  for (const row of rows) {
-    lines.push(headers.map((header) => csvCell(row[header])).join(","));
-  }
-  return `\uFEFF${lines.join("\n")}`;
-}
-
-function csvCell(value) {
-  const text = String(value ?? "");
-  if (/[",\n\r]/.test(text)) return `"${text.replaceAll('"', '""')}"`;
-  return text;
-}
-
 function getAuthorizedRoom(roomCode, hostToken) {
   const room = getRoom(roomCode);
   if (!room || room.hostToken !== hostToken) return null;
@@ -811,4 +757,20 @@ function getLanUrls(serverPort) {
     }
   }
   return urls;
+}
+
+function cleanupRooms() {
+  const now = Date.now();
+  for (const room of rooms.values()) {
+    const finishedExpired = room.status === "finished"
+      && room.finishedAt
+      && now - room.finishedAt > finishedRoomRetentionMs;
+    const waitingExpired = room.status === "waiting"
+      && now - room.createdAt > waitingRoomRetentionMs;
+
+    if (finishedExpired || waitingExpired) {
+      clearRoomTimer(room);
+      rooms.delete(room.code);
+    }
+  }
 }

@@ -30,7 +30,6 @@ type Snapshot = {
   stats: null | { optionCounts: number[]; answered: number; unanswered: number; correct: number };
   me?: null | { id: string; name: string; totalScore: number; selectedIndex: number | null; answeredCurrent: boolean };
   hostToken?: string;
-  csv?: { summaryUrl: string; responsesUrl: string };
 };
 
 type NetworkInfo = {
@@ -283,6 +282,7 @@ function HostPage() {
   const lanJoinUrls = snapshot && networkInfo && isLocalOrigin ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
   const primaryJoinUrl = lanJoinUrls[0] || joinUrl;
   const displayUrl = snapshot ? `${window.location.origin}/display/${snapshot.roomCode}` : "";
+  const isLastQuestion = snapshot ? snapshot.currentQuestionIndex >= snapshot.quiz.questionCount - 1 : false;
 
   if (!authReady) {
     return (
@@ -390,11 +390,11 @@ function HostPage() {
             <div className="actions">
               <button onClick={() => hostAction("host:startGame")} disabled={snapshot.status !== "waiting"}>開始遊戲</button>
               <button className="secondary" onClick={() => hostAction("host:closeQuestion")} disabled={snapshot.status !== "question"}>提前公布答案</button>
-              <button onClick={() => hostAction("host:nextQuestion")} disabled={snapshot.status !== "results"}>下一題</button>
+              <button onClick={() => hostAction("host:nextQuestion")} disabled={snapshot.status !== "results" || isLastQuestion}>下一題</button>
               <button className="danger" onClick={() => hostAction("host:endGame")} disabled={snapshot.status === "finished"}>結束遊戲</button>
             </div>
-            <p className="hint">每題會依題目設定自動倒數，時間到自動公布答案。通常只需要按「下一題」。</p>
-            <p className="hint">成績會自動保存到 Supabase。需要匯出時，請到下方「歷史場次」下載 CSV。</p>
+            <p className="hint">每題會依題目設定自動倒數，時間到自動公布答案。非最後一題時按「下一題」，最後一題請按「結束遊戲」。</p>
+            <p className="hint">成績會自動保存到 Supabase，可在下方「歷史場次」查看紀錄並建立錯題重練。</p>
           </div>
           <HostQuestionPanel snapshot={snapshot} />
           <RoomPanel snapshot={snapshot} />

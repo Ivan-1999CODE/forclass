@@ -106,17 +106,6 @@ export async function listSessions() {
   return data || [];
 }
 
-export async function getSessionExports(sessionId) {
-  if (!supabase) return null;
-  const { data, error } = await supabase
-    .from("quiz_sessions")
-    .select("id, room_code, quiz_title, summary, responses")
-    .eq("id", sessionId)
-    .single();
-  if (error) throw error;
-  return data;
-}
-
 export async function getSessionDetail(sessionId) {
   if (!supabase) return null;
   const { data, error } = await supabase
