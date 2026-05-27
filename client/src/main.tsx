@@ -151,11 +151,55 @@ function HostPage() {
       setSavedHost(saved);
     }
 
-    socket.on("host:update", setSnapshot);
+    const handleHostUpdate = (nextSnapshot: Snapshot) => {
+      const saved = readJson<{ roomCode: string; hostToken: string }>(hostStorageKey);
+      if (saved?.roomCode && saved?.hostToken) {
+        if (saved.roomCode === nextSnapshot.roomCode && saved.hostToken === nextSnapshot.hostToken) {
+          setSnapshot(nextSnapshot);
+        }
+        return;
+      }
+
+      setSnapshot((current) => {
+        if (current?.roomCode === nextSnapshot.roomCode && current.hostToken === nextSnapshot.hostToken) {
+          return nextSnapshot;
+        }
+        return current;
+      });
+    };
+
+    socket.on("host:update", handleHostUpdate);
     return () => {
-      socket.off("host:update", setSnapshot);
+      socket.off("host:update", handleHostUpdate);
     };
   }, []);
+
+  useEffect(() => {
+    const resumeHostSession = () => {
+      const currentHost = snapshot?.roomCode && snapshot.hostToken
+        ? { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken }
+        : readJson<{ roomCode: string; hostToken: string }>(hostStorageKey);
+
+      if (!currentHost?.roomCode || !currentHost.hostToken) return;
+
+      socket.emit("host:resume", currentHost, (reply: SocketReply) => {
+        if (reply.ok && reply.snapshot) {
+          setSnapshot(reply.snapshot);
+          setSavedHost(null);
+        }
+      });
+    };
+
+    socket.on("connect", resumeHostSession);
+    window.addEventListener("focus", resumeHostSession);
+    document.addEventListener("visibilitychange", resumeHostSession);
+    if (socket.connected) resumeHostSession();
+    return () => {
+      socket.off("connect", resumeHostSession);
+      window.removeEventListener("focus", resumeHostSession);
+      document.removeEventListener("visibilitychange", resumeHostSession);
+    };
+  }, [snapshot?.roomCode, snapshot?.hostToken]);
 
   const loginTeacher = () => {
     setAuthMessage("");
@@ -215,6 +259,9 @@ function HostPage() {
 
   const resetRoom = () => {
     if (snapshot && !window.confirm("確定要建立新場次嗎？目前控制頁會離開現在這場。")) return;
+    if (snapshot?.hostToken) {
+      socket.emit("host:leaveRoom", { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken });
+    }
     localStorage.removeItem(hostStorageKey);
     setSnapshot(null);
     setSavedHost(null);
@@ -234,6 +281,7 @@ function HostPage() {
   const isLocalOrigin = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
   const joinUrl = snapshot ? `${window.location.origin}/join?room=${snapshot.roomCode}` : "";
   const lanJoinUrls = snapshot && networkInfo && isLocalOrigin ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
+  const primaryJoinUrl = lanJoinUrls[0] || joinUrl;
   const displayUrl = snapshot ? `${window.location.origin}/display/${snapshot.roomCode}` : "";
 
   if (!authReady) {
@@ -307,7 +355,7 @@ function HostPage() {
             </select>
           </label>
           <div className="actions">
-            <button onClick={createRoom} disabled={!selectedQuizId}>建立場次</button>
+            <button onClick={createRoom} disabled={!selectedQuizId || Boolean(snapshot)}>建立場次</button>
             <button className="secondary" onClick={resetRoom}>建立新場次</button>
           </div>
           {message && <p className="notice error">{message}</p>}
@@ -317,16 +365,14 @@ function HostPage() {
           <h2>學生加入方式</h2>
           {snapshot ? (
             <>
-              <CopyLine label="學生連結" value={joinUrl} />
-              {lanJoinUrls.map((url) => <CopyLine key={url} label="同 Wi-Fi 手機測試" value={url} />)}
-              <CopyLine label="投影頁" value={displayUrl} />
-              <div className="qr-panel">
-                <QRCodeSVG value={joinUrl} size={180} />
-                <p>學生掃 QR code 後輸入姓名即可加入。</p>
+              <div className="qr-panel qr-panel-stacked">
+                <QRCodeSVG value={primaryJoinUrl} size={180} />
+                <div className="qr-room-code">
+                  <span>加入碼</span>
+                  <strong>{snapshot.roomCode}</strong>
+                </div>
               </div>
-              <p className="hint">把「學生連結」傳給學生即可加入；如果學生只開 /join，也可以手動輸入加入碼 {snapshot.roomCode}。</p>
-              <p className="hint">「投影頁」是給老師投影到教室螢幕用，只顯示等待室、題目、統計和排行榜，不能控制遊戲。</p>
-              {isLocalOrigin && <p className="hint">本機測試時，手機需和老師電腦連同一個 Wi-Fi。Windows 防火牆跳出時，請允許 Node.js 在私人網路通訊。</p>}
+              <CopyLine label="投影頁" value={displayUrl} />
             </>
           ) : (
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
@@ -349,6 +395,7 @@ function HostPage() {
             <p className="hint">每題會依題目設定自動倒數，時間到自動公布答案。通常只需要按「下一題」。</p>
             <p className="hint">成績會自動保存到 Supabase。需要匯出時，請到下方「歷史場次」下載 CSV。</p>
           </div>
+          <HostQuestionPanel snapshot={snapshot} />
           <RoomPanel snapshot={snapshot} />
           <LiveAnswerPanel snapshot={snapshot} />
         </section>
@@ -501,27 +548,15 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
         <section className="panel question-panel">
           <GameStatus snapshot={snapshot} />
           <h2>{snapshot.question.prompt}</h2>
-          <div className="option-grid">
-            {snapshot.question.options.map((option, index) => {
-              const isSelected = snapshot.me?.selectedIndex === index;
-              const isCorrect = snapshot.question?.answerIndex === index;
-              const reveal = snapshot.status === "results";
-              return (
-                <button
-                  key={option}
-                  className={`option-button ${isSelected ? "selected" : ""} ${reveal && isCorrect ? "correct" : ""} ${reveal && isSelected && !isCorrect ? "wrong" : ""}`}
-                  onClick={() => answer(index)}
-                  disabled={snapshot.status !== "question" || snapshot.me?.answeredCurrent}
-                >
-                  <span>{String.fromCharCode(65 + index)}</span>
-                  {option}
-                </button>
-              );
-            })}
-          </div>
+          <QuestionOptions
+            snapshot={snapshot}
+            onAnswer={answer}
+            disabled={snapshot.status !== "question" || Boolean(snapshot.me?.answeredCurrent)}
+            showCounts={snapshot.status === "results"}
+          />
           {snapshot.me?.answeredCurrent && snapshot.status === "question" && <p className="notice">已送出答案。</p>}
           {message && <p className="notice error">{message}</p>}
-          {snapshot.status === "results" && <ResultBlock snapshot={snapshot} />}
+          {snapshot.status === "results" && <ResultBlock snapshot={snapshot} showStats={false} />}
         </section>
       )}
 
@@ -575,14 +610,7 @@ function DisplayPage({ roomCode }: { roomCode: string }) {
         <section className="panel question-panel">
           <GameStatus snapshot={snapshot} />
           <h2>{snapshot.question.prompt}</h2>
-          <div className="display-options">
-            {snapshot.question.options.map((option, index) => (
-              <div className={`display-option ${snapshot.question?.answerIndex === index ? "correct" : ""}`} key={option}>
-                <span>{String.fromCharCode(65 + index)}</span>
-                {option}
-              </div>
-            ))}
-          </div>
+          <QuestionOptions snapshot={snapshot} variant="display" showCounts={snapshot.status === "results"} />
           {snapshot.status === "results" && <ResultBlock snapshot={snapshot} />}
         </section>
       )}
@@ -641,6 +669,74 @@ function GameStatus({ snapshot }: { snapshot: Snapshot }) {
   );
 }
 
+function HostQuestionPanel({ snapshot }: { snapshot: Snapshot }) {
+  if (!snapshot.question || snapshot.currentQuestionIndex < 0 || snapshot.status === "waiting") return null;
+  return (
+    <div className="panel question-panel host-question-panel">
+      <h2>{snapshot.question.prompt}</h2>
+      <QuestionOptions snapshot={snapshot} showCounts />
+      {snapshot.status === "results" && <ResultBlock snapshot={snapshot} showStats={false} />}
+    </div>
+  );
+}
+
+function QuestionOptions({
+  snapshot,
+  onAnswer,
+  disabled = true,
+  showCounts = false,
+  variant = "answer"
+}: {
+  snapshot: Snapshot;
+  onAnswer?: (selectedIndex: number) => void;
+  disabled?: boolean;
+  showCounts?: boolean;
+  variant?: "answer" | "display";
+}) {
+  const reveal = snapshot.status === "results" || snapshot.status === "finished";
+  const answerIndex = snapshot.question?.answerIndex ?? null;
+  const selectedIndex = snapshot.me?.selectedIndex ?? null;
+  const gridClass = variant === "display" ? "display-options" : "option-grid";
+  const optionClass = variant === "display" ? "display-option" : "option-button";
+
+  return (
+    <div className={gridClass}>
+      {snapshot.question?.options.map((option, index) => {
+        const isSelected = selectedIndex === index;
+        const isCorrect = reveal && answerIndex === index;
+        const isWrong = reveal && isSelected && answerIndex !== null && answerIndex !== index;
+        const className = `${optionClass} ${isSelected ? "selected" : ""} ${isCorrect ? "correct" : ""} ${isWrong ? "wrong" : ""}`;
+        const content = (
+          <>
+            <span className="option-letter">{String.fromCharCode(65 + index)}</span>
+            <span className="option-text">{option}</span>
+            {showCounts && <span className="option-count">{snapshot.stats?.optionCounts[index] || 0} 人</span>}
+          </>
+        );
+
+        if (!onAnswer) {
+          return (
+            <div className={className} key={`${index}-${option}`}>
+              {content}
+            </div>
+          );
+        }
+
+        return (
+          <button
+            key={`${index}-${option}`}
+            className={className}
+            onClick={() => onAnswer(index)}
+            disabled={disabled}
+          >
+            {content}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function LiveAnswerPanel({ snapshot }: { snapshot: Snapshot }) {
   if (!snapshot.question || snapshot.currentQuestionIndex < 0 || snapshot.status === "waiting") return null;
   return (
@@ -654,13 +750,20 @@ function LiveAnswerPanel({ snapshot }: { snapshot: Snapshot }) {
   );
 }
 
-function ResultBlock({ snapshot }: { snapshot: Snapshot }) {
+function ResultBlock({ snapshot, showStats = true }: { snapshot: Snapshot; showStats?: boolean }) {
   return (
     <div className="results-grid">
-      <div>
-        <h3>作答統計</h3>
-        <AnswerStats snapshot={snapshot} revealCorrect />
-        {snapshot.question?.explanation && <p className="explanation">{snapshot.question.explanation}</p>}
+      <div className="result-details">
+        {snapshot.question?.explanation && (
+          <section className="result-explanation">
+            <h3>題目答案的解釋</h3>
+            <p className="explanation">{snapshot.question.explanation}</p>
+          </section>
+        )}
+        {showStats && <section className="answer-stats-section">
+          <h3>作答統計</h3>
+          <AnswerStats snapshot={snapshot} revealCorrect />
+        </section>}
       </div>
       <Leaderboard snapshot={snapshot} compact />
     </div>
@@ -694,7 +797,7 @@ function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compac
   return (
     <div className="leaderboard">
       {rows.map((student) => (
-        <div className="rank-row" key={student.id}>
+        <div className={`rank-row ${student.rank <= 4 ? `rank-award rank-${student.rank}` : ""}`} key={student.id}>
           <span className="rank-badge">#{student.rank}</span>
           <strong className="rank-name">{student.name}</strong>
           <span className="score-badge">{student.totalScore} 分</span>

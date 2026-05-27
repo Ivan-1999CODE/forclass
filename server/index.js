@@ -134,8 +134,7 @@ io.on("connection", (socket) => {
       const quiz = await loadQuizById(quizId);
       const room = createRoom(selectQuestionsForSession(quiz, questionCount));
       void saveSessionCreated(room);
-      socket.join(roomChannel(room.code));
-      room.hostSocketId = socket.id;
+      attachHostSocket(room, socket);
       callback?.({
         ok: true,
         roomCode: room.code,
@@ -163,8 +162,7 @@ io.on("connection", (socket) => {
       }
       const room = createRoom(selectQuestionsForSession(quiz, "all"));
       void saveSessionCreated(room);
-      socket.join(roomChannel(room.code));
-      room.hostSocketId = socket.id;
+      attachHostSocket(room, socket);
       callback?.({
         ok: true,
         roomCode: room.code,
@@ -183,14 +181,27 @@ io.on("connection", (socket) => {
       callback?.({ ok: false, error: "找不到房間，或老師權限已失效。" });
       return;
     }
-    room.hostSocketId = socket.id;
-    socket.join(roomChannel(room.code));
+    attachHostSocket(room, socket);
     callback?.({ ok: true, snapshot: buildHostSnapshot(room) });
     broadcastRoom(room);
   });
 
+  socket.on("host:leaveRoom", ({ roomCode, hostToken }, callback) => {
+    const room = getAuthorizedRoom(roomCode, hostToken);
+    if (!room) return callback?.({ ok: false });
+    if (room.hostSocketId === socket.id) {
+      room.hostSocketId = null;
+    }
+    if (socket.data.hostRoomCode === room.code) {
+      delete socket.data.hostRoomCode;
+    }
+    socket.leave(roomChannel(room.code));
+    callback?.({ ok: true });
+  });
+
   socket.on("host:startGame", ({ roomCode, hostToken }, callback) => {
     const room = getAuthorizedRoom(roomCode, hostToken);
+    attachHostSocket(room, socket);
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     if (room.students.size === 0) return callback?.({ ok: false, error: "目前沒有學生加入。" });
     startQuestion(room, 0);
@@ -199,6 +210,7 @@ io.on("connection", (socket) => {
 
   socket.on("host:closeQuestion", ({ roomCode, hostToken }, callback) => {
     const room = getAuthorizedRoom(roomCode, hostToken);
+    attachHostSocket(room, socket);
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     closeQuestion(room);
     callback?.({ ok: true });
@@ -206,6 +218,7 @@ io.on("connection", (socket) => {
 
   socket.on("host:nextQuestion", ({ roomCode, hostToken }, callback) => {
     const room = getAuthorizedRoom(roomCode, hostToken);
+    attachHostSocket(room, socket);
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     const nextIndex = room.currentQuestionIndex + 1;
     if (nextIndex >= room.quiz.questions.length) {
@@ -218,6 +231,7 @@ io.on("connection", (socket) => {
 
   socket.on("host:endGame", ({ roomCode, hostToken }, callback) => {
     const room = getAuthorizedRoom(roomCode, hostToken);
+    attachHostSocket(room, socket);
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     finishRoom(room);
     callback?.({ ok: true });
@@ -299,6 +313,10 @@ io.on("connection", (socket) => {
     if (student) {
       student.connected = false;
       broadcastRoom(room);
+    }
+    const hostRoom = getRoom(socket.data.hostRoomCode);
+    if (hostRoom?.hostSocketId === socket.id) {
+      hostRoom.hostSocketId = null;
     }
   });
 });
@@ -578,6 +596,21 @@ function broadcastRoom(room) {
   if (room.hostSocketId) {
     io.to(room.hostSocketId).emit("host:update", buildHostSnapshot(room));
   }
+}
+
+function attachHostSocket(room, socket) {
+  if (!room) return;
+  const previousRoomCode = socket.data.hostRoomCode;
+  if (previousRoomCode && previousRoomCode !== room.code) {
+    const previousRoom = getRoom(previousRoomCode);
+    if (previousRoom?.hostSocketId === socket.id) {
+      previousRoom.hostSocketId = null;
+    }
+    socket.leave(roomChannel(previousRoomCode));
+  }
+  room.hostSocketId = socket.id;
+  socket.data.hostRoomCode = room.code;
+  socket.join(roomChannel(room.code));
 }
 
 function buildHostSnapshot(room) {
