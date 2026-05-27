@@ -11,6 +11,7 @@ import {
   getSessionDetail,
   listSessions,
   persistenceEnabled,
+  persistenceStatus,
   saveAnswer,
   saveSessionCreated,
   saveSessionStatus,
@@ -51,7 +52,7 @@ app.get("/api/quizzes", async (_req, res) => {
 });
 
 app.get("/api/persistence/status", (_req, res) => {
-  res.json({ enabled: persistenceEnabled });
+  res.json(persistenceStatus);
 });
 
 app.get("/api/auth/status", (_req, res) => {
@@ -72,9 +73,9 @@ app.post("/api/auth/teacher", (req, res) => {
 
 app.get("/api/history", async (_req, res) => {
   try {
-    res.json({ enabled: persistenceEnabled, sessions: await listSessions() });
+    res.json({ ...persistenceStatus, sessions: await listSessions() });
   } catch (error) {
-    res.status(500).json({ enabled: persistenceEnabled, error: error.message, sessions: [] });
+    res.status(500).json({ ...persistenceStatus, error: error.message, sessions: [] });
   }
 });
 

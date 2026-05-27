@@ -1,9 +1,15 @@
 import { createClient } from "@supabase/supabase-js";
+import "./load-env.js";
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
 
 export const persistenceEnabled = Boolean(supabaseUrl && supabaseServiceRoleKey);
+export const persistenceStatus = {
+  enabled: persistenceEnabled,
+  hasUrl: Boolean(supabaseUrl),
+  hasServiceRoleKey: Boolean(supabaseServiceRoleKey)
+};
 
 const supabase = persistenceEnabled
   ? createClient(supabaseUrl, supabaseServiceRoleKey, {

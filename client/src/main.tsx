@@ -372,6 +372,7 @@ function HostPage() {
                   <strong>{snapshot.roomCode}</strong>
                 </div>
               </div>
+              <CopyLine label="加入連結" value={primaryJoinUrl} />
               <CopyLine label="投影頁" value={displayUrl} />
             </>
           ) : (
