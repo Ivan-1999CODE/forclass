@@ -1,0 +1,308 @@
+{
+  "id": "2026-06-02-past-was-were-did-50",
+  "title": "過去式 was / were 與 did 問句辨別 50 題",
+  "date": "2026-06-02",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "She ____ tired yesterday.",
+      "options": ["was", "were", "did", "is"],
+      "answerIndex": 0,
+      "explanation": "She 是單數，過去式 be 動詞要用 was。"
+    },
+    {
+      "prompt": "They ____ at the park last Sunday.",
+      "options": ["was", "were", "did", "are"],
+      "answerIndex": 1,
+      "explanation": "They 是複數，過去式 be 動詞要用 were。"
+    },
+    {
+      "prompt": "____ you at home last night?",
+      "options": ["Did", "Was", "Were", "Do"],
+      "answerIndex": 2,
+      "explanation": "at home 表示狀態或位置，要用 be 動詞問句；you 搭配 were。"
+    },
+    {
+      "prompt": "____ Tom play basketball yesterday?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 0,
+      "explanation": "play 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "My brother ____ not sick last week.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "My brother 是單數，過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "We ____ late for class this morning.",
+      "options": ["was", "were", "did", "are"],
+      "answerIndex": 1,
+      "explanation": "We 是複數，過去式 be 動詞要用 were。"
+    },
+    {
+      "prompt": "____ Mary happy after the test?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 1,
+      "explanation": "happy 是狀態，不是動作動詞；Mary 是單數，所以用 Was。"
+    },
+    {
+      "prompt": "____ they eat lunch at school yesterday?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "eat 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "I ____ in Taipei last weekend.",
+      "options": ["was", "were", "did", "am"],
+      "answerIndex": 0,
+      "explanation": "I 的過去式 be 動詞要用 was。"
+    },
+    {
+      "prompt": "The students ____ not noisy yesterday.",
+      "options": ["was", "were", "did", "do"],
+      "answerIndex": 1,
+      "explanation": "The students 是複數，過去式 be 動詞否定句用 were not。"
+    },
+    {
+      "prompt": "____ your father drive to work yesterday?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "drive 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "____ your parents at home last night?",
+      "options": ["Did", "Was", "Were", "Do"],
+      "answerIndex": 2,
+      "explanation": "your parents 是複數，而且 at home 是狀態或位置，所以用 Were。"
+    },
+    {
+      "prompt": "The movie ____ very interesting.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "The movie 是單數，過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "He ____ do his homework last night.",
+      "options": ["wasn't", "weren't", "didn't", "doesn't"],
+      "answerIndex": 2,
+      "explanation": "do his homework 是動作，過去式否定句要用 didn't 加原形動詞。"
+    },
+    {
+      "prompt": "____ the weather cold yesterday?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 1,
+      "explanation": "cold 是狀態，the weather 是單數，所以用 Was。"
+    },
+    {
+      "prompt": "My friends ____ not in the classroom.",
+      "options": ["was", "were", "did", "are"],
+      "answerIndex": 1,
+      "explanation": "My friends 是複數，過去式 be 動詞否定句用 were not。"
+    },
+    {
+      "prompt": "____ you finish your work yesterday?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "finish 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "Jack and Peter ____ at the library after school.",
+      "options": ["was", "were", "did", "is"],
+      "answerIndex": 1,
+      "explanation": "Jack and Peter 是兩個人，過去式 be 動詞用 were。"
+    },
+    {
+      "prompt": "____ Lisa study English last night?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "study 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "Lisa ____ busy yesterday afternoon.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "Lisa 是單數，過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "The baby ____ not hungry at noon.",
+      "options": ["was", "were", "did", "do"],
+      "answerIndex": 0,
+      "explanation": "The baby 是單數，過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "____ the boys play soccer yesterday?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "play 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "____ the boys tired after the game?",
+      "options": ["Did", "Was", "Were", "Do"],
+      "answerIndex": 2,
+      "explanation": "tired 是狀態，the boys 是複數，所以用 Were。"
+    },
+    {
+      "prompt": "I ____ not late this morning.",
+      "options": ["was", "were", "did", "am"],
+      "answerIndex": 0,
+      "explanation": "I 的過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "____ your sister clean her room yesterday?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 0,
+      "explanation": "clean 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "____ your sister at school yesterday?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 1,
+      "explanation": "at school 是位置狀態，your sister 是單數，所以用 Was。"
+    },
+    {
+      "prompt": "The books ____ on the desk yesterday.",
+      "options": ["was", "were", "did", "are"],
+      "answerIndex": 1,
+      "explanation": "The books 是複數，過去式 be 動詞用 were。"
+    },
+    {
+      "prompt": "She ____ watch TV last night.",
+      "options": ["wasn't", "weren't", "didn't", "doesn't"],
+      "answerIndex": 2,
+      "explanation": "watch 是動作動詞，過去式否定句要用 didn't。"
+    },
+    {
+      "prompt": "____ he sad yesterday?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 1,
+      "explanation": "sad 是狀態，he 是單數，所以用 Was。"
+    },
+    {
+      "prompt": "____ he call you yesterday?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "call 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "The classroom ____ clean this morning.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "The classroom 是單數，過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "We ____ not ready for the quiz.",
+      "options": ["was", "were", "did", "do"],
+      "answerIndex": 1,
+      "explanation": "We 是複數，過去式 be 動詞否定句用 were not。"
+    },
+    {
+      "prompt": "____ you buy a new pencil yesterday?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "buy 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "____ you nervous before the test?",
+      "options": ["Did", "Was", "Were", "Do"],
+      "answerIndex": 2,
+      "explanation": "nervous 是狀態，you 的過去式 be 動詞用 Were。"
+    },
+    {
+      "prompt": "Tom ____ not at the bus stop.",
+      "options": ["was", "were", "did", "is"],
+      "answerIndex": 0,
+      "explanation": "Tom 是單數，過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "The children ____ in the yard yesterday.",
+      "options": ["was", "were", "did", "are"],
+      "answerIndex": 1,
+      "explanation": "The children 是複數，過去式 be 動詞用 were。"
+    },
+    {
+      "prompt": "____ the children run in the yard yesterday?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "run 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "My mom ____ not angry yesterday.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "My mom 是單數，過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "____ your mom make dinner yesterday?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "make 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "The test ____ difficult.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "The test 是單數，過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "____ the test difficult?",
+      "options": ["Did", "Was", "Were", "Does"],
+      "answerIndex": 1,
+      "explanation": "difficult 是狀態，the test 是單數，所以用 Was。"
+    },
+    {
+      "prompt": "____ they visit their grandparents last weekend?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "visit 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "They ____ not at home last weekend.",
+      "options": ["was", "were", "did", "do"],
+      "answerIndex": 1,
+      "explanation": "They 是複數，過去式 be 動詞否定句用 were not。"
+    },
+    {
+      "prompt": "The dog ____ not in the garden.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "The dog 是單數，過去式 be 動詞否定句用 was not。"
+    },
+    {
+      "prompt": "____ the dog bark last night?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "bark 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "Our teacher ____ in the office after class.",
+      "options": ["was", "were", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "Our teacher 是單數，過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "____ our teacher give us homework yesterday?",
+      "options": ["Did", "Was", "Were", "Is"],
+      "answerIndex": 0,
+      "explanation": "give 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "The girls ____ not afraid of the dark.",
+      "options": ["was", "were", "did", "do"],
+      "answerIndex": 1,
+      "explanation": "The girls 是複數，過去式 be 動詞否定句用 were not。"
+    },
+    {
+      "prompt": "____ the girls dance at the party?",
+      "options": ["Did", "Was", "Were", "Are"],
+      "answerIndex": 0,
+      "explanation": "dance 是動作動詞，過去式問句要用 Did。"
+    },
+    {
+      "prompt": "____ the girls excited at the party?",
+      "options": ["Did", "Was", "Were", "Do"],
+      "answerIndex": 2,
+      "explanation": "excited 是狀態，the girls 是複數，所以用 Were。"
+    }
+  ]
+}

@@ -137,6 +137,13 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.quiz-select-row {
+  align-items: stretch;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
 .panel {
   background: #ffffff;
   border: 1px solid #d7e0e8;
@@ -372,6 +379,109 @@ p {
   border: 1px solid #d7e0e8;
   border-radius: 8px;
   padding: 14px;
+}
+
+.quiz-preview-panel {
+  margin-bottom: 18px;
+}
+
+.quiz-preview-panel.collapsed {
+  padding-bottom: 16px;
+}
+
+.quiz-preview-collapsed-note {
+  background: #f5f7fa;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  color: #526173;
+  font-weight: 800;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+}
+
+.quiz-preview-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.quiz-preview-question {
+  background: #f5f7fa;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.quiz-preview-question-head {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 86px minmax(0, 1fr) 58px;
+}
+
+.quiz-preview-question-head span,
+.quiz-preview-question-head small {
+  color: #526173;
+  font-weight: 900;
+}
+
+.quiz-preview-question-head strong {
+  color: #172033;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.quiz-preview-options {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.quiz-preview-option {
+  align-items: center;
+  background: #fff;
+  border: 2px solid #d7e0e8;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  min-height: 54px;
+  padding: 8px 10px;
+}
+
+.quiz-preview-option.correct {
+  background: #e7f3ef;
+  border-color: #176b5d;
+  box-shadow: 0 0 0 3px rgba(23, 107, 93, 0.1);
+}
+
+.correct-label {
+  background: #176b5d;
+  border-radius: 8px;
+  color: #fff;
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 4px 8px;
+}
+
+.preview-explanation {
+  background: #fff;
+  border-left: 4px solid #176b5d;
+  border-radius: 8px;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+.preview-explanation strong {
+  color: #176b5d;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.preview-explanation p {
+  color: #526173;
+  font-weight: 700;
+  margin: 0;
 }
 
 .live-answer-panel {
@@ -705,6 +815,9 @@ p {
   }
 
   .grid.two,
+  .quiz-select-row,
+  .quiz-preview-question-head,
+  .quiz-preview-options,
   .option-grid,
   .display-options,
   .results-grid {

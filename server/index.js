@@ -55,6 +55,15 @@ app.get("/api/quizzes", async (_req, res) => {
   }
 });
 
+app.get("/api/quizzes/:quizId", async (req, res) => {
+  try {
+    const quiz = await loadQuizById(req.params.quizId);
+    res.json({ quiz });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
 app.get("/api/persistence/status", (_req, res) => {
   res.json(persistenceStatus);
 });

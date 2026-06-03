@@ -1,0 +1,308 @@
+{
+  "id": "2026-06-02-present-past-mixed-50",
+  "title": "現在式與過去式混合 50 題",
+  "date": "2026-06-02",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "She ____ breakfast every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在習慣；She 是第三人稱單數，所以用 eats。"
+    },
+    {
+      "prompt": "She ____ breakfast yesterday.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去，eat 的過去式是 ate。"
+    },
+    {
+      "prompt": "____ Tom play soccer every Friday?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 1,
+      "explanation": "every Friday 是現在習慣，Tom 是單數，所以問句用 Does。"
+    },
+    {
+      "prompt": "____ Tom play soccer yesterday?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，動作動詞問句用 Did。"
+    },
+    {
+      "prompt": "They ____ at home now.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 0,
+      "explanation": "now 表示現在，They 的 be 動詞用 are。"
+    },
+    {
+      "prompt": "They ____ at home last night.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 1,
+      "explanation": "last night 表示過去，They 的過去式 be 動詞用 were。"
+    },
+    {
+      "prompt": "My father ____ drive to work on Sundays.",
+      "options": ["don't", "doesn't", "didn't", "wasn't"],
+      "answerIndex": 1,
+      "explanation": "on Sundays 是現在習慣，My father 是單數，否定句用 doesn't。"
+    },
+    {
+      "prompt": "My father ____ drive to work yesterday.",
+      "options": ["don't", "doesn't", "didn't", "wasn't"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，動作動詞否定句用 didn't。"
+    },
+    {
+      "prompt": "Does Lisa ____ English every night?",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的動詞要用原形 study。"
+    },
+    {
+      "prompt": "Did Lisa ____ English last night?",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "Did 後面的動詞也要用原形 study。"
+    },
+    {
+      "prompt": "I ____ tired today.",
+      "options": ["am", "was", "did", "do"],
+      "answerIndex": 0,
+      "explanation": "today 這裡表示現在狀態，I 的 be 動詞用 am。"
+    },
+    {
+      "prompt": "I ____ tired yesterday.",
+      "options": ["am", "was", "did", "do"],
+      "answerIndex": 1,
+      "explanation": "yesterday 表示過去，I 的過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "We ____ go to school on Saturdays.",
+      "options": ["don't", "doesn't", "didn't", "weren't"],
+      "answerIndex": 0,
+      "explanation": "on Saturdays 是現在習慣，We 的否定句用 don't。"
+    },
+    {
+      "prompt": "We ____ go to school last Saturday.",
+      "options": ["don't", "doesn't", "didn't", "weren't"],
+      "answerIndex": 2,
+      "explanation": "last Saturday 是過去時間，動作動詞否定句用 didn't。"
+    },
+    {
+      "prompt": "____ your parents busy today?",
+      "options": ["Do", "Did", "Are", "Were"],
+      "answerIndex": 2,
+      "explanation": "busy 是狀態，today 表示現在，your parents 用 Are。"
+    },
+    {
+      "prompt": "____ your parents busy yesterday?",
+      "options": ["Do", "Did", "Are", "Were"],
+      "answerIndex": 3,
+      "explanation": "busy 是狀態，yesterday 表示過去，your parents 用 Were。"
+    },
+    {
+      "prompt": "The dog ____ in the yard every morning.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "every morning 是現在習慣，The dog 是單數，所以用 runs。"
+    },
+    {
+      "prompt": "The dog ____ in the yard yesterday.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，run 的過去式是 ran。"
+    },
+    {
+      "prompt": "He ____ like math.",
+      "options": ["don't", "doesn't", "didn't", "wasn't"],
+      "answerIndex": 1,
+      "explanation": "He 是第三人稱單數，現在式否定句用 doesn't。"
+    },
+    {
+      "prompt": "____ he pass the math test yesterday?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 2,
+      "explanation": "pass 是動作動詞，過去式問句用 Did。"
+    },
+    {
+      "prompt": "Mary ____ happy now.",
+      "options": ["is", "was", "does", "did"],
+      "answerIndex": 0,
+      "explanation": "now 表示現在，Mary 是單數，be 動詞用 is。"
+    },
+    {
+      "prompt": "Mary ____ happy after the game yesterday.",
+      "options": ["is", "was", "does", "did"],
+      "answerIndex": 1,
+      "explanation": "yesterday 表示過去，Mary 的過去式 be 動詞用 was。"
+    },
+    {
+      "prompt": "Do your friends ____ near here?",
+      "options": ["live", "lives", "lived", "living"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的動詞要用原形 live。"
+    },
+    {
+      "prompt": "Did your friends ____ near here last year?",
+      "options": ["live", "lives", "lived", "living"],
+      "answerIndex": 0,
+      "explanation": "Did 後面的動詞要用原形 live。"
+    },
+    {
+      "prompt": "The store ____ at 9 p.m. every day.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 1,
+      "explanation": "every day 是現在習慣，The store 是單數，所以用 closes。"
+    },
+    {
+      "prompt": "The store ____ early yesterday.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，close 的過去式是 closed。"
+    },
+    {
+      "prompt": "____ you have a pencil now?",
+      "options": ["Do", "Does", "Did", "Were"],
+      "answerIndex": 0,
+      "explanation": "now 表示現在，you 的一般動詞問句用 Do。"
+    },
+    {
+      "prompt": "____ you have a pencil yesterday?",
+      "options": ["Do", "Does", "Did", "Were"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，一般動詞問句用 Did。"
+    },
+    {
+      "prompt": "Jack ____ his homework every night.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 1,
+      "explanation": "every night 是現在習慣，Jack 是單數，所以用 does。"
+    },
+    {
+      "prompt": "Jack ____ his homework last night.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 2,
+      "explanation": "last night 是過去時間，do 的過去式是 did。"
+    },
+    {
+      "prompt": "The students ____ quiet in class today.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 0,
+      "explanation": "today 這裡表示現在狀態，The students 用 are。"
+    },
+    {
+      "prompt": "The students ____ quiet in class yesterday.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 1,
+      "explanation": "yesterday 表示過去，The students 用 were。"
+    },
+    {
+      "prompt": "She ____ her room on weekends.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 1,
+      "explanation": "on weekends 是現在習慣，She 是單數，所以用 cleans。"
+    },
+    {
+      "prompt": "She ____ her room last weekend.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "last weekend 是過去時間，clean 的過去式是 cleaned。"
+    },
+    {
+      "prompt": "____ the bus arrive at 8:30 every morning?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 1,
+      "explanation": "every morning 是現在習慣，the bus 是單數，問句用 Does。"
+    },
+    {
+      "prompt": "____ the bus arrive late yesterday?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，動作動詞問句用 Did。"
+    },
+    {
+      "prompt": "My sister ____ not sick today.",
+      "options": ["is", "was", "does", "did"],
+      "answerIndex": 0,
+      "explanation": "today 這裡表示現在狀態，My sister 是單數，所以用 is not。"
+    },
+    {
+      "prompt": "My sister ____ not sick yesterday.",
+      "options": ["is", "was", "does", "did"],
+      "answerIndex": 1,
+      "explanation": "yesterday 表示過去，My sister 是單數，所以用 was not。"
+    },
+    {
+      "prompt": "We ____ lunch at school every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "every day 是現在習慣，We 用原形動詞 eat。"
+    },
+    {
+      "prompt": "We ____ lunch at school yesterday.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，eat 的過去式是 ate。"
+    },
+    {
+      "prompt": "____ your teacher give homework every day?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 1,
+      "explanation": "every day 是現在習慣，your teacher 是單數，問句用 Does。"
+    },
+    {
+      "prompt": "____ your teacher give homework yesterday?",
+      "options": ["Do", "Does", "Did", "Was"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，動作動詞問句用 Did。"
+    },
+    {
+      "prompt": "The children ____ in the park now.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 0,
+      "explanation": "now 表示現在，The children 用 are。"
+    },
+    {
+      "prompt": "The children ____ in the park last Sunday.",
+      "options": ["are", "were", "do", "did"],
+      "answerIndex": 1,
+      "explanation": "last Sunday 表示過去，The children 用 were。"
+    },
+    {
+      "prompt": "I ____ not check my email every morning.",
+      "options": ["don't", "doesn't", "didn't", "wasn't"],
+      "answerIndex": 0,
+      "explanation": "every morning 是現在習慣，I 的否定句用 don't。"
+    },
+    {
+      "prompt": "I ____ not check my email yesterday.",
+      "options": ["don't", "doesn't", "didn't", "wasn't"],
+      "answerIndex": 2,
+      "explanation": "yesterday 是過去時間，動作動詞否定句用 didn't。"
+    },
+    {
+      "prompt": "Anna ____ to music after school.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 1,
+      "explanation": "這裡表示現在習慣，Anna 是單數，所以用 listens。"
+    },
+    {
+      "prompt": "Anna ____ to music last night.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 2,
+      "explanation": "last night 是過去時間，listen 的過去式是 listened。"
+    },
+    {
+      "prompt": "____ he at the library now?",
+      "options": ["Did", "Was", "Is", "Does"],
+      "answerIndex": 2,
+      "explanation": "at the library 是位置狀態，now 表示現在，所以用 Is。"
+    },
+    {
+      "prompt": "____ he at the library yesterday?",
+      "options": ["Did", "Was", "Is", "Does"],
+      "answerIndex": 1,
+      "explanation": "at the library 是位置狀態，yesterday 表示過去，所以用 Was。"
+    }
+  ]
+}

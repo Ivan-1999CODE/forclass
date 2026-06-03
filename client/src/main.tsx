@@ -13,6 +13,18 @@ type QuizSummary = {
   file: string;
 };
 
+type QuizQuestion = {
+  prompt: string;
+  options: string[];
+  answerIndex: number;
+  explanation?: string;
+  timeLimitSec?: number;
+};
+
+type QuizDetail = Omit<QuizSummary, "questionCount" | "file"> & {
+  questions: QuizQuestion[];
+};
+
 type Snapshot = {
   roomCode: string;
   status: "waiting" | "question" | "results" | "finished";
@@ -111,6 +123,9 @@ function HostPage() {
   const [savedHost, setSavedHost] = useState<{ roomCode: string; hostToken: string; quizTitle?: string } | null>(null);
   const [resumeMessage, setResumeMessage] = useState("");
   const [message, setMessage] = useState("");
+  const [previewQuiz, setPreviewQuiz] = useState<QuizDetail | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [previewMessage, setPreviewMessage] = useState("");
   const [authReady, setAuthReady] = useState(false);
   const [authenticated, setAuthenticated] = useState(() => localStorage.getItem(teacherAuthStorageKey) === "ok");
   const [passwordRequired, setPasswordRequired] = useState(false);
@@ -200,6 +215,11 @@ function HostPage() {
     };
   }, [snapshot?.roomCode, snapshot?.hostToken]);
 
+  useEffect(() => {
+    setPreviewQuiz(null);
+    setPreviewMessage("");
+  }, [selectedQuizId]);
+
   const loginTeacher = () => {
     setAuthMessage("");
     fetch("/api/auth/teacher", {
@@ -277,6 +297,23 @@ function HostPage() {
     });
   };
 
+  const previewSelectedQuiz = () => {
+    if (!selectedQuizId) return;
+    setPreviewLoading(true);
+    setPreviewMessage("");
+    fetch(`/api/quizzes/${encodeURIComponent(selectedQuizId)}`)
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "載入題目預覽失敗。");
+        setPreviewQuiz(data.quiz);
+      })
+      .catch((error) => {
+        setPreviewQuiz(null);
+        setPreviewMessage(error.message);
+      })
+      .finally(() => setPreviewLoading(false));
+  };
+
   const isLocalOrigin = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
   const joinUrl = snapshot ? `${window.location.origin}/join?room=${snapshot.roomCode}` : "";
   const lanJoinUrls = snapshot && networkInfo && isLocalOrigin ? networkInfo.lan.map((url) => `${url}/join?room=${snapshot.roomCode}`) : [];
@@ -337,13 +374,18 @@ function HostPage() {
               {resumeMessage && <p className="notice error">{resumeMessage}</p>}
             </div>
           )}
-          <select value={selectedQuizId} onChange={(event) => setSelectedQuizId(event.target.value)} disabled={Boolean(snapshot)}>
-            {quizzes.map((quiz) => (
-              <option value={quiz.id} key={quiz.id}>
-                {quiz.date} - {quiz.title} ({quiz.questionCount} 題)
-              </option>
-            ))}
-          </select>
+          <div className="quiz-select-row">
+            <select value={selectedQuizId} onChange={(event) => setSelectedQuizId(event.target.value)} disabled={Boolean(snapshot)}>
+              {quizzes.map((quiz) => (
+                <option value={quiz.id} key={quiz.id}>
+                  {quiz.date} - {quiz.title} ({quiz.questionCount} 題)
+                </option>
+              ))}
+            </select>
+            <button className="secondary" onClick={previewSelectedQuiz} disabled={!selectedQuizId || previewLoading}>
+              {previewLoading ? "載入中" : "預覽題目"}
+            </button>
+          </div>
           <label>
             每場題數
             <select value={questionCount} onChange={(event) => setQuestionCount(event.target.value)} disabled={Boolean(snapshot)}>
@@ -359,6 +401,7 @@ function HostPage() {
             <button className="secondary" onClick={resetRoom}>建立新場次</button>
           </div>
           {message && <p className="notice error">{message}</p>}
+          {previewMessage && <p className="notice error">{previewMessage}</p>}
         </div>
 
         <div className="panel">
@@ -381,6 +424,8 @@ function HostPage() {
           <p className="hint">老師頁重新整理通常可以恢復；但 Render 重新部署、重啟或免費方案睡著後，進行中的場次會失效。已保存到 Supabase 的歷史資料不會消失。</p>
         </div>
       </section>
+
+      {previewQuiz && <QuizPreviewPanel quiz={previewQuiz} />}
 
       {snapshot && (
         <section className="grid two">
@@ -806,6 +851,63 @@ function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compac
       ))}
       {rows.length === 0 && <p className="empty">尚無排名。</p>}
     </div>
+  );
+}
+
+function QuizPreviewPanel({ quiz }: { quiz: QuizDetail }) {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <section className={`panel quiz-preview-panel ${collapsed ? "collapsed" : ""}`}>
+      <div className="section-header">
+        <div>
+          <h2>題目預覽</h2>
+          <p className="hint">
+            {quiz.date}｜{quiz.title}｜共 {quiz.questions.length} 題｜預設 {quiz.defaultTimeLimitSec} 秒
+          </p>
+        </div>
+        <button
+          className="secondary"
+          onClick={() => setCollapsed((current) => !current)}
+          aria-expanded={!collapsed}
+        >
+          {collapsed ? "展開題目" : "收合題目"}
+        </button>
+      </div>
+      {collapsed ? (
+        <p className="quiz-preview-collapsed-note">題目清單已收合，共 {quiz.questions.length} 題。</p>
+      ) : (
+        <div className="quiz-preview-list">
+          {quiz.questions.map((question, questionIndex) => (
+            <article className="quiz-preview-question" key={`${questionIndex}-${question.prompt}`}>
+              <div className="quiz-preview-question-head">
+                <span>第 {questionIndex + 1} 題</span>
+                <strong>{question.prompt}</strong>
+                <small>{question.timeLimitSec || quiz.defaultTimeLimitSec} 秒</small>
+              </div>
+              <div className="quiz-preview-options">
+                {question.options.map((option, optionIndex) => {
+                  const isCorrect = optionIndex === question.answerIndex;
+                  return (
+                    <div className={`quiz-preview-option ${isCorrect ? "correct" : ""}`} key={`${optionIndex}-${option}`}>
+                      <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
+                      <span className="option-text">{option}</span>
+                      {isCorrect && <span className="correct-label">正解</span>}
+                    </div>
+                  );
+                })}
+              </div>
+              {question.explanation && (
+                <div className="preview-explanation">
+                  <strong>解析</strong>
+                  <p>{question.explanation}</p>
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
   );
 }
 
