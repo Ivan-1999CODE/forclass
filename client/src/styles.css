@@ -127,6 +127,16 @@ p {
   white-space: nowrap;
 }
 
+.student-score-pill {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.student-score-pill strong {
+  color: #176b5d;
+}
+
 .grid {
   display: grid;
   gap: 18px;
@@ -300,7 +310,17 @@ p {
 }
 
 .student-name {
+  flex: 1;
   font-weight: 800;
+}
+
+.student-score {
+  background: #edf4f2;
+  border-radius: 8px;
+  color: #176b5d;
+  flex: 0 0 auto;
+  font-weight: 900;
+  padding: 5px 10px;
 }
 
 .student-status {
@@ -484,7 +504,7 @@ p {
   margin: 0;
 }
 
-.live-answer-panel {
+.final-score-panel {
   grid-column: 1 / -1;
 }
 

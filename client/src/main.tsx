@@ -443,7 +443,12 @@ function HostPage() {
           </div>
           <HostQuestionPanel snapshot={snapshot} />
           <RoomPanel snapshot={snapshot} />
-          <LiveAnswerPanel snapshot={snapshot} />
+          {snapshot.status === "finished" && (
+            <section className="panel final-score-panel">
+              <h2>結算分數</h2>
+              <Leaderboard snapshot={snapshot} />
+            </section>
+          )}
         </section>
       )}
 
@@ -580,7 +585,10 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
           <p className="eyebrow">Room {snapshot.roomCode}</p>
           <h1>{snapshot.quiz.title}</h1>
         </div>
-        <span className="status-pill">{snapshot.me?.name}</span>
+        <span className="status-pill student-score-pill">
+          <span>{snapshot.me?.name}</span>
+          <strong>{snapshot.me?.totalScore ?? 0} 分</strong>
+        </span>
       </header>
 
       {snapshot.status === "waiting" && (
@@ -680,6 +688,7 @@ function RoomPanel({ snapshot }: { snapshot: Snapshot }) {
         {snapshot.students.map((student) => (
           <div className="student-row" key={student.id}>
             <span className="student-name">{student.name}</span>
+            <span className="student-score">{student.totalScore} 分</span>
             <span className={`student-status ${student.connected ? "online" : "offline"}`}>
               {student.answeredCurrent ? "已答" : student.connected ? "在線" : "離線"}
             </span>
@@ -720,7 +729,7 @@ function HostQuestionPanel({ snapshot }: { snapshot: Snapshot }) {
   return (
     <div className="panel question-panel host-question-panel">
       <h2>{snapshot.question.prompt}</h2>
-      <QuestionOptions snapshot={snapshot} showCounts />
+      <QuestionOptions snapshot={snapshot} showCounts={snapshot.status !== "question"} />
       {snapshot.status === "results" && <ResultBlock snapshot={snapshot} showStats={false} />}
     </div>
   );
@@ -779,19 +788,6 @@ function QuestionOptions({
           </button>
         );
       })}
-    </div>
-  );
-}
-
-function LiveAnswerPanel({ snapshot }: { snapshot: Snapshot }) {
-  if (!snapshot.question || snapshot.currentQuestionIndex < 0 || snapshot.status === "waiting") return null;
-  return (
-    <div className="live-answer-panel">
-      <h3>本題即時作答</h3>
-      <AnswerStats snapshot={snapshot} revealCorrect={snapshot.status !== "question"} />
-      <div className="answer-progress">
-        已作答 {snapshot.stats?.answered || 0} / {snapshot.students.length}，未作答 {snapshot.stats?.unanswered || 0}
-      </div>
     </div>
   );
 }
