@@ -422,6 +422,7 @@ function HostPage() {
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
           )}
           <p className="hint">老師頁重新整理通常可以恢復；但 Render 重新部署、重啟或免費方案睡著後，進行中的場次會失效。已保存到 Supabase 的歷史資料不會消失。</p>
+          {snapshot && <RoomPanel snapshot={snapshot} embedded />}
         </div>
       </section>
 
@@ -442,7 +443,6 @@ function HostPage() {
             <p className="hint">成績會自動保存到 Supabase，可在下方「歷史場次」查看紀錄並建立錯題重練。</p>
           </div>
           <HostQuestionPanel snapshot={snapshot} />
-          <RoomPanel snapshot={snapshot} />
           {snapshot.status === "finished" && (
             <section className="panel final-score-panel">
               <h2>結算分數</h2>
@@ -678,9 +678,9 @@ function DisplayPage({ roomCode }: { roomCode: string }) {
   );
 }
 
-function RoomPanel({ snapshot }: { snapshot: Snapshot }) {
+function RoomPanel({ snapshot, embedded = false }: { snapshot: Snapshot; embedded?: boolean }) {
   return (
-    <div className="panel">
+    <div className={embedded ? "room-panel embedded" : "panel room-panel"}>
       <h2>等待室</h2>
       <p className="big-code">{snapshot.roomCode}</p>
       <p className="hint">這是加入碼。學生點連結會自動帶入；沒有連結時，也可以在加入頁輸入這組代碼。</p>
