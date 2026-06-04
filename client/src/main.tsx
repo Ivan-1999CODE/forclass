@@ -729,7 +729,7 @@ function HostQuestionPanel({ snapshot }: { snapshot: Snapshot }) {
   return (
     <div className="panel question-panel host-question-panel">
       <h2>{snapshot.question.prompt}</h2>
-      <QuestionOptions snapshot={snapshot} showCounts={snapshot.status !== "question"} />
+      <QuestionOptions snapshot={snapshot} showCounts />
       {snapshot.status === "results" && <ResultBlock snapshot={snapshot} showStats={false} />}
     </div>
   );
