@@ -33,6 +33,7 @@ const rooms = new Map();
 const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS || 2 * 60 * 60 * 1000);
 const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
+const autoRevealDelayMs = Number(process.env.AUTO_REVEAL_DELAY_MS || 3000);
 const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
 roomCleanupTimer.unref?.();
 
@@ -270,6 +271,7 @@ io.on("connection", (socket) => {
     student.totalScore += score;
     void saveAnswer(room, student, room.currentQuestionIndex, student.answers.get(room.currentQuestionIndex));
     callback?.({ ok: true, snapshot: buildStudentSnapshot(room, student.id) });
+    scheduleAutoRevealIfReady(room);
     broadcastRoom(room);
   });
 
@@ -394,7 +396,10 @@ function createRoom(quiz) {
     currentQuestionIndex: -1,
     questionStartedAt: null,
     questionEndsAt: null,
+    questionParticipantIds: new Set(),
     timer: null,
+    autoRevealTimer: null,
+    autoRevealEndsAt: null,
     students: new Map(),
     createdAt: Date.now(),
     startedAt: null,
@@ -538,6 +543,8 @@ function startQuestion(room, index) {
   room.currentQuestionIndex = index;
   room.questionStartedAt = Date.now();
   room.questionEndsAt = room.questionStartedAt + getQuestionLimitMs(room, index);
+  room.questionParticipantIds = new Set([...room.students.keys()]);
+  room.autoRevealEndsAt = null;
   room.timer = setTimeout(() => closeQuestion(room), getQuestionLimitMs(room, index));
   void saveSessionStatus(room);
   broadcastRoom(room);
@@ -561,7 +568,25 @@ function finishRoom(room) {
 
 function clearRoomTimer(room) {
   if (room.timer) clearTimeout(room.timer);
+  if (room.autoRevealTimer) clearTimeout(room.autoRevealTimer);
   room.timer = null;
+  room.autoRevealTimer = null;
+  room.autoRevealEndsAt = null;
+}
+
+function scheduleAutoRevealIfReady(room) {
+  if (room.status !== "question" || room.autoRevealTimer) return;
+  const participantIds = room.questionParticipantIds || new Set([...room.students.keys()]);
+  if (participantIds.size === 0) return;
+  const allAnswered = [...participantIds].every((studentId) => (
+    room.students.get(studentId)?.answers.has(room.currentQuestionIndex)
+  ));
+  if (!allAnswered) return;
+
+  if (room.timer) clearTimeout(room.timer);
+  room.timer = null;
+  room.autoRevealEndsAt = Date.now() + autoRevealDelayMs;
+  room.autoRevealTimer = setTimeout(() => closeQuestion(room), autoRevealDelayMs);
 }
 
 function broadcastRoom(room) {
@@ -598,6 +623,8 @@ function buildHostSnapshot(room) {
 
 function buildDisplaySnapshot(room) {
   const currentQuestion = getCurrentQuestion(room);
+  const questionRemainingMs = room.status === "question" ? Math.max(0, room.questionEndsAt - Date.now()) : 0;
+  const autoRevealRemainingMs = room.status === "question" && room.autoRevealEndsAt ? Math.max(0, room.autoRevealEndsAt - Date.now()) : 0;
   return {
     roomCode: room.code,
     status: room.status,
@@ -608,7 +635,10 @@ function buildDisplaySnapshot(room) {
       questionCount: room.quiz.questions.length
     },
     currentQuestionIndex: room.currentQuestionIndex,
-    timeRemainingMs: room.status === "question" ? Math.max(0, room.questionEndsAt - Date.now()) : 0,
+    timeRemainingMs: autoRevealRemainingMs > 0 ? autoRevealRemainingMs : questionRemainingMs,
+    questionTimeLimitMs: currentQuestion && room.currentQuestionIndex >= 0 ? getQuestionLimitMs(room, room.currentQuestionIndex) : 0,
+    autoRevealRemainingMs,
+    autoRevealDelayMs,
     question: currentQuestion
       ? {
           prompt: currentQuestion.prompt,

@@ -31,6 +31,9 @@ type Snapshot = {
   quiz: { id: string; title: string; date: string; questionCount: number };
   currentQuestionIndex: number;
   timeRemainingMs: number;
+  questionTimeLimitMs: number;
+  autoRevealRemainingMs: number;
+  autoRevealDelayMs: number;
   question: null | {
     prompt: string;
     options: string[];
@@ -600,7 +603,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
 
       {(snapshot.status === "question" || snapshot.status === "results") && snapshot.question && (
         <section className="panel question-panel">
-          <GameStatus snapshot={snapshot} />
+          <StudentTimerBar snapshot={snapshot} />
           <h2>{snapshot.question.prompt}</h2>
           <QuestionOptions
             snapshot={snapshot}
@@ -695,6 +698,57 @@ function RoomPanel({ snapshot, embedded = false }: { snapshot: Snapshot; embedde
           </div>
         ))}
         {snapshot.students.length === 0 && <p className="empty">尚無學生加入。</p>}
+      </div>
+    </div>
+  );
+}
+
+function StudentTimerBar({ snapshot }: { snapshot: Snapshot }) {
+  const isAutoReveal = snapshot.status === "question" && snapshot.autoRevealRemainingMs > 0;
+  const activeRemainingMs = isAutoReveal ? snapshot.autoRevealRemainingMs : snapshot.timeRemainingMs;
+  const activeTotalMs = isAutoReveal ? snapshot.autoRevealDelayMs : snapshot.questionTimeLimitMs;
+  const [tick, setTick] = useState(Date.now());
+  const [baseline, setBaseline] = useState({
+    remainingMs: activeRemainingMs,
+    totalMs: activeTotalMs,
+    receivedAt: Date.now()
+  });
+
+  useEffect(() => {
+    setBaseline({
+      remainingMs: activeRemainingMs,
+      totalMs: activeTotalMs,
+      receivedAt: Date.now()
+    });
+  }, [
+    snapshot.status,
+    snapshot.currentQuestionIndex,
+    snapshot.timeRemainingMs,
+    snapshot.autoRevealRemainingMs,
+    snapshot.questionTimeLimitMs,
+    snapshot.autoRevealDelayMs
+  ]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setTick(Date.now()), 100);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const remainingMs = snapshot.status === "question"
+    ? Math.max(0, baseline.remainingMs - (tick - baseline.receivedAt))
+    : 0;
+  const seconds = Math.max(0, Math.ceil(remainingMs / 1000));
+  const percent = baseline.totalMs > 0 ? Math.max(0, Math.min(100, (remainingMs / baseline.totalMs) * 100)) : 0;
+
+  return (
+    <div className={`student-timer ${isAutoReveal ? "auto-reveal" : ""}`}>
+      <div className="student-timer-meta">
+        <span>{isAutoReveal ? "即將公布答案" : statusText(snapshot.status)}</span>
+        <span>第 {Math.max(0, snapshot.currentQuestionIndex) + 1} / {snapshot.quiz.questionCount} 題</span>
+      </div>
+      <div className="student-timer-track" aria-label={isAutoReveal ? "即將公布答案倒數" : "作答倒數"}>
+        <div className="student-timer-fill" style={{ width: `${percent}%` }} />
+        <strong>{isAutoReveal ? `${seconds} 秒後公布` : `${seconds} 秒`}</strong>
       </div>
     </div>
   );
