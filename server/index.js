@@ -578,9 +578,10 @@ function scheduleAutoRevealIfReady(room) {
   if (room.status !== "question" || room.autoRevealTimer) return;
   const participantIds = room.questionParticipantIds || new Set([...room.students.keys()]);
   if (participantIds.size === 0) return;
-  const allAnswered = [...participantIds].every((studentId) => (
-    room.students.get(studentId)?.answers.has(room.currentQuestionIndex)
-  ));
+  const allAnswered = [...participantIds].every((studentId) => {
+    const student = room.students.get(studentId);
+    return !student || !student.connected || student.answers.has(room.currentQuestionIndex);
+  });
   if (!allAnswered) return;
 
   if (room.timer) clearTimeout(room.timer);
