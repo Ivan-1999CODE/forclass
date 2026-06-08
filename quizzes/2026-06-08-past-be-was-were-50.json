@@ -1,0 +1,308 @@
+{
+  "id": "2026-06-08-past-be-was-were-50",
+  "title": "Past Be: was/were/is/are/am 50",
+  "date": "2026-06-08",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ at home yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. I takes was in the past."
+    },
+    {
+      "prompt": "She ____ happy last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. She takes was."
+    },
+    {
+      "prompt": "They ____ in the park yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. They takes were."
+    },
+    {
+      "prompt": "Tom ____ late for school yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. Tom is one person, so use was."
+    },
+    {
+      "prompt": "We ____ tired after the game yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. We takes were."
+    },
+    {
+      "prompt": "My brother ____ sick last week.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last week is past time. My brother is one person, so use was."
+    },
+    {
+      "prompt": "The boys ____ noisy in class yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. The boys is plural, so use were."
+    },
+    {
+      "prompt": "It ____ cold last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. It takes was."
+    },
+    {
+      "prompt": "You ____ very busy yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. You takes were."
+    },
+    {
+      "prompt": "The dog ____ under the table two hours ago.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Two hours ago is past time. The dog is singular, so use was."
+    },
+    {
+      "prompt": "Mary ____ in the kitchen last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. Mary is one person, so use was."
+    },
+    {
+      "prompt": "My parents ____ at the store yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. My parents is plural, so use were."
+    },
+    {
+      "prompt": "The movie ____ funny last weekend.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last weekend is past time. The movie is singular, so use was."
+    },
+    {
+      "prompt": "The students ____ quiet during the test yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. The students is plural, so use were."
+    },
+    {
+      "prompt": "He ____ in Taipei last year.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last year is past time. He takes was."
+    },
+    {
+      "prompt": "The books ____ on the desk yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. The books is plural, so use were."
+    },
+    {
+      "prompt": "I ____ hungry after school yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. I takes was in the past."
+    },
+    {
+      "prompt": "Lisa and Amy ____ good friends last year.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last year is past time. Lisa and Amy is plural, so use were."
+    },
+    {
+      "prompt": "The cat ____ on the chair a minute ago.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "A minute ago is past time. The cat is singular, so use was."
+    },
+    {
+      "prompt": "We ____ at the library last Friday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last Friday is past time. We takes were."
+    },
+    {
+      "prompt": "My sister ____ angry yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. My sister is one person, so use was."
+    },
+    {
+      "prompt": "The apples ____ fresh yesterday morning.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday morning is past time. The apples is plural, so use were."
+    },
+    {
+      "prompt": "Jack ____ a good basketball player last year.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last year is past time. Jack is one person, so use was."
+    },
+    {
+      "prompt": "You and Ben ____ on the same team last week.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last week is past time. You and Ben is plural, so use were."
+    },
+    {
+      "prompt": "The weather ____ nice yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. The weather is singular, so use was."
+    },
+    {
+      "prompt": "The children ____ excited at the party last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last night is past time. The children is plural, so use were."
+    },
+    {
+      "prompt": "I ____ ten years old in 2020.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "In 2020 is past time. I takes was in the past."
+    },
+    {
+      "prompt": "The door ____ open when I came home.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Came is past time. The door is singular, so use was."
+    },
+    {
+      "prompt": "Eric and I ____ classmates last year.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last year is past time. Eric and I means we, so use were."
+    },
+    {
+      "prompt": "The teacher ____ in the classroom yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. The teacher is one person, so use was."
+    },
+    {
+      "prompt": "My shoes ____ dirty after the rain yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. My shoes is plural, so use were."
+    },
+    {
+      "prompt": "She ____ afraid of the dark last year.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last year is past time. She takes was."
+    },
+    {
+      "prompt": "The bus ____ full yesterday afternoon.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday afternoon is past time. The bus is singular, so use was."
+    },
+    {
+      "prompt": "We ____ ready for the test yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. We takes were."
+    },
+    {
+      "prompt": "The baby ____ asleep at nine last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. The baby is singular, so use was."
+    },
+    {
+      "prompt": "The girls ____ at the zoo last Sunday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last Sunday is past time. The girls is plural, so use were."
+    },
+    {
+      "prompt": "I ____ not at school yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. I takes was in the past."
+    },
+    {
+      "prompt": "Kevin ____ sad after the game last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. Kevin is one person, so use was."
+    },
+    {
+      "prompt": "The lights ____ off when we arrived.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Arrived is past time. The lights is plural, so use were."
+    },
+    {
+      "prompt": "You ____ right about the answer yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. You takes were."
+    },
+    {
+      "prompt": "The cake ____ delicious at the party yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. The cake is singular, so use was."
+    },
+    {
+      "prompt": "My friends ____ late for dinner last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last night is past time. My friends is plural, so use were."
+    },
+    {
+      "prompt": "He ____ short in 2020.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "In 2020 is past time. He takes was."
+    },
+    {
+      "prompt": "The windows ____ closed yesterday afternoon.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday afternoon is past time. The windows is plural, so use were."
+    },
+    {
+      "prompt": "I ____ in my room at eight last night.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Last night is past time. I takes was in the past."
+    },
+    {
+      "prompt": "The shop ____ open yesterday afternoon.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday afternoon is past time. The shop is singular, so use was."
+    },
+    {
+      "prompt": "They ____ very kind to me last week.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last week is past time. They takes were."
+    },
+    {
+      "prompt": "Tina ____ absent from class yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 0,
+      "explanation": "Yesterday is past time. Tina is one person, so use was."
+    },
+    {
+      "prompt": "The chairs ____ clean before lunch yesterday.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Yesterday is past time. The chairs is plural, so use were."
+    },
+    {
+      "prompt": "We ____ happy after the trip last month.",
+      "options": ["was", "were", "is", "are", "am"],
+      "answerIndex": 1,
+      "explanation": "Last month is past time. We takes were."
+    }
+  ]
+}

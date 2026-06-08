@@ -249,12 +249,12 @@ io.on("connection", (socket) => {
     if (!room || !student) return callback?.({ ok: false, error: "學生或房間不存在。" });
     if (room.status !== "question") return callback?.({ ok: false, error: "目前不能作答。" });
     if (student.answers.has(room.currentQuestionIndex)) return callback?.({ ok: false, error: "你已經作答過了。" });
-    if (!Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex > 3) {
+    const question = room.quiz.questions[room.currentQuestionIndex];
+    if (!Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex >= question.options.length) {
       return callback?.({ ok: false, error: "選項無效。" });
     }
 
     const now = Date.now();
-    const question = room.quiz.questions[room.currentQuestionIndex];
     const totalMs = getQuestionLimitMs(room, room.currentQuestionIndex);
     const responseMs = Math.max(0, now - room.questionStartedAt);
     const remainingMs = Math.max(0, room.questionEndsAt - now);
@@ -369,11 +369,11 @@ function validateQuiz(quiz, source) {
     throw new Error(`${source}: questions 必須有至少一題。`);
   }
   quiz.questions.forEach((question, index) => {
-    if (!question.prompt || !Array.isArray(question.options) || question.options.length !== 4) {
-      throw new Error(`${source}: 第 ${index + 1} 題必須有 prompt 和四個 options。`);
+    if (!question.prompt || !Array.isArray(question.options) || question.options.length < 2 || question.options.length > 5) {
+      throw new Error(`${source}: 第 ${index + 1} 題必須有 prompt 和 2-5 個 options。`);
     }
-    if (!Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3) {
-      throw new Error(`${source}: 第 ${index + 1} 題 answerIndex 必須是 0-3。`);
+    if (!Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex >= question.options.length) {
+      throw new Error(`${source}: 第 ${index + 1} 題 answerIndex 必須在 options 範圍內。`);
     }
     if (question.timeLimitSec !== undefined && (!Number.isInteger(question.timeLimitSec) || question.timeLimitSec <= 0)) {
       throw new Error(`${source}: 第 ${index + 1} 題 timeLimitSec 必須是正整數。`);
@@ -448,7 +448,7 @@ function buildReviewQuiz(sessions) {
       const key = first.prompt;
       const existing = questionMap.get(key);
       const options = buildReviewOptions(responses, correctResponse);
-      if (options.length !== 4) continue;
+      if (options.length < 2 || options.length > 5) continue;
       const question = {
         prompt: first.prompt,
         options,
@@ -493,7 +493,7 @@ function buildReviewQuiz(sessions) {
 }
 
 function buildReviewOptions(responses, correctResponse) {
-  if (Array.isArray(correctResponse.options) && correctResponse.options.length === 4) {
+  if (Array.isArray(correctResponse.options) && correctResponse.options.length >= 2 && correctResponse.options.length <= 5) {
     return correctResponse.options;
   }
   const options = [];
@@ -506,7 +506,8 @@ function buildReviewOptions(responses, correctResponse) {
       options[response.selectedIndex] = response.selectedText;
     }
   }
-  return options.filter((option) => option !== undefined).length === 4 ? options : [];
+  const completeOptions = options.filter((option) => option !== undefined);
+  return options.length === completeOptions.length && completeOptions.length >= 2 && completeOptions.length <= 5 ? options : [];
 }
 
 function shuffleQuestionOptions(question) {
@@ -685,14 +686,15 @@ function getCurrentQuestion(room) {
 
 function buildQuestionStats(room) {
   if (room.currentQuestionIndex < 0) return null;
-  const counts = [0, 0, 0, 0];
+  const question = room.quiz.questions[room.currentQuestionIndex];
+  const counts = question.options.map(() => 0);
   let answered = 0;
   let correct = 0;
   for (const student of room.students.values()) {
     const answer = student.answers.get(room.currentQuestionIndex);
     if (!answer) continue;
     answered += 1;
-    counts[answer.selectedIndex] += 1;
+    if (counts[answer.selectedIndex] !== undefined) counts[answer.selectedIndex] += 1;
     if (answer.isCorrect) correct += 1;
   }
   return {
