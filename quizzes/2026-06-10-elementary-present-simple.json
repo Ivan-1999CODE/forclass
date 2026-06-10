@@ -1,0 +1,68 @@
+{
+  "id": "2026-06-10-elementary-present-simple",
+  "title": "國小英文｜現在簡單式基礎練習｜2026-06-10",
+  "date": "2026-06-10",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ breakfast every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "I 搭配現在簡單式動詞原形；every day 表示每天都會做的事，所以用 eat。"
+    },
+    {
+      "prompt": "He ____ milk every morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 1,
+      "explanation": "He 是第三人稱單數，現在簡單式動詞要加 s，所以用 drinks。"
+    },
+    {
+      "prompt": "We ____ soccer after school.",
+      "options": ["plays", "played", "play", "playing"],
+      "answerIndex": 2,
+      "explanation": "We 搭配現在簡單式動詞原形；after school 是常見習慣，所以用 play。"
+    },
+    {
+      "prompt": "My sister ____ TV at night.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 1,
+      "explanation": "My sister 是第三人稱單數，watch 的現在簡單式要加 es，變成 watches。"
+    },
+    {
+      "prompt": "The dog ____ in the park.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "The dog 是第三人稱單數，現在簡單式動詞要加 s，所以用 runs。"
+    },
+    {
+      "prompt": "They ____ English on Monday.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "They 是複數主詞，現在簡單式用動詞原形 study。"
+    },
+    {
+      "prompt": "____ your mom cook dinner every day?",
+      "options": ["Do", "Does", "Did", "Is"],
+      "answerIndex": 1,
+      "explanation": "your mom 是第三人稱單數，現在簡單式問句用 Does，後面的動詞用原形 cook。"
+    },
+    {
+      "prompt": "Tom does not ____ bananas.",
+      "options": ["likes", "liked", "like", "liking"],
+      "answerIndex": 2,
+      "explanation": "does not 後面要接動詞原形，所以用 like。"
+    },
+    {
+      "prompt": "She ____ her homework after school.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 1,
+      "explanation": "She 是第三人稱單數，現在簡單式用 does。"
+    },
+    {
+      "prompt": "I ____ my teeth every morning.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 0,
+      "explanation": "I 搭配現在簡單式動詞原形；every morning 表示每天早上的習慣，所以用 brush。"
+    }
+  ]
+}
