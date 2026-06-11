@@ -1,0 +1,308 @@
+{
+  "id": "elementary-simple-future-simple-2026-06-11",
+  "title": "國小版-簡單版-未來式-2026-06-11",
+  "date": "2026-06-11",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ visit my grandma tomorrow.",
+      "options": ["will", "am", "was", "do"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 表示未來時間，未來式可用 will 加原形動詞，所以選 will。"
+    },
+    {
+      "prompt": "She will ____ a book tonight.",
+      "options": ["reads", "read", "reading", "readed"],
+      "answerIndex": 1,
+      "explanation": "will 後面要接原形動詞，所以選 read。"
+    },
+    {
+      "prompt": "We ____ play basketball after school.",
+      "options": ["will", "were", "are", "did"],
+      "answerIndex": 0,
+      "explanation": "after school 可以表示等一下或未來的時間，未來式用 will play。"
+    },
+    {
+      "prompt": "Tom will ____ his room tomorrow morning.",
+      "options": ["cleans", "cleaned", "clean", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "will 後面接原形動詞，clean 不加 s、不加 ed，也不加 ing。"
+    },
+    {
+      "prompt": "They ____ watch TV tonight.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示今晚要做的事，未來式用 will。"
+    },
+    {
+      "prompt": "My dad will ____ dinner later.",
+      "options": ["cooks", "cooked", "cooking", "cook"],
+      "answerIndex": 3,
+      "explanation": "will 後面要用原形動詞 cook。"
+    },
+    {
+      "prompt": "The students ____ study English next week.",
+      "options": ["will", "are", "did", "was"],
+      "answerIndex": 0,
+      "explanation": "next week 是未來時間，句子要用 will study。"
+    },
+    {
+      "prompt": "Ben will ____ his dog tomorrow.",
+      "options": ["walk", "walks", "walked", "walking"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞，所以選 walk。"
+    },
+    {
+      "prompt": "I ____ eat lunch at school tomorrow.",
+      "options": ["will", "am", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 表示明天，未來式用 will。"
+    },
+    {
+      "prompt": "Lily will ____ a song tomorrow.",
+      "options": ["sings", "sang", "sing", "singing"],
+      "answerIndex": 2,
+      "explanation": "will 後面的動詞要用原形，所以選 sing。"
+    },
+    {
+      "prompt": "He ____ go to the park tomorrow.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 是未來時間，未來式用 will 加原形動詞。"
+    },
+    {
+      "prompt": "We will ____ English next Monday.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞，所以選 study。"
+    },
+    {
+      "prompt": "The boys ____ swim tomorrow afternoon.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "tomorrow afternoon 表示未來時間，句子要用 will。"
+    },
+    {
+      "prompt": "Amy will ____ a cake later.",
+      "options": ["makes", "made", "make", "making"],
+      "answerIndex": 2,
+      "explanation": "will 後面要用原形動詞 make。"
+    },
+    {
+      "prompt": "I ____ help my mom tonight.",
+      "options": ["will", "am", "was", "do"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示今晚要做的事，未來式用 will。"
+    },
+    {
+      "prompt": "My sister will ____ her bike tomorrow.",
+      "options": ["rides", "ride", "rode", "riding"],
+      "answerIndex": 1,
+      "explanation": "will 後面接原形動詞，所以選 ride。"
+    },
+    {
+      "prompt": "They ____ clean the classroom after lunch.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "after lunch 可表示等一下要做的事，未來式用 will。"
+    },
+    {
+      "prompt": "Ben will ____ water after the game.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "will 後面要接原形動詞 drink。"
+    },
+    {
+      "prompt": "She ____ call her friend tonight.",
+      "options": ["will", "is", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "tonight 是未來時間，正確用法是 will call。"
+    },
+    {
+      "prompt": "Tom will ____ his teacher tomorrow.",
+      "options": ["sees", "saw", "see", "seeing"],
+      "answerIndex": 2,
+      "explanation": "will 後面用原形動詞，所以選 see。"
+    },
+    {
+      "prompt": "We ____ eat dinner at six tonight.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示未來安排，句子要用 will。"
+    },
+    {
+      "prompt": "Dad will ____ the door later.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 open。"
+    },
+    {
+      "prompt": "The students ____ write cards tomorrow.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 是未來時間，未來式用 will。"
+    },
+    {
+      "prompt": "Mom will ____ lunch later.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 0,
+      "explanation": "will 後面的動詞要用原形 cook。"
+    },
+    {
+      "prompt": "I ____ play the piano tomorrow.",
+      "options": ["will", "am", "was", "do"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 表示未來時間，所以選 will。"
+    },
+    {
+      "prompt": "Lily will ____ her hands before dinner.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 wash。"
+    },
+    {
+      "prompt": "They ____ visit the zoo next week.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "next week 是未來時間，正確答案是 will。"
+    },
+    {
+      "prompt": "My brother will ____ a picture tomorrow.",
+      "options": ["draw", "draws", "drew", "drawing"],
+      "answerIndex": 0,
+      "explanation": "will 後面用原形動詞 draw。"
+    },
+    {
+      "prompt": "The dog ____ sleep in the house tonight.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示今晚，未來式用 will。"
+    },
+    {
+      "prompt": "We will ____ our teacher tomorrow.",
+      "options": ["thank", "thanks", "thanked", "thanking"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 thank。"
+    },
+    {
+      "prompt": "He ____ read a story tonight.",
+      "options": ["will", "is", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "tonight 是未來時間，句子要用 will read。"
+    },
+    {
+      "prompt": "Amy will ____ to school tomorrow.",
+      "options": ["walk", "walks", "walked", "walking"],
+      "answerIndex": 0,
+      "explanation": "will 後面的動詞用原形，所以選 walk。"
+    },
+    {
+      "prompt": "The girls ____ dance at the party tonight.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示未來活動，未來式用 will。"
+    },
+    {
+      "prompt": "Dad will ____ the car tomorrow.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 wash。"
+    },
+    {
+      "prompt": "I ____ meet my friend after school.",
+      "options": ["will", "am", "was", "do"],
+      "answerIndex": 0,
+      "explanation": "after school 表示等一下的安排，未來式用 will。"
+    },
+    {
+      "prompt": "She will ____ a letter tonight.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 0,
+      "explanation": "will 後面要用原形動詞 write。"
+    },
+    {
+      "prompt": "They ____ eat pizza tomorrow.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 是未來時間，所以選 will。"
+    },
+    {
+      "prompt": "Tom will ____ his desk later.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 clean。"
+    },
+    {
+      "prompt": "We ____ sing in class tomorrow.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 表示未來時間，未來式用 will。"
+    },
+    {
+      "prompt": "My mom will ____ a new bag next week.",
+      "options": ["buy", "buys", "bought", "buying"],
+      "answerIndex": 0,
+      "explanation": "will 後面的動詞要用原形 buy。"
+    },
+    {
+      "prompt": "Ben ____ finish his homework tonight.",
+      "options": ["will", "is", "did", "does"],
+      "answerIndex": 0,
+      "explanation": "tonight 表示未來時間，所以選 will。"
+    },
+    {
+      "prompt": "I will ____ my teeth before bed.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 brush。"
+    },
+    {
+      "prompt": "The teacher ____ tell a story tomorrow.",
+      "options": ["will", "are", "were", "did"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 是未來時間，未來式用 will。"
+    },
+    {
+      "prompt": "They will ____ English songs next Friday.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "will 後面用原形動詞 sing。"
+    },
+    {
+      "prompt": "Lisa ____ go home at five.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "句子表示之後要回家，未來式用 will go。"
+    },
+    {
+      "prompt": "We will ____ the window later.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 close。"
+    },
+    {
+      "prompt": "My friends ____ come to my house tomorrow.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "tomorrow 表示未來，所以選 will。"
+    },
+    {
+      "prompt": "The cat will ____ milk later.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "will 後面的動詞要用原形 drink。"
+    },
+    {
+      "prompt": "I ____ take a bus tomorrow morning.",
+      "options": ["will", "am", "was", "do"],
+      "answerIndex": 0,
+      "explanation": "tomorrow morning 是未來時間，未來式用 will。"
+    },
+    {
+      "prompt": "She will ____ her friend next Sunday.",
+      "options": ["invite", "invites", "invited", "inviting"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形動詞 invite。"
+    }
+  ]
+}

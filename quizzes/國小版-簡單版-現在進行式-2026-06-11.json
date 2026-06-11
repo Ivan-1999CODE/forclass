@@ -1,0 +1,308 @@
+{
+  "id": "elementary-simple-present-continuous-2026-06-11",
+  "title": "國小版-簡單版-現在進行式-2026-06-11",
+  "date": "2026-06-11",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ eating breakfast now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 0,
+      "explanation": "I 要搭配 am，現在進行式是 am eating。"
+    },
+    {
+      "prompt": "She is ____ TV now.",
+      "options": ["watch", "watches", "watching", "watched"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 be 動詞加 V-ing，所以選 watching。"
+    },
+    {
+      "prompt": "They ____ playing soccer now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "They 是複數主詞，要搭配 are。"
+    },
+    {
+      "prompt": "Tom is ____ his homework now.",
+      "options": ["do", "does", "doing", "did"],
+      "answerIndex": 2,
+      "explanation": "現在進行式要用 V-ing，do 的 ing 形是 doing。"
+    },
+    {
+      "prompt": "We are ____ English now.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 3,
+      "explanation": "are 後面要接 V-ing，所以選 studying。"
+    },
+    {
+      "prompt": "The dog ____ running in the park.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "The dog 是單數主詞，要搭配 is。"
+    },
+    {
+      "prompt": "My friends are ____ lunch now.",
+      "options": ["eat", "eats", "eating", "ate"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 are eating，表示正在吃午餐。"
+    },
+    {
+      "prompt": "He ____ reading a book now.",
+      "options": ["am", "is", "are", "did"],
+      "answerIndex": 1,
+      "explanation": "He 是單數主詞，現在進行式要用 is reading。"
+    },
+    {
+      "prompt": "Lily is ____ a song now.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 3,
+      "explanation": "sing 的 ing 形是 singing，句子表示 Lily 正在唱歌。"
+    },
+    {
+      "prompt": "You ____ writing your name now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "You 要搭配 are，所以是 are writing。"
+    },
+    {
+      "prompt": "Tom ____ playing basketball now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "Tom 是單數主詞，現在進行式要用 is playing。"
+    },
+    {
+      "prompt": "We are ____ lunch now.",
+      "options": ["eat", "eats", "eating", "ate"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 eating。"
+    },
+    {
+      "prompt": "I ____ reading a story now.",
+      "options": ["am", "is", "are", "did"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 要搭配 am，所以是 am reading。"
+    },
+    {
+      "prompt": "She is ____ her bike now.",
+      "options": ["ride", "rides", "riding", "rode"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 be 動詞加 V-ing，所以選 riding。"
+    },
+    {
+      "prompt": "They ____ watching TV now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "They 是複數主詞，be 動詞要用 are。"
+    },
+    {
+      "prompt": "Ben is ____ his hands now.",
+      "options": ["wash", "washes", "washing", "washed"],
+      "answerIndex": 2,
+      "explanation": "is 後面接 V-ing，所以選 washing。"
+    },
+    {
+      "prompt": "My mom ____ cooking dinner now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "My mom 是單數主詞，要用 is cooking。"
+    },
+    {
+      "prompt": "The boys are ____ in the park now.",
+      "options": ["run", "runs", "running", "ran"],
+      "answerIndex": 2,
+      "explanation": "現在進行式要用 V-ing，run 的 ing 形是 running。"
+    },
+    {
+      "prompt": "I am ____ my desk now.",
+      "options": ["clean", "cleans", "cleaning", "cleaned"],
+      "answerIndex": 2,
+      "explanation": "am 後面接 V-ing，所以選 cleaning。"
+    },
+    {
+      "prompt": "The cat ____ sleeping now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "The cat 是單數主詞，現在進行式用 is sleeping。"
+    },
+    {
+      "prompt": "We are ____ English songs now.",
+      "options": ["sing", "sings", "singing", "sang"],
+      "answerIndex": 2,
+      "explanation": "are 後面要接 V-ing，所以選 singing。"
+    },
+    {
+      "prompt": "He ____ drawing a picture now.",
+      "options": ["am", "is", "are", "did"],
+      "answerIndex": 1,
+      "explanation": "He 是單數主詞，要搭配 is。"
+    },
+    {
+      "prompt": "Amy is ____ a letter now.",
+      "options": ["write", "writes", "writing", "wrote"],
+      "answerIndex": 2,
+      "explanation": "write 去 e 加 ing 變成 writing。"
+    },
+    {
+      "prompt": "My friends ____ playing games now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "My friends 是複數主詞，所以用 are。"
+    },
+    {
+      "prompt": "Lily is ____ water now.",
+      "options": ["drink", "drinks", "drinking", "drank"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 is drinking。"
+    },
+    {
+      "prompt": "I ____ walking to school now.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 0,
+      "explanation": "I 要搭配 am，所以是 am walking。"
+    },
+    {
+      "prompt": "They are ____ the classroom now.",
+      "options": ["clean", "cleans", "cleaning", "cleaned"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 cleaning。"
+    },
+    {
+      "prompt": "Dad ____ washing the car now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "Dad 是單數主詞，現在進行式要用 is washing。"
+    },
+    {
+      "prompt": "You are ____ a book now.",
+      "options": ["read", "reads", "reading", "readed"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 reading。"
+    },
+    {
+      "prompt": "The students ____ writing now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "The students 是複數主詞，要用 are。"
+    },
+    {
+      "prompt": "She is ____ a card now.",
+      "options": ["make", "makes", "making", "made"],
+      "answerIndex": 2,
+      "explanation": "make 去 e 加 ing 變成 making。"
+    },
+    {
+      "prompt": "I am ____ my homework now.",
+      "options": ["do", "does", "doing", "did"],
+      "answerIndex": 2,
+      "explanation": "am 後面接 V-ing，所以選 doing。"
+    },
+    {
+      "prompt": "Tom and Ben ____ swimming now.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 2,
+      "explanation": "Tom and Ben 是複數主詞，所以用 are。"
+    },
+    {
+      "prompt": "My brother is ____ his room now.",
+      "options": ["clean", "cleans", "cleaning", "cleaned"],
+      "answerIndex": 2,
+      "explanation": "is 後面接 V-ing，所以選 cleaning。"
+    },
+    {
+      "prompt": "We ____ riding bikes now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "We 是複數主詞，現在進行式用 are riding。"
+    },
+    {
+      "prompt": "The baby is ____ now.",
+      "options": ["sleep", "sleeps", "sleeping", "slept"],
+      "answerIndex": 2,
+      "explanation": "is 後面接 V-ing，所以選 sleeping。"
+    },
+    {
+      "prompt": "They are ____ to music now.",
+      "options": ["listen", "listens", "listening", "listened"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 listening。"
+    },
+    {
+      "prompt": "He ____ eating an apple now.",
+      "options": ["am", "is", "are", "did"],
+      "answerIndex": 1,
+      "explanation": "He 是單數主詞，現在進行式要用 is eating。"
+    },
+    {
+      "prompt": "Amy is ____ the door now.",
+      "options": ["open", "opens", "opening", "opened"],
+      "answerIndex": 2,
+      "explanation": "open 的 ing 形是 opening。"
+    },
+    {
+      "prompt": "I ____ drinking milk now.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 要用 am。"
+    },
+    {
+      "prompt": "The girls are ____ now.",
+      "options": ["dance", "dances", "dancing", "danced"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 are dancing。"
+    },
+    {
+      "prompt": "Mom ____ reading a newspaper now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "Mom 是單數主詞，所以用 is。"
+    },
+    {
+      "prompt": "We are ____ our teacher now.",
+      "options": ["help", "helps", "helping", "helped"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 helping。"
+    },
+    {
+      "prompt": "Ben is ____ his lunch now.",
+      "options": ["eat", "eats", "eating", "ate"],
+      "answerIndex": 2,
+      "explanation": "is 後面接 V-ing，所以選 eating。"
+    },
+    {
+      "prompt": "You ____ sitting on the chair now.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "You 要搭配 are，所以是 are sitting。"
+    },
+    {
+      "prompt": "The dog is ____ now.",
+      "options": ["jump", "jumps", "jumping", "jumped"],
+      "answerIndex": 2,
+      "explanation": "is 後面接 V-ing，所以選 jumping。"
+    },
+    {
+      "prompt": "They ____ studying math now.",
+      "options": ["am", "is", "are", "did"],
+      "answerIndex": 2,
+      "explanation": "They 是複數主詞，要用 are。"
+    },
+    {
+      "prompt": "She is ____ her bag now.",
+      "options": ["carry", "carries", "carrying", "carried"],
+      "answerIndex": 2,
+      "explanation": "carry 的 ing 形是 carrying。"
+    },
+    {
+      "prompt": "I am ____ a picture now.",
+      "options": ["draw", "draws", "drawing", "drew"],
+      "answerIndex": 2,
+      "explanation": "am 後面接 V-ing，所以選 drawing。"
+    },
+    {
+      "prompt": "We are ____ home now.",
+      "options": ["go", "goes", "going", "went"],
+      "answerIndex": 2,
+      "explanation": "are 後面接 V-ing，所以選 going。"
+    }
+  ]
+}

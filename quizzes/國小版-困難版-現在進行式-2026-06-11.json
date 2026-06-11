@@ -1,0 +1,308 @@
+{
+  "id": "elementary-difficult-present-continuous-2026-06-11",
+  "title": "國小版-困難版-現在進行式-2026-06-11",
+  "date": "2026-06-11",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "____ the students reading books now?",
+      "options": ["Is", "Are", "Do", "Did"],
+      "answerIndex": 1,
+      "explanation": "the students 是複數主詞，現在進行式疑問句要用 Are 開頭。"
+    },
+    {
+      "prompt": "Mia is not ____ dinner now.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 3,
+      "explanation": "is not 後面仍然要接 V-ing，cook 的 ing 形是 cooking。"
+    },
+    {
+      "prompt": "The boys are ____ in the pool.",
+      "options": ["swim", "swims", "swimming", "swam"],
+      "answerIndex": 2,
+      "explanation": "swim 變成 ing 形時要雙寫 m，所以是 swimming。"
+    },
+    {
+      "prompt": "____ your sister doing her homework now?",
+      "options": ["Am", "Is", "Are", "Does"],
+      "answerIndex": 1,
+      "explanation": "your sister 是單數主詞，現在進行式疑問句要用 Is。"
+    },
+    {
+      "prompt": "We are not ____ games in class.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 3,
+      "explanation": "are not 後面接 V-ing，正確答案是 playing。"
+    },
+    {
+      "prompt": "I ____ making a card for my teacher.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 要搭配 am，make 去 e 加 ing 變成 making。"
+    },
+    {
+      "prompt": "The baby is ____ now.",
+      "options": ["cry", "cries", "crying", "cried"],
+      "answerIndex": 2,
+      "explanation": "現在進行式用 is 加 V-ing，cry 的 ing 形是 crying。"
+    },
+    {
+      "prompt": "Are they ____ the door now?",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 3,
+      "explanation": "Are they ...? 是現在進行式疑問句，動詞要用 opening。"
+    },
+    {
+      "prompt": "Ben ____ not running in the classroom.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 1,
+      "explanation": "Ben 是單數主詞，現在進行式否定句要用 is not running。"
+    },
+    {
+      "prompt": "My mom is ____ a letter now.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 3,
+      "explanation": "write 去 e 加 ing 變成 writing，所以選 writing。"
+    },
+    {
+      "prompt": "____ Tom and Ben playing soccer now?",
+      "options": ["Is", "Are", "Do", "Did"],
+      "answerIndex": 1,
+      "explanation": "Tom and Ben 是複數主詞，現在進行式疑問句用 Are。"
+    },
+    {
+      "prompt": "Lisa is not ____ TV now.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 3,
+      "explanation": "is not 後面接 V-ing，所以選 watching。"
+    },
+    {
+      "prompt": "The dog ____ not sleeping now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 1,
+      "explanation": "The dog 是單數主詞，否定句要用 is not sleeping。"
+    },
+    {
+      "prompt": "Are the girls ____ in the classroom?",
+      "options": ["dance", "dances", "danced", "dancing"],
+      "answerIndex": 3,
+      "explanation": "Are 開頭的現在進行式疑問句中，動詞要用 dancing。"
+    },
+    {
+      "prompt": "I am not ____ my phone now.",
+      "options": ["use", "uses", "used", "using"],
+      "answerIndex": 3,
+      "explanation": "am not 後面接 V-ing，use 去 e 加 ing 變成 using。"
+    },
+    {
+      "prompt": "____ your brother washing the dishes now?",
+      "options": ["Am", "Is", "Are", "Does"],
+      "answerIndex": 1,
+      "explanation": "your brother 是單數主詞，現在進行式疑問句用 Is。"
+    },
+    {
+      "prompt": "They are not ____ English now.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 3,
+      "explanation": "are not 後面接 V-ing，study 的 ing 形是 studying。"
+    },
+    {
+      "prompt": "The baby is ____ on the bed.",
+      "options": ["sit", "sits", "sitting", "sat"],
+      "answerIndex": 2,
+      "explanation": "sit 變 ing 要雙寫 t，所以是 sitting。"
+    },
+    {
+      "prompt": "____ you listening to the teacher now?",
+      "options": ["Am", "Is", "Are", "Do"],
+      "answerIndex": 2,
+      "explanation": "you 要搭配 are，疑問句是 Are you listening ...?"
+    },
+    {
+      "prompt": "Ben and Amy ____ not running in the hall.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 2,
+      "explanation": "Ben and Amy 是複數主詞，否定句要用 are not running。"
+    },
+    {
+      "prompt": "My dad is ____ the car now.",
+      "options": ["drive", "drives", "drove", "driving"],
+      "answerIndex": 3,
+      "explanation": "drive 去 e 加 ing 變成 driving。"
+    },
+    {
+      "prompt": "Is Lily ____ a picture now?",
+      "options": ["draw", "draws", "drew", "drawing"],
+      "answerIndex": 3,
+      "explanation": "Is 開頭的現在進行式疑問句中，動詞要用 drawing。"
+    },
+    {
+      "prompt": "We are not ____ lunch now.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 3,
+      "explanation": "are not 後面接 V-ing，所以選 eating。"
+    },
+    {
+      "prompt": "The students ____ reading quietly now.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 2,
+      "explanation": "The students 是複數主詞，現在進行式用 are reading。"
+    },
+    {
+      "prompt": "____ your mom making dinner now?",
+      "options": ["Am", "Is", "Are", "Do"],
+      "answerIndex": 1,
+      "explanation": "your mom 是單數主詞，疑問句要用 Is。"
+    },
+    {
+      "prompt": "He is not ____ his homework now.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 3,
+      "explanation": "is not 後面接 V-ing，所以選 doing。"
+    },
+    {
+      "prompt": "Are they ____ bikes in the park?",
+      "options": ["ride", "rides", "rode", "riding"],
+      "answerIndex": 3,
+      "explanation": "現在進行式疑問句中，動詞要用 V-ing，所以選 riding。"
+    },
+    {
+      "prompt": "The cat is ____ milk now.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 3,
+      "explanation": "is 後面接 V-ing，所以選 drinking。"
+    },
+    {
+      "prompt": "I ____ not playing games now.",
+      "options": ["am", "is", "are", "do"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 的現在進行式否定句是 am not playing。"
+    },
+    {
+      "prompt": "____ the teacher writing on the board?",
+      "options": ["Am", "Is", "Are", "Does"],
+      "answerIndex": 1,
+      "explanation": "the teacher 是單數主詞，疑問句用 Is。"
+    },
+    {
+      "prompt": "The children are ____ in the playground.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 3,
+      "explanation": "are 後面接 V-ing，所以選 running。"
+    },
+    {
+      "prompt": "She is not ____ a song now.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 3,
+      "explanation": "is not 後面接 V-ing，所以選 singing。"
+    },
+    {
+      "prompt": "Are we ____ to the library now?",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 3,
+      "explanation": "Are we ...? 是現在進行式疑問句，動詞要用 going。"
+    },
+    {
+      "prompt": "Tom is ____ a big box.",
+      "options": ["carry", "carries", "carried", "carrying"],
+      "answerIndex": 3,
+      "explanation": "carry 的 ing 形是 carrying。"
+    },
+    {
+      "prompt": "You are not ____ carefully.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 3,
+      "explanation": "are not 後面接 V-ing，所以選 listening。"
+    },
+    {
+      "prompt": "____ Amy and Lisa cleaning the room now?",
+      "options": ["Is", "Are", "Am", "Does"],
+      "answerIndex": 1,
+      "explanation": "Amy and Lisa 是複數主詞，疑問句要用 Are。"
+    },
+    {
+      "prompt": "My brother is ____ a kite now.",
+      "options": ["fly", "flies", "flew", "flying"],
+      "answerIndex": 3,
+      "explanation": "fly 的 ing 形是 flying。"
+    },
+    {
+      "prompt": "They ____ not swimming today.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 2,
+      "explanation": "They 是複數主詞，否定句要用 are not swimming。"
+    },
+    {
+      "prompt": "Is Ben ____ his teeth now?",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 3,
+      "explanation": "Is 開頭的現在進行式中，動詞要用 brushing。"
+    },
+    {
+      "prompt": "We are ____ a story now.",
+      "options": ["read", "reads", "readed", "reading"],
+      "answerIndex": 3,
+      "explanation": "are 後面接 V-ing，所以選 reading。"
+    },
+    {
+      "prompt": "____ the dog jumping on the sofa?",
+      "options": ["Am", "Is", "Are", "Do"],
+      "answerIndex": 1,
+      "explanation": "the dog 是單數主詞，現在進行式疑問句用 Is。"
+    },
+    {
+      "prompt": "Dad is not ____ coffee now.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 3,
+      "explanation": "is not 後面接 V-ing，所以選 drinking。"
+    },
+    {
+      "prompt": "The boys are ____ at the bus stop.",
+      "options": ["wait", "waits", "waited", "waiting"],
+      "answerIndex": 3,
+      "explanation": "are 後面要接 V-ing，所以選 waiting。"
+    },
+    {
+      "prompt": "____ I speaking too fast?",
+      "options": ["Am", "Is", "Are", "Do"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 搭配 am，疑問句是 Am I speaking ...?"
+    },
+    {
+      "prompt": "Lisa is ____ her name on the paper.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 3,
+      "explanation": "write 去 e 加 ing 變成 writing。"
+    },
+    {
+      "prompt": "The students are not ____ now.",
+      "options": ["talk", "talks", "talked", "talking"],
+      "answerIndex": 3,
+      "explanation": "are not 後面接 V-ing，所以選 talking。"
+    },
+    {
+      "prompt": "Is your sister ____ water?",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 3,
+      "explanation": "Is 開頭的現在進行式中，動詞要用 drinking。"
+    },
+    {
+      "prompt": "I am ____ a sandwich now.",
+      "options": ["make", "makes", "made", "making"],
+      "answerIndex": 3,
+      "explanation": "make 去 e 加 ing 變成 making。"
+    },
+    {
+      "prompt": "Are the children ____ in the pool?",
+      "options": ["swim", "swims", "swam", "swimming"],
+      "answerIndex": 3,
+      "explanation": "swim 變 ing 要雙寫 m，所以是 swimming。"
+    },
+    {
+      "prompt": "Tom ____ not sitting here now.",
+      "options": ["am", "is", "are", "does"],
+      "answerIndex": 1,
+      "explanation": "Tom 是單數主詞，否定句要用 is not sitting。"
+    }
+  ]
+}

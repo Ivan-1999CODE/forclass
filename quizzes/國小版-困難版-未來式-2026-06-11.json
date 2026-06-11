@@ -1,0 +1,308 @@
+{
+  "id": "elementary-difficult-future-simple-2026-06-11",
+  "title": "國小版-困難版-未來式-2026-06-11",
+  "date": "2026-06-11",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "____ Amy finish her homework tomorrow?",
+      "options": ["Did", "Does", "Will", "Is"],
+      "answerIndex": 2,
+      "explanation": "tomorrow 是未來時間，未來式疑問句把 Will 放句首，後面接原形動詞 finish。"
+    },
+    {
+      "prompt": "They will not ____ soccer next Sunday.",
+      "options": ["played", "playing", "plays", "play"],
+      "answerIndex": 3,
+      "explanation": "will not 後面要接原形動詞，所以選 play。"
+    },
+    {
+      "prompt": "My brother ____ going to wash the car later.",
+      "options": ["am", "is", "are", "were"],
+      "answerIndex": 1,
+      "explanation": "My brother 是單數主詞，be going to 的 be 要用 is。"
+    },
+    {
+      "prompt": "We are going to ____ a movie tonight.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "be going to 後面接原形動詞，所以選 watch。"
+    },
+    {
+      "prompt": "____ you going to read this book tomorrow?",
+      "options": ["Is", "Am", "Are", "Did"],
+      "answerIndex": 2,
+      "explanation": "主詞是 you，be going to 的疑問句要用 Are you going to ...?"
+    },
+    {
+      "prompt": "Lisa will ____ at home next weekend.",
+      "options": ["stays", "stay", "stayed", "staying"],
+      "answerIndex": 1,
+      "explanation": "will 後面的動詞用原形，正確答案是 stay。"
+    },
+    {
+      "prompt": "The boys ____ going to clean the classroom after lunch.",
+      "options": ["is", "am", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "The boys 是複數主詞，be going to 要用 are going to。"
+    },
+    {
+      "prompt": "Will your mom ____ dinner tonight?",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 0,
+      "explanation": "Will 開頭的疑問句中，主要動詞要用原形 cook。"
+    },
+    {
+      "prompt": "I am not going to ____ milk today.",
+      "options": ["drinks", "drank", "drink", "drinking"],
+      "answerIndex": 2,
+      "explanation": "be not going to 後面接原形動詞，所以選 drink。"
+    },
+    {
+      "prompt": "The cat will not ____ on the chair tonight.",
+      "options": ["sleep", "sleeps", "slept", "sleeping"],
+      "answerIndex": 0,
+      "explanation": "will not 後面要接原形動詞，正確答案是 sleep。"
+    },
+    {
+      "prompt": "Will the students ____ English next week?",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "Will 開頭的未來式疑問句中，主要動詞要用原形 study。"
+    },
+    {
+      "prompt": "My parents ____ going to visit Taipei tomorrow.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "My parents 是複數主詞，be going to 要用 are going to。"
+    },
+    {
+      "prompt": "Ben is not going to ____ computer games tonight.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "is not going to 後面接原形動詞，所以選 play。"
+    },
+    {
+      "prompt": "____ your teacher going to give a test tomorrow?",
+      "options": ["Am", "Is", "Are", "Did"],
+      "answerIndex": 1,
+      "explanation": "your teacher 是單數主詞，be going to 疑問句要用 Is。"
+    },
+    {
+      "prompt": "They will not ____ late for school tomorrow.",
+      "options": ["be", "is", "are", "were"],
+      "answerIndex": 0,
+      "explanation": "will not 後面接原形，be 動詞的原形是 be。"
+    },
+    {
+      "prompt": "I ____ going to clean my desk after class.",
+      "options": ["am", "is", "are", "were"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 搭配 am，所以是 I am going to。"
+    },
+    {
+      "prompt": "Will Lisa ____ her aunt next Sunday?",
+      "options": ["visit", "visits", "visited", "visiting"],
+      "answerIndex": 0,
+      "explanation": "Will 開頭時，後面的主要動詞要用原形 visit。"
+    },
+    {
+      "prompt": "The boys are going to ____ in the park later.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 0,
+      "explanation": "are going to 後面接原形動詞 run。"
+    },
+    {
+      "prompt": "____ they watch a movie tonight?",
+      "options": ["Did", "Do", "Will", "Are"],
+      "answerIndex": 2,
+      "explanation": "tonight 表示未來時間，未來式疑問句用 Will 開頭。"
+    },
+    {
+      "prompt": "My sister will ____ her room before dinner.",
+      "options": ["cleans", "clean", "cleaned", "cleaning"],
+      "answerIndex": 1,
+      "explanation": "will 後面接原形動詞，所以選 clean。"
+    },
+    {
+      "prompt": "We are not going to ____ lunch at school tomorrow.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "are not going to 後面接原形動詞 eat。"
+    },
+    {
+      "prompt": "____ Tom going to ride his bike after school?",
+      "options": ["Am", "Is", "Are", "Does"],
+      "answerIndex": 1,
+      "explanation": "Tom 是單數主詞，be going to 疑問句要用 Is Tom going to。"
+    },
+    {
+      "prompt": "The dog will not ____ outside tonight.",
+      "options": ["sleep", "sleeps", "slept", "sleeping"],
+      "answerIndex": 0,
+      "explanation": "will not 後面要用原形動詞 sleep。"
+    },
+    {
+      "prompt": "You ____ going to write a card tomorrow.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "主詞 you 搭配 are，所以是 You are going to。"
+    },
+    {
+      "prompt": "Will your brother ____ his homework tonight?",
+      "options": ["finish", "finishes", "finished", "finishing"],
+      "answerIndex": 0,
+      "explanation": "Will 後面接原形動詞 finish。"
+    },
+    {
+      "prompt": "Mia is going to ____ a song at the party.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "is going to 後面要接原形動詞 sing。"
+    },
+    {
+      "prompt": "____ we going to meet at the library tomorrow?",
+      "options": ["Am", "Is", "Are", "Did"],
+      "answerIndex": 2,
+      "explanation": "主詞 we 搭配 are，疑問句用 Are we going to。"
+    },
+    {
+      "prompt": "I will not ____ TV before homework.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "will not 後面接原形動詞 watch。"
+    },
+    {
+      "prompt": "The children ____ going to make cards for Mom.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "The children 是複數主詞，要用 are going to。"
+    },
+    {
+      "prompt": "Will Amy and Ben ____ the classroom tomorrow?",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "Will 後面接原形動詞 clean。"
+    },
+    {
+      "prompt": "She is not going to ____ milk today.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "is not going to 後面接原形動詞 drink。"
+    },
+    {
+      "prompt": "____ your friends going to come here later?",
+      "options": ["Is", "Are", "Am", "Did"],
+      "answerIndex": 1,
+      "explanation": "your friends 是複數主詞，be going to 疑問句要用 Are。"
+    },
+    {
+      "prompt": "Dad will ____ dinner after work.",
+      "options": ["cooks", "cook", "cooked", "cooking"],
+      "answerIndex": 1,
+      "explanation": "will 後面要用原形動詞 cook。"
+    },
+    {
+      "prompt": "We will not ____ in the classroom after school.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 0,
+      "explanation": "will not 後面接原形動詞 run。"
+    },
+    {
+      "prompt": "Is Lily going to ____ the door?",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 0,
+      "explanation": "going to 後面接原形動詞 open。"
+    },
+    {
+      "prompt": "The students will ____ quiet during the test.",
+      "options": ["be", "is", "are", "were"],
+      "answerIndex": 0,
+      "explanation": "will 後面接原形，be 動詞的原形是 be。"
+    },
+    {
+      "prompt": "I am going to ____ my grandma next weekend.",
+      "options": ["visit", "visits", "visited", "visiting"],
+      "answerIndex": 0,
+      "explanation": "am going to 後面要接原形動詞 visit。"
+    },
+    {
+      "prompt": "____ Ben and Tom play soccer tomorrow?",
+      "options": ["Do", "Did", "Will", "Are"],
+      "answerIndex": 2,
+      "explanation": "tomorrow 是未來時間，疑問句用 Will。"
+    },
+    {
+      "prompt": "My mom is going to ____ a new coat.",
+      "options": ["buy", "buys", "bought", "buying"],
+      "answerIndex": 0,
+      "explanation": "is going to 後面接原形動詞 buy。"
+    },
+    {
+      "prompt": "They will not ____ English songs today.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "will not 後面要用原形動詞 sing。"
+    },
+    {
+      "prompt": "Are you going to ____ your hands before lunch?",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 0,
+      "explanation": "going to 後面接原形動詞 wash。"
+    },
+    {
+      "prompt": "He ____ be ten years old next year.",
+      "options": ["will", "is", "was", "does"],
+      "answerIndex": 0,
+      "explanation": "next year 是未來時間，未來式用 will be。"
+    },
+    {
+      "prompt": "The girls are not going to ____ today.",
+      "options": ["dance", "dances", "danced", "dancing"],
+      "answerIndex": 0,
+      "explanation": "are not going to 後面接原形動詞 dance。"
+    },
+    {
+      "prompt": "Will the cat ____ on the bed tonight?",
+      "options": ["sleep", "sleeps", "slept", "sleeping"],
+      "answerIndex": 0,
+      "explanation": "Will 後面接原形動詞 sleep。"
+    },
+    {
+      "prompt": "Tom and I ____ going to draw pictures tomorrow.",
+      "options": ["am", "is", "are", "was"],
+      "answerIndex": 2,
+      "explanation": "Tom and I 表示 we，所以要用 are going to。"
+    },
+    {
+      "prompt": "She will not ____ her bag at school.",
+      "options": ["forget", "forgets", "forgot", "forgetting"],
+      "answerIndex": 0,
+      "explanation": "will not 後面接原形動詞 forget。"
+    },
+    {
+      "prompt": "____ I going to be late?",
+      "options": ["Am", "Is", "Are", "Do"],
+      "answerIndex": 0,
+      "explanation": "主詞 I 搭配 am，疑問句是 Am I going to ...?"
+    },
+    {
+      "prompt": "The teacher is going to ____ the lesson tomorrow.",
+      "options": ["start", "starts", "started", "starting"],
+      "answerIndex": 0,
+      "explanation": "is going to 後面接原形動詞 start。"
+    },
+    {
+      "prompt": "We will ____ at the bus stop after school.",
+      "options": ["meet", "meets", "met", "meeting"],
+      "answerIndex": 0,
+      "explanation": "will 後面的動詞要用原形 meet。"
+    },
+    {
+      "prompt": "Is your dad going to ____ the car this weekend?",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 0,
+      "explanation": "going to 後面接原形動詞 wash。"
+    }
+  ]
+}
