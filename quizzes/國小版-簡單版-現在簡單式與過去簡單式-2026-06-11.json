@@ -1,0 +1,308 @@
+{
+  "id": "國小版-簡單版-現在簡單式與過去簡單式-2026-06-11",
+  "title": "國小版｜簡單版｜現在簡單式與過去簡單式｜2026-06-11",
+  "date": "2026-06-11",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ soccer every day.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；I 搭配動詞原形，所以用 play。"
+    },
+    {
+      "prompt": "She ____ TV yesterday.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 watch 要用過去式 watched。"
+    },
+    {
+      "prompt": "He ____ milk every morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；He 是第三人稱單數，所以用 drinks。"
+    },
+    {
+      "prompt": "They ____ their room last night.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 clean 要用過去式 cleaned。"
+    },
+    {
+      "prompt": "We ____ to school every day.",
+      "options": ["walks", "walked", "walk", "walking"],
+      "answerIndex": 2,
+      "explanation": "every day 表示現在簡單式；We 搭配動詞原形，所以用 walk。"
+    },
+    {
+      "prompt": "Tom ____ the door yesterday.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 open 要用過去式 opened。"
+    },
+    {
+      "prompt": "My sister ____ dinner every night.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 1,
+      "explanation": "every night 表示現在簡單式；My sister 是第三人稱單數，所以用 cooks。"
+    },
+    {
+      "prompt": "The boys ____ in the park yesterday.",
+      "options": ["jump", "jumps", "jumped", "jumping"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 jump 要用過去式 jumped。"
+    },
+    {
+      "prompt": "The dog ____ fast every day.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；The dog 是第三人稱單數，所以用 runs。"
+    },
+    {
+      "prompt": "I ____ my hands last night.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 wash 要用過去式 washed。"
+    },
+    {
+      "prompt": "They ____ English every Monday.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "every Monday 表示現在簡單式；They 搭配動詞原形，所以用 study。"
+    },
+    {
+      "prompt": "Lisa ____ her desk yesterday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 clean 要用過去式 cleaned。"
+    },
+    {
+      "prompt": "Ben ____ his teacher every day.",
+      "options": ["help", "helps", "helped", "helping"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；Ben 是第三人稱單數，所以用 helps。"
+    },
+    {
+      "prompt": "We ____ basketball last Sunday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 2,
+      "explanation": "last Sunday 表示過去時間，所以 play 要用過去式 played。"
+    },
+    {
+      "prompt": "My brother ____ his book every night.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every night 表示現在簡單式；My brother 是第三人稱單數，所以用 opens。"
+    },
+    {
+      "prompt": "Anna ____ lunch at school yesterday.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 eat 要用過去式 ate。"
+    },
+    {
+      "prompt": "The cat ____ milk every morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；The cat 是第三人稱單數，所以用 drinks。"
+    },
+    {
+      "prompt": "He ____ his room last night.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 clean 要用過去式 cleaned。"
+    },
+    {
+      "prompt": "I ____ my homework every day.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；I 搭配動詞原形，所以用 do。"
+    },
+    {
+      "prompt": "They ____ TV last night.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 watch 要用過去式 watched。"
+    },
+    {
+      "prompt": "She ____ the door every morning.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；She 是第三人稱單數，所以用 opens。"
+    },
+    {
+      "prompt": "The students ____ English yesterday.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 study 要用過去式 studied。"
+    },
+    {
+      "prompt": "We ____ lunch at school every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；We 搭配動詞原形，所以用 eat。"
+    },
+    {
+      "prompt": "My dad ____ dinner yesterday.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 cook 要用過去式 cooked。"
+    },
+    {
+      "prompt": "Tom ____ his bike every Sunday.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 1,
+      "explanation": "every Sunday 表示現在簡單式；Tom 是第三人稱單數，所以用 washes。"
+    },
+    {
+      "prompt": "I ____ the window last night.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 close 要用過去式 closed。"
+    },
+    {
+      "prompt": "The girls ____ rope every day.",
+      "options": ["jump", "jumps", "jumped", "jumping"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；The girls 是複數主詞，所以用 jump。"
+    },
+    {
+      "prompt": "Ben ____ to school yesterday.",
+      "options": ["walk", "walks", "walked", "walking"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 walk 要用過去式 walked。"
+    },
+    {
+      "prompt": "My mom ____ apples every day.",
+      "options": ["like", "likes", "liked", "liking"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；My mom 是第三人稱單數，所以用 likes。"
+    },
+    {
+      "prompt": "We ____ the classroom yesterday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 clean 要用過去式 cleaned。"
+    },
+    {
+      "prompt": "They ____ the door every afternoon.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 0,
+      "explanation": "every afternoon 表示現在簡單式；They 搭配動詞原形，所以用 close。"
+    },
+    {
+      "prompt": "The dog ____ in the yard last night.",
+      "options": ["jump", "jumps", "jumped", "jumping"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 jump 要用過去式 jumped。"
+    },
+    {
+      "prompt": "Amy ____ her book every night.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every night 表示現在簡單式；Amy 是第三人稱單數，所以用 opens。"
+    },
+    {
+      "prompt": "My friends ____ soccer yesterday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 play 要用過去式 played。"
+    },
+    {
+      "prompt": "I ____ water every morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "every morning 表示現在簡單式；I 搭配動詞原形，所以用 drink。"
+    },
+    {
+      "prompt": "She ____ her friend last Sunday.",
+      "options": ["help", "helps", "helped", "helping"],
+      "answerIndex": 2,
+      "explanation": "last Sunday 表示過去時間，所以 help 要用過去式 helped。"
+    },
+    {
+      "prompt": "The teacher ____ the book every day.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；The teacher 是第三人稱單數，所以用 opens。"
+    },
+    {
+      "prompt": "They ____ dinner last night.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 cook 要用過去式 cooked。"
+    },
+    {
+      "prompt": "We ____ TV every Friday.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "every Friday 表示現在簡單式；We 搭配動詞原形，所以用 watch。"
+    },
+    {
+      "prompt": "Tom ____ his hands yesterday.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 wash 要用過去式 washed。"
+    },
+    {
+      "prompt": "Lisa ____ English every day.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；Lisa 是第三人稱單數，所以用 studies。"
+    },
+    {
+      "prompt": "I ____ my homework last night.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 do 要用過去式 did。"
+    },
+    {
+      "prompt": "The boys ____ basketball every Saturday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "every Saturday 表示現在簡單式；The boys 是複數主詞，所以用 play。"
+    },
+    {
+      "prompt": "My sister ____ the window yesterday.",
+      "options": ["close", "closes", "closed", "closing"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 close 要用過去式 closed。"
+    },
+    {
+      "prompt": "He ____ to school every morning.",
+      "options": ["walk", "walks", "walked", "walking"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；He 是第三人稱單數，所以用 walks。"
+    },
+    {
+      "prompt": "We ____ apples yesterday.",
+      "options": ["like", "likes", "liked", "liking"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 like 要用過去式 liked。"
+    },
+    {
+      "prompt": "Anna ____ her room every Sunday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 1,
+      "explanation": "every Sunday 表示現在簡單式；Anna 是第三人稱單數，所以用 cleans。"
+    },
+    {
+      "prompt": "The students ____ the books yesterday.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 2,
+      "explanation": "yesterday 表示過去時間，所以 open 要用過去式 opened。"
+    },
+    {
+      "prompt": "My friends ____ lunch at school every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；My friends 是複數主詞，所以用 eat。"
+    },
+    {
+      "prompt": "The cat ____ milk last night.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 2,
+      "explanation": "last night 表示過去時間，所以 drink 要用過去式 drank。"
+    }
+  ]
+}
