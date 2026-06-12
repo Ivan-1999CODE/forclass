@@ -1,0 +1,308 @@
+{
+  "id": "elementary-object-pronouns-2026-06-12",
+  "title": "國小版｜簡單版｜受格｜2026-06-12",
+  "date": "2026-06-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "Tom is my friend. I like ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "空格在動詞 like 後面，是受詞位置；Tom 是男生，所以用受格 him。"
+    },
+    {
+      "prompt": "Lisa is kind. We know ____.",
+      "options": ["her", "she", "hers", "his"],
+      "answerIndex": 0,
+      "explanation": "know 後面要接受格；Lisa 是女生，所以用 her。"
+    },
+    {
+      "prompt": "This is my dog. I love ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "love 後面是受詞；my dog 是單數動物，所以用 it。"
+    },
+    {
+      "prompt": "Jack and I are here. Please help ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "help 後面要用受格；Jack and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "Amy and Ben are late. Wait for ____.",
+      "options": ["them", "they", "their", "we"],
+      "answerIndex": 0,
+      "explanation": "for 是介系詞，後面要用受格；Amy and Ben 是複數，所以用 them。"
+    },
+    {
+      "prompt": "My mother is busy. I can help ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "help 後面是受詞；my mother 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My father is in the car. I can see ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "see 後面要用受格；my father 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The students are noisy. The teacher talks to ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格；the students 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The book is interesting. I read ____ every night.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "read 後面是受詞；the book 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "You are my friend. I trust ____.",
+      "options": ["you", "your", "yours", "me"],
+      "answerIndex": 0,
+      "explanation": "You 的主格和受格都是 you；trust 後面要用受格 you。"
+    },
+    {
+      "prompt": "Mary and I need help. Can you help ____?",
+      "options": ["us", "we", "our", "them"],
+      "answerIndex": 0,
+      "explanation": "help 後面要用受格；Mary and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "Peter has a bike. I ride with ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "with 是介系詞，後面要用受格；Peter 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The cat is cute. I feed ____ every morning.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "feed 後面是受詞；the cat 是單數動物，所以用 it。"
+    },
+    {
+      "prompt": "Anna is at school. I sit next to ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格；Anna 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My friends are coming. I will call ____.",
+      "options": ["them", "they", "their", "we"],
+      "answerIndex": 0,
+      "explanation": "call 後面是受詞；my friends 是複數，所以用 them。"
+    },
+    {
+      "prompt": "I am here. Please listen to ____.",
+      "options": ["me", "I", "my", "mine"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格；I 的受格是 me。"
+    },
+    {
+      "prompt": "Kevin and Sam are on the team. We cheer for ____.",
+      "options": ["them", "they", "their", "him"],
+      "answerIndex": 0,
+      "explanation": "for 是介系詞，後面接受格；Kevin and Sam 是複數，所以用 them。"
+    },
+    {
+      "prompt": "This pencil is mine. Do not lose ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "lose 後面是受詞；this pencil 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "Jenny is my cousin. I visit ____ on Sunday.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "visit 後面是受詞；Jenny 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My uncle is a doctor. I often see ____.",
+      "options": ["him", "he", "his", "she"],
+      "answerIndex": 0,
+      "explanation": "see 後面要用受格；my uncle 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The girls are singing. Listen to ____.",
+      "options": ["them", "they", "their", "she"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面用受格；the girls 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The boys are in the yard. Dad watches ____.",
+      "options": ["them", "they", "their", "he"],
+      "answerIndex": 0,
+      "explanation": "watches 後面是受詞；the boys 是複數，所以用 them。"
+    },
+    {
+      "prompt": "My grandma is cooking. I stand beside ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "beside 是介系詞，後面要用受格；grandma 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My grandpa tells stories. I like ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "like 後面是受詞；grandpa 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The bird is hungry. Please feed ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "feed 後面是受詞；the bird 是單數動物，所以用 it。"
+    },
+    {
+      "prompt": "You are late. We are waiting for ____.",
+      "options": ["you", "your", "yours", "we"],
+      "answerIndex": 0,
+      "explanation": "for 後面要用受格；you 的受格仍是 you。"
+    },
+    {
+      "prompt": "My sister and I need a pencil. Can you give ____ one?",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "give 後面的人要用受格；My sister and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "The teacher is kind. The students like ____.",
+      "options": ["her", "she", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "like 後面是受詞；這裡指女老師，所以用 her。"
+    },
+    {
+      "prompt": "Mr. Lin is my teacher. I talk to ____ after class.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面用受格；Mr. Lin 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The windows are dirty. Please clean ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "clean 後面是受詞；the windows 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The baby is crying. Mom hugs ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "hugs 後面是受詞；不知道 baby 性別時，可用 it。"
+    },
+    {
+      "prompt": "David is from Canada. We like ____.",
+      "options": ["him", "he", "his", "she"],
+      "answerIndex": 0,
+      "explanation": "like 後面是受詞；David 是男生，所以用 him。"
+    },
+    {
+      "prompt": "Helen has two cats. I know ____ well.",
+      "options": ["her", "she", "he", "his"],
+      "answerIndex": 0,
+      "explanation": "know 後面要用受格；Helen 是女生，所以用 her。"
+    },
+    {
+      "prompt": "The chairs are heavy. We move ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "move 後面是受詞；the chairs 是複數，所以用 them。"
+    },
+    {
+      "prompt": "My brother and my sister are outside. I can see ____.",
+      "options": ["them", "they", "their", "us"],
+      "answerIndex": 0,
+      "explanation": "see 後面是受詞；兩個人以上要用 them。"
+    },
+    {
+      "prompt": "Mom and Dad are busy. I help ____.",
+      "options": ["them", "they", "their", "us"],
+      "answerIndex": 0,
+      "explanation": "help 後面要用受格；Mom and Dad 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The computer is old. Dad fixes ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "fixes 後面是受詞；the computer 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "Grace and Tina are friendly. I play with ____.",
+      "options": ["them", "they", "their", "she"],
+      "answerIndex": 0,
+      "explanation": "with 是介系詞，後面用受格；Grace and Tina 是複數，所以用 them。"
+    },
+    {
+      "prompt": "My family and I are hungry. Grandma cooks for ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "for 是介系詞，後面用受格；My family and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "The cake is delicious. We eat ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "eat 後面是受詞；the cake 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "My classmates and I are ready. The teacher calls ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "calls 後面是受詞；My classmates and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "The fish are in the tank. I feed ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "feed 後面是受詞；the fish 這裡是複數，所以用 them。"
+    },
+    {
+      "prompt": "Nina is reading. Please do not bother ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "bother 後面是受詞；Nina 是女生，所以用 her。"
+    },
+    {
+      "prompt": "Leo is washing dishes. Mom thanks ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "thanks 後面是受詞；Leo 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The flowers are pretty. I look at ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "at 是介系詞，後面用受格；the flowers 是複數，所以用 them。"
+    },
+    {
+      "prompt": "My aunt is coming. We wait for ____.",
+      "options": ["her", "she", "he", "his"],
+      "answerIndex": 0,
+      "explanation": "for 後面要用受格；my aunt 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My cousin Ken is funny. Everyone likes ____.",
+      "options": ["him", "he", "his", "she"],
+      "answerIndex": 0,
+      "explanation": "likes 後面是受詞；Ken 是男生，所以用 him。"
+    },
+    {
+      "prompt": "The door is closed. Please open ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "open 後面是受詞；the door 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "Rita and I are on the team. Coach trains ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "trains 後面是受詞；Rita and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "The children are excited. The clown makes ____ laugh.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "makes 後面的人是受詞；the children 是複數，所以用 them。"
+    }
+  ]
+}

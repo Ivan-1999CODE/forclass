@@ -1,0 +1,308 @@
+{
+  "id": "elementary-subject-pronouns-2026-06-12",
+  "title": "國小版｜簡單版｜主格｜2026-06-12",
+  "date": "2026-06-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "Tom is my brother. ____ is ten years old.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "Tom 是男生，而且空格在句子的主詞位置，所以要用主格 He。"
+    },
+    {
+      "prompt": "Lisa is my sister. ____ likes apples.",
+      "options": ["She", "Her", "Hers", "He"],
+      "answerIndex": 0,
+      "explanation": "Lisa 是女生，而且空格當主詞，所以要用主格 She。"
+    },
+    {
+      "prompt": "My dog is small. ____ runs fast.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "My dog 是一隻動物，作主詞時可用 It。"
+    },
+    {
+      "prompt": "Jack and I are classmates. ____ study English.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "Jack and I 包含我自己，作主詞時要用 We。"
+    },
+    {
+      "prompt": "Amy and Ben are friends. ____ play soccer.",
+      "options": ["They", "Them", "Their", "We"],
+      "answerIndex": 0,
+      "explanation": "Amy and Ben 是兩個人，作主詞時要用 They。"
+    },
+    {
+      "prompt": "My mother is a teacher. ____ works at school.",
+      "options": ["She", "Her", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "My mother 是女生，空格是主詞，所以用 She。"
+    },
+    {
+      "prompt": "My father is tall. ____ can swim.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "My father 是男生，作主詞時要用 He。"
+    },
+    {
+      "prompt": "The students are in the classroom. ____ are quiet.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The students 是複數主詞，所以要用 They。"
+    },
+    {
+      "prompt": "The book is on the desk. ____ is new.",
+      "options": ["It", "They", "Its", "Them"],
+      "answerIndex": 0,
+      "explanation": "The book 是單數物品，作主詞時用 It。"
+    },
+    {
+      "prompt": "You and your brother are late. ____ need to hurry.",
+      "options": ["You", "Your", "Yours", "They"],
+      "answerIndex": 0,
+      "explanation": "You 可以表示你們，作主詞時仍然用 You。"
+    },
+    {
+      "prompt": "Mary and I like music. ____ sing every day.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "Mary and I 包含說話者，所以主格用 We。"
+    },
+    {
+      "prompt": "Peter has a bike. ____ rides it to school.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "Peter 是男生，句子主詞要用 He。"
+    },
+    {
+      "prompt": "The cat is under the chair. ____ is sleeping.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The cat 是單數動物，作主詞時可用 It。"
+    },
+    {
+      "prompt": "Anna is happy. ____ has a new pencil.",
+      "options": ["She", "Her", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "Anna 是女生，作主詞時要用 She。"
+    },
+    {
+      "prompt": "My friends are here. ____ want to play.",
+      "options": ["They", "Them", "Their", "We"],
+      "answerIndex": 0,
+      "explanation": "My friends 是複數，主格要用 They。"
+    },
+    {
+      "prompt": "I am hungry. ____ want some bread.",
+      "options": ["I", "Me", "My", "Mine"],
+      "answerIndex": 0,
+      "explanation": "空格在主詞位置，說自己時要用主格 I。"
+    },
+    {
+      "prompt": "Kevin and Sam are brothers. ____ share a room.",
+      "options": ["They", "Them", "Their", "He"],
+      "answerIndex": 0,
+      "explanation": "Kevin and Sam 是兩個人，作主詞時用 They。"
+    },
+    {
+      "prompt": "This pencil is red. ____ is short.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "This pencil 是單數物品，主詞代名詞用 It。"
+    },
+    {
+      "prompt": "Jenny is my cousin. ____ lives in Taipei.",
+      "options": ["She", "Her", "Hers", "He"],
+      "answerIndex": 0,
+      "explanation": "Jenny 是女生，而且空格作主詞，所以用 She。"
+    },
+    {
+      "prompt": "My uncle is a doctor. ____ helps sick people.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "My uncle 是男生，作主詞時要用 He。"
+    },
+    {
+      "prompt": "The girls are in the park. ____ are playing.",
+      "options": ["They", "Them", "Their", "She"],
+      "answerIndex": 0,
+      "explanation": "The girls 是複數，主格要用 They。"
+    },
+    {
+      "prompt": "The boys are noisy. ____ talk a lot.",
+      "options": ["They", "Them", "Their", "He"],
+      "answerIndex": 0,
+      "explanation": "The boys 是複數主詞，所以用 They。"
+    },
+    {
+      "prompt": "My grandma is kind. ____ makes cookies.",
+      "options": ["She", "Her", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "My grandma 是女生，句子主詞用 She。"
+    },
+    {
+      "prompt": "My grandpa is old. ____ walks slowly.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "My grandpa 是男生，作主詞時用 He。"
+    },
+    {
+      "prompt": "The bird is in the tree. ____ can fly.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The bird 是單數動物，作主詞時可用 It。"
+    },
+    {
+      "prompt": "You are my best friend. ____ are nice.",
+      "options": ["You", "Your", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "You 作主詞時仍然寫 You。"
+    },
+    {
+      "prompt": "My sister and I like art. ____ draw pictures.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "My sister and I 包含我自己，所以主格用 We。"
+    },
+    {
+      "prompt": "The teacher is in the office. ____ is busy.",
+      "options": ["She", "Her", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The teacher 在這裡指一位女老師，作主詞時用 She。"
+    },
+    {
+      "prompt": "Mr. Lin is my teacher. ____ teaches math.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "Mr. Lin 是男生稱謂，主格用 He。"
+    },
+    {
+      "prompt": "The windows are open. ____ are big.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The windows 是複數物品，作主詞時用 They。"
+    },
+    {
+      "prompt": "The baby is crying. ____ is hungry.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "不知道 baby 性別時，可以用 It 作主詞。"
+    },
+    {
+      "prompt": "David is from Canada. ____ speaks English.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "David 是男生名字，空格作主詞，所以用 He。"
+    },
+    {
+      "prompt": "Helen has two cats. ____ loves animals.",
+      "options": ["She", "Her", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "Helen 是女生名字，作主詞時用 She。"
+    },
+    {
+      "prompt": "The chairs are blue. ____ are old.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The chairs 是複數物品，主格用 They。"
+    },
+    {
+      "prompt": "My brother and my sister are students. ____ go to school by bus.",
+      "options": ["They", "Them", "Their", "We"],
+      "answerIndex": 0,
+      "explanation": "My brother and my sister 是兩個人，作主詞時用 They。"
+    },
+    {
+      "prompt": "Mom and Dad are at home. ____ are cooking.",
+      "options": ["They", "Them", "Their", "We"],
+      "answerIndex": 0,
+      "explanation": "Mom and Dad 是兩個人，作主詞時要用 They。"
+    },
+    {
+      "prompt": "The computer is on the table. ____ is black.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The computer 是單數物品，所以主格用 It。"
+    },
+    {
+      "prompt": "Grace and Tina are sisters. ____ look alike.",
+      "options": ["They", "Them", "Their", "She"],
+      "answerIndex": 0,
+      "explanation": "Grace and Tina 是兩個女生，複數主詞用 They。"
+    },
+    {
+      "prompt": "My family and I eat dinner together. ____ are happy.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "My family and I 包含我自己，所以主格用 We。"
+    },
+    {
+      "prompt": "The cake is sweet. ____ tastes good.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The cake 是單數物品，作主詞時用 It。"
+    },
+    {
+      "prompt": "My classmates and I are ready. ____ can start now.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "My classmates and I 包含說話者，主格要用 We。"
+    },
+    {
+      "prompt": "The fish are in the pond. ____ swim fast.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The fish 這裡是複數，作主詞時用 They。"
+    },
+    {
+      "prompt": "Nina is in the library. ____ is reading.",
+      "options": ["She", "Her", "Hers", "He"],
+      "answerIndex": 0,
+      "explanation": "Nina 是女生名字，主詞代名詞用 She。"
+    },
+    {
+      "prompt": "Leo is in the kitchen. ____ is washing dishes.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "Leo 是男生名字，作主詞時用 He。"
+    },
+    {
+      "prompt": "The flowers are beautiful. ____ smell good.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The flowers 是複數物品，主格用 They。"
+    },
+    {
+      "prompt": "My aunt is young. ____ has long hair.",
+      "options": ["She", "Her", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "My aunt 是女生，作主詞時要用 She。"
+    },
+    {
+      "prompt": "My cousin Ken is funny. ____ tells jokes.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "Ken 是男生名字，作主詞時用 He。"
+    },
+    {
+      "prompt": "The door is closed. ____ is brown.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The door 是單數物品，主格用 It。"
+    },
+    {
+      "prompt": "Rita and I are on the team. ____ practice after school.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "Rita and I 包含我自己，所以用主格 We。"
+    },
+    {
+      "prompt": "The children are excited. ____ like the game.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The children 是複數，作主詞時用 They。"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "id": "elementary-possessive-adjectives-2026-06-12",
+  "title": "國小版｜簡單版｜所有格｜2026-06-12",
+  "date": "2026-06-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I have a pencil. This is ____ pencil.",
+      "options": ["my", "me", "I", "mine"],
+      "answerIndex": 0,
+      "explanation": "空格後面有名詞 pencil，要用所有格形容詞 my。"
+    },
+    {
+      "prompt": "You have a bag. This is ____ bag.",
+      "options": ["your", "you", "yours", "me"],
+      "answerIndex": 0,
+      "explanation": "空格後面有名詞 bag，要用所有格形容詞 your。"
+    },
+    {
+      "prompt": "Tom has a bike. This is ____ bike.",
+      "options": ["his", "him", "he", "her"],
+      "answerIndex": 0,
+      "explanation": "Tom 是男生，後面有名詞 bike，所以用所有格 his。"
+    },
+    {
+      "prompt": "Lisa has a doll. This is ____ doll.",
+      "options": ["her", "she", "hers", "his"],
+      "answerIndex": 0,
+      "explanation": "Lisa 是女生，後面有名詞 doll，所以用所有格 her。"
+    },
+    {
+      "prompt": "The dog has a ball. This is ____ ball.",
+      "options": ["its", "it", "they", "their"],
+      "answerIndex": 0,
+      "explanation": "The dog 是單數動物，表示牠的球要用 its。"
+    },
+    {
+      "prompt": "We have a classroom. This is ____ classroom.",
+      "options": ["our", "us", "we", "their"],
+      "answerIndex": 0,
+      "explanation": "We 的所有格形容詞是 our，後面接名詞 classroom。"
+    },
+    {
+      "prompt": "They have a house. This is ____ house.",
+      "options": ["their", "they", "them", "our"],
+      "answerIndex": 0,
+      "explanation": "They 的所有格形容詞是 their，後面接名詞 house。"
+    },
+    {
+      "prompt": "My mother has a car. This is ____ car.",
+      "options": ["her", "she", "hers", "his"],
+      "answerIndex": 0,
+      "explanation": "My mother 是女生，表示她的車要用 her car。"
+    },
+    {
+      "prompt": "My father has a hat. This is ____ hat.",
+      "options": ["his", "he", "him", "her"],
+      "answerIndex": 0,
+      "explanation": "My father 是男生，表示他的帽子要用 his hat。"
+    },
+    {
+      "prompt": "The students have books. These are ____ books.",
+      "options": ["their", "they", "them", "our"],
+      "answerIndex": 0,
+      "explanation": "The students 是複數，表示他們的書要用 their books。"
+    },
+    {
+      "prompt": "I have a brother. ____ brother is tall.",
+      "options": ["My", "Me", "I", "Mine"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 brother，要用所有格形容詞 My。"
+    },
+    {
+      "prompt": "You have a sister. ____ sister is nice.",
+      "options": ["Your", "You", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 sister，You 的所有格形容詞是 Your。"
+    },
+    {
+      "prompt": "Peter has a new watch. ____ watch is blue.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "Peter 是男生，表示他的手錶要用 His watch。"
+    },
+    {
+      "prompt": "Anna has a red dress. ____ dress is pretty.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "Anna 是女生，表示她的洋裝要用 Her dress。"
+    },
+    {
+      "prompt": "The cat has a long tail. ____ tail is black.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The cat 是單數動物，表示牠的尾巴要用 Its tail。"
+    },
+    {
+      "prompt": "We have a teacher. ____ teacher is kind.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "We 的所有格形容詞是 Our，後面接 teacher。"
+    },
+    {
+      "prompt": "They have two dogs. ____ dogs are cute.",
+      "options": ["Their", "They", "Them", "Our"],
+      "answerIndex": 0,
+      "explanation": "They 的所有格形容詞是 Their，後面接 dogs。"
+    },
+    {
+      "prompt": "I have a desk. ____ desk is clean.",
+      "options": ["My", "Me", "I", "Mine"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 desk，要用 My。"
+    },
+    {
+      "prompt": "You have a notebook. ____ notebook is new.",
+      "options": ["Your", "You", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 notebook，要用 Your。"
+    },
+    {
+      "prompt": "Kevin has a basketball. ____ basketball is orange.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "Kevin 是男生，表示他的籃球要用 His basketball。"
+    },
+    {
+      "prompt": "Mary has a cat. ____ cat is white.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "Mary 是女生，表示她的貓要用 Her cat。"
+    },
+    {
+      "prompt": "The bird has a nest. ____ nest is in the tree.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The bird 是單數動物，表示牠的巢要用 Its nest。"
+    },
+    {
+      "prompt": "We have lunch boxes. ____ lunch boxes are on the table.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "We 的所有格形容詞是 Our，後面接 lunch boxes。"
+    },
+    {
+      "prompt": "The boys have bikes. ____ bikes are fast.",
+      "options": ["Their", "They", "Them", "His"],
+      "answerIndex": 0,
+      "explanation": "The boys 是複數，表示他們的腳踏車要用 Their bikes。"
+    },
+    {
+      "prompt": "The girls have flowers. ____ flowers are yellow.",
+      "options": ["Their", "They", "Them", "Her"],
+      "answerIndex": 0,
+      "explanation": "The girls 是複數，表示她們的花要用 Their flowers。"
+    },
+    {
+      "prompt": "My grandma has glasses. ____ glasses are on the desk.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "My grandma 是女生，表示她的眼鏡要用 Her glasses。"
+    },
+    {
+      "prompt": "My grandpa has a chair. ____ chair is old.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "My grandpa 是男生，表示他的椅子要用 His chair。"
+    },
+    {
+      "prompt": "The baby has a toy. ____ toy is small.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "不知道 baby 性別時，可用 its 表示他或她的玩具。"
+    },
+    {
+      "prompt": "David has a brother. ____ brother is funny.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "David 是男生，表示他的哥哥或弟弟要用 His brother。"
+    },
+    {
+      "prompt": "Helen has a pencil case. ____ pencil case is pink.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "Helen 是女生，表示她的鉛筆盒要用 Her pencil case。"
+    },
+    {
+      "prompt": "My brother and I have a room. ____ room is big.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "My brother and I 包含我，表示我們的房間要用 Our room。"
+    },
+    {
+      "prompt": "Mom and Dad have a garden. ____ garden is beautiful.",
+      "options": ["Their", "They", "Them", "Our"],
+      "answerIndex": 0,
+      "explanation": "Mom and Dad 是兩個人，表示他們的花園要用 Their garden。"
+    },
+    {
+      "prompt": "The computer has a screen. ____ screen is large.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The computer 是單數物品，表示它的螢幕要用 Its screen。"
+    },
+    {
+      "prompt": "Grace and Tina have a room. ____ room is tidy.",
+      "options": ["Their", "They", "Them", "Her"],
+      "answerIndex": 0,
+      "explanation": "Grace and Tina 是兩個人，表示她們的房間要用 Their room。"
+    },
+    {
+      "prompt": "My family has a car. ____ car is gray.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "從說話者角度說 my family，表示我們家的車可用 Our car。"
+    },
+    {
+      "prompt": "The cake has candles. ____ candles are colorful.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The cake 是單數物品，表示蛋糕上的蠟燭可用 Its candles。"
+    },
+    {
+      "prompt": "My classmates and I have a project. ____ project is about animals.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "My classmates and I 包含我，所以表示我們的專題要用 Our project。"
+    },
+    {
+      "prompt": "The fish have food. ____ food is in the water.",
+      "options": ["Their", "They", "Them", "Its"],
+      "answerIndex": 0,
+      "explanation": "The fish 這裡是複數，表示牠們的食物要用 Their food。"
+    },
+    {
+      "prompt": "Nina has a book. ____ book is interesting.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "Nina 是女生，表示她的書要用 Her book。"
+    },
+    {
+      "prompt": "Leo has a camera. ____ camera is expensive.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "Leo 是男生，表示他的相機要用 His camera。"
+    },
+    {
+      "prompt": "The flowers have leaves. ____ leaves are green.",
+      "options": ["Their", "They", "Them", "Its"],
+      "answerIndex": 0,
+      "explanation": "The flowers 是複數，表示它們的葉子要用 Their leaves。"
+    },
+    {
+      "prompt": "My aunt has a phone. ____ phone is new.",
+      "options": ["Her", "She", "He", "His"],
+      "answerIndex": 0,
+      "explanation": "My aunt 是女生，表示她的手機要用 Her phone。"
+    },
+    {
+      "prompt": "My cousin Ken has a kite. ____ kite is high in the sky.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "Ken 是男生，表示他的風箏要用 His kite。"
+    },
+    {
+      "prompt": "The door has a handle. ____ handle is broken.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The door 是單數物品，表示它的把手要用 Its handle。"
+    },
+    {
+      "prompt": "Rita and I have a coach. ____ coach is strict.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "Rita and I 包含我，表示我們的教練要用 Our coach。"
+    },
+    {
+      "prompt": "The children have toys. ____ toys are on the floor.",
+      "options": ["Their", "They", "Them", "Its"],
+      "answerIndex": 0,
+      "explanation": "The children 是複數，表示他們的玩具要用 Their toys。"
+    },
+    {
+      "prompt": "I have a schoolbag. ____ schoolbag is heavy.",
+      "options": ["My", "Me", "I", "Mine"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 schoolbag，I 的所有格形容詞是 My。"
+    },
+    {
+      "prompt": "You have a name card. ____ name card is on the desk.",
+      "options": ["Your", "You", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "後面有名詞 name card，所以要用 Your。"
+    },
+    {
+      "prompt": "The school has a playground. ____ playground is big.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "The school 是單數事物，表示學校的操場可用 Its playground。"
+    },
+    {
+      "prompt": "The teachers have an office. ____ office is on the second floor.",
+      "options": ["Their", "They", "Them", "Our"],
+      "answerIndex": 0,
+      "explanation": "The teachers 是複數，表示老師們的辦公室要用 Their office。"
+    }
+  ]
+}

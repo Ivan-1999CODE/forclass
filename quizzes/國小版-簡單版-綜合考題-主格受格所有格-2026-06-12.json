@@ -1,0 +1,308 @@
+{
+  "id": "elementary-subject-object-possessive-mixed-2026-06-12",
+  "title": "國小版｜簡單版｜綜合考題：主格、受格、所有格｜2026-06-12",
+  "date": "2026-06-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "Tom is my friend. ____ plays basketball.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "空格在句子的主詞位置，Tom 是男生，所以用主格 He。"
+    },
+    {
+      "prompt": "Tom is my friend. I like ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "like 後面是受詞位置，Tom 是男生，所以用受格 him。"
+    },
+    {
+      "prompt": "Tom has a ball. This is ____ ball.",
+      "options": ["his", "him", "he", "her"],
+      "answerIndex": 0,
+      "explanation": "ball 前面要放所有格形容詞；Tom 是男生，所以用 his。"
+    },
+    {
+      "prompt": "Lisa is my sister. ____ is kind.",
+      "options": ["She", "Her", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "空格是主詞，Lisa 是女生，所以用主格 She。"
+    },
+    {
+      "prompt": "Lisa is kind. We help ____.",
+      "options": ["her", "she", "hers", "his"],
+      "answerIndex": 0,
+      "explanation": "help 後面是受詞，Lisa 是女生，所以用 her。"
+    },
+    {
+      "prompt": "Lisa has a bag. ____ bag is pink.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "bag 前面要用所有格形容詞；Lisa 是女生，所以用 Her。"
+    },
+    {
+      "prompt": "My dog is small. ____ runs fast.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "My dog 是單數動物，空格當主詞，所以用 It。"
+    },
+    {
+      "prompt": "My dog is hungry. I feed ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "feed 後面是受詞，my dog 是單數動物，所以用 it。"
+    },
+    {
+      "prompt": "The dog has a bed. ____ bed is soft.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "bed 前面要用所有格形容詞；the dog 是單數動物，所以用 Its。"
+    },
+    {
+      "prompt": "Jack and I are classmates. ____ study together.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "Jack and I 包含我自己，當主詞時用 We。"
+    },
+    {
+      "prompt": "Jack and I need help. Please help ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "help 後面是受詞；Jack and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "Jack and I have a project. ____ project is good.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "project 前要用所有格形容詞；Jack and I 包含我，所以用 Our。"
+    },
+    {
+      "prompt": "Amy and Ben are friends. ____ are in the park.",
+      "options": ["They", "Them", "Their", "We"],
+      "answerIndex": 0,
+      "explanation": "Amy and Ben 是複數主詞，所以用 They。"
+    },
+    {
+      "prompt": "Amy and Ben are outside. I can see ____.",
+      "options": ["them", "they", "their", "we"],
+      "answerIndex": 0,
+      "explanation": "see 後面是受詞，Amy and Ben 是複數，所以用 them。"
+    },
+    {
+      "prompt": "Amy and Ben have bikes. ____ bikes are new.",
+      "options": ["Their", "They", "Them", "Our"],
+      "answerIndex": 0,
+      "explanation": "bikes 前面要用所有格形容詞；Amy and Ben 是複數，所以用 Their。"
+    },
+    {
+      "prompt": "I am hungry. ____ want noodles.",
+      "options": ["I", "Me", "My", "Mine"],
+      "answerIndex": 0,
+      "explanation": "空格在主詞位置，說自己要用 I。"
+    },
+    {
+      "prompt": "I am here. Please listen to ____.",
+      "options": ["me", "I", "my", "mine"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格 me。"
+    },
+    {
+      "prompt": "I have a pencil. This is ____ pencil.",
+      "options": ["my", "me", "I", "mine"],
+      "answerIndex": 0,
+      "explanation": "pencil 前面要用所有格形容詞 my。"
+    },
+    {
+      "prompt": "You are my friend. ____ are nice.",
+      "options": ["You", "Your", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "You 作主詞時仍然是 You。"
+    },
+    {
+      "prompt": "You are late. We are waiting for ____.",
+      "options": ["you", "your", "yours", "we"],
+      "answerIndex": 0,
+      "explanation": "for 後面要用受格；you 的受格仍是 you。"
+    },
+    {
+      "prompt": "You have a notebook. ____ notebook is new.",
+      "options": ["Your", "You", "Yours", "Me"],
+      "answerIndex": 0,
+      "explanation": "notebook 前面要用所有格形容詞 Your。"
+    },
+    {
+      "prompt": "My mother is a teacher. ____ works at school.",
+      "options": ["She", "Her", "Hers", "He"],
+      "answerIndex": 0,
+      "explanation": "My mother 是女生，空格作主詞，所以用 She。"
+    },
+    {
+      "prompt": "My mother is busy. I help ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "help 後面是受詞，my mother 是女生，所以用 her。"
+    },
+    {
+      "prompt": "My mother has a car. ____ car is white.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "car 前面要用所有格形容詞；my mother 是女生，所以用 Her。"
+    },
+    {
+      "prompt": "My father is tall. ____ can swim.",
+      "options": ["He", "Him", "His", "She"],
+      "answerIndex": 0,
+      "explanation": "My father 是男生，空格作主詞，所以用 He。"
+    },
+    {
+      "prompt": "My father is in the kitchen. I see ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "see 後面是受詞，my father 是男生，所以用 him。"
+    },
+    {
+      "prompt": "My father has a watch. ____ watch is black.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "watch 前面要用所有格形容詞；my father 是男生，所以用 His。"
+    },
+    {
+      "prompt": "The students are quiet. ____ are reading.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The students 是複數主詞，所以用 They。"
+    },
+    {
+      "prompt": "The students need help. The teacher helps ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "helps 後面是受詞，the students 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The students have books. ____ books are on the desk.",
+      "options": ["Their", "They", "Them", "Our"],
+      "answerIndex": 0,
+      "explanation": "books 前面要用所有格形容詞；the students 是複數，所以用 Their。"
+    },
+    {
+      "prompt": "The book is on the desk. ____ is old.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The book 是單數物品，空格作主詞，所以用 It。"
+    },
+    {
+      "prompt": "The book is interesting. I read ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "read 後面是受詞，the book 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "The book has pictures. ____ pictures are colorful.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "pictures 前面要用所有格形容詞；the book 是單數物品，所以用 Its。"
+    },
+    {
+      "prompt": "Mary and I like music. ____ sing every day.",
+      "options": ["We", "Us", "Our", "They"],
+      "answerIndex": 0,
+      "explanation": "Mary and I 包含我，作主詞時用 We。"
+    },
+    {
+      "prompt": "Mary and I are here. Dad calls ____.",
+      "options": ["us", "we", "our", "they"],
+      "answerIndex": 0,
+      "explanation": "calls 後面是受詞；Mary and I 包含我，所以用 us。"
+    },
+    {
+      "prompt": "Mary and I have a song. ____ song is short.",
+      "options": ["Our", "Us", "We", "Their"],
+      "answerIndex": 0,
+      "explanation": "song 前面要用所有格形容詞；Mary and I 包含我，所以用 Our。"
+    },
+    {
+      "prompt": "Peter has a bike. ____ rides it to school.",
+      "options": ["He", "Him", "His", "Her"],
+      "answerIndex": 0,
+      "explanation": "Peter 是男生，空格作主詞，所以用 He。"
+    },
+    {
+      "prompt": "Peter is my classmate. I sit next to ____.",
+      "options": ["him", "he", "his", "her"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格；Peter 是男生，所以用 him。"
+    },
+    {
+      "prompt": "Peter has a kite. ____ kite is high.",
+      "options": ["His", "He", "Him", "Her"],
+      "answerIndex": 0,
+      "explanation": "kite 前面要用所有格形容詞；Peter 是男生，所以用 His。"
+    },
+    {
+      "prompt": "Anna is happy. ____ has a new pencil.",
+      "options": ["She", "Her", "Hers", "He"],
+      "answerIndex": 0,
+      "explanation": "Anna 是女生，空格作主詞，所以用 She。"
+    },
+    {
+      "prompt": "Anna is my cousin. I visit ____.",
+      "options": ["her", "she", "hers", "he"],
+      "answerIndex": 0,
+      "explanation": "visit 後面是受詞，Anna 是女生，所以用 her。"
+    },
+    {
+      "prompt": "Anna has a red dress. ____ dress is pretty.",
+      "options": ["Her", "She", "Hers", "His"],
+      "answerIndex": 0,
+      "explanation": "dress 前面要用所有格形容詞；Anna 是女生，所以用 Her。"
+    },
+    {
+      "prompt": "The girls are in the park. ____ are playing.",
+      "options": ["They", "Them", "Their", "She"],
+      "answerIndex": 0,
+      "explanation": "The girls 是複數主詞，所以用 They。"
+    },
+    {
+      "prompt": "The girls are singing. Listen to ____.",
+      "options": ["them", "they", "their", "she"],
+      "answerIndex": 0,
+      "explanation": "to 是介系詞，後面要用受格；the girls 是複數，所以用 them。"
+    },
+    {
+      "prompt": "The girls have flowers. ____ flowers are yellow.",
+      "options": ["Their", "They", "Them", "Her"],
+      "answerIndex": 0,
+      "explanation": "flowers 前面要用所有格形容詞；the girls 是複數，所以用 Their。"
+    },
+    {
+      "prompt": "The computer is on the table. ____ is black.",
+      "options": ["It", "Its", "They", "Them"],
+      "answerIndex": 0,
+      "explanation": "The computer 是單數物品，作主詞時用 It。"
+    },
+    {
+      "prompt": "The computer is broken. Dad fixes ____.",
+      "options": ["it", "its", "they", "them"],
+      "answerIndex": 0,
+      "explanation": "fixes 後面是受詞，the computer 是單數物品，所以用 it。"
+    },
+    {
+      "prompt": "The computer has a screen. ____ screen is large.",
+      "options": ["Its", "It", "They", "Their"],
+      "answerIndex": 0,
+      "explanation": "screen 前面要用所有格形容詞；the computer 是單數物品，所以用 Its。"
+    },
+    {
+      "prompt": "The children are excited. ____ like the game.",
+      "options": ["They", "Them", "Their", "It"],
+      "answerIndex": 0,
+      "explanation": "The children 是複數主詞，所以用 They。"
+    },
+    {
+      "prompt": "The children are excited. The teacher watches ____.",
+      "options": ["them", "they", "their", "it"],
+      "answerIndex": 0,
+      "explanation": "watches 後面是受詞，the children 是複數，所以用 them。"
+    }
+  ]
+}
