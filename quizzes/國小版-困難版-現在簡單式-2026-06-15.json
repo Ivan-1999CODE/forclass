@@ -1,0 +1,308 @@
+{
+  "id": "國小版-困難版-現在簡單式-2026-06-15",
+  "title": "國小版｜困難版｜現在簡單式｜2026-06-15",
+  "date": "2026-06-15",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "____ you like apples?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；主詞 you 用 Do。"
+    },
+    {
+      "prompt": "____ she go to school by bus?",
+      "options": ["Do", "Does", "Did", "Is"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；she 是第三人稱單數，用 Does，後面 go 用原形。"
+    },
+    {
+      "prompt": "He ____ not eat meat.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；He 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "They ____ not like carrots.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式否定句；They 是複數，用 do not。"
+    },
+    {
+      "prompt": "Does Tom ____ soccer every day?",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 play。"
+    },
+    {
+      "prompt": "____ the students study English?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；the students 是複數，用 Do。"
+    },
+    {
+      "prompt": "My father ____ not drink coffee.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；My father 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "Do they ____ in this house?",
+      "options": ["live", "lives", "lived", "living"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的主要動詞要用原形，所以選 live。"
+    },
+    {
+      "prompt": "____ your brother play the piano?",
+      "options": ["Do", "Does", "Are", "Is"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；your brother 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "She does not ____ TV at night.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "does not 後面的主要動詞要用原形，所以選 watch。"
+    },
+    {
+      "prompt": "We ____ not go to school on Sunday.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式否定句；We 是複數，用 do not。"
+    },
+    {
+      "prompt": "Does she ____ her room every day?",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 clean。"
+    },
+    {
+      "prompt": "____ Tom and Mary like ice cream?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；Tom and Mary 是複數，用 Do。"
+    },
+    {
+      "prompt": "The dog ____ not like cats.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；The dog 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "Do you ____ breakfast every morning?",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的主要動詞要用原形，所以選 eat。"
+    },
+    {
+      "prompt": "____ Anna wash her hands before lunch?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；Anna 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "He does not ____ his homework.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 0,
+      "explanation": "does not 後面的主要動詞要用原形，所以選 do。"
+    },
+    {
+      "prompt": "____ the children play in the park?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；the children 是複數，用 Do。"
+    },
+    {
+      "prompt": "My sister ____ not eat fish.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；My sister 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "Does your mother ____ dinner every night?",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 cook。"
+    },
+    {
+      "prompt": "____ we have class on Monday?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；主詞 we 用 Do。"
+    },
+    {
+      "prompt": "She ____ to school every day.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；She 是第三人稱單數，go 要變 goes。"
+    },
+    {
+      "prompt": "Do the boys ____ basketball after school?",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的主要動詞要用原形，所以選 play。"
+    },
+    {
+      "prompt": "____ he study math every day?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；he 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "They do not ____ vegetables.",
+      "options": ["like", "likes", "liked", "liking"],
+      "answerIndex": 0,
+      "explanation": "do not 後面的主要動詞要用原形，所以選 like。"
+    },
+    {
+      "prompt": "____ your friends live near the school?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；your friends 是複數，用 Do。"
+    },
+    {
+      "prompt": "My brother ____ his teeth every morning.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；My brother 是第三人稱單數，brush 要變 brushes。"
+    },
+    {
+      "prompt": "Does the baby ____ a lot at night?",
+      "options": ["cry", "cries", "cried", "crying"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 cry。"
+    },
+    {
+      "prompt": "We do not ____ TV in the morning.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "do not 後面的主要動詞要用原形，所以選 watch。"
+    },
+    {
+      "prompt": "____ Lucy ride her bike on Sundays?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；Lucy 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "The students ____ not have class today.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式否定句；The students 是複數，用 do not。"
+    },
+    {
+      "prompt": "Does he ____ to music every evening?",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 listen。"
+    },
+    {
+      "prompt": "____ you do your homework every day?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；主詞 you 用 Do。"
+    },
+    {
+      "prompt": "She ____ not like hot dogs.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；She 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "Do they ____ English at school?",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的主要動詞要用原形，所以選 study。"
+    },
+    {
+      "prompt": "____ the cat sleep all day?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；the cat 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "He ____ his car every weekend.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 1,
+      "explanation": "every weekend 表示現在簡單式；He 是第三人稱單數，wash 要變 washes。"
+    },
+    {
+      "prompt": "We do not ____ to school by bus.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 0,
+      "explanation": "do not 後面的主要動詞要用原形，所以選 go。"
+    },
+    {
+      "prompt": "____ your sister help you with homework?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；your sister 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "My parents ____ not work on Sunday.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式否定句；My parents 是複數，用 do not。"
+    },
+    {
+      "prompt": "Does Mr. Lin ____ the bus to work?",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 take。"
+    },
+    {
+      "prompt": "____ the girls sing in the class?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式問句；the girls 是複數，用 Do。"
+    },
+    {
+      "prompt": "She does not ____ vegetables.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "does not 後面的主要動詞要用原形，所以選 eat。"
+    },
+    {
+      "prompt": "____ he like dogs?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；he 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "They ____ their homework every evening.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 0,
+      "explanation": "every evening 表示現在簡單式；They 是複數，用原形 do。"
+    },
+    {
+      "prompt": "Does your father ____ a car?",
+      "options": ["drive", "drives", "drove", "driving"],
+      "answerIndex": 0,
+      "explanation": "Does 後面的主要動詞要用原形，所以選 drive。"
+    },
+    {
+      "prompt": "We ____ not watch TV before dinner.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 0,
+      "explanation": "現在簡單式否定句；We 是複數，用 do not。"
+    },
+    {
+      "prompt": "____ Anna study every night?",
+      "options": ["Do", "Does", "Is", "Are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式問句；Anna 是第三人稱單數，用 Does。"
+    },
+    {
+      "prompt": "The teacher ____ not give homework on Friday.",
+      "options": ["do", "does", "is", "are"],
+      "answerIndex": 1,
+      "explanation": "現在簡單式否定句；The teacher 是第三人稱單數，用 does not。"
+    },
+    {
+      "prompt": "Do the children ____ early on school days?",
+      "options": ["get up", "gets up", "got up", "getting up"],
+      "answerIndex": 0,
+      "explanation": "Do 後面的主要動詞要用原形，所以選 get up。"
+    }
+  ]
+}

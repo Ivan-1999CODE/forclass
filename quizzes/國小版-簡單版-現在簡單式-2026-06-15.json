@@ -1,0 +1,308 @@
+{
+  "id": "國小版-簡單版-現在簡單式-2026-06-15",
+  "title": "國小版｜簡單版｜現在簡單式｜2026-06-15",
+  "date": "2026-06-15",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "I ____ soccer every day.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；I 搭配動詞原形，所以用 play。"
+    },
+    {
+      "prompt": "She ____ to school every morning.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；She 是第三人稱單數，go 要變 goes。"
+    },
+    {
+      "prompt": "We ____ in the park every weekend.",
+      "options": ["walks", "walked", "walk", "walking"],
+      "answerIndex": 2,
+      "explanation": "every weekend 表示現在簡單式；We 搭配動詞原形，所以用 walk。"
+    },
+    {
+      "prompt": "He ____ milk every morning.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；He 是第三人稱單數，所以用 drinks。"
+    },
+    {
+      "prompt": "They ____ their room every Saturday.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "every Saturday 表示現在簡單式；They 是複數，搭配動詞原形 clean。"
+    },
+    {
+      "prompt": "My mother ____ dinner every night.",
+      "options": ["cook", "cooks", "cooked", "cooking"],
+      "answerIndex": 1,
+      "explanation": "every night 表示現在簡單式；My mother 是第三人稱單數，所以用 cooks。"
+    },
+    {
+      "prompt": "The students ____ English every day.",
+      "options": ["study", "studies", "studied", "studying"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；The students 是複數，搭配動詞原形 study。"
+    },
+    {
+      "prompt": "Anna ____ her hands before lunch.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 1,
+      "explanation": "這是每天的習慣（現在簡單式）；Anna 是第三人稱單數，wash 要變 washes。"
+    },
+    {
+      "prompt": "You ____ TV every evening.",
+      "options": ["watch", "watches", "watched", "watching"],
+      "answerIndex": 0,
+      "explanation": "every evening 表示現在簡單式；You 搭配動詞原形，所以用 watch。"
+    },
+    {
+      "prompt": "Tom ____ his bike on Sundays.",
+      "options": ["ride", "rides", "rode", "riding"],
+      "answerIndex": 1,
+      "explanation": "on Sundays 表示現在簡單式的習慣；Tom 是第三人稱單數，所以用 rides。"
+    },
+    {
+      "prompt": "The birds ____ every morning.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "every morning 表示現在簡單式；The birds 是複數，搭配動詞原形 sing。"
+    },
+    {
+      "prompt": "My father ____ to work every day.",
+      "options": ["drive", "drives", "drove", "driving"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；My father 是第三人稱單數，所以用 drives。"
+    },
+    {
+      "prompt": "I ____ my teeth every night.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 0,
+      "explanation": "every night 表示現在簡單式；I 搭配動詞原形，所以用 brush。"
+    },
+    {
+      "prompt": "She ____ pictures every day.",
+      "options": ["draw", "draws", "drew", "drawing"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；She 是第三人稱單數，所以用 draws。"
+    },
+    {
+      "prompt": "We ____ lunch at noon every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；We 搭配動詞原形，所以用 eat。"
+    },
+    {
+      "prompt": "He ____ his homework every evening.",
+      "options": ["do", "does", "did", "doing"],
+      "answerIndex": 1,
+      "explanation": "every evening 表示現在簡單式；He 是第三人稱單數，do 要變 does。"
+    },
+    {
+      "prompt": "The dog ____ in the yard every day.",
+      "options": ["run", "runs", "ran", "running"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；The dog 是第三人稱單數，所以用 runs。"
+    },
+    {
+      "prompt": "They ____ songs in class every Friday.",
+      "options": ["sing", "sings", "sang", "singing"],
+      "answerIndex": 0,
+      "explanation": "every Friday 表示現在簡單式；They 是複數，搭配動詞原形 sing。"
+    },
+    {
+      "prompt": "My sister ____ the piano every day.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；My sister 是第三人稱單數，所以用 plays。"
+    },
+    {
+      "prompt": "You ____ very fast.",
+      "options": ["swim", "swims", "swam", "swimming"],
+      "answerIndex": 0,
+      "explanation": "敘述平常的能力或習慣（現在簡單式）；You 搭配動詞原形，所以用 swim。"
+    },
+    {
+      "prompt": "The teacher ____ the door every morning.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；The teacher 是第三人稱單數，所以用 opens。"
+    },
+    {
+      "prompt": "I ____ my friends every weekend.",
+      "options": ["help", "helps", "helped", "helping"],
+      "answerIndex": 0,
+      "explanation": "every weekend 表示現在簡單式；I 搭配動詞原形，所以用 help。"
+    },
+    {
+      "prompt": "She ____ her grandma every Sunday.",
+      "options": ["visit", "visits", "visited", "visiting"],
+      "answerIndex": 1,
+      "explanation": "every Sunday 表示現在簡單式；She 是第三人稱單數，所以用 visits。"
+    },
+    {
+      "prompt": "We ____ water every day.",
+      "options": ["drink", "drinks", "drank", "drinking"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；We 搭配動詞原形，所以用 drink。"
+    },
+    {
+      "prompt": "The baby ____ every night.",
+      "options": ["cry", "cries", "cried", "crying"],
+      "answerIndex": 1,
+      "explanation": "every night 表示現在簡單式；The baby 是第三人稱單數，cry 結尾是子音加 y，要變 cries。"
+    },
+    {
+      "prompt": "He ____ his car on weekends.",
+      "options": ["wash", "washes", "washed", "washing"],
+      "answerIndex": 1,
+      "explanation": "on weekends 表示現在簡單式的習慣；He 是第三人稱單數，wash 要變 washes。"
+    },
+    {
+      "prompt": "Birds ____ in the sky.",
+      "options": ["fly", "flies", "flew", "flying"],
+      "answerIndex": 0,
+      "explanation": "敘述常態的事實（現在簡單式）；Birds 是複數，搭配動詞原形 fly。"
+    },
+    {
+      "prompt": "My brother ____ basketball every day.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；My brother 是第三人稱單數，所以用 plays。"
+    },
+    {
+      "prompt": "I always ____ early.",
+      "options": ["wake", "wakes", "woke", "waking"],
+      "answerIndex": 0,
+      "explanation": "always 表示現在簡單式的習慣；I 搭配動詞原形，所以用 wake。"
+    },
+    {
+      "prompt": "The sun ____ in the east.",
+      "options": ["rise", "rises", "rose", "rising"],
+      "answerIndex": 1,
+      "explanation": "敘述不變的事實（現在簡單式）；The sun 是第三人稱單數，所以用 rises。"
+    },
+    {
+      "prompt": "We ____ home at five every day.",
+      "options": ["come", "comes", "came", "coming"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；We 搭配動詞原形，所以用 come。"
+    },
+    {
+      "prompt": "She usually ____ a sandwich for lunch.",
+      "options": ["make", "makes", "made", "making"],
+      "answerIndex": 1,
+      "explanation": "usually 表示現在簡單式的習慣；She 是第三人稱單數，所以用 makes。"
+    },
+    {
+      "prompt": "They ____ in a big house.",
+      "options": ["live", "lives", "lived", "living"],
+      "answerIndex": 0,
+      "explanation": "敘述現在的狀態（現在簡單式）；They 是複數，搭配動詞原形 live。"
+    },
+    {
+      "prompt": "My cat ____ fish very much.",
+      "options": ["like", "likes", "liked", "liking"],
+      "answerIndex": 1,
+      "explanation": "敘述現在的喜好（現在簡單式）；My cat 是第三人稱單數，所以用 likes。"
+    },
+    {
+      "prompt": "You ____ nice pictures.",
+      "options": ["draw", "draws", "drew", "drawing"],
+      "answerIndex": 0,
+      "explanation": "敘述平常的習慣或能力（現在簡單式）；You 搭配動詞原形，所以用 draw。"
+    },
+    {
+      "prompt": "He ____ his teeth twice a day.",
+      "options": ["brush", "brushes", "brushed", "brushing"],
+      "answerIndex": 1,
+      "explanation": "twice a day 表示現在簡單式的習慣；He 是第三人稱單數，brush 要變 brushes。"
+    },
+    {
+      "prompt": "We ____ to music every evening.",
+      "options": ["listen", "listens", "listened", "listening"],
+      "answerIndex": 0,
+      "explanation": "every evening 表示現在簡單式；We 搭配動詞原形，所以用 listen。"
+    },
+    {
+      "prompt": "The girl ____ to school by bus.",
+      "options": ["go", "goes", "went", "going"],
+      "answerIndex": 1,
+      "explanation": "敘述每天的習慣（現在簡單式）；The girl 是第三人稱單數，go 要變 goes。"
+    },
+    {
+      "prompt": "I ____ my room every weekend.",
+      "options": ["clean", "cleans", "cleaned", "cleaning"],
+      "answerIndex": 0,
+      "explanation": "every weekend 表示現在簡單式；I 搭配動詞原形，所以用 clean。"
+    },
+    {
+      "prompt": "Lucy ____ tennis every Sunday.",
+      "options": ["play", "plays", "played", "playing"],
+      "answerIndex": 1,
+      "explanation": "every Sunday 表示現在簡單式；Lucy 是第三人稱單數，所以用 plays。"
+    },
+    {
+      "prompt": "They ____ vegetables every day.",
+      "options": ["eat", "eats", "ate", "eating"],
+      "answerIndex": 0,
+      "explanation": "every day 表示現在簡單式；They 是複數，搭配動詞原形 eat。"
+    },
+    {
+      "prompt": "My dog ____ very loudly.",
+      "options": ["bark", "barks", "barked", "barking"],
+      "answerIndex": 1,
+      "explanation": "敘述常態的習慣（現在簡單式）；My dog 是第三人稱單數，所以用 barks。"
+    },
+    {
+      "prompt": "We ____ English and math at school.",
+      "options": ["learn", "learns", "learned", "learning"],
+      "answerIndex": 0,
+      "explanation": "敘述平常在學校的事（現在簡單式）；We 搭配動詞原形，所以用 learn。"
+    },
+    {
+      "prompt": "She ____ flowers every morning.",
+      "options": ["water", "waters", "watered", "watering"],
+      "answerIndex": 1,
+      "explanation": "every morning 表示現在簡單式；She 是第三人稱單數，所以用 waters。"
+    },
+    {
+      "prompt": "The children ____ in the playground.",
+      "options": ["jump", "jumps", "jumped", "jumping"],
+      "answerIndex": 0,
+      "explanation": "敘述常態的活動（現在簡單式）；The children 是複數，搭配動詞原形 jump。"
+    },
+    {
+      "prompt": "He ____ a letter to his friend every month.",
+      "options": ["write", "writes", "wrote", "writing"],
+      "answerIndex": 1,
+      "explanation": "every month 表示現在簡單式；He 是第三人稱單數，所以用 writes。"
+    },
+    {
+      "prompt": "I ____ my homework after school.",
+      "options": ["finish", "finishes", "finished", "finishing"],
+      "answerIndex": 0,
+      "explanation": "敘述每天的習慣（現在簡單式）；I 搭配動詞原形，所以用 finish。"
+    },
+    {
+      "prompt": "Mr. Lin ____ the bus to work.",
+      "options": ["take", "takes", "took", "taking"],
+      "answerIndex": 1,
+      "explanation": "敘述每天的習慣（現在簡單式）；Mr. Lin 是第三人稱單數，所以用 takes。"
+    },
+    {
+      "prompt": "We ____ early on school days.",
+      "options": ["get up", "gets up", "got up", "getting up"],
+      "answerIndex": 0,
+      "explanation": "on school days 表示現在簡單式的習慣；We 搭配動詞原形，所以用 get up。"
+    },
+    {
+      "prompt": "The shop ____ at nine every day.",
+      "options": ["open", "opens", "opened", "opening"],
+      "answerIndex": 1,
+      "explanation": "every day 表示現在簡單式；The shop 是第三人稱單數，所以用 opens。"
+    }
+  ]
+}
