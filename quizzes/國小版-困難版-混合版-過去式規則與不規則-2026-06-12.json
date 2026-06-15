@@ -6,43 +6,43 @@
   "questions": [
     {
       "prompt": "After the bell rang yesterday, the students ____ to the classroom quickly.",
-      "options": ["go", "goes", "went (不規則)", "going"],
+      "options": ["go", "goes", "went", "going"],
       "answerIndex": 2,
       "explanation": "yesterday 表示過去，go 的不規則過去式是 went。"
     },
     {
       "prompt": "Mia ____ her notebook before the quiz started.",
-      "options": ["checked (ed)", "check", "checks", "checking"],
+      "options": ["checked", "check", "checks", "checking"],
       "answerIndex": 0,
       "explanation": "started 是過去式，前面的動作也在過去，check 的規則過去式是 checked。"
     },
     {
       "prompt": "Did your brother ____ breakfast before school this morning?",
-      "options": ["ate (不規則)", "eat", "eats", "eating"],
+      "options": ["ate", "eat", "eats", "eating"],
       "answerIndex": 1,
       "explanation": "Did 已經表示過去，後面的主要動詞要用原形 eat。"
     },
     {
       "prompt": "They ____ the classroom after the club meeting last Friday.",
-      "options": ["clean", "cleaned (ed)", "cleans", "cleaning"],
+      "options": ["clean", "cleaned", "cleans", "cleaning"],
       "answerIndex": 1,
       "explanation": "last Friday 是過去時間，clean 的規則過去式是 cleaned。"
     },
     {
       "prompt": "Kevin did not ____ his umbrella home yesterday.",
-      "options": ["took (不規則)", "takes", "take", "taking"],
+      "options": ["took", "takes", "take", "taking"],
       "answerIndex": 2,
       "explanation": "did not 後面要接原形 take，不用 took。"
     },
     {
       "prompt": "My sister ____ a long letter to her friend last night.",
-      "options": ["writes", "wrote (不規則)", "write", "writing"],
+      "options": ["writes", "wrote", "write", "writing"],
       "answerIndex": 1,
       "explanation": "last night 是過去時間，write 的不規則過去式是 wrote。"
     },
     {
       "prompt": "The boys ____ soccer until it got dark yesterday.",
-      "options": ["play", "plays", "played (ed)", "playing"],
+      "options": ["play", "plays", "played", "playing"],
       "answerIndex": 2,
       "explanation": "yesterday 是過去時間，play 的規則過去式是 played。"
     },
@@ -54,61 +54,61 @@
     },
     {
       "prompt": "Dad ____ the old chair after lunch yesterday.",
-      "options": ["fixed (ed)", "fix", "fixes", "fixing"],
+      "options": ["fixed", "fix", "fixes", "fixing"],
       "answerIndex": 0,
       "explanation": "yesterday 表示過去，fix 的規則過去式是 fixed。"
     },
     {
       "prompt": "The dog ____ under the table when the thunder started.",
-      "options": ["hides", "hid (不規則)", "hide", "hiding"],
+      "options": ["hides", "hid", "hide", "hiding"],
       "answerIndex": 1,
       "explanation": "started 是過去時間線索，hide 的不規則過去式是 hid。"
     },
     {
       "prompt": "We did not ____ the movie because we had too much homework.",
-      "options": ["watched (ed)", "watch", "watches", "watching"],
+      "options": ["watched", "watch", "watches", "watching"],
       "answerIndex": 1,
       "explanation": "did not 後面接原形 watch，不能用 watched。"
     },
     {
       "prompt": "Lisa ____ her lunch before the game began.",
-      "options": ["eats", "ate (不規則)", "eat", "eating"],
+      "options": ["eats", "ate", "eat", "eating"],
       "answerIndex": 1,
       "explanation": "began 是過去式，eat 的不規則過去式是 ate。"
     },
     {
       "prompt": "Did the students ____ their hands before lunch yesterday?",
-      "options": ["washed (ed)", "wash", "washes", "washing"],
+      "options": ["washed", "wash", "washes", "washing"],
       "answerIndex": 1,
       "explanation": "Did 開頭的過去式疑問句中，主要動詞用原形 wash。"
     },
     {
       "prompt": "Tom ____ his math homework after dinner last night.",
-      "options": ["do", "does", "did (不規則)", "doing"],
+      "options": ["do", "does", "did", "doing"],
       "answerIndex": 2,
       "explanation": "last night 是過去時間，do 的不規則過去式是 did。"
     },
     {
       "prompt": "The children ____ loudly when the teacher asked a funny question.",
-      "options": ["laugh", "laughed (ed)", "laughs", "laughing"],
+      "options": ["laugh", "laughed", "laughs", "laughing"],
       "answerIndex": 1,
       "explanation": "asked 是過去式，laugh 的規則過去式是 laughed。"
     },
     {
       "prompt": "I did not ____ the answer, so I asked my teacher.",
-      "options": ["knew (不規則)", "know", "knows", "knowing"],
+      "options": ["knew", "know", "knows", "knowing"],
       "answerIndex": 1,
       "explanation": "did not 後面接原形 know，不用 knew。"
     },
     {
       "prompt": "The class ____ the new song twice yesterday.",
-      "options": ["sang (不規則)", "sing", "sings", "singing"],
+      "options": ["sang", "sing", "sings", "singing"],
       "answerIndex": 0,
       "explanation": "yesterday 是過去時間，sing 的不規則過去式是 sang。"
     },
     {
       "prompt": "Nina ____ her schoolbag before she went to bed.",
-      "options": ["packs", "packed (ed)", "pack", "packing"],
+      "options": ["packs", "packed", "pack", "packing"],
       "answerIndex": 1,
       "explanation": "went to bed 是過去情境，pack 的規則過去式是 packed。"
     },
@@ -120,61 +120,61 @@
     },
     {
       "prompt": "Mom ____ a cake for my birthday last weekend.",
-      "options": ["make", "makes", "made (不規則)", "making"],
+      "options": ["make", "makes", "made", "making"],
       "answerIndex": 2,
       "explanation": "last weekend 是過去時間，make 的不規則過去式是 made。"
     },
     {
       "prompt": "The team did not ____ hard after the rain started.",
-      "options": ["practiced (ed)", "practice", "practices", "practicing"],
+      "options": ["practiced", "practice", "practices", "practicing"],
       "answerIndex": 1,
       "explanation": "did not 後面要接原形 practice。"
     },
     {
       "prompt": "Grandma ____ us an old story before bedtime.",
-      "options": ["tells", "told (不規則)", "tell", "telling"],
+      "options": ["tells", "told", "tell", "telling"],
       "answerIndex": 1,
       "explanation": "before bedtime 在這裡是過去事件，tell 的不規則過去式是 told。"
     },
     {
       "prompt": "We ____ at the bus stop for twenty minutes yesterday morning.",
-      "options": ["wait", "waits", "waited (ed)", "waiting"],
+      "options": ["wait", "waits", "waited", "waiting"],
       "answerIndex": 2,
       "explanation": "yesterday morning 是過去時間，wait 的規則過去式是 waited。"
     },
     {
       "prompt": "Did Lily ____ the book back to the library last Monday?",
-      "options": ["returned (ed)", "return", "returns", "returning"],
+      "options": ["returned", "return", "returns", "returning"],
       "answerIndex": 1,
       "explanation": "Did 開頭的過去式疑問句中，主要動詞要用原形 return。"
     },
     {
       "prompt": "The boys ____ in the pool after school yesterday.",
-      "options": ["swim", "swims", "swam (不規則)", "swimming"],
+      "options": ["swim", "swims", "swam", "swimming"],
       "answerIndex": 2,
       "explanation": "yesterday 是過去時間，swim 的不規則過去式是 swam。"
     },
     {
       "prompt": "Amy ____ the flowers before she left home.",
-      "options": ["watered (ed)", "water", "waters", "watering"],
+      "options": ["watered", "water", "waters", "watering"],
       "answerIndex": 0,
       "explanation": "left home 是過去情境，water 的規則過去式是 watered。"
     },
     {
       "prompt": "I did not ____ my pencil case this morning.",
-      "options": ["found (不規則)", "find", "finds", "finding"],
+      "options": ["found", "find", "finds", "finding"],
       "answerIndex": 1,
       "explanation": "did not 後面接原形 find，不用 found。"
     },
     {
       "prompt": "Ben ____ the ball over the fence during the game.",
-      "options": ["throws", "threw (不規則)", "throw", "throwing"],
+      "options": ["throws", "threw", "throw", "throwing"],
       "answerIndex": 1,
       "explanation": "during the game 指過去事件，throw 的不規則過去式是 threw。"
     },
     {
       "prompt": "The girl ____ the door quietly last night.",
-      "options": ["closed (ed)", "close", "closes", "closing"],
+      "options": ["closed", "close", "closes", "closing"],
       "answerIndex": 0,
       "explanation": "last night 是過去時間，close 的規則過去式是 closed。"
     },
@@ -186,61 +186,61 @@
     },
     {
       "prompt": "The students ____ the answer after the teacher explained it.",
-      "options": ["understands", "understood (不規則)", "understand", "understanding"],
+      "options": ["understands", "understood", "understand", "understanding"],
       "answerIndex": 1,
       "explanation": "explained 是過去式，understand 的不規則過去式是 understood。"
     },
     {
       "prompt": "We did not ____ the classroom because the meeting ended late.",
-      "options": ["decorated (ed)", "decorate", "decorates", "decorating"],
+      "options": ["decorated", "decorate", "decorates", "decorating"],
       "answerIndex": 1,
       "explanation": "did not 後面要接原形 decorate。"
     },
     {
       "prompt": "My brother ____ a new pencil at the store yesterday.",
-      "options": ["buy", "buys", "bought (不規則)", "buying"],
+      "options": ["buy", "buys", "bought", "buying"],
       "answerIndex": 2,
       "explanation": "yesterday 是過去時間，buy 的不規則過去式是 bought。"
     },
     {
       "prompt": "The baby ____ when Mom opened the door.",
-      "options": ["smiled (ed)", "smile", "smiles", "smiling"],
+      "options": ["smiled", "smile", "smiles", "smiling"],
       "answerIndex": 0,
       "explanation": "opened 是過去式，smile 的規則過去式是 smiled。"
     },
     {
       "prompt": "Did the children ____ early after the trip?",
-      "options": ["slept (不規則)", "sleep", "sleeps", "sleeping"],
+      "options": ["slept", "sleep", "sleeps", "sleeping"],
       "answerIndex": 1,
       "explanation": "Did 開頭時，主要動詞要用原形 sleep。"
     },
     {
       "prompt": "The teacher ____ the homework on the board yesterday.",
-      "options": ["writes", "wrote (不規則)", "write", "writing"],
+      "options": ["writes", "wrote", "write", "writing"],
       "answerIndex": 1,
       "explanation": "yesterday 是過去時間，write 的不規則過去式是 wrote。"
     },
     {
       "prompt": "They ____ their plan before the game started.",
-      "options": ["changed (ed)", "change", "changes", "changing"],
+      "options": ["changed", "change", "changes", "changing"],
       "answerIndex": 0,
       "explanation": "started 是過去式，change 的規則過去式是 changed。"
     },
     {
       "prompt": "I did not ____ the story because the room was too noisy.",
-      "options": ["heard (不規則)", "hear", "hears", "hearing"],
+      "options": ["heard", "hear", "hears", "hearing"],
       "answerIndex": 1,
       "explanation": "did not 後面接原形 hear，不用 heard。"
     },
     {
       "prompt": "Lisa ____ a gift from her aunt last Sunday.",
-      "options": ["gets", "got (不規則)", "get", "getting"],
+      "options": ["gets", "got", "get", "getting"],
       "answerIndex": 1,
       "explanation": "last Sunday 是過去時間，get 的不規則過去式是 got。"
     },
     {
       "prompt": "The class ____ the museum for two hours yesterday afternoon.",
-      "options": ["visited (ed)", "visit", "visits", "visiting"],
+      "options": ["visited", "visit", "visits", "visiting"],
       "answerIndex": 0,
       "explanation": "yesterday afternoon 是過去時間，visit 的規則過去式是 visited。"
     },
@@ -252,55 +252,55 @@
     },
     {
       "prompt": "Dad ____ home late because the train was slow.",
-      "options": ["comes", "came (不規則)", "come", "coming"],
+      "options": ["comes", "came", "come", "coming"],
       "answerIndex": 1,
       "explanation": "was slow 是過去情境，come 的不規則過去式是 came。"
     },
     {
       "prompt": "The children did not ____ their toys before dinner.",
-      "options": ["picked up (ed)", "pick up", "picks up", "picking up"],
+      "options": ["picked up", "pick up", "picks up", "picking up"],
       "answerIndex": 1,
       "explanation": "did not 後面接原形片語 pick up。"
     },
     {
       "prompt": "My cousin ____ a picture of the mountains last weekend.",
-      "options": ["draw", "drew (不規則)", "draws", "drawing"],
+      "options": ["draw", "drew", "draws", "drawing"],
       "answerIndex": 1,
       "explanation": "last weekend 是過去時間，draw 的不規則過去式是 drew。"
     },
     {
       "prompt": "We ____ the heavy boxes into the room yesterday.",
-      "options": ["carried (ed)", "carry", "carries", "carrying"],
+      "options": ["carried", "carry", "carries", "carrying"],
       "answerIndex": 0,
       "explanation": "yesterday 是過去時間，carry 的規則過去式是 carried。"
     },
     {
       "prompt": "Did your team ____ the game last night?",
-      "options": ["won (不規則)", "win", "wins", "winning"],
+      "options": ["won", "win", "wins", "winning"],
       "answerIndex": 1,
       "explanation": "Did 已經表示過去，後面的主要動詞用原形 win。"
     },
     {
       "prompt": "The little boy ____ down after running too fast.",
-      "options": ["falls", "fell (不規則)", "fall", "falling"],
+      "options": ["falls", "fell", "fall", "falling"],
       "answerIndex": 1,
       "explanation": "after running too fast 指過去事件，fall 的不規則過去式是 fell。"
     },
     {
       "prompt": "Emma ____ the answer carefully before she raised her hand.",
-      "options": ["planned (ed)", "plan", "plans", "planning"],
+      "options": ["planned", "plan", "plans", "planning"],
       "answerIndex": 0,
       "explanation": "raised 是過去式，plan 的規則過去式是 planned。"
     },
     {
       "prompt": "They did not ____ any milk at breakfast yesterday.",
-      "options": ["drank (不規則)", "drink", "drinks", "drinking"],
+      "options": ["drank", "drink", "drinks", "drinking"],
       "answerIndex": 1,
       "explanation": "did not 後面要接原形 drink。"
     },
     {
       "prompt": "The teacher ____ the students' names before the test started.",
-      "options": ["called (ed)", "call", "calls", "calling"],
+      "options": ["called", "call", "calls", "calling"],
       "answerIndex": 0,
       "explanation": "started 是過去式，call 的規則過去式是 called。"
     }
