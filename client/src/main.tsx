@@ -94,6 +94,67 @@ const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
 const teacherAuthStorageKey = "classroom-live-quiz-teacher-auth";
 
+// 下拉選單分組：先依時態／文法主題分群，群內再依難度（簡單→混合→困難）排序。
+// 題目標題的分隔符號不一致（有的用 -，有的用全形｜），所以一律用關鍵字比對，不依賴分隔符號。
+type QuizTopic = { key: string; label: string; order: number };
+
+const quizTopicRules: { match: (text: string) => boolean; topic: QuizTopic }[] = [
+  { match: (t) => t.includes("主格") || t.includes("受格") || t.includes("所有格"), topic: { key: "pronoun", label: "代名詞與格", order: 1 } },
+  { match: (t) => /there/i.test(t), topic: { key: "there", label: "There is / There are", order: 2 } },
+  { match: (t) => t.includes("介系詞"), topic: { key: "preposition", label: "介系詞", order: 3 } },
+  { match: (t) => t.includes("現在進行"), topic: { key: "present-progressive", label: "現在進行式", order: 4 } },
+  { match: (t) => t.includes("現在簡單"), topic: { key: "present-simple", label: "現在簡單式", order: 5 } },
+  { match: (t) => t.includes("過去"), topic: { key: "past", label: "過去式", order: 6 } },
+  { match: (t) => t.includes("未來"), topic: { key: "future", label: "未來式", order: 7 } },
+];
+const quizOtherTopic: QuizTopic = { key: "other", label: "其他", order: 99 };
+
+function quizTopic(quiz: QuizSummary): QuizTopic {
+  const text = `${quiz.title} ${quiz.file}`;
+  for (const rule of quizTopicRules) {
+    if (rule.match(text)) return rule.topic;
+  }
+  return quizOtherTopic;
+}
+
+function quizDifficulty(quiz: QuizSummary): { label: string; order: number } {
+  const text = `${quiz.title} ${quiz.file}`;
+  // 先判斷困難／簡單；「混合版」只在沒有困難/簡單時才當作難度（避免把「困難版-混合版」誤判）。
+  if (text.includes("困難")) return { label: "困難版", order: 3 };
+  if (text.includes("簡單")) return { label: "簡單版", order: 1 };
+  if (text.includes("混合")) return { label: "混合版", order: 2 };
+  return { label: "", order: 2 };
+}
+
+// 把標題整理成精簡的選項文字：去掉日期、開頭的「國小版」、以及難度標記（難度另外標示）。
+function quizShortLabel(quiz: QuizSummary): string {
+  let label = quiz.title
+    .replace(/[-｜|]?\d{4}-\d{2}-\d{2}\s*$/, "")
+    .replace(/^國小版[-｜|]?/, "")
+    .replace(/(困難版|簡單版|混合版)[-｜|]?/, "")
+    .trim();
+  return label || quiz.title;
+}
+
+function groupQuizzes(quizzes: QuizSummary[]) {
+  const groups = new Map<string, { topic: QuizTopic; items: QuizSummary[] }>();
+  for (const quiz of quizzes) {
+    const topic = quizTopic(quiz);
+    const group = groups.get(topic.key) || { topic, items: [] };
+    group.items.push(quiz);
+    groups.set(topic.key, group);
+  }
+  const result = Array.from(groups.values()).sort((a, b) => a.topic.order - b.topic.order);
+  for (const group of result) {
+    group.items.sort((a, b) => {
+      const byDifficulty = quizDifficulty(a).order - quizDifficulty(b).order;
+      if (byDifficulty !== 0) return byDifficulty;
+      return b.date.localeCompare(a.date);
+    });
+  }
+  return result;
+}
+
 function App() {
   const path = window.location.pathname;
   if (path.startsWith("/host-teacher-panel")) return <HostPage />;
@@ -379,10 +440,17 @@ function HostPage() {
           )}
           <div className="quiz-select-row">
             <select value={selectedQuizId} onChange={(event) => setSelectedQuizId(event.target.value)} disabled={Boolean(snapshot)}>
-              {quizzes.map((quiz) => (
-                <option value={quiz.id} key={quiz.id}>
-                  {quiz.date} - {quiz.title} ({quiz.questionCount} 題)
-                </option>
+              {groupQuizzes(quizzes).map((group) => (
+                <optgroup label={group.topic.label} key={group.topic.key}>
+                  {group.items.map((quiz) => {
+                    const difficulty = quizDifficulty(quiz);
+                    return (
+                      <option value={quiz.id} key={quiz.id}>
+                        {difficulty.label ? `${difficulty.label}｜` : ""}{quizShortLabel(quiz)}（{quiz.questionCount} 題・{quiz.date}）
+                      </option>
+                    );
+                  })}
+                </optgroup>
               ))}
             </select>
             <button className="secondary" onClick={previewSelectedQuiz} disabled={!selectedQuizId || previewLoading}>
