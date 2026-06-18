@@ -1,0 +1,308 @@
+{
+  "id": "國小版-簡單版-There-is與There-are-2026-06-12",
+  "title": "國小版｜簡單版｜There is 與 There are｜2026-06-12",
+  "date": "2026-06-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "____ a book on the desk.",
+      "options": ["There is", "There are", "Is there", "Are there"],
+      "answerIndex": 0,
+      "explanation": "a book 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two books on the desk.",
+      "options": ["There is", "There are", "It is", "They are"],
+      "answerIndex": 1,
+      "explanation": "two books 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a ball in the room.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a ball 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ three balls in the room.",
+      "options": ["There is", "Is there", "There are", "It is"],
+      "answerIndex": 2,
+      "explanation": "three balls 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a dog at home.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a dog 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two dogs at home.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "two dogs 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a cat by the door.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a cat 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many cats by the door.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "many cats 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a teacher at school.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a teacher 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two teachers at school.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "two teachers 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a friend in my room.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a friend 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ three friends in my room.",
+      "options": ["There is", "There are", "Is there", "It is"],
+      "answerIndex": 1,
+      "explanation": "three friends 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a sister at home.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a sister 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two sisters at home.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "two sisters 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a brother at school.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a brother 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many brothers at school.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "many brothers 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a desk in the room.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a desk 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ four desks in the room.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "four desks 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a door in the room.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a door 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two doors in the room.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "two doors 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a room at school.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a room 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many rooms at school.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "many rooms 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ lunch on the desk.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "lunch 在這裡當單數概念，所以用 There is。"
+    },
+    {
+      "prompt": "____ two lunches on the desk.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "two lunches 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ dinner at home.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "dinner 在這裡當單數概念，所以用 There is。"
+    },
+    {
+      "prompt": "____ two dinners at home.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "two dinners 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ one book in the bag.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "one book 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many books in the bag.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "many books 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ one ball under the desk.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "one ball 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ five balls under the desk.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "five balls 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a school near my home.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a school 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two schools near my home.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "two schools 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a home near the school.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a home 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many homes near the school.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "many homes 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a teacher in the room.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a teacher 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ three teachers in the room.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "three teachers 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a dog by the desk.",
+      "options": ["There are", "There is", "Are there", "They are"],
+      "answerIndex": 1,
+      "explanation": "a dog 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ two dogs by the desk.",
+      "options": ["There is", "It is", "There are", "Is there"],
+      "answerIndex": 2,
+      "explanation": "two dogs 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a cat on the chair.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a cat 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ four cats on the chair.",
+      "options": ["There are", "There is", "Is there", "It is"],
+      "answerIndex": 0,
+      "explanation": "four cats 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a friend at the door.",
+      "options": ["There is", "There are", "Are there", "They are"],
+      "answerIndex": 0,
+      "explanation": "a friend 是單數，所以用 There is。"
+    },
+    {
+      "prompt": "____ many friends at the door.",
+      "options": ["There is", "There are", "It is", "Is there"],
+      "answerIndex": 1,
+      "explanation": "many friends 是複數，所以用 There are。"
+    },
+    {
+      "prompt": "____ a brother in the room?",
+      "options": ["Is there", "Are there", "There is", "There are"],
+      "answerIndex": 0,
+      "explanation": "問單數 a brother 時，用 Is there。"
+    },
+    {
+      "prompt": "____ two brothers in the room?",
+      "options": ["Is there", "Are there", "There is", "There are"],
+      "answerIndex": 1,
+      "explanation": "問複數 two brothers 時，用 Are there。"
+    },
+    {
+      "prompt": "____ a sister at school?",
+      "options": ["Are there", "Is there", "There are", "They are"],
+      "answerIndex": 1,
+      "explanation": "問單數 a sister 時，用 Is there。"
+    },
+    {
+      "prompt": "____ three sisters at school?",
+      "options": ["Is there", "There is", "Are there", "It is"],
+      "answerIndex": 2,
+      "explanation": "問複數 three sisters 時，用 Are there。"
+    },
+    {
+      "prompt": "____ a desk by the door?",
+      "options": ["Is there", "Are there", "There is", "There are"],
+      "answerIndex": 0,
+      "explanation": "問單數 a desk 時，用 Is there。"
+    },
+    {
+      "prompt": "____ two desks by the door?",
+      "options": ["Is there", "Are there", "There is", "There are"],
+      "answerIndex": 1,
+      "explanation": "問複數 two desks 時，用 Are there。"
+    },
+    {
+      "prompt": "____ a ball at home?",
+      "options": ["Are there", "Is there", "There are", "They are"],
+      "answerIndex": 1,
+      "explanation": "問單數 a ball 時，用 Is there。"
+    },
+    {
+      "prompt": "____ many balls at home?",
+      "options": ["Is there", "There is", "Are there", "It is"],
+      "answerIndex": 2,
+      "explanation": "問複數 many balls 時，用 Are there。"
+    }
+  ]
+}
