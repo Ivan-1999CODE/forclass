@@ -1,0 +1,188 @@
+{
+  "id": "國小版-簡單版-形容詞與副詞-2026-06-21",
+  "title": "國小版 簡單版 形容詞與副詞 2026-06-21",
+  "date": "2026-06-21",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "This is a ____ cat.",
+      "options": ["soft", "softly", "run", "quickly"],
+      "answerIndex": 0,
+      "explanation": "cat 是名詞，要用形容詞 soft 來形容貓。"
+    },
+    {
+      "prompt": "The boy runs ____.",
+      "options": ["fast", "happy", "tall", "blue"],
+      "answerIndex": 0,
+      "explanation": "runs 是動作，fast 在這裡當副詞，表示跑得快。"
+    },
+    {
+      "prompt": "She is a ____ girl.",
+      "options": ["kind", "kindly", "slowly", "walk"],
+      "answerIndex": 0,
+      "explanation": "girl 是名詞，要用形容詞 kind 來形容人。"
+    },
+    {
+      "prompt": "Tom speaks ____.",
+      "options": ["quiet", "quietly", "small", "red"],
+      "answerIndex": 1,
+      "explanation": "speaks 是動作，要用副詞 quietly 表示說話很小聲。"
+    },
+    {
+      "prompt": "I have a ____ bag.",
+      "options": ["heavy", "heavily", "eat", "slowly"],
+      "answerIndex": 0,
+      "explanation": "bag 是名詞，要用形容詞 heavy 來形容書包很重。"
+    },
+    {
+      "prompt": "The turtle walks ____.",
+      "options": ["slow", "slowly", "green", "short"],
+      "answerIndex": 1,
+      "explanation": "walks 是動作，要用副詞 slowly 表示走得慢。"
+    },
+    {
+      "prompt": "It is a ____ day.",
+      "options": ["sunny", "sunnily", "jump", "carefully"],
+      "answerIndex": 0,
+      "explanation": "day 是名詞，要用形容詞 sunny 來形容天氣。"
+    },
+    {
+      "prompt": "Mary sings ____.",
+      "options": ["beautiful", "beautifully", "new", "big"],
+      "answerIndex": 1,
+      "explanation": "sings 是動作，要用副詞 beautifully 表示唱得好聽。"
+    },
+    {
+      "prompt": "This is a ____ apple.",
+      "options": ["sweet", "sweetly", "read", "loudly"],
+      "answerIndex": 0,
+      "explanation": "apple 是名詞，要用形容詞 sweet 來形容蘋果。"
+    },
+    {
+      "prompt": "Please listen ____.",
+      "options": ["careful", "carefully", "clean", "small"],
+      "answerIndex": 1,
+      "explanation": "listen 是動作，要用副詞 carefully 表示仔細聽。"
+    },
+    {
+      "prompt": "The elephant is ____.",
+      "options": ["big", "bigly", "quickly", "write"],
+      "answerIndex": 0,
+      "explanation": "is 後面可以接形容詞 big，表示大象很大。"
+    },
+    {
+      "prompt": "He writes ____.",
+      "options": ["neat", "neatly", "yellow", "young"],
+      "answerIndex": 1,
+      "explanation": "writes 是動作，要用副詞 neatly 表示寫得整齊。"
+    },
+    {
+      "prompt": "We see a ____ flower.",
+      "options": ["pretty", "prettily", "sleep", "early"],
+      "answerIndex": 0,
+      "explanation": "flower 是名詞，要用形容詞 pretty 來形容花。"
+    },
+    {
+      "prompt": "The students answer ____.",
+      "options": ["loud", "loudly", "round", "cold"],
+      "answerIndex": 1,
+      "explanation": "answer 是動作，要用副詞 loudly 表示大聲回答。"
+    },
+    {
+      "prompt": "My room is ____.",
+      "options": ["clean", "cleanly", "run", "fastly"],
+      "answerIndex": 0,
+      "explanation": "is 後面可以接形容詞 clean，表示房間很乾淨。"
+    },
+    {
+      "prompt": "The baby sleeps ____.",
+      "options": ["quiet", "quietly", "soft", "small"],
+      "answerIndex": 1,
+      "explanation": "sleeps 是動作，要用副詞 quietly 表示安靜地睡覺。"
+    },
+    {
+      "prompt": "That is an ____ book.",
+      "options": ["old", "oldly", "quickly", "swim"],
+      "answerIndex": 0,
+      "explanation": "book 是名詞，要用形容詞 old 來形容書。"
+    },
+    {
+      "prompt": "Jenny dances ____.",
+      "options": ["happy", "happily", "tall", "white"],
+      "answerIndex": 1,
+      "explanation": "dances 是動作，要用副詞 happily 表示開心地跳舞。"
+    },
+    {
+      "prompt": "He has a ____ pencil.",
+      "options": ["short", "shortly", "read", "slowly"],
+      "answerIndex": 0,
+      "explanation": "pencil 是名詞，要用形容詞 short 來形容鉛筆。"
+    },
+    {
+      "prompt": "The teacher talks ____.",
+      "options": ["clear", "clearly", "nice", "blue"],
+      "answerIndex": 1,
+      "explanation": "talks 是動作，要用副詞 clearly 表示講得清楚。"
+    },
+    {
+      "prompt": "The soup is ____.",
+      "options": ["hot", "hotly", "carefully", "jump"],
+      "answerIndex": 0,
+      "explanation": "is 後面可以接形容詞 hot，表示湯很熱。"
+    },
+    {
+      "prompt": "The dog barks ____.",
+      "options": ["loud", "loudly", "brown", "cute"],
+      "answerIndex": 1,
+      "explanation": "barks 是動作，要用副詞 loudly 表示叫得大聲。"
+    },
+    {
+      "prompt": "This is a ____ chair.",
+      "options": ["new", "newly", "sing", "quickly"],
+      "answerIndex": 0,
+      "explanation": "chair 是名詞，要用形容詞 new 來形容椅子。"
+    },
+    {
+      "prompt": "Open the door ____.",
+      "options": ["gentle", "gently", "green", "long"],
+      "answerIndex": 1,
+      "explanation": "open 是動作，要用副詞 gently 表示輕輕地打開。"
+    },
+    {
+      "prompt": "The test is ____.",
+      "options": ["easy", "easily", "slowly", "play"],
+      "answerIndex": 0,
+      "explanation": "is 後面可以接形容詞 easy，表示考試很簡單。"
+    },
+    {
+      "prompt": "She reads ____.",
+      "options": ["careful", "carefully", "nice", "small"],
+      "answerIndex": 1,
+      "explanation": "reads 是動作，要用副詞 carefully 表示仔細地讀。"
+    },
+    {
+      "prompt": "It is a ____ box.",
+      "options": ["small", "smallly", "quickly", "sleep"],
+      "answerIndex": 0,
+      "explanation": "box 是名詞，要用形容詞 small 來形容盒子。"
+    },
+    {
+      "prompt": "Mike eats ____.",
+      "options": ["slow", "slowly", "young", "red"],
+      "answerIndex": 1,
+      "explanation": "eats 是動作，要用副詞 slowly 表示吃得慢。"
+    },
+    {
+      "prompt": "The sky is ____.",
+      "options": ["blue", "bluely", "well", "write"],
+      "answerIndex": 0,
+      "explanation": "is 後面可以接形容詞 blue，表示天空是藍色的。"
+    },
+    {
+      "prompt": "They play ____.",
+      "options": ["happy", "happily", "tall", "clean"],
+      "answerIndex": 1,
+      "explanation": "play 是動作，要用副詞 happily 表示開心地玩。"
+    }
+  ]
+}
