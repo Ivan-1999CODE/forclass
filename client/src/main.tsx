@@ -45,6 +45,7 @@ type Snapshot = {
   stats: null | { optionCounts: number[]; answered: number; unanswered: number; correct: number };
   me?: null | { id: string; name: string; totalScore: number; selectedIndex: number | null; answeredCurrent: boolean };
   hostToken?: string;
+  reports?: Array<{ reporterName: string; targetName: string; reason: string; reportedAt: number }>;
 };
 
 type NetworkInfo = {
@@ -352,6 +353,13 @@ function HostPage() {
     setMessage("");
   };
 
+  const renameStudent = (studentId: string, newName: string) => {
+    if (!snapshot?.hostToken) return;
+    socket.emit("host:renameStudent", { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken, studentId, newName }, (reply: SocketReply) => {
+      if (!reply.ok) setMessage(reply.error || "改名失敗。");
+    });
+  };
+
   const hostAction = (eventName: string) => {
     if (!snapshot?.hostToken) return;
     if (eventName === "host:endGame" && !window.confirm("確定要結束遊戲嗎？結束後不能回到這一題繼續作答。")) return;
@@ -493,7 +501,7 @@ function HostPage() {
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
           )}
           <p className="hint">老師頁重新整理通常可以恢復；但 Render 重新部署、重啟或免費方案睡著後，進行中的場次會失效。已保存到 Supabase 的歷史資料不會消失。</p>
-          {snapshot && <RoomPanel snapshot={snapshot} embedded />}
+          {snapshot && <RoomPanel snapshot={snapshot} embedded onRename={renameStudent} />}
         </div>
       </section>
 
@@ -523,6 +531,23 @@ function HostPage() {
         </section>
       )}
 
+      {snapshot?.status === "finished" && snapshot.reports && snapshot.reports.length > 0 && (
+        <section className="panel reports-panel">
+          <h2>學生檢舉紀錄（{snapshot.reports.length} 筆）</h2>
+          <p className="hint">以下為學生提交的檢舉，僅老師可見。</p>
+          <div className="report-list">
+            {snapshot.reports.map((report, i) => (
+              <div className="report-row" key={i}>
+                <span className="report-reporter">{report.reporterName}</span>
+                <span className="report-arrow">→ 檢舉 →</span>
+                <span className="report-target">{report.targetName}</span>
+                <span className="report-reason">{report.reason}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="panel">
         <div className="section-header">
           <div>
@@ -537,6 +562,7 @@ function HostPage() {
         {selectedHistoryIds.length > 0 && <p className="hint">已勾選 {selectedHistoryIds.length} 場；錯題重練會整合答錯和未作答題目，最多 10 題。</p>}
         {!history.enabled && <p className="notice">尚未設定 Supabase 環境變數，歷史場次目前不會永久保存。</p>}
         {history.enabled && history.sessions.length === 0 && <p className="empty">目前還沒有歷史場次。</p>}
+        <AggregationPanel history={history} />
         <div className="history-list">
           {history.sessions.map((session) => (
             <div className="history-row" key={session.id}>
@@ -689,6 +715,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
         <section className="panel">
           <h2>遊戲結束</h2>
           <Leaderboard snapshot={snapshot} />
+          <ReportPanel snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
         </section>
       )}
     </main>
@@ -749,7 +776,22 @@ function DisplayPage({ roomCode }: { roomCode: string }) {
   );
 }
 
-function RoomPanel({ snapshot, embedded = false }: { snapshot: Snapshot; embedded?: boolean }) {
+function RoomPanel({ snapshot, embedded = false, onRename }: { snapshot: Snapshot; embedded?: boolean; onRename?: (studentId: string, newName: string) => void }) {
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
+
+  const startEdit = (student: Snapshot["students"][0]) => {
+    setEditingId(student.id);
+    setEditName(student.name);
+  };
+
+  const commitEdit = () => {
+    if (editingId && editName.trim() && onRename) {
+      onRename(editingId, editName.trim());
+    }
+    setEditingId(null);
+  };
+
   return (
     <div className={embedded ? "room-panel embedded" : "panel room-panel"}>
       <h2>等待室</h2>
@@ -758,7 +800,30 @@ function RoomPanel({ snapshot, embedded = false }: { snapshot: Snapshot; embedde
       <div className="student-list">
         {snapshot.students.map((student) => (
           <div className="student-row" key={student.id}>
-            <span className="student-name">{student.name}</span>
+            {onRename && editingId === student.id ? (
+              <>
+                <input
+                  className="student-rename-input"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") commitEdit();
+                    if (e.key === "Escape") setEditingId(null);
+                  }}
+                  autoFocus
+                  maxLength={24}
+                />
+                <button className="btn-sm" onClick={commitEdit}>確認</button>
+                <button className="secondary btn-sm" onClick={() => setEditingId(null)}>取消</button>
+              </>
+            ) : (
+              <>
+                <span className="student-name">{student.name}</span>
+                {onRename && (
+                  <button className="secondary btn-sm" onClick={() => startEdit(student)}>改名</button>
+                )}
+              </>
+            )}
             <span className="student-score">{student.totalScore} 分</span>
             <span className={`student-status ${student.connected ? "online" : "offline"}`}>
               {student.answeredCurrent ? "已答" : student.connected ? "在線" : "離線"}
@@ -952,6 +1017,85 @@ function AnswerStats({ snapshot, revealCorrect }: { snapshot: Snapshot; revealCo
         <span className="answer-text">未作答</span>
         <span className="answer-count">{snapshot.stats?.unanswered || 0}</span>
       </div>
+    </div>
+  );
+}
+
+const REPORT_REASONS = [
+  "偷看答案",
+  "亂點（不認真作答）",
+  "干擾其他同學",
+  "姓名不雅",
+  "作答速度可疑",
+];
+
+function ReportPanel({ snapshot, roomCode, studentId }: { snapshot: Snapshot; roomCode: string; studentId: string }) {
+  const [targetId, setTargetId] = useState("");
+  const [reason, setReason] = useState("");
+  const [customReason, setCustomReason] = useState("");
+  const [message, setMessage] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+
+  const otherStudents = snapshot.students.filter((s) => s.id !== studentId);
+  if (otherStudents.length === 0) return null;
+
+  const submit = () => {
+    const finalReason = reason === "__other__" ? customReason.trim() : reason;
+    if (!targetId) { setMessage("請選擇要檢舉的對象。"); return; }
+    if (!finalReason) { setMessage(reason === "__other__" ? "請輸入檢舉原因。" : "請選擇檢舉原因。"); return; }
+    setMessage("");
+    socket.emit("student:report", { roomCode, studentId, targetId, reason: finalReason }, (reply: SocketReply) => {
+      if (!reply.ok) {
+        setMessage(reply.error || "送出失敗。");
+      } else {
+        setSuccessMsg("檢舉已送出，只有老師看得到。");
+        setTargetId("");
+        setReason("");
+        setCustomReason("");
+        window.setTimeout(() => setSuccessMsg(""), 3000);
+      }
+    });
+  };
+
+  return (
+    <div className="report-panel">
+      <h3>對同學提出檢舉</h3>
+      <p className="hint">完全匿名，只有老師看得到，可以重複送出。</p>
+      <label>
+        檢舉對象
+        <select value={targetId} onChange={(e) => setTargetId(e.target.value)}>
+          <option value="">-- 選擇同學 --</option>
+          {otherStudents.map((s) => (
+            <option value={s.id} key={s.id}>{s.name}</option>
+          ))}
+        </select>
+      </label>
+      <label>
+        檢舉原因
+        <select value={reason} onChange={(e) => setReason(e.target.value)}>
+          <option value="">-- 選擇原因 --</option>
+          {REPORT_REASONS.map((r) => (
+            <option value={r} key={r}>{r}</option>
+          ))}
+          <option value="__other__">其他（自行輸入）</option>
+        </select>
+      </label>
+      {reason === "__other__" && (
+        <label>
+          自行輸入原因
+          <input
+            value={customReason}
+            onChange={(e) => setCustomReason(e.target.value)}
+            placeholder="請輸入原因（最多 100 字）"
+            maxLength={100}
+          />
+        </label>
+      )}
+      <div className="actions">
+        <button onClick={submit}>送出檢舉</button>
+      </div>
+      {message && <p className="notice error">{message}</p>}
+      {successMsg && <p className="notice">{successMsg}</p>}
     </div>
   );
 }
@@ -1220,6 +1364,270 @@ function fetchHistory(setHistory: React.Dispatch<React.SetStateAction<{ enabled:
     .then((response) => response.json())
     .then((data) => setHistory({ enabled: Boolean(data.enabled), sessions: data.sessions || [] }))
     .catch(() => setHistory({ enabled: false, sessions: [] }));
+}
+
+// ─── 分數加總 ────────────────────────────────────────────────────────────────
+
+type AggregPlayer = {
+  uid: string;
+  namePerSession: Record<string, string>; // sessionId → 名字（空字串 = 未參加）
+};
+
+function initAggregPlayers(sessionIds: string[], details: Record<string, HistoryDetail>): AggregPlayer[] {
+  const nameMap = new Map<string, Record<string, string>>();
+  for (const sid of sessionIds) {
+    for (const row of details[sid]?.summary || []) {
+      if (!nameMap.has(row.studentName)) {
+        nameMap.set(row.studentName, Object.fromEntries(sessionIds.map((id) => [id, ""])));
+      }
+      nameMap.get(row.studentName)![sid] = row.studentName;
+    }
+  }
+  return [...nameMap.values()].map((namePerSession) => ({
+    uid: Math.random().toString(36).slice(2),
+    namePerSession: { ...namePerSession }
+  }));
+}
+
+function AggregationPanel({ history }: { history: { enabled: boolean; sessions: HistorySession[] } }) {
+  const [open, setOpen] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [details, setDetails] = useState<Record<string, HistoryDetail>>({});
+  const [loading, setLoading] = useState(false);
+  const [players, setPlayers] = useState<AggregPlayer[]>([]);
+  const [phase, setPhase] = useState<"select" | "map" | "results">("select");
+
+  const todayStr = new Date().toLocaleDateString("zh-TW", { timeZone: "Asia/Taipei" });
+
+  const openPanel = () => {
+    const todayIds = history.sessions
+      .filter((s) => new Date(s.created_at).toLocaleDateString("zh-TW", { timeZone: "Asia/Taipei" }) === todayStr)
+      .map((s) => s.id);
+    setSelectedIds(todayIds);
+    setPhase("select");
+    setPlayers([]);
+    setOpen(true);
+  };
+
+  const confirmSelection = async () => {
+    if (selectedIds.length === 0) return;
+    setLoading(true);
+    const toLoad = selectedIds.filter((id) => !details[id]);
+    const freshDetails = { ...details };
+    if (toLoad.length > 0) {
+      const fetched = await Promise.all(
+        toLoad.map((id) =>
+          fetch(`/api/history/${id}`)
+            .then((r) => r.json())
+            .then((d) => ({ id, session: d.session as HistoryDetail | null }))
+        )
+      );
+      for (const { id, session } of fetched) {
+        if (session) freshDetails[id] = session;
+      }
+      setDetails(freshDetails);
+    }
+    setPlayers(initAggregPlayers(selectedIds, freshDetails));
+    setLoading(false);
+    setPhase("map");
+  };
+
+  const selectedSessions = selectedIds
+    .map((id) => history.sessions.find((s) => s.id === id))
+    .filter((s): s is HistorySession => Boolean(s));
+
+  const updatePlayerName = (uid: string, sessionId: string, name: string) => {
+    setPlayers((prev) =>
+      prev.map((p) =>
+        p.uid === uid ? { ...p, namePerSession: { ...p.namePerSession, [sessionId]: name } } : p
+      )
+    );
+  };
+
+  const addPlayer = () => {
+    setPlayers((prev) => [
+      ...prev,
+      { uid: Math.random().toString(36).slice(2), namePerSession: Object.fromEntries(selectedIds.map((id) => [id, ""])) }
+    ]);
+  };
+
+  const removePlayer = (uid: string) => {
+    setPlayers((prev) => prev.filter((p) => p.uid !== uid));
+  };
+
+  const results = phase === "results"
+    ? players
+        .map((player) => {
+          const displayName = Object.values(player.namePerSession).find((n) => n) || "(未命名)";
+          let totalScore = 0;
+          const perSession: Record<string, number | null> = {};
+          for (const sid of selectedIds) {
+            const name = player.namePerSession[sid];
+            if (!name) { perSession[sid] = null; continue; }
+            const row = details[sid]?.summary.find((r) => r.studentName === name);
+            const score = row?.totalScore ?? 0;
+            totalScore += score;
+            perSession[sid] = score;
+          }
+          return { player, displayName, totalScore, perSession };
+        })
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .map((item, i) => ({ ...item, rank: i + 1 }))
+    : [];
+
+  if (!open) {
+    return (
+      <div className="aggr-trigger">
+        <button className="secondary" onClick={openPanel} disabled={history.sessions.length === 0}>
+          分數加總
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="aggr-panel">
+      <div className="aggr-header">
+        <h3>分數加總</h3>
+        <button className="secondary btn-sm" onClick={() => setOpen(false)}>關閉</button>
+      </div>
+
+      {phase === "select" && (
+        <>
+          <p className="hint">勾選要加總的場次（預設選今天）：</p>
+          <div className="aggr-session-grid">
+            {history.sessions.map((s) => {
+              const isToday = new Date(s.created_at).toLocaleDateString("zh-TW", { timeZone: "Asia/Taipei" }) === todayStr;
+              return (
+                <label key={s.id} className={`aggr-session-check ${isToday ? "today" : ""}`}>
+                  <input
+                    type="checkbox"
+                    checked={selectedIds.includes(s.id)}
+                    onChange={(e) =>
+                      setSelectedIds((prev) =>
+                        e.target.checked ? [...prev, s.id] : prev.filter((id) => id !== s.id)
+                      )
+                    }
+                  />
+                  <span>
+                    <strong>{formatDateTime(s.created_at)}{isToday ? " 今天" : ""}</strong>
+                    <span className="aggr-session-title">{s.quiz_title}</span>
+                    <span className="aggr-session-meta">{s.summary?.length || 0} 人・{statusText(s.status)}</span>
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+          <div className="actions">
+            <button onClick={confirmSelection} disabled={selectedIds.length === 0 || loading}>
+              {loading ? "載入中..." : `繼續（${selectedIds.length} 場）`}
+            </button>
+          </div>
+        </>
+      )}
+
+      {phase === "map" && (
+        <>
+          <p className="hint">
+            每一列代表同一個人。系統已依相同名字自動配對，名字不同的同學請手動選擇對應。
+          </p>
+          <div className="aggr-table-wrapper">
+            <table className="aggr-table">
+              <thead>
+                <tr>
+                  <th>玩家（顯示名稱）</th>
+                  {selectedSessions.map((s) => (
+                    <th key={s.id}>
+                      {formatDateTime(s.created_at)}
+                      <br />
+                      <small>{s.quiz_title.slice(0, 14)}</small>
+                    </th>
+                  ))}
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {players.map((player, rowIndex) => {
+                  const displayName = Object.values(player.namePerSession).find((n) => n) || `玩家 ${rowIndex + 1}`;
+                  return (
+                    <tr key={player.uid}>
+                      <td className="aggr-player-name">{displayName}</td>
+                      {selectedIds.map((sid) => (
+                        <td key={sid}>
+                          <select
+                            value={player.namePerSession[sid] || ""}
+                            onChange={(e) => updatePlayerName(player.uid, sid, e.target.value)}
+                          >
+                            <option value="">（未參加）</option>
+                            {(details[sid]?.summary || []).map((r) => (
+                              <option value={r.studentName} key={r.studentName}>
+                                {r.studentName}
+                              </option>
+                            ))}
+                          </select>
+                        </td>
+                      ))}
+                      <td>
+                        <button className="secondary btn-sm" onClick={() => removePlayer(player.uid)}>移除</button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="actions">
+            <button className="secondary" onClick={addPlayer}>+ 新增一列</button>
+            <button onClick={() => setPhase("results")} disabled={players.length === 0}>計算排名</button>
+            <button className="secondary" onClick={() => setPhase("select")}>重選場次</button>
+          </div>
+        </>
+      )}
+
+      {phase === "results" && (
+        <>
+          <div className="aggr-table-wrapper">
+            <table className="aggr-table aggr-result-table">
+              <thead>
+                <tr>
+                  <th>名次</th>
+                  <th>姓名</th>
+                  {selectedSessions.map((s) => (
+                    <th key={s.id}>
+                      {formatDateTime(s.created_at)}
+                      <br />
+                      <small>{s.quiz_title.slice(0, 14)}</small>
+                    </th>
+                  ))}
+                  <th>合計</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((item) => (
+                  <tr key={item.player.uid} className={item.rank <= 3 ? `aggr-rank-${item.rank}` : ""}>
+                    <td className="aggr-rank-badge">#{item.rank}</td>
+                    <td className="aggr-player-name">{item.displayName}</td>
+                    {selectedIds.map((sid) => (
+                      <td key={sid} className="aggr-score-cell">
+                        {item.perSession[sid] !== null
+                          ? item.perSession[sid]
+                          : <span className="aggr-absent">—</span>}
+                      </td>
+                    ))}
+                    <td className="aggr-total-score">{item.totalScore}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="actions">
+            <button className="secondary" onClick={() => setPhase("map")}>重新配對</button>
+            <button className="secondary" onClick={() => setPhase("select")}>重選場次</button>
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

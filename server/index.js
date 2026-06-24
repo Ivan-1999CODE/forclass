@@ -212,6 +212,18 @@ io.on("connection", (socket) => {
     callback?.({ ok: true });
   });
 
+  socket.on("host:renameStudent", ({ roomCode, hostToken, studentId, newName }, callback) => {
+    const room = getAuthorizedRoom(roomCode, hostToken);
+    if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
+    const student = room.students.get(studentId);
+    if (!student) return callback?.({ ok: false, error: "找不到這位學生。" });
+    const cleanName = normalizeName(newName);
+    if (!cleanName) return callback?.({ ok: false, error: "請輸入新名字。" });
+    student.name = uniqueStudentName(room, cleanName, studentId);
+    broadcastRoom(room);
+    callback?.({ ok: true });
+  });
+
   socket.on("student:join", ({ roomCode, name, studentId }, callback) => {
     const room = getRoom(roomCode);
     if (!room) return callback?.({ ok: false, error: "找不到這個房間代碼。" });
@@ -241,6 +253,26 @@ io.on("connection", (socket) => {
     socket.data.studentId = student.id;
     callback?.({ ok: true, studentId: student.id, snapshot: buildStudentSnapshot(room, student.id) });
     broadcastRoom(room);
+  });
+
+  socket.on("student:report", ({ roomCode, studentId, targetId, reason }, callback) => {
+    const room = getRoom(roomCode);
+    const reporter = room?.students.get(studentId);
+    const target = room?.students.get(targetId);
+    if (!room || !reporter || !target) return callback?.({ ok: false, error: "無效的檢舉。" });
+    if (studentId === targetId) return callback?.({ ok: false, error: "不能檢舉自己。" });
+    const cleanReason = String(reason || "").trim().slice(0, 200);
+    if (!cleanReason) return callback?.({ ok: false, error: "請選擇或輸入檢舉原因。" });
+    room.reports.push({
+      reporterName: reporter.name,
+      targetName: target.name,
+      reason: cleanReason,
+      reportedAt: Date.now()
+    });
+    if (room.hostSocketId) {
+      io.to(room.hostSocketId).emit("host:update", buildHostSnapshot(room));
+    }
+    callback?.({ ok: true });
   });
 
   socket.on("student:answer", ({ roomCode, studentId, selectedIndex }, callback) => {
@@ -401,6 +433,7 @@ function createRoom(quiz) {
     autoRevealTimer: null,
     autoRevealEndsAt: null,
     students: new Map(),
+    reports: [],
     createdAt: Date.now(),
     startedAt: null,
     finishedAt: null,
@@ -619,7 +652,8 @@ function attachHostSocket(room, socket) {
 function buildHostSnapshot(room) {
   return {
     ...buildDisplaySnapshot(room),
-    hostToken: room.hostToken
+    hostToken: room.hostToken,
+    reports: room.reports
   };
 }
 
@@ -771,8 +805,8 @@ function normalizeName(name) {
   return String(name || "").trim().replace(/\s+/g, " ").slice(0, 24);
 }
 
-function uniqueStudentName(room, baseName) {
-  const existing = new Set([...room.students.values()].map((student) => student.name));
+function uniqueStudentName(room, baseName, excludeId = null) {
+  const existing = new Set([...room.students.values()].filter((s) => s.id !== excludeId).map((student) => student.name));
   if (!existing.has(baseName)) return baseName;
   let index = 2;
   while (existing.has(`${baseName} (${index})`)) index += 1;
