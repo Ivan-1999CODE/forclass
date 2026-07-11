@@ -43,7 +43,8 @@ type Snapshot = {
   students: Array<{ id: string; name: string; connected: boolean; totalScore: number; answeredCurrent: boolean }>;
   ranking: Array<{ id: string; name: string; rank: number; totalScore: number; correctCount: number; avgResponseMs: number }>;
   stats: null | { optionCounts: number[]; answered: number; unanswered: number; correct: number };
-  me?: null | { id: string; name: string; totalScore: number; selectedIndex: number | null; answeredCurrent: boolean };
+  questionResults?: Array<{ id: string; name: string; outcome: "correct" | "wrong" | "unanswered" }>;
+  me?: null | { id: string; name: string; totalScore: number; selectedIndex: number | null; answeredCurrent: boolean; reportedStudentId: string | null };
   hostToken?: string;
   reports?: Array<{ reporterName: string; targetName: string; reason: string; reportedAt: number }>;
 };
@@ -714,8 +715,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
       {snapshot.status === "finished" && (
         <section className="panel">
           <h2>遊戲結束</h2>
-          <Leaderboard snapshot={snapshot} />
-          <ReportPanel snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
+          <Leaderboard snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
         </section>
       )}
     </main>
@@ -994,8 +994,30 @@ function ResultBlock({ snapshot, showStats = true }: { snapshot: Snapshot; showS
           <AnswerStats snapshot={snapshot} revealCorrect />
         </section>}
       </div>
-      <Leaderboard snapshot={snapshot} compact />
+      <QuestionResults snapshot={snapshot} />
     </div>
+  );
+}
+
+function QuestionResults({ snapshot }: { snapshot: Snapshot }) {
+  const outcomeText = {
+    correct: "答對",
+    wrong: "答錯",
+    unanswered: "未作答"
+  };
+
+  return (
+    <section className="question-results">
+      <h3>這一題誰對誰錯</h3>
+      <div className="question-result-list">
+        {(snapshot.questionResults || []).map((student) => (
+          <div className={`question-result-row ${student.outcome}`} key={student.id}>
+            <strong>{student.name}</strong>
+            <span>{outcomeText[student.outcome]}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1021,97 +1043,35 @@ function AnswerStats({ snapshot, revealCorrect }: { snapshot: Snapshot; revealCo
   );
 }
 
-const REPORT_REASONS = [
-  "偷看答案",
-  "亂點（不認真作答）",
-  "干擾其他同學",
-  "姓名不雅",
-  "作答速度可疑",
-];
-
-function ReportPanel({ snapshot, roomCode, studentId }: { snapshot: Snapshot; roomCode: string; studentId: string }) {
-  const [targetId, setTargetId] = useState("");
-  const [reason, setReason] = useState("");
-  const [customReason, setCustomReason] = useState("");
+function Leaderboard({ snapshot, compact = false, roomCode, studentId }: { snapshot: Snapshot; compact?: boolean; roomCode?: string; studentId?: string }) {
   const [message, setMessage] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const rows = compact ? snapshot.ranking.slice(0, 5) : snapshot.ranking;
+  const canReport = Boolean(roomCode && studentId && !snapshot.me?.reportedStudentId);
 
-  const otherStudents = snapshot.students.filter((s) => s.id !== studentId);
-  if (otherStudents.length === 0) return null;
-
-  const submit = () => {
-    const finalReason = reason === "__other__" ? customReason.trim() : reason;
-    if (!targetId) { setMessage("請選擇要檢舉的對象。"); return; }
-    if (!finalReason) { setMessage(reason === "__other__" ? "請輸入檢舉原因。" : "請選擇檢舉原因。"); return; }
+  const reportStudent = (targetId: string) => {
+    if (!roomCode || !studentId) return;
     setMessage("");
-    socket.emit("student:report", { roomCode, studentId, targetId, reason: finalReason }, (reply: SocketReply) => {
-      if (!reply.ok) {
-        setMessage(reply.error || "送出失敗。");
-      } else {
-        setSuccessMsg("檢舉已送出，只有老師看得到。");
-        setTargetId("");
-        setReason("");
-        setCustomReason("");
-        window.setTimeout(() => setSuccessMsg(""), 3000);
-      }
+    socket.emit("student:report", { roomCode, studentId, targetId }, (reply: SocketReply) => {
+      if (!reply.ok) setMessage(reply.error || "檢舉失敗。");
     });
   };
 
-  return (
-    <div className="report-panel">
-      <h3>對同學提出檢舉</h3>
-      <p className="hint">完全匿名，只有老師看得到，可以重複送出。</p>
-      <label>
-        檢舉對象
-        <select value={targetId} onChange={(e) => setTargetId(e.target.value)}>
-          <option value="">-- 選擇同學 --</option>
-          {otherStudents.map((s) => (
-            <option value={s.id} key={s.id}>{s.name}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        檢舉原因
-        <select value={reason} onChange={(e) => setReason(e.target.value)}>
-          <option value="">-- 選擇原因 --</option>
-          {REPORT_REASONS.map((r) => (
-            <option value={r} key={r}>{r}</option>
-          ))}
-          <option value="__other__">其他（自行輸入）</option>
-        </select>
-      </label>
-      {reason === "__other__" && (
-        <label>
-          自行輸入原因
-          <input
-            value={customReason}
-            onChange={(e) => setCustomReason(e.target.value)}
-            placeholder="請輸入原因（最多 100 字）"
-            maxLength={100}
-          />
-        </label>
-      )}
-      <div className="actions">
-        <button onClick={submit}>送出檢舉</button>
-      </div>
-      {message && <p className="notice error">{message}</p>}
-      {successMsg && <p className="notice">{successMsg}</p>}
-    </div>
-  );
-}
-
-function Leaderboard({ snapshot, compact = false }: { snapshot: Snapshot; compact?: boolean }) {
-  const rows = compact ? snapshot.ranking.slice(0, 5) : snapshot.ranking;
   return (
     <div className="leaderboard">
       {rows.map((student) => (
         <div className={`rank-row ${student.rank <= 4 ? `rank-award rank-${student.rank}` : ""}`} key={student.id}>
           <span className="rank-badge">#{student.rank}</span>
-          <strong className="rank-name">{student.name}</strong>
+          <span className="rank-name-with-report">
+            <strong className="rank-name">{student.name}</strong>
+            {canReport && student.id !== studentId && (
+              <button className="report-icon-button" onClick={() => reportStudent(student.id)} aria-label={`檢舉 ${student.name}`} title={`檢舉 ${student.name}`}>!</button>
+            )}
+          </span>
           <span className="score-badge">{student.totalScore} 分</span>
         </div>
       ))}
       {rows.length === 0 && <p className="empty">尚無排名。</p>}
+      {message && <p className="notice error">{message}</p>}
     </div>
   );
 }

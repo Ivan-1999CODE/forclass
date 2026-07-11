@@ -92,7 +92,6 @@ export async function saveAnswer(room, student, questionIndex, answer) {
     }),
     "save answer"
   );
-  await saveStudent(room, student);
 }
 
 export async function listSessions() {
