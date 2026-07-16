@@ -20,6 +20,8 @@ const supabase = persistenceEnabled
     })
   : null;
 
+const historyRetentionDays = 5;
+
 export async function saveSessionCreated(room) {
   if (!supabase) return;
   await reportError(
@@ -96,13 +98,27 @@ export async function saveAnswer(room, student, questionIndex, answer) {
 
 export async function listSessions() {
   if (!supabase) return [];
+  const cutoff = historyCutoff(historyRetentionDays);
   const { data, error } = await supabase
     .from("quiz_sessions")
     .select("id, room_code, quiz_id, quiz_title, quiz_date, status, total_questions, created_at, started_at, finished_at, summary")
+    .gte("created_at", cutoff)
     .order("created_at", { ascending: false })
     .limit(50);
   if (error) throw error;
   return data || [];
+}
+
+export async function deleteExpiredSessions(retentionDays = historyRetentionDays) {
+  if (!supabase) return 0;
+  const cutoff = historyCutoff(retentionDays);
+  const { data, error } = await supabase
+    .from("quiz_sessions")
+    .delete()
+    .lt("created_at", cutoff)
+    .select("id");
+  if (error) throw error;
+  return data?.length || 0;
 }
 
 export async function getSessionDetail(sessionId) {
@@ -122,6 +138,11 @@ function buildSummaryForStorage(room) {
 
 function buildResponsesForStorage(room) {
   return room.responseRowsBuilder ? room.responseRowsBuilder(room) : [];
+}
+
+function historyCutoff(retentionDays) {
+  const days = Number.isFinite(retentionDays) && retentionDays > 0 ? retentionDays : historyRetentionDays;
+  return new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
 }
 
 async function reportError(queryPromise, label) {
