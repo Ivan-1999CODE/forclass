@@ -15,7 +15,8 @@ body {
 
 button,
 select,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -51,12 +52,17 @@ button.danger {
 }
 
 select,
-input {
+input,
+textarea {
   border: 1px solid #c7d2dc;
   border-radius: 8px;
   min-height: 42px;
   padding: 8px 10px;
   width: 100%;
+}
+
+textarea {
+  resize: vertical;
 }
 
 label {
@@ -631,6 +637,35 @@ p {
   flex: 1;
 }
 
+.rank-name-with-report {
+  align-items: center;
+  display: inline-flex;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+
+.report-icon-button {
+  align-items: center;
+  background: #fff5d9;
+  border: 1px solid #d6a822;
+  border-radius: 999px;
+  color: #8a5b00;
+  display: inline-flex;
+  flex: 0 0 22px;
+  font-size: 14px;
+  font-weight: 900;
+  height: 22px;
+  justify-content: center;
+  min-height: 22px;
+  padding: 0;
+  width: 22px;
+}
+
+.report-icon-button:hover {
+  background: #ffe6a1;
+}
+
 .score-badge {
   background: #edf4f2;
   color: #176b5d;
@@ -855,13 +890,180 @@ p {
 .results-grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+  grid-template-columns: minmax(0, 1fr);
   margin-top: 20px;
+}
+
+.teacher-message-panel {
+  margin-bottom: 18px;
+}
+
+.message-recipient-row {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.message-recipient-row label {
+  margin: 0;
+}
+
+.teacher-message-log,
+.student-message-list,
+.student-wrong-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.teacher-message-log h3 {
+  margin-bottom: 0;
+}
+
+.teacher-message-row,
+.student-message-row {
+  background: #f5f7fa;
+  border-left: 4px solid #176b5d;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.teacher-message-row > div {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.teacher-message-row span,
+.student-message-row span {
+  color: #617083;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.teacher-message-row p,
+.student-message-row p {
+  margin: 6px 0 0;
+  white-space: pre-wrap;
+}
+
+.student-message-panel {
+  background: #fff5d9;
+  border-color: #e8cb78;
+  margin-bottom: 18px;
+}
+
+.student-message-panel h2 {
+  margin-bottom: 10px;
+}
+
+.student-message-list {
+  margin-top: 0;
+}
+
+.student-message-row {
+  background: #fff;
+  border-left-color: #d49a00;
+}
+
+.student-wrong-review {
+  border-top: 1px solid #d7e0e8;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.student-wrong-card {
+  background: #f5f7fa;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.student-wrong-card h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.student-review-options {
+  display: grid;
+  gap: 7px;
+}
+
+.student-review-option {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d7e0e8;
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+
+.student-review-option.correct {
+  background: #dff2ea;
+  border-color: #176b5d;
+  color: #176b5d;
+}
+
+.student-review-option.wrong {
+  background: #f8e2e2;
+  border-color: #b73535;
+  color: #9f2525;
+}
+
+.student-unanswered-label {
+  color: #9f2525;
+  font-weight: 800;
+  margin: 10px 0 0;
 }
 
 .result-details {
   display: grid;
   gap: 22px;
+}
+
+.question-results {
+  background: #f5f7fa;
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.question-results h3 {
+  margin: 0 0 10px;
+}
+
+.question-result-list {
+  display: grid;
+  gap: 8px;
+}
+
+.question-result-row {
+  align-items: center;
+  background: #fff;
+  border-left: 4px solid #c7d2dc;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+
+.question-result-row.correct {
+  border-left-color: #176b5d;
+  color: #176b5d;
+}
+
+.question-result-row.wrong {
+  border-left-color: #b73535;
+  color: #9f2525;
+}
+
+.question-result-row.unanswered {
+  border-left-color: #a9b5c4;
+  color: #617083;
 }
 
 .answer-stats-section {
@@ -1115,6 +1317,7 @@ button.btn-sm {
 
   .grid.two,
   .quiz-select-row,
+  .message-recipient-row,
   .quiz-preview-question-head,
   .quiz-preview-options,
   .option-grid,

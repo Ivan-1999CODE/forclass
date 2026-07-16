@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { Server } from "socket.io";
 import {
+  deleteExpiredSessions,
   getSessionDetail,
   listSessions,
   persistenceEnabled,
@@ -34,8 +35,13 @@ const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS ||
 const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
 const autoRevealDelayMs = Number(process.env.AUTO_REVEAL_DELAY_MS || 3000);
+const historyRetentionDays = 5;
+const historyCleanupIntervalMs = 6 * 60 * 60 * 1000;
 const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
 roomCleanupTimer.unref?.();
+const historyCleanupTimer = setInterval(cleanupHistory, historyCleanupIntervalMs);
+historyCleanupTimer.unref?.();
+void cleanupHistory();
 
 app.use(express.json({ limit: "1mb" }));
 
@@ -87,6 +93,7 @@ app.post("/api/auth/teacher", (req, res) => {
 
 app.get("/api/history", async (_req, res) => {
   try {
+    await cleanupHistory();
     res.json({ ...persistenceStatus, sessions: await listSessions() });
   } catch (error) {
     res.status(500).json({ ...persistenceStatus, error: error.message, sessions: [] });
@@ -224,6 +231,26 @@ io.on("connection", (socket) => {
     callback?.({ ok: true });
   });
 
+  socket.on("host:sendStudentMessage", ({ roomCode, hostToken, studentId, text }, callback) => {
+    const room = getAuthorizedRoom(roomCode, hostToken);
+    if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
+    const student = room.students.get(studentId);
+    if (!student) return callback?.({ ok: false, error: "找不到這位學生。" });
+    const cleanText = normalizeTeacherMessage(text);
+    if (!cleanText) return callback?.({ ok: false, error: "請輸入留言內容。" });
+
+    room.teacherMessages.push({
+      id: crypto.randomUUID(),
+      targetStudentId: student.id,
+      targetName: student.name,
+      text: cleanText,
+      sentAt: Date.now()
+    });
+    room.teacherMessages = room.teacherMessages.slice(-100);
+    broadcastRoom(room);
+    callback?.({ ok: true });
+  });
+
   socket.on("student:join", ({ roomCode, name, studentId }, callback) => {
     const room = getRoom(roomCode);
     if (!room) return callback?.({ ok: false, error: "找不到這個房間代碼。" });
@@ -255,24 +282,22 @@ io.on("connection", (socket) => {
     broadcastRoom(room);
   });
 
-  socket.on("student:report", ({ roomCode, studentId, targetId, reason }, callback) => {
+  socket.on("student:report", ({ roomCode, studentId, targetId }, callback) => {
     const room = getRoom(roomCode);
     const reporter = room?.students.get(studentId);
     const target = room?.students.get(targetId);
     if (!room || !reporter || !target) return callback?.({ ok: false, error: "無效的檢舉。" });
     if (studentId === targetId) return callback?.({ ok: false, error: "不能檢舉自己。" });
-    const cleanReason = String(reason || "").trim().slice(0, 200);
-    if (!cleanReason) return callback?.({ ok: false, error: "請選擇或輸入檢舉原因。" });
+    if (reporter.reportedStudentId) return callback?.({ ok: false, error: "每位學生每場只能檢舉一次。" });
+    reporter.reportedStudentId = targetId;
     room.reports.push({
       reporterName: reporter.name,
       targetName: target.name,
-      reason: cleanReason,
+      reason: "一鍵檢舉",
       reportedAt: Date.now()
     });
-    if (room.hostSocketId) {
-      io.to(room.hostSocketId).emit("host:update", buildHostSnapshot(room));
-    }
     callback?.({ ok: true });
+    broadcastRoom(room);
   });
 
   socket.on("student:answer", ({ roomCode, studentId, selectedIndex }, callback) => {
@@ -300,7 +325,6 @@ io.on("connection", (socket) => {
       score,
       answeredAt: now
     });
-    student.totalScore += score;
     void saveAnswer(room, student, room.currentQuestionIndex, student.answers.get(room.currentQuestionIndex));
     callback?.({ ok: true, snapshot: buildStudentSnapshot(room, student.id) });
     scheduleAutoRevealIfReady(room);
@@ -434,6 +458,7 @@ function createRoom(quiz) {
     autoRevealEndsAt: null,
     students: new Map(),
     reports: [],
+    teacherMessages: [],
     createdAt: Date.now(),
     startedAt: null,
     finishedAt: null,
@@ -588,12 +613,14 @@ function closeQuestion(room) {
   if (room.status !== "question") return;
   clearRoomTimer(room);
   room.status = "results";
+  awardQuestionScores(room);
   void saveSessionStatus(room);
   broadcastRoom(room);
 }
 
 function finishRoom(room) {
   clearRoomTimer(room);
+  awardQuestionScores(room);
   room.status = "finished";
   room.finishedAt = Date.now();
   void saveSessionStatus(room);
@@ -653,7 +680,9 @@ function buildHostSnapshot(room) {
   return {
     ...buildDisplaySnapshot(room),
     hostToken: room.hostToken,
-    reports: room.reports
+    reports: room.reports,
+    teacherMessages: room.teacherMessages,
+    questionResults: room.status === "results" || room.status === "finished" ? buildQuestionResults(room) : undefined
   };
 }
 
@@ -701,13 +730,16 @@ function buildStudentSnapshot(room, studentId) {
   const answer = student?.answers.get(room.currentQuestionIndex);
   return {
     ...base,
+    teacherMessages: room.teacherMessages.filter((message) => message.targetStudentId === studentId),
+    wrongAnswers: room.status === "finished" && student ? buildStudentWrongAnswers(room, student) : undefined,
     me: student
       ? {
           id: student.id,
           name: student.name,
           totalScore: student.totalScore,
           selectedIndex: answer?.selectedIndex ?? null,
-          answeredCurrent: Boolean(answer)
+          answeredCurrent: Boolean(answer),
+          reportedStudentId: student.reportedStudentId ?? null
         }
       : null
   };
@@ -737,6 +769,49 @@ function buildQuestionStats(room) {
     unanswered: Math.max(0, room.students.size - answered),
     correct
   };
+}
+
+function awardQuestionScores(room) {
+  if (room.currentQuestionIndex < 0) return;
+  for (const student of room.students.values()) {
+    const answer = student.answers.get(room.currentQuestionIndex);
+    if (!answer || answer.scoreAwarded) continue;
+    answer.scoreAwarded = true;
+    if (answer.score > 0) {
+      student.totalScore += answer.score;
+      void saveStudent(room, student);
+    }
+  }
+}
+
+function buildQuestionResults(room) {
+  return [...room.students.values()].map((student) => {
+    const answer = student.answers.get(room.currentQuestionIndex);
+    return {
+      id: student.id,
+      name: student.name,
+      outcome: !answer ? "unanswered" : answer.isCorrect ? "correct" : "wrong"
+    };
+  });
+}
+
+function buildStudentWrongAnswers(room, student) {
+  if (room.currentQuestionIndex < 0) return [];
+  return room.quiz.questions
+    .slice(0, room.currentQuestionIndex + 1)
+    .map((question, questionIndex) => {
+      const answer = student.answers.get(questionIndex);
+      if (answer?.isCorrect) return null;
+      return {
+        questionIndex,
+        prompt: question.prompt,
+        options: question.options,
+        selectedIndex: answer?.selectedIndex ?? null,
+        correctIndex: question.answerIndex,
+        explanation: question.explanation || ""
+      };
+    })
+    .filter(Boolean);
 }
 
 function buildRanking(room) {
@@ -805,6 +880,10 @@ function normalizeName(name) {
   return String(name || "").trim().replace(/\s+/g, " ").slice(0, 24);
 }
 
+function normalizeTeacherMessage(message) {
+  return String(message || "").trim().replace(/\r\n/g, "\n").slice(0, 500);
+}
+
 function uniqueStudentName(room, baseName, excludeId = null) {
   const existing = new Set([...room.students.values()].filter((s) => s.id !== excludeId).map((student) => student.name));
   if (!existing.has(baseName)) return baseName;
@@ -848,5 +927,13 @@ function cleanupRooms() {
       clearRoomTimer(room);
       rooms.delete(room.code);
     }
+  }
+}
+
+async function cleanupHistory() {
+  try {
+    await deleteExpiredSessions(historyRetentionDays);
+  } catch (error) {
+    console.error(`[supabase] delete expired sessions failed: ${error.message}`);
   }
 }
