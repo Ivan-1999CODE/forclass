@@ -62,10 +62,21 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   await emitAck(studentB, "student:answer", { roomCode, studentId: joinedB.studentId, selectedIndex: 1 });
 
   const hostResultsUpdate = waitForSocketEvent(host, "host:update", (snapshot) => snapshot.status === "results");
+  const studentAResultsUpdate = waitForSocketEvent(studentA, "student:update", (snapshot) => snapshot.status === "results");
+  const studentBResultsUpdate = waitForSocketEvent(studentB, "student:update", (snapshot) => snapshot.status === "results");
   await emitAck(host, "host:closeQuestion", { roomCode, hostToken });
   const hostResults = await hostResultsUpdate;
+  const [studentAResults, studentBResults] = await Promise.all([studentAResultsUpdate, studentBResultsUpdate]);
   assert.equal(hostResults.status, "results");
   assert.equal(hostResults.questionResults.length, 2);
+  for (const studentResults of [studentAResults, studentBResults]) {
+    assert.equal(studentResults.ranking.length, 2);
+    assert.deepEqual(studentResults.ranking.map((student) => student.rank), [1, 2]);
+    assert.deepEqual(
+      new Set(studentResults.ranking.map((student) => student.id)),
+      new Set([joinedA.studentId, joinedB.studentId])
+    );
+  }
 
   const wrongResult = hostResults.questionResults.find((result) => result.outcome === "wrong");
   assert.ok(wrongResult, "兩位學生選不同答案時，至少一位應答錯");

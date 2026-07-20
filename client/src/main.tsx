@@ -720,7 +720,15 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
             showCounts={snapshot.status === "results"}
           />
           {message && <p className="notice error">{message}</p>}
-          {snapshot.status === "results" && <ResultBlock snapshot={snapshot} showStats={false} />}
+          {snapshot.status === "results" && (
+            <>
+              <ResultBlock snapshot={snapshot} showStats={false} />
+              <section className="student-round-ranking" aria-labelledby="student-round-ranking-title">
+                <h3 id="student-round-ranking-title">全班即時排名</h3>
+                <Leaderboard snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
+              </section>
+            </>
+          )}
         </section>
       )}
 
@@ -1200,18 +1208,25 @@ function Leaderboard({ snapshot, compact = false, roomCode, studentId }: { snaps
 
   return (
     <div className="leaderboard">
-      {rows.map((student) => (
-        <div className={`rank-row ${student.rank <= 4 ? `rank-award rank-${student.rank}` : ""}`} key={student.id}>
-          <span className="rank-badge">#{student.rank}</span>
-          <span className="rank-name-with-report">
-            <strong className="rank-name">{student.name}</strong>
-            {canReport && student.id !== studentId && (
-              <button className="report-icon-button" onClick={() => reportStudent(student.id)} aria-label={`檢舉 ${student.name}`} title={`檢舉 ${student.name}`}>!</button>
-            )}
-          </span>
-          <span className="score-badge">{student.totalScore} 分</span>
-        </div>
-      ))}
+      {rows.map((student) => {
+        const isCurrentStudent = student.id === studentId;
+        return (
+          <div
+            className={`rank-row ${student.rank <= 4 ? `rank-award rank-${student.rank}` : ""} ${isCurrentStudent ? "current-student" : ""}`}
+            key={student.id}
+          >
+            <span className="rank-badge">#{student.rank}</span>
+            <span className="rank-name-with-report">
+              <strong className="rank-name">{student.name}</strong>
+              {isCurrentStudent && <span className="current-student-badge">你</span>}
+              {canReport && !isCurrentStudent && (
+                <button className="report-icon-button" onClick={() => reportStudent(student.id)} aria-label={`檢舉 ${student.name}`} title={`檢舉 ${student.name}`}>!</button>
+              )}
+            </span>
+            <span className="score-badge">{student.totalScore} 分</span>
+          </div>
+        );
+      })}
       {rows.length === 0 && <p className="empty">尚無排名。</p>}
       {message && <p className="notice error">{message}</p>}
     </div>

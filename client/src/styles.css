@@ -633,6 +633,30 @@ p {
   color: #fff;
 }
 
+.student-round-ranking {
+  border-top: 2px solid #e3e9ef;
+  margin-top: 20px;
+  padding-top: 18px;
+}
+
+.student-round-ranking h3 {
+  margin-top: 0;
+}
+
+.rank-row.current-student {
+  box-shadow: 0 0 0 3px #176b5d;
+}
+
+.current-student-badge {
+  background: #176b5d;
+  border-radius: 999px;
+  color: #fff;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 3px 8px;
+}
+
 .rank-name {
   flex: 1;
 }
