@@ -44,7 +44,7 @@ type Snapshot = {
   ranking: Array<{ id: string; name: string; rank: number; totalScore: number; correctCount: number; avgResponseMs: number }>;
   stats: null | { optionCounts: number[]; answered: number; unanswered: number; correct: number };
   questionResults?: Array<{ id: string; name: string; outcome: "correct" | "wrong" | "unanswered" }>;
-  teacherMessages?: Array<{ id: string; targetStudentId: string; targetName: string; text: string; sentAt: number }>;
+  teacherMessages?: Array<{ id: string; targetStudentId: string; targetName: string; text: string; sentAt: number; seenAt: number | null }>;
   wrongAnswers?: Array<{
     questionIndex: number;
     prompt: string;
@@ -700,7 +700,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
         </span>
       </header>
 
-      <TeacherMessageInbox messages={snapshot.teacherMessages || []} />
+      <TeacherMessageInbox messages={snapshot.teacherMessages || []} roomCode={roomCode} studentId={studentId} />
 
       {snapshot.status === "waiting" && (
         <section className="panel hero-panel">
@@ -1056,7 +1056,7 @@ function TeacherMessagePanel({ snapshot }: { snapshot: Snapshot }) {
       <div className="section-header">
         <div>
           <h2>給個別學生留言</h2>
-          <p className="hint">留言會即時出現在指定學生的畫面，並在發布 5 秒後自動消失。</p>
+          <p className="hint">留言會即時出現在指定學生的畫面，學生看到後 5 秒會自動消失。</p>
         </div>
       </div>
       <label>
@@ -1099,7 +1099,32 @@ function TeacherMessagePanel({ snapshot }: { snapshot: Snapshot }) {
   );
 }
 
-function TeacherMessageInbox({ messages }: { messages: NonNullable<Snapshot["teacherMessages"]> }) {
+function TeacherMessageInbox({
+  messages,
+  roomCode,
+  studentId
+}: {
+  messages: NonNullable<Snapshot["teacherMessages"]>;
+  roomCode: string;
+  studentId: string;
+}) {
+  useEffect(() => {
+    const markVisibleMessagesAsViewed = () => {
+      if (document.visibilityState !== "visible") return;
+      const messageIds = messages.filter((message) => !message.seenAt).map((message) => message.id);
+      if (messageIds.length === 0) return;
+      socket.emit("student:viewTeacherMessages", { roomCode, studentId, messageIds });
+    };
+
+    markVisibleMessagesAsViewed();
+    window.addEventListener("focus", markVisibleMessagesAsViewed);
+    document.addEventListener("visibilitychange", markVisibleMessagesAsViewed);
+    return () => {
+      window.removeEventListener("focus", markVisibleMessagesAsViewed);
+      document.removeEventListener("visibilitychange", markVisibleMessagesAsViewed);
+    };
+  }, [messages, roomCode, studentId]);
+
   if (messages.length === 0) return null;
   return (
     <section className="panel student-message-panel">

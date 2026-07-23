@@ -35,7 +35,7 @@ const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS ||
 const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
 const autoRevealDelayMs = Number(process.env.AUTO_REVEAL_DELAY_MS || 3000);
-const teacherMessageTtlMs = 5 * 1000;
+const teacherMessageTtlMs = Number(process.env.TEACHER_MESSAGE_TTL_MS || 5 * 1000);
 const historyRetentionDays = 5;
 const historyCleanupIntervalMs = 6 * 60 * 60 * 1000;
 const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
@@ -240,24 +240,16 @@ io.on("connection", (socket) => {
     const cleanText = normalizeTeacherMessage(text);
     if (!cleanText) return callback?.({ ok: false, error: "請輸入留言內容。" });
 
-    const sentAt = Date.now();
     room.teacherMessages.push({
       id: crypto.randomUUID(),
       targetStudentId: student.id,
       targetName: student.name,
       text: cleanText,
-      sentAt
+      sentAt: Date.now(),
+      seenAt: null
     });
     room.teacherMessages = room.teacherMessages.slice(-100);
     broadcastRoom(room);
-    const expirationTimer = setTimeout(() => {
-      if (rooms.get(room.code) !== room) return;
-      const activeMessages = getActiveTeacherMessages(room);
-      if (activeMessages.length === room.teacherMessages.length) return;
-      room.teacherMessages = activeMessages;
-      broadcastRoom(room);
-    }, teacherMessageTtlMs);
-    expirationTimer.unref?.();
     callback?.({ ok: true });
   });
 
@@ -290,6 +282,28 @@ io.on("connection", (socket) => {
     socket.data.studentId = student.id;
     callback?.({ ok: true, studentId: student.id, snapshot: buildStudentSnapshot(room, student.id) });
     broadcastRoom(room);
+  });
+
+  socket.on("student:viewTeacherMessages", ({ roomCode, studentId, messageIds }, callback) => {
+    const room = getRoom(roomCode);
+    const student = room?.students.get(studentId);
+    if (!room || !student || socket.data.studentId !== student.id || socket.data.roomCode !== room.code) {
+      return callback?.({ ok: false, error: "學生或房間不存在。" });
+    }
+
+    const viewedIds = new Set(Array.isArray(messageIds) ? messageIds.filter((id) => typeof id === "string") : []);
+    const seenAt = Date.now();
+    const newlySeenMessages = room.teacherMessages.filter((message) => {
+      if (message.targetStudentId !== student.id || message.seenAt || !viewedIds.has(message.id)) return false;
+      message.seenAt = seenAt;
+      return true;
+    });
+
+    for (const message of newlySeenMessages) {
+      scheduleTeacherMessageExpiration(room, message);
+    }
+    if (newlySeenMessages.length > 0) broadcastRoom(room);
+    callback?.({ ok: true });
   });
 
   socket.on("student:report", ({ roomCode, studentId, targetId }, callback) => {
@@ -757,7 +771,19 @@ function buildStudentSnapshot(room, studentId) {
 
 function getActiveTeacherMessages(room) {
   const expirationTime = Date.now() - teacherMessageTtlMs;
-  return room.teacherMessages.filter((message) => message.sentAt > expirationTime);
+  return room.teacherMessages.filter((message) => !message.seenAt || message.seenAt > expirationTime);
+}
+
+function scheduleTeacherMessageExpiration(room, message) {
+  const remainingMs = Math.max(0, message.seenAt + teacherMessageTtlMs - Date.now());
+  const expirationTimer = setTimeout(() => {
+    if (rooms.get(room.code) !== room) return;
+    const activeMessages = getActiveTeacherMessages(room);
+    if (activeMessages.length === room.teacherMessages.length) return;
+    room.teacherMessages = activeMessages;
+    broadcastRoom(room);
+  }, remainingMs);
+  expirationTimer.unref?.();
 }
 
 function getCurrentQuestion(room) {

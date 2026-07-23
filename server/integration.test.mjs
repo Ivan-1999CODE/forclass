@@ -18,7 +18,8 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
       SUPABASE_SERVICE_ROLE_KEY: "",
       SUPABASE_SERVICE_KEY: "",
       TEACHER_PASSWORD: "",
-      AUTO_REVEAL_DELAY_MS: "60000"
+      AUTO_REVEAL_DELAY_MS: "60000",
+      TEACHER_MESSAGE_TTL_MS: "100"
     },
     stdio: ["ignore", "pipe", "pipe"]
   });
@@ -94,7 +95,27 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   assert.equal(studentWithMessage.teacherMessages.at(-1).text, "請再看一次這題的解釋。");
   assert.equal(studentWithMessage.questionResults, undefined);
 
-  const expiredMessageUpdate = await waitForSocketEvent(wrongSocket, "student:update", (snapshot) => snapshot.teacherMessages?.length === 0, 6000);
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  const resumedBeforeViewing = await emitAck(wrongSocket, "student:join", {
+    roomCode,
+    name: wrongResult.name,
+    studentId: wrongResult.id
+  });
+  assert.equal(resumedBeforeViewing.snapshot.teacherMessages.length, 1, "學生尚未確認看過時，留言不應先過期");
+
+  const expiredMessageUpdatePromise = waitForSocketEvent(
+    wrongSocket,
+    "student:update",
+    (snapshot) => snapshot.teacherMessages?.length === 0,
+    1000
+  );
+  const viewed = await emitAck(wrongSocket, "student:viewTeacherMessages", {
+    roomCode,
+    studentId: wrongResult.id,
+    messageIds: [studentWithMessage.teacherMessages.at(-1).id]
+  });
+  assert.equal(viewed.ok, true);
+  const expiredMessageUpdate = await expiredMessageUpdatePromise;
   assert.equal(expiredMessageUpdate.teacherMessages.length, 0);
 
   const finishedUpdate = waitForSocketEvent(wrongSocket, "student:update", (snapshot) => snapshot.status === "finished");
