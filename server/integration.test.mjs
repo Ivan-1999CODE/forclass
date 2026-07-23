@@ -94,6 +94,9 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   assert.equal(studentWithMessage.teacherMessages.at(-1).text, "請再看一次這題的解釋。");
   assert.equal(studentWithMessage.questionResults, undefined);
 
+  const expiredMessageUpdate = await waitForSocketEvent(wrongSocket, "student:update", (snapshot) => snapshot.teacherMessages?.length === 0, 6000);
+  assert.equal(expiredMessageUpdate.teacherMessages.length, 0);
+
   const finishedUpdate = waitForSocketEvent(wrongSocket, "student:update", (snapshot) => snapshot.status === "finished");
   await emitAck(host, "host:endGame", { roomCode, hostToken });
   const finishedStudent = await finishedUpdate;
@@ -131,12 +134,12 @@ function emitAck(socket, eventName, payload) {
   });
 }
 
-function waitForSocketEvent(socket, eventName, predicate) {
+function waitForSocketEvent(socket, eventName, predicate, timeoutMs = 3000) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       socket.off(eventName, handleEvent);
       reject(new Error(`${eventName} 事件逾時`));
-    }, 3000);
+    }, timeoutMs);
     const handleEvent = (payload) => {
       if (!predicate(payload)) return;
       clearTimeout(timeout);

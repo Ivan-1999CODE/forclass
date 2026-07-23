@@ -1056,7 +1056,7 @@ function TeacherMessagePanel({ snapshot }: { snapshot: Snapshot }) {
       <div className="section-header">
         <div>
           <h2>給個別學生留言</h2>
-          <p className="hint">留言會即時出現在指定學生的畫面；學生離線後重新加入仍可看到。</p>
+          <p className="hint">留言會即時出現在指定學生的畫面，並在發布 5 秒後自動消失。</p>
         </div>
       </div>
       <label>

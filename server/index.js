@@ -35,6 +35,7 @@ const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS ||
 const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
 const autoRevealDelayMs = Number(process.env.AUTO_REVEAL_DELAY_MS || 3000);
+const teacherMessageTtlMs = 5 * 1000;
 const historyRetentionDays = 5;
 const historyCleanupIntervalMs = 6 * 60 * 60 * 1000;
 const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
@@ -239,15 +240,24 @@ io.on("connection", (socket) => {
     const cleanText = normalizeTeacherMessage(text);
     if (!cleanText) return callback?.({ ok: false, error: "請輸入留言內容。" });
 
+    const sentAt = Date.now();
     room.teacherMessages.push({
       id: crypto.randomUUID(),
       targetStudentId: student.id,
       targetName: student.name,
       text: cleanText,
-      sentAt: Date.now()
+      sentAt
     });
     room.teacherMessages = room.teacherMessages.slice(-100);
     broadcastRoom(room);
+    const expirationTimer = setTimeout(() => {
+      if (rooms.get(room.code) !== room) return;
+      const activeMessages = getActiveTeacherMessages(room);
+      if (activeMessages.length === room.teacherMessages.length) return;
+      room.teacherMessages = activeMessages;
+      broadcastRoom(room);
+    }, teacherMessageTtlMs);
+    expirationTimer.unref?.();
     callback?.({ ok: true });
   });
 
@@ -681,7 +691,7 @@ function buildHostSnapshot(room) {
     ...buildDisplaySnapshot(room),
     hostToken: room.hostToken,
     reports: room.reports,
-    teacherMessages: room.teacherMessages,
+    teacherMessages: getActiveTeacherMessages(room),
     questionResults: room.status === "results" || room.status === "finished" ? buildQuestionResults(room) : undefined
   };
 }
@@ -730,7 +740,7 @@ function buildStudentSnapshot(room, studentId) {
   const answer = student?.answers.get(room.currentQuestionIndex);
   return {
     ...base,
-    teacherMessages: room.teacherMessages.filter((message) => message.targetStudentId === studentId),
+    teacherMessages: getActiveTeacherMessages(room).filter((message) => message.targetStudentId === studentId),
     wrongAnswers: room.status === "finished" && student ? buildStudentWrongAnswers(room, student) : undefined,
     me: student
       ? {
@@ -743,6 +753,11 @@ function buildStudentSnapshot(room, studentId) {
         }
       : null
   };
+}
+
+function getActiveTeacherMessages(room) {
+  const expirationTime = Date.now() - teacherMessageTtlMs;
+  return room.teacherMessages.filter((message) => message.sentAt > expirationTime);
 }
 
 function getCurrentQuestion(room) {
