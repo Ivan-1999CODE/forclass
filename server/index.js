@@ -112,9 +112,11 @@ app.get("/api/history/:sessionId", async (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("host:createRoom", async ({ quizId, questionCount }, callback) => {
+  socket.on("host:createRoom", async ({ quizIds, quizId, questionCount }, callback) => {
     try {
-      const quiz = await loadQuizById(quizId);
+      const selectedIds = normalizeQuizIds(quizIds, quizId);
+      const quizzes = await Promise.all(selectedIds.map((id) => loadQuizById(id)));
+      const quiz = combineQuizzes(quizzes);
       const room = createRoom(selectQuestionsForSession(quiz, questionCount));
       void saveSessionCreated(room);
       attachHostSocket(room, socket);
@@ -437,6 +439,39 @@ async function loadQuizById(quizId) {
     if (quiz.id === quizId) return quiz;
   }
   throw new Error("找不到指定的測驗。");
+}
+
+function normalizeQuizIds(quizIds, legacyQuizId) {
+  const requestedIds = Array.isArray(quizIds) ? quizIds : [legacyQuizId];
+  const uniqueIds = [...new Set(requestedIds.filter((id) => typeof id === "string" && id.trim()))];
+  if (uniqueIds.length === 0) throw new Error("請先勾選至少一個題庫。");
+  return uniqueIds;
+}
+
+function combineQuizzes(quizzes) {
+  if (quizzes.length === 1) return quizzes[0];
+
+  const latestDate = quizzes.map((quiz) => quiz.date).sort().at(-1);
+  const sourceTitles = quizzes.map((quiz) => quiz.title);
+  const mixedId = crypto.createHash("sha256")
+    .update(quizzes.map((quiz) => quiz.id).sort().join("|"))
+    .digest("hex")
+    .slice(0, 12);
+
+  return {
+    id: `mixed-${mixedId}`,
+    title: `混合題庫（${quizzes.length} 份）｜${sourceTitles.join("、")}`,
+    date: latestDate,
+    defaultTimeLimitSec: 20,
+    questions: shuffleArray(
+      quizzes.flatMap((quiz) =>
+        quiz.questions.map((question) => ({
+          ...question,
+          timeLimitSec: question.timeLimitSec || quiz.defaultTimeLimitSec
+        }))
+      )
+    )
+  };
 }
 
 function validateQuiz(quiz, source) {

@@ -46,8 +46,21 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
 
   const quizResponse = await fetch(`${baseUrl}/api/quizzes`);
   const { quizzes } = await quizResponse.json();
-  assert.ok(quizzes.length > 0);
+  assert.ok(quizzes.length > 1);
 
+  const mixed = await emitAck(host, "host:createRoom", {
+    quizIds: [quizzes[0].id, quizzes[1].id],
+    questionCount: "all"
+  });
+  assert.equal(mixed.ok, true);
+  assert.match(mixed.snapshot.quiz.title, /^混合題庫（2 份）/);
+  assert.equal(mixed.snapshot.quiz.questionCount, quizzes[0].questionCount + quizzes[1].questionCount);
+
+  const noQuizSelected = await emitAck(host, "host:createRoom", { quizIds: [], questionCount: 10 });
+  assert.equal(noQuizSelected.ok, false);
+  assert.equal(noQuizSelected.error, "請先勾選至少一個題庫。");
+
+  // 舊版單一 quizId 格式仍可建立場次，避免既有客戶端更新期間中斷。
   const created = await emitAck(host, "host:createRoom", { quizId: quizzes[0].id, questionCount: 1 });
   assert.equal(created.ok, true);
   const hostToken = created.hostToken;

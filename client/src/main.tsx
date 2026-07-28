@@ -105,7 +105,7 @@ const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
 const teacherAuthStorageKey = "classroom-live-quiz-teacher-auth";
 
-// 下拉選單分組：先依時態／文法主題分群，群內再依難度（簡單→混合→困難）排序。
+// 題庫勾選清單分組：先依時態／文法主題分群，群內再依難度（簡單→混合→困難）排序。
 // 題目標題的分隔符號不一致（有的用 -，有的用全形｜），所以一律用關鍵字比對，不依賴分隔符號。
 type QuizTopic = { key: string; label: string; order: number };
 
@@ -188,7 +188,7 @@ function HomePage() {
 
 function HostPage() {
   const [quizzes, setQuizzes] = useState<QuizSummary[]>([]);
-  const [selectedQuizId, setSelectedQuizId] = useState("");
+  const [selectedQuizIds, setSelectedQuizIds] = useState<string[]>([]);
   const [questionCount, setQuestionCount] = useState("10");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
@@ -224,7 +224,7 @@ function HostPage() {
       .then((response) => response.json())
       .then((data) => {
         setQuizzes(data.quizzes || []);
-        setSelectedQuizId(data.quizzes?.[0]?.id || "");
+        setSelectedQuizIds(data.quizzes?.[0]?.id ? [data.quizzes[0].id] : []);
       })
       .catch((error) => setMessage(error.message));
 
@@ -293,7 +293,7 @@ function HostPage() {
   useEffect(() => {
     setPreviewQuiz(null);
     setPreviewMessage("");
-  }, [selectedQuizId]);
+  }, [selectedQuizIds]);
 
   const loginTeacher = () => {
     setAuthMessage("");
@@ -313,7 +313,7 @@ function HostPage() {
 
   const createRoom = () => {
     setMessage("");
-    socket.emit("host:createRoom", { quizId: selectedQuizId, questionCount }, (reply: SocketReply) => {
+    socket.emit("host:createRoom", { quizIds: selectedQuizIds, questionCount }, (reply: SocketReply) => {
       if (!reply.ok || !reply.roomCode || !reply.hostToken || !reply.snapshot) {
         setMessage(reply.error || "建立房間失敗。");
         return;
@@ -380,14 +380,32 @@ function HostPage() {
   };
 
   const previewSelectedQuiz = () => {
-    if (!selectedQuizId) return;
+    if (selectedQuizIds.length === 0) return;
     setPreviewLoading(true);
     setPreviewMessage("");
-    fetch(`/api/quizzes/${encodeURIComponent(selectedQuizId)}`)
-      .then(async (response) => {
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || "載入題目預覽失敗。");
-        setPreviewQuiz(data.quiz);
+    Promise.all(selectedQuizIds.map(async (quizId) => {
+      const response = await fetch(`/api/quizzes/${encodeURIComponent(quizId)}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "載入題目預覽失敗。");
+      return data.quiz as QuizDetail;
+    }))
+      .then((selectedQuizzes) => {
+        if (selectedQuizzes.length === 1) {
+          setPreviewQuiz(selectedQuizzes[0]);
+          return;
+        }
+        setPreviewQuiz({
+          id: `mixed-preview-${selectedQuizzes.map((quiz) => quiz.id).join("-")}`,
+          title: `混合題庫（${selectedQuizzes.length} 份）`,
+          date: selectedQuizzes.map((quiz) => quiz.date).sort().at(-1) || "",
+          defaultTimeLimitSec: 20,
+          questions: selectedQuizzes.flatMap((quiz) =>
+            quiz.questions.map((question) => ({
+              ...question,
+              timeLimitSec: question.timeLimitSec || quiz.defaultTimeLimitSec
+            }))
+          )
+        });
       })
       .catch((error) => {
         setPreviewQuiz(null);
@@ -395,6 +413,18 @@ function HostPage() {
       })
       .finally(() => setPreviewLoading(false));
   };
+
+  const toggleQuiz = (quizId: string) => {
+    setSelectedQuizIds((current) =>
+      current.includes(quizId)
+        ? current.filter((id) => id !== quizId)
+        : [...current, quizId]
+    );
+  };
+
+  const selectedQuestionTotal = quizzes
+    .filter((quiz) => selectedQuizIds.includes(quiz.id))
+    .reduce((total, quiz) => total + quiz.questionCount, 0);
 
   const isLocalOrigin = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
   const joinUrl = snapshot ? `${window.location.origin}/join?room=${snapshot.roomCode}` : "";
@@ -444,7 +474,7 @@ function HostPage() {
       <section className="grid two">
         <div className="panel">
           <h2>選擇測驗</h2>
-          <p className="hint">題目 JSON 放在專案的 quizzes 資料夾。新增檔案後重新整理此頁，就會出現在這裡。</p>
+          <p className="hint">可勾選一個或多個題庫，系統會把所有已選題目混合後隨機出題。</p>
           {savedHost && !snapshot && (
             <div className="resume-card">
               <strong>偵測到上一個場次</strong>
@@ -456,24 +486,43 @@ function HostPage() {
               {resumeMessage && <p className="notice error">{resumeMessage}</p>}
             </div>
           )}
-          <div className="quiz-select-row">
-            <select value={selectedQuizId} onChange={(event) => setSelectedQuizId(event.target.value)} disabled={Boolean(snapshot)}>
-              {groupQuizzes(quizzes).map((group) => (
-                <optgroup label={group.topic.label} key={group.topic.key}>
-                  {group.items.map((quiz) => {
-                    const difficulty = quizDifficulty(quiz);
-                    return (
-                      <option value={quiz.id} key={quiz.id}>
-                        {difficulty.label ? `${difficulty.label}｜` : ""}{quizShortLabel(quiz)}（{quiz.questionCount} 題・{quiz.date}）
-                      </option>
-                    );
-                  })}
-                </optgroup>
-              ))}
-            </select>
-            <button className="secondary" onClick={previewSelectedQuiz} disabled={!selectedQuizId || previewLoading}>
-              {previewLoading ? "載入中" : "預覽題目"}
-            </button>
+          <div className="quiz-checklist" aria-label="題庫選擇">
+            {groupQuizzes(quizzes).map((group) => (
+              <fieldset className="quiz-checklist-group" key={group.topic.key} disabled={Boolean(snapshot)}>
+                <legend>{group.topic.label}</legend>
+                {group.items.map((quiz) => {
+                  const difficulty = quizDifficulty(quiz);
+                  return (
+                    <label className={`quiz-check-option ${selectedQuizIds.includes(quiz.id) ? "selected" : ""}`} key={quiz.id}>
+                      <input
+                        type="checkbox"
+                        checked={selectedQuizIds.includes(quiz.id)}
+                        onChange={() => toggleQuiz(quiz.id)}
+                      />
+                      <span>
+                        <strong>{difficulty.label ? `${difficulty.label}｜` : ""}{quizShortLabel(quiz)}</strong>
+                        <small>{quiz.questionCount} 題・{quiz.date}</small>
+                      </span>
+                    </label>
+                  );
+                })}
+              </fieldset>
+            ))}
+            {quizzes.length === 0 && <p className="empty">目前沒有可用的題庫。</p>}
+          </div>
+          <div className="quiz-selection-summary">
+            <span>已選 {selectedQuizIds.length} 份，共 {selectedQuestionTotal} 題</span>
+            <div className="actions compact">
+              <button className="secondary btn-sm" onClick={() => setSelectedQuizIds(quizzes.map((quiz) => quiz.id))} disabled={Boolean(snapshot) || selectedQuizIds.length === quizzes.length}>
+                全選
+              </button>
+              <button className="secondary btn-sm" onClick={() => setSelectedQuizIds([])} disabled={Boolean(snapshot) || selectedQuizIds.length === 0}>
+                清除
+              </button>
+              <button className="secondary btn-sm" onClick={previewSelectedQuiz} disabled={selectedQuizIds.length === 0 || previewLoading}>
+                {previewLoading ? "載入中" : "預覽題目"}
+              </button>
+            </div>
           </div>
           <label>
             每場題數
@@ -486,7 +535,7 @@ function HostPage() {
             </select>
           </label>
           <div className="actions">
-            <button onClick={createRoom} disabled={!selectedQuizId || Boolean(snapshot)}>建立場次</button>
+            <button onClick={createRoom} disabled={selectedQuizIds.length === 0 || Boolean(snapshot)}>建立場次</button>
             <button className="secondary" onClick={resetRoom}>建立新場次</button>
           </div>
           {message && <p className="notice error">{message}</p>}
