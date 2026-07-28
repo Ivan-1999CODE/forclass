@@ -1,0 +1,18 @@
+{
+  "id": "國小版-困難版-過去簡單式-2026-07-29-更新版",
+  "title": "國小版｜困難版｜過去簡單式（規則＋不規則）｜2026-07-29 更新版",
+  "date": "2026-07-29",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    { "prompt": "Mia ________ her room yesterday.", "options": ["cleans", "cleaned", "is cleaning", "clean"], "answerIndex": 1 },
+    { "prompt": "They ________ TV last night.", "options": ["watch", "are watching", "watched", "watches"], "answerIndex": 2 },
+    { "prompt": "Did Leo ________ basketball yesterday?", "options": ["played", "plays", "playing", "play"], "answerIndex": 3 },
+    { "prompt": "Amy didn't ________ the door this morning.", "options": ["open", "opened", "opens", "opening"], "answerIndex": 0 },
+    { "prompt": "________ Ben wash the dishes last night?", "options": ["Was", "Does", "Did", "Is"], "answerIndex": 2 },
+    { "prompt": "Jack ________ home two hours ago.", "options": ["goes", "is going", "went", "go"], "answerIndex": 2 },
+    { "prompt": "They ________ lunch at school yesterday.", "options": ["eat", "ate", "are eating", "eats"], "answerIndex": 1 },
+    { "prompt": "Mia didn't ________ her teacher last week.", "options": ["saw", "sees", "seeing", "see"], "answerIndex": 3 },
+    { "prompt": "Leo didn't ________ a new bag yesterday.", "options": ["bought", "buy", "buys", "buying"], "answerIndex": 1 },
+    { "prompt": "________ Amy come home late yesterday?", "options": ["Does", "Was", "Did", "Is"], "answerIndex": 2 }
+  ]
+}

@@ -1,334 +1,321 @@
 ---
 name: 英文時態出題規則
-description: 當使用者要產生、修改、審查或匯入英文時態選擇題、國小或國中英文文法題庫、課堂即時問答 JSON 題目時，一定要使用此 skill。此 skill 規範以「動詞循環題組」出時態題（同一動詞涵蓋三單、過去式、否定句、問句、句首助動詞、回答句），核心考點為助動詞後接原形、三單與過去式變化；並檢查時態選項是否同一動詞變化、輸出為現行 628 JSON 格式（不含 explanation），要求題組以中文命名、標注國小版或國中版與日期。
+description: 當使用者要依照課本、照片、舊題或指定文法考點，重新產生、修改、審查英文動詞與時態選擇題時，一定要使用此 skill。適用於國小或國中英文、簡單版或困難版、課堂即時問答 JSON 題庫。核心是判斷句首該用 be 動詞或助動詞、現在簡單式第三人稱單數、過去簡單式、助動詞後接原形，以及 be + V-ing；選項可為一個字或完整動詞片語，但必須聚焦同一個動詞與文法考點，避免靠大小寫、冷僻單字或無關字義作答。
 ---
 
 # 英文時態出題規則
 
-建立日期：2026-06-10  
-適用等級：國小版、國中版
+更新日期：2026-07-29
 
-## 使用時機
+## 目標
 
-使用者要求新增、修改、清理、匯入或檢查英文時態題目時，先套用這份規則。特別是題目會放進課堂即時問答系統的 `quizzes/*.json` 時，要同時檢查 JSON 格式與教學品質。
+依照使用者提供的課本照片、舊題或指定考點，重新設計真正測量文法觀念的英文選擇題。
 
-## 先決定版本
+把學生的判斷集中在「這個句子的時態由誰承擔、主要動詞該用什麼形式」，不要讓大小寫、冷僻單字、無關字義或故意拼錯的假字搶走考點。
 
-每一份題組都要明確標注版本，不要讓學生或老師猜測難度。版本包含兩層：學習階段（國小版或國中版）與句型難度（簡單版或困難版）。
+教學上可以沿用「一個句子就是一個動詞」的入門口訣，但出題時要理解得更精確：
 
-- 國小版：使用短句、常見主詞、生活化單字，聚焦簡單現在式、簡單過去式、現在進行式、be 動詞與基礎助動詞。
-- 國中版：可增加較長句子、時間副詞、否定句、疑問句、助動詞後接原形、簡單未來式與基本完成式，但仍避免冷僻單字。
+- 一個簡單句通常只有一個承擔時態與主詞一致的動詞核心。
+- 如果已有 `do / does / did` 等助動詞，後面的主要動詞使用原形。
+- 如果以 `be` 構成進行式，使用 `be + V-ing`，時態與主詞一致由 `be` 承擔。
+- `be` 也可以自己作主要動詞，後接名詞、形容詞或地點。
 
-題組標題、檔名與 `title` 欄位都用中文命名，並包含學習階段、句型難度與日期。
+## 收到參考題時先分析
+
+先辨認參考題真正想考的文法，不要直接照抄參考書的所有選項設計。
+
+1. 找出每題的主詞、時間線索、句型和空格位置。
+2. 判斷空格是在考：
+   - `be` 動詞；
+   - 句首助動詞；
+   - 一般動詞的形式；
+   - 助動詞後的原形；
+   - 或完整動詞片語。
+3. 保留有效的文法陷阱，排除只考大小寫、冷僻字義、排版或明顯錯字的題目。
+4. 重新寫出自然、短而清楚的句子，不必沿用原題的人名或情境。
+5. 確認每題只有一個文法上與語意上都成立的答案。
+
+## 版本設定
+
+每份題組由兩個獨立維度組成。
+
+### 學習階段
+
+- 國小版：使用短句、常見主詞與生活單字。
+- 國中版：句子可以稍長，加入較多時間線索與常見不規則動詞，但仍避免冷僻單字。
+
+學習階段只控制單字與句長，不決定是否出問句或否定句。
+
+### 句型難度
+
+- 簡單版：只出直述句，不出問句或否定句。
+- 困難版：混合直述句、問句與否定句。若使用者沒有指定比例，預設約為直述句 40%、問句 30%、否定句 30%。
+
+簡單版仍可考不同時態，也可讓空格包含完整動詞片語；「簡單」只表示句型限於直述句。
+
+## 核心考點
+
+### 1. 句首選擇：be 動詞或助動詞
+
+問句句首的答案要由空格後面的結構決定。
+
+| 空格後的結構 | 應考慮的句首 | 範例 |
+|---|---|---|
+| 名詞、形容詞、地點 | `Am / Is / Are / Was / Were` | `________ Amy busy yesterday?` |
+| `V-ing` | `Am / Is / Are / Was / Were` | `________ Amy studying now?` |
+| 一般動詞原形 | `Do / Does / Did` | `________ Amy study every day?` |
+| 過去時間＋一般動詞原形 | `Did` | `________ Amy study yesterday?` |
 
 範例：
 
 ```json
-{
-  "id": "國小版-簡單版-現在簡單式與過去簡單式-2026-06-10",
-  "title": "國小版｜簡單版｜現在簡單式與過去簡單式｜2026-06-10",
-  "date": "2026-06-10"
-}
+{ "prompt": "________ Leo playing basketball now?", "options": ["Is", "Does", "Did", "Are"], "answerIndex": 0 }
 ```
-
-## 標題規則
-
-預設使用特定時態命名，因為題組目標清楚，學生比較不會把閱讀理解、字義猜測和文法判斷混在一起。
-
-- 優先：`國小版｜簡單版｜現在簡單式｜2026-06-10`
-- 優先：`國中版｜困難版｜助動詞與動詞原形｜2026-06-10`
-- 只有在使用者明確要求總複習、混合練習或考前複習時，才使用混合命名，例如：`國中版｜困難版｜時態混合複習｜2026-06-10`
-
-如果題組同時考多個觀念，要在標題中具體列出，不要只寫「英文練習」或「文法題」。
-
-### 混合時態的處理方式
-
-使用者要出混合題時，會直接指定要混哪些時態（例如「現在簡單式跟過去簡單式」，或「多種時態」），並同時指定這份檔案的版本（國小或國中、簡單或困難）。
-
-- **整份檔案套用同一組版本規範**：一旦決定是「國小版｜困難版」，全檔所有題目都照這個學習階段與句型難度出，不在同一份裡混難度。
-- **混合只發生在「時態」層次**，不是另一種版本模式。所以不需要額外定義「混合版」；標題用「時態混合複習」之類具體寫出混了哪些時態即可。
-- 標題要列出實際混到的時態，例如 `國中版｜困難版｜現在簡單式＋過去簡單式｜日期`。
-- 各時態的題目仍各自遵守其動詞循環題組與考點；只是把不同時態的題組放進同一份檔案，並打散排列。
-
-## 版本分類（兩個平行維度）
-
-每份題組由**兩個各自獨立的維度**決定，兩者交叉組合，命名時「學習階段」寫在前、「句型難度」寫在後。
-
-**維度一：學習階段**（決定單字與句長難度）
-
-- 國小版：短句、常見主詞、生活化單字。
-- 國中版：句子較長、可加時間副詞，少量常見不規則動詞。
-
-**維度二：句型難度**（決定題型組成，只有兩種）
-
-- 簡單版：只出直述句。適合剛建立概念時使用，避免學生同時處理問句、否定句與時態變化。
-- 困難版：混合直述句、否定句與問句。適合複習、檢測或學生已熟悉基本規則後使用。
-
-交叉後共 4 種組合：國小版｜簡單版、國小版｜困難版、國中版｜簡單版、國中版｜困難版。
-
-> 「混合」不是第三種難度。標題出現「混合」時，只代表這份題組同時考多個時態或規則/不規則動詞（總複習用途），句型難度仍然只分簡單版與困難版。
-
-簡單版範例（只有直述句）：
 
 ```json
-{ "prompt": "Tom ________ to school every day.", "options": ["walk", "walks", "walked", "walking"], "answerIndex": 1 }
+{ "prompt": "________ Leo play basketball every day?", "options": ["Is", "Does", "Did", "Are"], "answerIndex": 1 }
 ```
 
-困難版範例（混合問句、否定句）：
+這類題允許 `be` 與助動詞同時出現在選項中，因為考點正是辨認句子需要哪一種動詞結構。
+
+### 2. 現在簡單式與第三人稱單數
+
+- `I / you / we / they` 與複數主詞使用原形。
+- `he / she / it`、單數人名與單數名詞使用第三人稱單數形式。
+- 適量涵蓋 `-s`、`-es`、`子音 + y → -ies`，但不要讓拼字規則壓過句型判斷。
 
 ```json
-{ "prompt": "________ Tom walk to school every day?", "options": ["Do", "Does", "Did", "Is"], "answerIndex": 1 }
+{ "prompt": "Mia ________ English every day.", "options": ["study", "studies", "studied", "is studying"], "answerIndex": 1 }
 ```
+
+### 3. 過去簡單式
+
+- 直述句以清楚的過去時間線索考過去式。
+- 規則動詞與不規則動詞預設分開出題。
+- 只有使用者明確要求混合複習時，才把兩類動詞放進同一份題組。
+
+規則動詞題：
+
+```json
+{ "prompt": "Mia ________ TV last night.", "options": ["watch", "watches", "watched", "is watching"], "answerIndex": 2 }
+```
+
+不規則動詞題：
+
+```json
+{ "prompt": "Mia ________ home yesterday.", "options": ["go", "goes", "went", "is going"], "answerIndex": 2 }
+```
+
+預設不要使用 `goed`、`buyed`、`haved`、`teachs`、`studyed` 等假字。只有使用者明確要求考拼字或動詞變化規則時，才可把這類形式當誘答。
+
+### 4. 助動詞後接原形
+
+只要題幹已出現 `do / does / did / don't / doesn't / didn't`，後面的主要動詞就使用原形。
+
+```json
+{ "prompt": "Did Mia ________ TV last night?", "options": ["watch", "watches", "watched", "watching"], "answerIndex": 0 }
+```
+
+```json
+{ "prompt": "Mia didn't ________ TV last night.", "options": ["watch", "watches", "watched", "watching"], "answerIndex": 0 }
+```
+
+選項可以包含學生常犯的結構錯誤，例如 `didn't went`，因為它直接檢測「助動詞後接原形」；但不要使用與考點無關的拼字假字。
+
+### 5. be + V-ing
+
+現在進行式使用 `am / is / are + V-ing`。若範圍包含過去進行式，才使用 `was / were + V-ing`。
+
+空格可以只挖一部分：
+
+```json
+{ "prompt": "Leo is ________ basketball now.", "options": ["play", "plays", "played", "playing"], "answerIndex": 3 }
+```
+
+也可以把完整的 `be + V-ing` 一起挖掉：
+
+```json
+{ "prompt": "Leo ________ basketball now.", "options": ["play", "plays", "played", "is playing"], "answerIndex": 3 }
+```
+
+第二種更能檢查學生是否理解完整時態結構，不必把所有選項限制成單一字。
+
+## 空格與選項可以包含完整動詞片語
+
+一個空格可以對應一個字，也可以對應兩個以上的字。選項長度不必完全相同，重點是每個選項都要檢測同一個文法判斷。
+
+### 主要動詞或時態題
+
+所有選項保留同一個主要動詞，可以加上 `be` 或助動詞形成完整片語。
+
+合適：
+
+```text
+play / plays / played / is playing
+```
+
+```text
+go / goes / went / is going
+```
+
+```text
+doesn't play / didn't play / isn't playing / doesn't plays
+```
+
+最後一組中的 `doesn't plays` 是直接針對「助動詞後接原形」的結構誘答，不是無關拼字陷阱。
+
+不合適：
+
+```text
+played / ate / opened / studied
+```
+
+這會把時態題變成字義選擇題。
+
+### 使用時間線索時避免多重答案
+
+時間詞必須能排除其他選項。
+
+例如：
+
+```json
+{ "prompt": "Leo ________ basketball yesterday.", "options": ["play", "plays", "played", "is playing"], "answerIndex": 2 }
+```
+
+`is playing` 可以作為現在進行式誘答，因為它和 `yesterday` 衝突。
+
+不要在這題隨意加入 `was playing`，因為：
+
+- `Leo played basketball yesterday.`
+- `Leo was playing basketball yesterday.`
+
+兩句都可能成立，會產生多重答案。
+
+若要考過去進行式，題幹必須增加正在進行中的情境，例如：
+
+```json
+{ "prompt": "Leo ________ basketball when I saw him yesterday.", "options": ["plays", "played", "is playing", "was playing"], "answerIndex": 3 }
+```
+
+即使有時間詞，也要逐題檢查其他時態是否仍能成立；不能只看關鍵字機械配對。
+
+## 選項設計
+
+### 基本原則
+
+1. 主要動詞形式題使用同一個主要動詞。
+2. 句首動詞題可混合 `be` 與 `Do / Does / Did`，因為這正是考點。
+3. 完整動詞片語可以當作一個選項，例如 `is playing`、`didn't play`。
+4. 誘答要對應學生可預期的文法誤解。
+5. 選項順序要打散，正解位置不可形成固定模式。
+6. 每題只能有一個完整成立的答案。
+
+### 禁止把這些當主要考點
+
+- 只差句首大小寫，例如 `Does / does`。
+- 人名、專有名詞或選項開頭的大寫陷阱。
+- 冷僻單字或文化背景。
+- 不同意思的動詞混在時態選項中。
+- 明顯荒謬、完全不同詞性的陪襯選項。
+- 未經要求使用 `goed`、`haved`、`teachs` 等假字。
+
+大小寫與標點仍需正確，但它們只是基本校對，不是學生作答的線索。
+
+## 微型對照題組
+
+不要強迫每個動詞重複六到八次。每個動詞或生活場景通常延伸 2～3 題即可，用來對照最相關的結構。
+
+例如：
+
+```json
+[
+  { "prompt": "Leo ________ basketball every day.", "options": ["play", "plays", "played", "is playing"], "answerIndex": 1 },
+  { "prompt": "________ Leo play basketball every day?", "options": ["Do", "Does", "Did", "Is"], "answerIndex": 1 },
+  { "prompt": "Leo doesn't ________ basketball on Mondays.", "options": ["play", "plays", "played", "playing"], "answerIndex": 0 }
+]
+```
+
+換一個動詞和情境後再做下一組，最後把題目合理打散。這樣仍有對照學習效果，又不會因重複同一句而讓學生靠記憶作答。
+
+## 單字難度
+
+優先使用學生熟悉、容易從句意理解的字。
+
+- 動詞：`be, go, come, play, walk, run, read, write, eat, drink, like, help, clean, open, close, cook, wash, watch, study, live, work, have`
+- 名詞：`school, home, book, ball, room, desk, door, lunch, dinner, teacher, friend, family, dog, cat`
+- 時間詞：`every day, on Sundays, now, today, yesterday, last night, last week, two days ago`
+
+若目標是規則動詞過去式，優先使用 `play, walk, clean, open, close, watch, cook, wash`。
+
+若目標是不規則動詞過去式，優先使用常見動詞，例如 `go/went, come/came, eat/ate, see/saw, buy/bought, teach/taught, run/ran, sing/sang`。
+
+## 題組範圍
+
+- 規則動詞與不規則動詞預設分開。
+- 簡單現在式、簡單過去式、現在進行式等不同時態，預設依使用者指定出題。
+- 使用者沒有要求混合時，不要自行擴張成綜合時態測驗。
+- 使用者明確說「混合複習」時，才混合時態或規則／不規則動詞，並在標題寫清楚實際範圍。
+- 不要因為是國中版就自行加入完成式、被動語態或冷僻動詞。
 
 ## 題目格式
 
-除非使用者明確指定題數，完整題庫預設產生 50 題。若使用者要求多個題組，例如時間介系詞與地點介系詞各一份，則每一份題組都要各 50 題。
-
-放進課堂即時問答系統的檔案是 `quizzes/*.json`，採用現行格式（以 `(628)` 系列題庫為準）。**輸出 JSON 不含 `explanation` 欄位**，整份檔案的外層結構如下：
+若使用者指定一般文字、表格或其他格式，依其要求輸出。若題目要放進課堂即時問答系統的 `quizzes/*.json`，使用下列格式：
 
 ```json
 {
-  "id": "國小版-簡單版-現在簡單式-2026-06-10",
-  "title": "國小版｜簡單版｜現在簡單式｜2026-06-10",
-  "date": "2026-06-10",
+  "id": "國小版-簡單版-現在簡單式-2026-07-29",
+  "title": "國小版｜簡單版｜現在簡單式｜2026-07-29",
+  "date": "2026-07-29",
   "defaultTimeLimitSec": 20,
   "questions": [
-    { "prompt": "Tom ________ to school every day.", "options": ["walk", "walks", "walked", "walking"], "answerIndex": 1 },
-    { "prompt": "Tom ________ to school yesterday.", "options": ["walk", "walks", "walked", "walking"], "answerIndex": 2 }
+    {
+      "prompt": "Mia ________ English every day.",
+      "options": ["study", "studies", "studied", "is studying"],
+      "answerIndex": 1
+    }
   ]
 }
 ```
 
-欄位規則：
-
-- `id`、`title` 用中文命名，含學習階段、句型難度與日期（見「先決定版本」）。
-- `date` 用實際出題日期。
-- `defaultTimeLimitSec` 預設 20；使用者另有指定才調整。
-- `prompt` 可用英文句子，空格統一用 `________`（八個底線）；題組名稱、檔名、分類用中文。
-- `options` 預設 4 個選項，除非使用者指定其他數量。
-- `answerIndex` 從 0 開始計算，務必逐題核對對應到正解。
-- **不要寫 `explanation` 欄位**。本 skill 內範例出現的中文說明只是給出題者判斷用的推理，不寫進 JSON。
-
-## 時態選項規則
-
-如果題目是在考動詞時態或動詞形式，選項必須來自同一個動詞，不要混入不同中文意義的動詞。
-
-正確做法（選項都是同一動詞 clean 的變化，yesterday 表過去，答 cleaned）：
-
-```json
-{ "prompt": "Anna ________ her room yesterday.", "options": ["clean", "cleans", "cleaned", "cleaning"], "answerIndex": 2 }
-```
-
-避免（選項混入不同動詞，變成同時考字義與時態，容易模稜兩可）：
-
-```json
-{ "prompt": "Anna ________ her room yesterday.", "options": ["cleaned", "played", "opened", "visited"], "answerIndex": 0 }
-```
-
-常見選項組合：
-
-- 規則動詞：原形、第三人稱單數、過去式、現在分詞，例如 `play / plays / played / playing`
-- 加 es 動詞：`watch / watches / watched / watching`
-- y 結尾動詞：`study / studies / studied / studying`
-- be 動詞題：用同一類助詞選項，例如 `am / is / are / was / were`，不要混入一般動詞。
-- 助動詞題：選項可用 `Do / Does / Did / Is / Are`，但題幹必須讓答案唯一。
-
-國小版優先使用規則動詞；國中版可以少量加入常見不規則動詞，但要避免偏難字。
-
-## 誘答選項同類原則（通用）
-
-這條原則適用於所有文法題，不只時態題：**誘答選項必須和正解屬於同一個考點類別**，這樣學生是在判斷文法規則，而不是靠字義猜答案。
-
-- 時態題：選項是同一個動詞的各種變化（`go / goes / went / going`），不要混入別的動詞。
-- 介系詞題：選項**全部都是介系詞**（例如 `in / on / at / under`），用其他合理但錯誤的介系詞當誘答，逼學生分辨用法。
-
-介系詞題範例：
-
-```json
-{ "prompt": "The cat is ________ the table.", "options": ["in", "on", "at", "under"], "answerIndex": 1 },
-{ "prompt": "I get up ________ seven o'clock.", "options": ["in", "on", "at", "for"], "answerIndex": 2 },
-{ "prompt": "My birthday is ________ May.", "options": ["in", "on", "at", "of"], "answerIndex": 0 }
-```
-
-同樣道理可推廣到其他題型：主格題選項全是主格代名詞、所有格題選項全是所有格代名詞、be 動詞題選項全是 be 動詞。只要選項同類，題目才是在測那一個考點。
-
-## 時態題：動詞循環題組（核心設計）
-
-時態題不是零散地出，而是以「動詞循環題組」為單位。**選定一個動詞＋一個生活場景（例如 Tom go to school by bus），再用同一個動詞、同一組場景，衍生出一整串對照題**。這樣學生會反覆在同一句型上判斷時態與動詞形式，陷阱才會清楚，也才貼近學生真正會踩的坑。
-
-每個動詞循環題組盡量涵蓋下列題型。時間線索（every day / yesterday / last week / ago…）是判斷時態的唯一依據，每題都要有清楚線索。
-
-| 題型 | 例句 | 時間線索 | 考點 | 常見誘答陷阱 |
-|------|------|---------|------|------------|
-| 現在簡單式直述 | `Tom ________ to school every day.` | every day / on Sundays / now | **三單**（goes） | 誤選原形 go |
-| 過去簡單式直述 | `Tom ________ to school yesterday.` | yesterday / ago / last~ | **過去式**（went） | 誤選三單或原形 |
-| 否定句 | `Tom didn't ________ to school yesterday.` | didn't / doesn't 已出現 | **助動詞後接原形**（go） | 被 yesterday 騙去選 went |
-| 問句（助動詞已給） | `Did Tom ________ to school yesterday?` | Did / Does 已出現 | **助動詞後接原形**（go） | 被 yesterday 騙去選 went |
-| 句首助動詞 | `________ Tom go to school yesterday?` | 由主詞＋時間決定 | **選對 Do/Does/Did** | 三單現在→Does、過去→Did、be 動詞誘答 Is |
-| 回答句（簡答） | `"Did Tom go...?" "Yes, he ________."` | 對應問句的助動詞 | **回答句助動詞一致**（did/does） | 被 is 或錯時態助動詞騙 |
-
-### 混合題型與空格位置交錯
-
-同一份時態題庫不要只出一種句型。**同一個動詞循環組裡就要混合直述句、否定句與問句**，讓學生反覆切換判斷，而不是連續好幾題都是同一種型態。
-
-更關鍵的是**空格位置要交錯**——同一個句意，可以把空格挖在不同位置，考不同的東西：
-
-- 空格考**助動詞**：`________ Tom go to school yesterday?` → 考選 `Did`（動詞已是原形 go，線索在時間）。
-- 空格考**後面的動詞**：`Did Tom ________ to school yesterday?` → 考選原形 `go`（助動詞已給，陷阱是 went）。
-- 空格考**回答句的助動詞**：`"Did Tom go...?" "Yes, he ________."` → 考選 `did`。
-
-出題時要刻意在這三種挖空位置之間輪替，學生才無法靠固定位置猜答案，也才能同時檢測「選對助動詞」與「助動詞後接原形」兩個考點。
-
-### 三大考點的操作重點
-
-1. **助動詞後接原形（最重要的陷阱）**：只要句子裡已經出現 `do / does / did / doesn't / didn't / don't`，空格的主要動詞一律回原形。誘答一定要放句中時間線索所暗示的形式（例如句子有 yesterday，就把 `went` 放進選項當陷阱），逼學生分辨「時態已由助動詞承擔，動詞不再變化」。
-   - `Did Tom ________ to school yesterday?` → 答 `go`，陷阱 `went`
-   - `Tom didn't ________ to school yesterday.` → 答 `go`，陷阱 `went`
-2. **三單**：現在簡單式且主詞為第三人稱單數時，動詞加 -s/-es/-ies。用同一動詞的四態當選項（`go / goes / went / going`），並在 -es、子音+y 的動詞上特別出題（watches、studies）。
-3. **過去式（規則與不規則）**：時間線索為過去時，直述句考過去式。**誘答要放「假的規則化錯誤變化」**——學生實際會犯的錯，例如 `studyed / stoped / buyed / goed / teached / maked / breaked / swimmed`。正解與這些偽變化並列，正是這類題的鑑別度來源。
-
-### 選項組合對照
-
-- 四態直述／助動詞後接原形題：`go / goes / went / going`（同一動詞）。
-- 句首助動詞題：`Do / Does / Did / Is`（或 `Are / Was / Were`），用 be 動詞當誘答。
-- 否定句題：`don't / doesn't / didn't / isn't`。
-- 回答句題：`do / does / did / is`。
-- 過去式規則動詞題：務必混入偽規則化誘答（stoped、studyed 之類）。
-
-### 一個完整動詞循環題組範例
-
-```json
-{ "prompt": "Tom ________ to school by bus every day.", "options": ["go", "goes", "went", "going"], "answerIndex": 1 },
-{ "prompt": "Tom ________ to school by bus yesterday.", "options": ["go", "goes", "went", "going"], "answerIndex": 2 },
-{ "prompt": "Tom doesn't ________ to school by bus on Sundays.", "options": ["go", "goes", "went", "going"], "answerIndex": 0 },
-{ "prompt": "Tom didn't ________ to school by bus yesterday.", "options": ["go", "goes", "went", "going"], "answerIndex": 0 },
-{ "prompt": "Does Tom ________ to school by bus every day?", "options": ["go", "goes", "went", "going"], "answerIndex": 0 },
-{ "prompt": "Did Tom ________ to school by bus yesterday?", "options": ["go", "goes", "went", "going"], "answerIndex": 0 },
-{ "prompt": "\"Does Tom go to school by bus every day?\" \"Yes, he ________.\"", "options": ["do", "does", "did", "is"], "answerIndex": 1 },
-{ "prompt": "\"Did Tom go to school by bus yesterday?\" \"No, he ________.\"", "options": ["don't", "doesn't", "didn't", "isn't"], "answerIndex": 2 }
-```
-
-50 題的完整過去式題庫，就是用 8～12 個不同動詞、各出一組上面的循環題，再打散排列而成。
-
-## 單字難度
-
-國小版優先單字：
-
-- 動詞：go, play, walk, run, jump, read, write, eat, drink, like, help, clean, open, close, cook, wash, watch, study
-- 名詞：school, home, book, ball, room, desk, door, lunch, dinner, teacher, friend, sister, brother, dog, cat
-- 時間詞：every day, today, now, yesterday, last night, this morning
-
-國中版可加入：
-
-- 動詞：finish, practice, borrow, invite, visit, answer, decide, prepare, arrive, believe, remember, forget
-- 名詞：homework, question, lesson, computer, library, museum, weekend, vacation, exercise
-- 時間詞：last weekend, two days ago, tomorrow, next week, since, for, already, yet
-
-避免冷僻字、抽象字或文化背景太重的句子。若題目目標是時態，不要讓字彙難度變成主要障礙。
-
-## 必備題型
-
-每份完整題組至少涵蓋下列類型；如果使用者只要單一題型，則依使用者指定。
-
-### 問句題
-
-考句首助動詞或 be 動詞，例如 Do、Does、Did、Is、Are、Was、Were。
-
-範例（your brother 第三人稱單數＋every Sunday 現在式，答 Does；Are 為 be 動詞誘答）：
-
-```json
-{ "prompt": "________ your brother play soccer every Sunday?", "options": ["Do", "Does", "Did", "Are"], "answerIndex": 1 }
-```
-
-範例（the students 複數＋reading now 現在進行式，答 Are）：
-
-```json
-{ "prompt": "________ the students reading now?", "options": ["Is", "Are", "Was", "Do"], "answerIndex": 1 }
-```
-
-### 助動詞後接原形
-
-考 do、does、did、will、can、must、should 後面的動詞要用原形。
-
-範例（did not 後接原形，答 watch；watched 為時態誘答）：
-
-```json
-{ "prompt": "Mia did not ________ TV last night.", "options": ["watch", "watches", "watched", "watching"], "answerIndex": 0 }
-```
-
-範例（can 後接原形，答 run）：
-
-```json
-{ "prompt": "He can ________ fast.", "options": ["run", "runs", "ran", "running"], "answerIndex": 0 }
-```
-
-### 否定句
-
-考 do not、does not、did not、be not、will not 等否定結構。
-
-範例（They 複數＋現在式否定，答 do not）：
-
-```json
-{ "prompt": "They ________ like carrots.", "options": ["do not", "does not", "did not", "is not"], "answerIndex": 0 }
-```
-
-範例（Lisa 單數＋yesterday 過去，答 was not）：
-
-```json
-{ "prompt": "Lisa ________ at school yesterday.", "options": ["is not", "are not", "was not", "were not"], "answerIndex": 2 }
-```
-
-## 出題檢查清單
-
-產生題目前先檢查：
-
-- 題組是否標注國小版或國中版。
-- 題數是否符合需求；若使用者沒有指定，完整題庫預設 50 題。
-- 題組是否標注日期，並使用實際出題日期。
-- 題組標題是否用中文，且說明具體時態或題型。
-- 如果是時態題，選項是否都來自同一個動詞或同一類助詞。
-- 題幹是否有足夠線索，例如時間副詞、主詞單複數、now、yesterday、every day。
-- 是否只有一個明確正解。
-- 是否沒有模稜兩可的答案，尤其要檢查是否有兩個選項都能成立。
-- 是否避免同時考太多能力，例如同時考冷僻單字、翻譯、閱讀推論與時態。
-- 國小版是否避開過難單字與過長句子。
-- 國中版是否仍保留清楚線索，不因句子變長而造成答案模糊。
-- 簡單版是否只包含直述句。
-- 困難版是否合理混合直述句、否定句與問句。
-- 題型是否包含問句、助動詞後接原形、否定句。
-- 時態題是否以動詞循環題組出題：同一動詞、同一場景，涵蓋現在式三單、過去式、否定句、問句、句首助動詞、回答句。
-- 同一份題庫是否混合直述句、否定句與問句，而不是連續同一種句型。
-- 空格位置是否交錯：有時挖在助動詞（考選 Do/Does/Did），有時挖在後面的動詞（考原形），有時挖在回答句助動詞。
-- 誘答選項是否與正解同類：時態題全用同一動詞變化、介系詞題全用介系詞、主受格題全用同類代名詞，不靠字義取巧。
-- 助動詞後接原形的題目，誘答是否放了句中時間線索所暗示的形式（例如 yesterday 句放 `went` 當陷阱）。
-- 過去式規則動詞題是否放了假規則化誘答（如 stoped、studyed），逼學生分辨正確變化。
-- JSON 是否為現行 628 格式：有外層 `id / title / date / defaultTimeLimitSec / questions`，且**每題不含 `explanation` 欄位**。
-- `answerIndex` 是否對應正確選項。
-- 選項順序是否打散，但不要打散到造成學生靠位置猜答案。
-- 出題完成後要回頭逐題審查一次，確認沒有多重正解或答案模糊。
-
-## 需要特別注意
-
-- 不要用不同意思的動詞當時態選項，否則學生可能是在猜字義，不是在判斷文法。
-- 不要出模稜兩可的題目。若一題有兩個選項在文法上都可以成立，就要改題幹、改選項或刪題。
-- 不要讓時間線索與答案衝突，例如 `yesterday` 搭配現在式答案。
-- 不要讓主詞與動詞形式衝突，例如 `They plays`。
-- 問句題要注意主詞和助動詞一致：`Does he ...?`、`Do they ...?`、`Did she ...?`
-- `Do / Does / Did` 後面的主要動詞一律回到原形。
-- `be + V-ing` 題目要確認 be 動詞和主詞一致。
-- 否定句要分清楚一般動詞否定和 be 動詞否定：`does not play`，但 `is not happy`。
-- 不規則動詞只在國中版少量使用，並優先選常見字，例如 go/went、eat/ate、see/saw。
-- 若題組是混合時態，題目順序要分散，但每題仍要有明確線索。
-- 檔案新增或修改後，要用程式或 JSON parser 檢查格式，避免手動 JSON 錯誤。
-
-## 建議產出流程
-
-1. 先問清楚或自行判斷版本：國小版或國中版。
-2. 先決定標題：特定時態優先，混合題只用於總複習。
-3. 決定題數；若使用者沒有指定，完整題庫預設 50 題，多個題組則每組各 50 題。
-4. 先列出 8～12 個可用動詞清單。時態題以「動詞循環題組」為組織單位：每個動詞出一組，涵蓋現在式三單、過去式、否定句、問句、句首助動詞、回答句，再打散排列成整份題庫。
-5. 為每組生成同一動詞的四態選項；過去式規則動詞記得放偽規則化誘答（stoped、studyed 之類）。
-6. 產生 JSON 後，逐題檢查 `prompt`、`options`、`answerIndex`，並確認為現行 628 格式（不含 `explanation`）。
-7. 回頭做第二輪審查，確認沒有兩個正解、沒有模稜兩可題目、沒有句型版本混用錯誤，特別檢查助動詞後是否一律原形。
-8. 最後檢查中文命名、版本標注、日期標注與 JSON 格式。
-9. 做完之後自動上傳 GitHub。
+格式規則：
+
+- 題名與檔名使用中文，標出學習階段、句型難度、考點與實際日期。
+- 空格統一使用 `________`。
+- 預設每題 4 個選項。
+- 一個選項可以包含空格，例如 JSON 字串 `"is playing"`。
+- `answerIndex` 從 0 開始。
+- 每題不加入 `explanation` 欄位。
+- 若使用者未指定題數，完整題庫預設 50 題。
+
+## 產出流程
+
+1. 確認學習階段、簡單版或困難版、考點、規則／不規則動詞、題數與輸出格式。
+2. 若資訊不完整但不會明顯改變教學方向，採用保守預設並在回覆中說明。
+3. 列出這份題組實際要考的文法模組，不自行增加範圍。
+4. 選擇簡單動詞與生活情境，每個動詞建立 2～3 題微型對照。
+5. 依空格位置決定使用單字選項或完整動詞片語。
+6. 產生題目後逐題代入四個選項，檢查是否只有一個答案成立。
+7. 檢查規則與不規則動詞是否依要求分開。
+8. 檢查簡單版是否全為直述句；困難版是否合理混合三種句型。
+9. 檢查沒有大小寫題、冷僻字義、無關動詞或未經要求的假字。
+10. 若輸出 JSON，使用 JSON parser 驗證格式，再核對題數與 `answerIndex`。
+
+## 最終檢查清單
+
+- 題目是否真的在考文法，而不是大小寫或單字難度？
+- 主詞、時間線索與動詞形式是否一致？
+- 問句句首是否能由後方結構判斷 `be` 或助動詞？
+- `Do / Does / Did` 後面是否使用原形？
+- `be + V-ing` 的 `be` 是否符合主詞與時態？
+- 空格是否可在需要時涵蓋完整動詞片語？
+- 片語選項是否保留同一個主要動詞？
+- 是否意外同時出現兩個合理時態答案？
+- 簡單版是否只有直述句？
+- 困難版是否包含直述句、問句與否定句？
+- 規則與不規則動詞是否依要求分開？
+- 是否排除只差大小寫的選項？
+- 是否排除冷僻字、無關動詞與不必要的假字？
+- 選項順序與正解位置是否有變化？
+- JSON 的題數、欄位與 `answerIndex` 是否正確？
+
+不要自動上傳 GitHub、部署或改動題庫以外的檔案；只有使用者明確要求時才執行這些動作。
