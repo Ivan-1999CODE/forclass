@@ -48,6 +48,17 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   const { quizzes } = await quizResponse.json();
   assert.ok(quizzes.length > 1);
 
+  const tenQuestionQuiz = quizzes.find((quiz) => quiz.questionCount === 10);
+  assert.ok(tenQuestionQuiz, "測試資料中應至少有一份 10 題題庫");
+  for (const questionCount of [5, 10, 15, 20]) {
+    const sizedRoom = await emitAck(host, "host:createRoom", {
+      quizId: tenQuestionQuiz.id,
+      questionCount
+    });
+    assert.equal(sizedRoom.ok, true);
+    assert.equal(sizedRoom.snapshot.quiz.questionCount, questionCount, `應建立 ${questionCount} 題的場次`);
+  }
+
   const mixed = await emitAck(host, "host:createRoom", {
     quizIds: [quizzes[0].id, quizzes[1].id],
     questionCount: "all"
@@ -70,6 +81,8 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   const joinedB = await emitAck(studentB, "student:join", { roomCode, name: "測試學生乙" });
   assert.equal(joinedA.ok, true);
   assert.equal(joinedB.ok, true);
+  assert.equal(joinedA.snapshot.quiz.title, "課堂即時問答");
+  assert.notEqual(created.snapshot.quiz.title, joinedA.snapshot.quiz.title, "學生端不可看到包含時態的題庫標題");
 
   await emitAck(host, "host:startGame", { roomCode, hostToken });
   await emitAck(studentA, "student:answer", { roomCode, studentId: joinedA.studentId, selectedIndex: 0 });

@@ -31,6 +31,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const rooms = new Map();
+const publicQuizTitle = "課堂即時問答";
 const finishedRoomRetentionMs = Number(process.env.FINISHED_ROOM_RETENTION_MS || 2 * 60 * 60 * 1000);
 const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 12 * 60 * 60 * 1000);
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
@@ -531,15 +532,30 @@ function createRoom(quiz) {
 function selectQuestionsForSession(quiz, requestedQuestionCount) {
   const questionLimit = normalizeQuestionLimit(requestedQuestionCount);
   const prepareQuestion = (question) => shuffleQuestionOptions(question);
-  if (!Number.isInteger(questionLimit) || questionLimit <= 0 || quiz.questions.length <= questionLimit) {
+  if (!Number.isInteger(questionLimit) || questionLimit <= 0) {
     return {
       ...quiz,
       questions: quiz.questions.map(prepareQuestion)
     };
   }
+
+  const selectedQuestions = [];
+  while (selectedQuestions.length < questionLimit) {
+    let shuffledRound = shuffleArray(quiz.questions);
+    if (
+      selectedQuestions.length > 0
+      && shuffledRound.length > 1
+      && shuffledRound[0] === selectedQuestions.at(-1)
+    ) {
+      shuffledRound = [...shuffledRound.slice(1), shuffledRound[0]];
+    }
+    const remainingCount = questionLimit - selectedQuestions.length;
+    selectedQuestions.push(...shuffledRound.slice(0, remainingCount));
+  }
+
   return {
     ...quiz,
-    questions: shuffleArray(quiz.questions).slice(0, questionLimit).map(prepareQuestion)
+    questions: selectedQuestions.map(prepareQuestion)
   };
 }
 
@@ -737,7 +753,7 @@ function attachHostSocket(room, socket) {
 
 function buildHostSnapshot(room) {
   return {
-    ...buildDisplaySnapshot(room),
+    ...buildDisplaySnapshot(room, true),
     hostToken: room.hostToken,
     reports: room.reports,
     teacherMessages: getActiveTeacherMessages(room),
@@ -745,7 +761,7 @@ function buildHostSnapshot(room) {
   };
 }
 
-function buildDisplaySnapshot(room) {
+function buildDisplaySnapshot(room, revealQuizMetadata = false) {
   const currentQuestion = getCurrentQuestion(room);
   const questionRemainingMs = room.status === "question" ? Math.max(0, room.questionEndsAt - Date.now()) : 0;
   const autoRevealRemainingMs = room.status === "question" && room.autoRevealEndsAt ? Math.max(0, room.autoRevealEndsAt - Date.now()) : 0;
@@ -753,9 +769,9 @@ function buildDisplaySnapshot(room) {
     roomCode: room.code,
     status: room.status,
     quiz: {
-      id: room.quiz.id,
-      title: room.quiz.title,
-      date: room.quiz.date,
+      id: revealQuizMetadata ? room.quiz.id : "classroom-quiz",
+      title: revealQuizMetadata ? room.quiz.title : publicQuizTitle,
+      date: revealQuizMetadata ? room.quiz.date : "",
       questionCount: room.quiz.questions.length
     },
     currentQuestionIndex: room.currentQuestionIndex,
