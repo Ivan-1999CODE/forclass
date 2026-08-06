@@ -1,0 +1,28 @@
+{
+  "id": "國中版-簡單版-祈使句-2026-08-07",
+  "title": "國中版｜簡單版｜祈使句｜2026-08-07",
+  "date": "2026-08-07",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    { "prompt": "________ the door, please.", "options": ["Close", "To close", "Closing", "Closes"], "answerIndex": 0 },
+    { "prompt": "________ in the hallway.", "options": ["To run", "Running", "Don't run", "Doesn't run"], "answerIndex": 2 },
+    { "prompt": "________ to the library after school.", "options": ["Let's going", "Let's go", "Let's to go", "Let's goes"], "answerIndex": 1 },
+    { "prompt": "________ the cat. It is sleeping.", "options": ["Don't touching", "Doesn't touch", "Not touch", "Don't touch"], "answerIndex": 3 },
+    { "prompt": "________ noisy in the library.", "options": ["Let's don't be", "Let's be not", "Let's not be", "Don't let's be"], "answerIndex": 2 },
+    { "prompt": "________ pages 10 and 11 before class.", "options": ["Reading", "To read", "Reads", "Read"], "answerIndex": 3 },
+    { "prompt": "________ the window. It is cold outside.", "options": ["Don't open", "Not open", "Doesn't open", "Don't opening"], "answerIndex": 0 },
+    { "prompt": "________ lunch at home today.", "options": ["Let's having", "Let's have", "Let's has", "Let's to have"], "answerIndex": 1 },
+    { "prompt": "________ careful when you cross the street.", "options": ["Being", "To be", "Be", "Are"], "answerIndex": 2 },
+    { "prompt": "________ video games before you finish your homework.", "options": ["Let's not playing", "Let's don't play", "Don't let's play", "Let's not play"], "answerIndex": 3 },
+    { "prompt": "________ during the test.", "options": ["Don't talk", "Don't talking", "Not talk", "Doesn't talk"], "answerIndex": 0 },
+    { "prompt": "________ your name at the top of the page.", "options": ["Writing", "Write", "To write", "Writes"], "answerIndex": 1 },
+    { "prompt": "________ the classroom together.", "options": ["Let's cleaning", "Let's to clean", "Let's clean", "Let's cleans"], "answerIndex": 2 },
+    { "prompt": "________ your bag on the floor.", "options": ["Don't leaving", "Doesn't leave", "Not leave", "Don't leave"], "answerIndex": 3 },
+    { "prompt": "________ for Jason. He is not coming today.", "options": ["Let's not wait", "Let's don't wait", "Let's not waiting", "Don't let's wait"], "answerIndex": 0 },
+    { "prompt": "________ your phone in your backpack.", "options": ["Putting", "Put", "To put", "Puts"], "answerIndex": 1 },
+    { "prompt": "________ a mess in the kitchen.", "options": ["Don't making", "Not make", "Don't make", "Doesn't make"], "answerIndex": 2 },
+    { "prompt": "________ a movie after dinner.", "options": ["Let's watching", "Let's to watch", "Let's watches", "Let's watch"], "answerIndex": 3 },
+    { "prompt": "________ late for school tomorrow.", "options": ["Don't be", "Don't being", "Doesn't be", "Not be"], "answerIndex": 0 },
+    { "prompt": "________ a picture of the science project.", "options": ["Let's taking", "Let's take", "Let's to take", "Let's takes"], "answerIndex": 1 }
+  ]
+}

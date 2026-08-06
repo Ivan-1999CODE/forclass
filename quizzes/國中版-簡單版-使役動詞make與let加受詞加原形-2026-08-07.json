@@ -1,0 +1,28 @@
+{
+  "id": "國中版-簡單版-使役動詞make與let加受詞加原形-2026-08-07",
+  "title": "國中版｜簡單版｜使役動詞 make／let＋受詞＋原形｜2026-08-07",
+  "date": "2026-08-07",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    { "prompt": "The coach made us ________ after practice.", "options": ["run", "to run", "ran", "running"], "answerIndex": 0 },
+    { "prompt": "My parents let me ________ at a friend's house.", "options": ["to stay", "stay", "stayed", "staying"], "answerIndex": 1 },
+    { "prompt": "The teacher made Kevin ________ on the board.", "options": ["wrote", "to write", "write", "writing"], "answerIndex": 2 },
+    { "prompt": "Dad let us ________ TV after dinner.", "options": ["to watch", "watched", "watches", "watch"], "answerIndex": 3 },
+    { "prompt": "My sister made me ________ her room.", "options": ["clean", "to clean", "cleaned", "cleaning"], "answerIndex": 0 },
+    { "prompt": "The guard let the visitors ________ the museum.", "options": ["entered", "enter", "to enter", "entering"], "answerIndex": 1 },
+    { "prompt": "The teacher made the class ________ quiet.", "options": ["stayed", "to stay", "stay", "staying"], "answerIndex": 2 },
+    { "prompt": "Mom let my brother ________ her computer.", "options": ["to use", "used", "uses", "use"], "answerIndex": 3 },
+    { "prompt": "The loud music made the baby ________.", "options": ["cry", "to cry", "cried", "crying"], "answerIndex": 0 },
+    { "prompt": "We let our dog ________ in the yard.", "options": ["played", "play", "to play", "playing"], "answerIndex": 1 },
+    { "prompt": "The movie made us ________ scared.", "options": ["felt", "to feel", "feel", "feeling"], "answerIndex": 2 },
+    { "prompt": "The teacher let the students ________ questions.", "options": ["to ask", "asked", "asks", "ask"], "answerIndex": 3 },
+    { "prompt": "My dad made me ________ to my sister.", "options": ["apologize", "to apologize", "apologized", "apologizing"], "answerIndex": 0 },
+    { "prompt": "Mrs. Lin let Amy ________ first.", "options": ["left", "leave", "to leave", "leaving"], "answerIndex": 1 },
+    { "prompt": "The doctor made me ________ for a long time.", "options": ["waited", "to wait", "wait", "waiting"], "answerIndex": 2 },
+    { "prompt": "Her mom let her ________ the color of the dress.", "options": ["to choose", "chose", "chooses", "choose"], "answerIndex": 3 },
+    { "prompt": "The rain made us ________ home.", "options": ["stay", "to stay", "stayed", "staying"], "answerIndex": 0 },
+    { "prompt": "The teacher let the children ________ pictures on the wall.", "options": ["drew", "draw", "to draw", "drawing"], "answerIndex": 1 },
+    { "prompt": "The teacher made the students ________ their books.", "options": ["opened", "to open", "open", "opening"], "answerIndex": 2 },
+    { "prompt": "My parents let me ________ the school club.", "options": ["to join", "joined", "joins", "join"], "answerIndex": 3 }
+  ]
+}

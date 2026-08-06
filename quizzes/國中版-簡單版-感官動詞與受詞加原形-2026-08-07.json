@@ -1,0 +1,28 @@
+{
+  "id": "國中版-簡單版-感官動詞與受詞加原形-2026-08-07",
+  "title": "國中版｜簡單版｜感官動詞＋受詞＋原形｜2026-08-07",
+  "date": "2026-08-07",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    { "prompt": "I saw the boy ________ across the street.", "options": ["run", "to run", "ran", "runs"], "answerIndex": 0 },
+    { "prompt": "We heard the bell ________ at noon.", "options": ["to ring", "ring", "rang", "rings"], "answerIndex": 1 },
+    { "prompt": "The children watched the bird ________ away.", "options": ["flew", "to fly", "fly", "flies"], "answerIndex": 2 },
+    { "prompt": "I heard someone ________ at the door.", "options": ["to knock", "knocked", "knocks", "knock"], "answerIndex": 3 },
+    { "prompt": "I felt the ground ________ during the earthquake.", "options": ["shake", "to shake", "shook", "shakes"], "answerIndex": 0 },
+    { "prompt": "Mia saw her brother ________ the car.", "options": ["washed", "wash", "to wash", "washes"], "answerIndex": 1 },
+    { "prompt": "We watched the dog ________ into the water.", "options": ["jumped", "to jump", "jump", "jumps"], "answerIndex": 2 },
+    { "prompt": "I heard my name ________ from the hall.", "options": ["to call", "called", "calls", "call"], "answerIndex": 3 },
+    { "prompt": "I saw the baby ________.", "options": ["smile", "to smile", "smiled", "smiles"], "answerIndex": 0 },
+    { "prompt": "They heard the teacher ________ to the principal.", "options": ["talked", "talk", "to talk", "talks"], "answerIndex": 1 },
+    { "prompt": "Leo watched the ball ________ down the stairs.", "options": ["rolled", "to roll", "roll", "rolls"], "answerIndex": 2 },
+    { "prompt": "She felt the wind ________ through the window.", "options": ["to blow", "blew", "blows", "blow"], "answerIndex": 3 },
+    { "prompt": "I saw the cat ________ onto the chair.", "options": ["jump", "to jump", "jumped", "jumps"], "answerIndex": 0 },
+    { "prompt": "We heard the children ________ in the classroom.", "options": ["sang", "sing", "to sing", "sings"], "answerIndex": 1 },
+    { "prompt": "Dad watched us ________ the room.", "options": ["cleaned", "to clean", "clean", "cleans"], "answerIndex": 2 },
+    { "prompt": "I heard the phone ________.", "options": ["to ring", "rang", "rings", "ring"], "answerIndex": 3 },
+    { "prompt": "I felt my bag ________ from my hand.", "options": ["slip", "to slip", "slipped", "slips"], "answerIndex": 0 },
+    { "prompt": "She saw her friend ________ the bus.", "options": ["caught", "catch", "to catch", "catches"], "answerIndex": 1 },
+    { "prompt": "We watched Tom ________ the window.", "options": ["closed", "to close", "close", "closes"], "answerIndex": 2 },
+    { "prompt": "I heard the baby ________ loudly.", "options": ["to cry", "cried", "cries", "cry"], "answerIndex": 3 }
+  ]
+}
