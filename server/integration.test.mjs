@@ -105,6 +105,15 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
     );
   }
 
+  const earlyReport = await emitAck(studentA, "student:report", {
+    roomCode,
+    studentId: joinedA.studentId,
+    targetId: joinedB.studentId,
+    reason: "干擾課堂"
+  });
+  assert.equal(earlyReport.ok, false);
+  assert.equal(earlyReport.error, "課堂結束後才能檢舉。");
+
   const wrongResult = hostResults.questionResults.find((result) => result.outcome === "wrong");
   assert.ok(wrongResult, "兩位學生選不同答案時，至少一位應答錯");
   const wrongSocket = wrongResult.id === joinedA.studentId ? studentA : studentB;
@@ -151,6 +160,42 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   assert.equal(finishedStudent.wrongAnswers.length, 1);
   assert.equal(finishedStudent.wrongAnswers[0].questionIndex, 0);
   assert.equal(finishedStudent.questionResults, undefined);
+
+  const invalidReport = await emitAck(studentA, "student:report", {
+    roomCode,
+    studentId: joinedA.studentId,
+    targetId: joinedB.studentId,
+    reason: "自行輸入的原因"
+  });
+  assert.equal(invalidReport.ok, false);
+  assert.equal(invalidReport.error, "請選擇有效的檢舉原因。");
+
+  const hostReportUpdate = waitForSocketEvent(
+    host,
+    "host:update",
+    (snapshot) => snapshot.reports?.some((report) => report.reason === "干擾課堂")
+  );
+  const validReport = await emitAck(studentA, "student:report", {
+    roomCode,
+    studentId: joinedA.studentId,
+    targetId: joinedB.studentId,
+    reason: "干擾課堂"
+  });
+  assert.equal(validReport.ok, true);
+  const hostWithReport = await hostReportUpdate;
+  assert.equal(hostWithReport.reports.length, 1);
+  assert.equal(hostWithReport.reports[0].reporterName, "測試學生甲");
+  assert.equal(hostWithReport.reports[0].targetName, "測試學生乙");
+  assert.equal(hostWithReport.reports[0].reason, "干擾課堂");
+
+  const duplicateReport = await emitAck(studentA, "student:report", {
+    roomCode,
+    studentId: joinedA.studentId,
+    targetId: joinedB.studentId,
+    reason: "冒用他人姓名"
+  });
+  assert.equal(duplicateReport.ok, false);
+  assert.equal(duplicateReport.error, "每位學生每場只能檢舉一次。");
 
   if (server.exitCode !== null) {
     assert.fail(`伺服器提早結束：${serverOutput}`);

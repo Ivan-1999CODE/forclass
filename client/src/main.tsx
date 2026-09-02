@@ -100,6 +100,14 @@ type HistoryDetail = Omit<HistorySession, "summary"> & {
   }>;
 };
 
+const reportReasons = [
+  "干擾課堂",
+  "使用不當名稱或言語",
+  "冒用他人姓名",
+  "作弊或影響作答公平",
+  "其他需要老師協助的情況"
+];
+
 const socket: Socket = io();
 const hostStorageKey = "classroom-live-quiz-host";
 const studentStorageKey = "classroom-live-quiz-student";
@@ -774,7 +782,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
               <ResultBlock snapshot={snapshot} showStats={false} />
               <section className="student-round-ranking" aria-labelledby="student-round-ranking-title">
                 <h3 id="student-round-ranking-title">全班即時排名</h3>
-                <Leaderboard snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
+                <Leaderboard snapshot={snapshot} studentId={studentId} />
               </section>
             </>
           )}
@@ -784,7 +792,8 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
       {snapshot.status === "finished" && (
         <section className="panel">
           <h2>遊戲結束</h2>
-          <Leaderboard snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
+          <Leaderboard snapshot={snapshot} studentId={studentId} />
+          <StudentReportPanel snapshot={snapshot} roomCode={roomCode} studentId={studentId} />
           <StudentWrongAnswerReview wrongAnswers={snapshot.wrongAnswers || []} />
         </section>
       )}
@@ -1267,18 +1276,8 @@ function AnswerStats({ snapshot, revealCorrect }: { snapshot: Snapshot; revealCo
   );
 }
 
-function Leaderboard({ snapshot, compact = false, roomCode, studentId }: { snapshot: Snapshot; compact?: boolean; roomCode?: string; studentId?: string }) {
-  const [message, setMessage] = useState("");
+function Leaderboard({ snapshot, compact = false, studentId }: { snapshot: Snapshot; compact?: boolean; studentId?: string }) {
   const rows = compact ? snapshot.ranking.slice(0, 5) : snapshot.ranking;
-  const canReport = Boolean(roomCode && studentId && !snapshot.me?.reportedStudentId);
-
-  const reportStudent = (targetId: string) => {
-    if (!roomCode || !studentId) return;
-    setMessage("");
-    socket.emit("student:report", { roomCode, studentId, targetId }, (reply: SocketReply) => {
-      if (!reply.ok) setMessage(reply.error || "檢舉失敗。");
-    });
-  };
 
   return (
     <div className="leaderboard">
@@ -1293,17 +1292,70 @@ function Leaderboard({ snapshot, compact = false, roomCode, studentId }: { snaps
             <span className="rank-name-with-report">
               <strong className="rank-name">{student.name}</strong>
               {isCurrentStudent && <span className="current-student-badge">你</span>}
-              {canReport && !isCurrentStudent && (
-                <button className="report-icon-button" onClick={() => reportStudent(student.id)} aria-label={`檢舉 ${student.name}`} title={`檢舉 ${student.name}`}>!</button>
-              )}
             </span>
             <span className="score-badge">{student.totalScore} 分</span>
           </div>
         );
       })}
       {rows.length === 0 && <p className="empty">尚無排名。</p>}
-      {message && <p className="notice error">{message}</p>}
     </div>
+  );
+}
+
+function StudentReportPanel({ snapshot, roomCode, studentId }: { snapshot: Snapshot; roomCode: string; studentId: string }) {
+  const [message, setMessage] = useState("");
+  const [targetId, setTargetId] = useState("");
+  const [reason, setReason] = useState("");
+  const reportCandidates = snapshot.ranking.filter((student) => student.id !== studentId);
+  const hasReported = Boolean(snapshot.me?.reportedStudentId);
+
+  const reportStudent = () => {
+    if (!targetId || !reason || hasReported) return;
+    setMessage("");
+    socket.emit("student:report", { roomCode, studentId, targetId, reason }, (reply: SocketReply) => {
+      if (!reply.ok) {
+        setMessage(reply.error || "檢舉失敗。");
+        return;
+      }
+      setMessage("檢舉已送出，老師會收到這筆紀錄。");
+    });
+  };
+
+  if (reportCandidates.length === 0) return null;
+
+  return (
+    <section className="report-panel" aria-labelledby="student-report-title">
+      <h3 id="student-report-title">課堂結束檢舉</h3>
+      {hasReported ? (
+        <p className="notice">檢舉已送出，老師會收到這筆紀錄。</p>
+      ) : (
+        <>
+          <p className="hint">若有同學出現不當行為，可在課堂結束後檢舉。每人每場只能送出 1 次。</p>
+          <div className="report-form-grid">
+            <label>
+              檢舉對象
+              <select value={targetId} onChange={(event) => setTargetId(event.target.value)}>
+                <option value="">請選擇同學</option>
+                {reportCandidates.map((student) => (
+                  <option value={student.id} key={student.id}>{student.name}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              檢舉原因
+              <select value={reason} onChange={(event) => setReason(event.target.value)}>
+                <option value="">請選擇原因</option>
+                {reportReasons.map((item) => (
+                  <option value={item} key={item}>{item}</option>
+                ))}
+              </select>
+            </label>
+            <button className="danger" onClick={reportStudent} disabled={!targetId || !reason}>送出檢舉</button>
+          </div>
+          {message && <p className="notice error">{message}</p>}
+        </>
+      )}
+    </section>
   );
 }
 

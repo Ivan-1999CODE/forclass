@@ -37,6 +37,13 @@ const waitingRoomRetentionMs = Number(process.env.WAITING_ROOM_RETENTION_MS || 1
 const roomCleanupIntervalMs = Number(process.env.ROOM_CLEANUP_INTERVAL_MS || 30 * 60 * 1000);
 const autoRevealDelayMs = Number(process.env.AUTO_REVEAL_DELAY_MS || 3000);
 const teacherMessageTtlMs = Number(process.env.TEACHER_MESSAGE_TTL_MS || 5 * 1000);
+const reportReasons = new Set([
+  "干擾課堂",
+  "使用不當名稱或言語",
+  "冒用他人姓名",
+  "作弊或影響作答公平",
+  "其他需要老師協助的情況"
+]);
 const historyRetentionDays = 5;
 const historyCleanupIntervalMs = 6 * 60 * 60 * 1000;
 const roomCleanupTimer = setInterval(cleanupRooms, roomCleanupIntervalMs);
@@ -309,18 +316,24 @@ io.on("connection", (socket) => {
     callback?.({ ok: true });
   });
 
-  socket.on("student:report", ({ roomCode, studentId, targetId }, callback) => {
+  socket.on("student:report", ({ roomCode, studentId, targetId, reason }, callback) => {
     const room = getRoom(roomCode);
     const reporter = room?.students.get(studentId);
     const target = room?.students.get(targetId);
     if (!room || !reporter || !target) return callback?.({ ok: false, error: "無效的檢舉。" });
+    if (socket.data.studentId !== reporter.id || socket.data.roomCode !== room.code) {
+      return callback?.({ ok: false, error: "學生或房間不存在。" });
+    }
+    if (room.status !== "finished") return callback?.({ ok: false, error: "課堂結束後才能檢舉。" });
     if (studentId === targetId) return callback?.({ ok: false, error: "不能檢舉自己。" });
     if (reporter.reportedStudentId) return callback?.({ ok: false, error: "每位學生每場只能檢舉一次。" });
+    const cleanReason = typeof reason === "string" ? reason.trim() : "";
+    if (!reportReasons.has(cleanReason)) return callback?.({ ok: false, error: "請選擇有效的檢舉原因。" });
     reporter.reportedStudentId = targetId;
     room.reports.push({
       reporterName: reporter.name,
       targetName: target.name,
-      reason: "一鍵檢舉",
+      reason: cleanReason,
       reportedAt: Date.now()
     });
     callback?.({ ok: true });
