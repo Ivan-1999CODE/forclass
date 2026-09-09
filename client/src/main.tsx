@@ -123,8 +123,9 @@ const quizTopicRules: { match: (text: string) => boolean; topic: QuizTopic }[] =
   { match: (t) => t.includes("介系詞"), topic: { key: "preposition", label: "介系詞", order: 3 } },
   { match: (t) => t.includes("現在進行"), topic: { key: "present-progressive", label: "現在進行式", order: 4 } },
   { match: (t) => t.includes("現在簡單"), topic: { key: "present-simple", label: "現在簡單式", order: 5 } },
-  { match: (t) => t.includes("過去"), topic: { key: "past", label: "過去式", order: 6 } },
-  { match: (t) => t.includes("未來"), topic: { key: "future", label: "未來式", order: 7 } },
+  { match: (t) => t.includes("現在完成式"), topic: { key: "present-perfect", label: "現在完成式", order: 6 } },
+  { match: (t) => t.includes("過去"), topic: { key: "past", label: "過去式", order: 7 } },
+  { match: (t) => t.includes("未來"), topic: { key: "future", label: "未來式", order: 8 } },
 ];
 const quizOtherTopic: QuizTopic = { key: "other", label: "其他", order: 99 };
 
