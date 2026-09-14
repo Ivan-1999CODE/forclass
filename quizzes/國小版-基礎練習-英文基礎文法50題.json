@@ -1,0 +1,508 @@
+{
+  "id": "國小版-基礎練習-英文基礎文法50題",
+  "title": "國小版｜基礎練習｜英文基礎文法 50 題",
+  "date": "2026-09-15",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "what 的中文意思是什麼？",
+      "options": [
+        "誰",
+        "哪裡",
+        "什麼",
+        "何時"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "who 的中文意思是什麼？",
+      "options": [
+        "為什麼",
+        "誰",
+        "如何",
+        "哪裡"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "where 的中文意思是什麼？",
+      "options": [
+        "何時",
+        "什麼",
+        "誰",
+        "哪裡"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "when 的中文意思是什麼？",
+      "options": [
+        "何時",
+        "如何",
+        "為什麼",
+        "什麼"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "why 的中文意思是什麼？",
+      "options": [
+        "哪裡",
+        "誰",
+        "為什麼",
+        "何時"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "how 的中文意思是什麼？",
+      "options": [
+        "什麼",
+        "如何",
+        "誰",
+        "哪裡"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「什麼」的英文是哪一個？",
+      "options": [
+        "what",
+        "who",
+        "when",
+        "why"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「誰」的英文是哪一個？",
+      "options": [
+        "where",
+        "why",
+        "who",
+        "how"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「哪裡」的英文是哪一個？",
+      "options": [
+        "when",
+        "where",
+        "what",
+        "who"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「何時」的英文是哪一個？",
+      "options": [
+        "why",
+        "how",
+        "where",
+        "when"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「為什麼」的英文是哪一個？",
+      "options": [
+        "why",
+        "who",
+        "what",
+        "when"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「如何／怎麼樣」的英文是哪一個？",
+      "options": [
+        "when",
+        "where",
+        "how",
+        "why"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "book 的複數是哪一個？",
+      "options": [
+        "bookes",
+        "books",
+        "book",
+        "bookies"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "pen 的複數是哪一個？",
+      "options": [
+        "pens",
+        "penes",
+        "pen",
+        "penses"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "cup 的複數是哪一個？",
+      "options": [
+        "cupps",
+        "cupes",
+        "cups",
+        "cup"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "pencil 的複數是哪一個？",
+      "options": [
+        "penciles",
+        "pencil",
+        "pencilses",
+        "pencils"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "watch 的複數是哪一個？",
+      "options": [
+        "watchs",
+        "watches",
+        "watch",
+        "watchies"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "class 的複數是哪一個？",
+      "options": [
+        "classes",
+        "classs",
+        "class",
+        "classies"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "box 的複數是哪一個？",
+      "options": [
+        "boxs",
+        "box",
+        "boxes",
+        "boxies"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "brush 的複數是哪一個？",
+      "options": [
+        "brushs",
+        "brush",
+        "brushies",
+        "brushes"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "This is a ______.",
+      "options": [
+        "books",
+        "bookes",
+        "book",
+        "booking"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "These are my ______.",
+      "options": [
+        "pencils",
+        "pencil",
+        "penciles",
+        "a pencil"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "That is ______ eraser.",
+      "options": [
+        "a",
+        "two",
+        "these",
+        "an"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Those are three ______.",
+      "options": [
+        "box",
+        "boxes",
+        "boxs",
+        "a box"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "I have two ______.",
+      "options": [
+        "watches",
+        "watch",
+        "watchs",
+        "a watch"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "______ cup is on the desk.",
+      "options": [
+        "These",
+        "Those",
+        "This",
+        "They"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "______ books are interesting.",
+      "options": [
+        "That",
+        "Those",
+        "This",
+        "It"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "She has ______ orange.",
+      "options": [
+        "a",
+        "two",
+        "this",
+        "an"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "A: What is this?\nB: ______ a pencil.",
+      "options": [
+        "They’re",
+        "It’s",
+        "We’re",
+        "You’re"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: What is that?\nB: It’s ______ eraser.",
+      "options": [
+        "an",
+        "a",
+        "two",
+        "these"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "A: What are these?\nB: ______ my books.",
+      "options": [
+        "It’s",
+        "He’s",
+        "They’re",
+        "She’s"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "A: What are those?\nB: They’re three ______.",
+      "options": [
+        "cup",
+        "cups",
+        "a cup",
+        "cupes"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: What ______ these?\nB: They’re books.",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "A: What ______ that?\nB: It’s a cup.",
+      "options": [
+        "is",
+        "are",
+        "am",
+        "be"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「這是什麼？」的正確英文是哪一個？",
+      "options": [
+        "Who is this?",
+        "Where is this?",
+        "What is this?",
+        "What are this?"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「那些是什麼？」的正確英文是哪一個？",
+      "options": [
+        "What is those?",
+        "What are those?",
+        "What are that?",
+        "Where are those?"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「它是一個盒子。」的正確英文是哪一個？",
+      "options": [
+        "It’s a box.",
+        "They’re boxes.",
+        "It’s boxes.",
+        "They’re a box."
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「它們是我的手錶。」的正確英文是哪一個？",
+      "options": [
+        "It’s my watch.",
+        "They’re my watch.",
+        "It’s my watches.",
+        "They’re my watches."
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "How old ______ you?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "How old ______ your brother?",
+      "options": [
+        "is",
+        "are",
+        "am",
+        "be"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "How old ______ she?",
+      "options": [
+        "am",
+        "are",
+        "be",
+        "is"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "A: How old are you?\nB: ______ twelve years old.",
+      "options": [
+        "He’s",
+        "I’m",
+        "They’re",
+        "She’s"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: How old is Tom?\nB: ______ nine years old.",
+      "options": [
+        "He’s",
+        "I’m",
+        "We’re",
+        "They’re"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "dish 的複數是哪一個？",
+      "options": [
+        "dishs",
+        "dishes",
+        "dish",
+        "dishies"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "bus 的複數是哪一個？",
+      "options": [
+        "buss",
+        "bus",
+        "busies",
+        "buses"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Those are four ______.",
+      "options": [
+        "class",
+        "classs",
+        "classes",
+        "a class"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "She has ______ apple.",
+      "options": [
+        "an",
+        "a",
+        "two",
+        "these"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "My sister has one ______.",
+      "options": [
+        "watches",
+        "watchs",
+        "watching",
+        "watch"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「那是什麼？」的正確英文是哪一個？",
+      "options": [
+        "What are that?",
+        "What is that?",
+        "Where is that?",
+        "Who is that?"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「這些是什麼？」的正確英文是哪一個？",
+      "options": [
+        "What is this?",
+        "Where are these?",
+        "What are these?",
+        "What is these?"
+      ],
+      "answerIndex": 2
+    }
+  ]
+}

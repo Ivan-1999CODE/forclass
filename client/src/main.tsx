@@ -118,6 +118,8 @@ const teacherAuthStorageKey = "classroom-live-quiz-teacher-auth";
 type QuizTopic = { key: string; label: string; order: number };
 
 const quizTopicRules: { match: (text: string) => boolean; topic: QuizTopic }[] = [
+  { match: (t) => t.includes("單字"), topic: { key: "exam-vocabulary", label: "單字", order: 10 } },
+  { match: (t) => t.includes("基礎練習"), topic: { key: "basic-practice", label: "基礎練習", order: 9 } },
   { match: (t) => t.includes("主格") || t.includes("受格") || t.includes("所有格"), topic: { key: "pronoun", label: "代名詞與格", order: 1 } },
   { match: (t) => /there/i.test(t), topic: { key: "there", label: "There is / There are", order: 2 } },
   { match: (t) => t.includes("介系詞"), topic: { key: "preposition", label: "介系詞", order: 3 } },
@@ -151,7 +153,7 @@ function quizShortLabel(quiz: QuizSummary): string {
   let label = quiz.title
     .replace(/[-｜|]?\d{4}-\d{2}-\d{2}\s*$/, "")
     .replace(/^國小版[-｜|]?/, "")
-    .replace(/(困難版|簡單版|混合版)[-｜|]?/, "")
+    .replace(/(困難版|簡單版|混合版|基礎練習)[-｜|]?/, "")
     .trim();
   return label || quiz.title;
 }
@@ -406,7 +408,7 @@ function HostPage() {
         setPreviewQuiz({
           id: `mixed-preview-${selectedQuizzes.map((quiz) => quiz.id).join("-")}`,
           title: `混合題庫（${selectedQuizzes.length} 份）`,
-          date: selectedQuizzes.map((quiz) => quiz.date).sort().at(-1) || "",
+          date: selectedQuizzes.map((quiz) => quiz.date).sort().slice(-1)[0] || "",
           defaultTimeLimitSec: 20,
           questions: selectedQuizzes.flatMap((quiz) =>
             quiz.questions.map((question) => ({
