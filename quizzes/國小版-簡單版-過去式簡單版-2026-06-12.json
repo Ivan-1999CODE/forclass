@@ -5,304 +5,504 @@
   "defaultTimeLimitSec": 20,
   "questions": [
     {
-      "prompt": "Yesterday, I ____ my room.",
-      "options": ["clean", "cleans", "cleaned", "cleaning"],
-      "answerIndex": 2,
-      "explanation": "Yesterday 表示過去時間；cleaned 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Leo ________ to open the box yesterday.",
+      "options": [
+        "tried",
+        "trying",
+        "tries",
+        "try"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "Tom ____ basketball after school yesterday.",
-      "options": ["plays", "played", "play", "playing"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；played 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "They ________ English yesterday.",
+      "options": [
+        "learn",
+        "learned",
+        "learning",
+        "learns"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "We ____ TV last night.",
-      "options": ["watch", "watching", "watched", "watches"],
-      "answerIndex": 2,
-      "explanation": "last night 表示過去時間；watched 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "I ________ my answer yesterday.",
+      "options": [
+        "check",
+        "checks",
+        "checking",
+        "checked"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "Jack ____ his mother yesterday.",
-      "options": ["helped", "helping", "help", "helps"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；helped 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Kevin ________ a book from the library yesterday.",
+      "options": [
+        "borrowing",
+        "borrows",
+        "borrowed",
+        "borrow"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "I ____ to music last night.",
-      "options": ["listens", "listened", "listen", "listening"],
-      "answerIndex": 1,
-      "explanation": "last night 表示過去時間；listened 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Amy ________ the flowers yesterday.",
+      "options": [
+        "water",
+        "waters",
+        "watering",
+        "watered"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "Mary ____ her friend yesterday evening.",
-      "options": ["calling", "calls", "called", "call"],
-      "answerIndex": 2,
-      "explanation": "yesterday evening 表示過去時間；called 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Nina ________ a picture yesterday.",
+      "options": [
+        "paint",
+        "painting",
+        "paints",
+        "painted"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "My father ____ the car last weekend.",
-      "options": ["washing", "wash", "washes", "washed"],
-      "answerIndex": 3,
-      "explanation": "last weekend 表示過去時間；washed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The boys ________ the box yesterday.",
+      "options": [
+        "pushed",
+        "push",
+        "pushes",
+        "pushing"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "We ____ in the park yesterday morning.",
-      "options": ["walked", "walks", "walking", "walk"],
-      "answerIndex": 0,
-      "explanation": "yesterday morning 表示過去時間；walked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Mia ________ on one foot yesterday.",
+      "options": [
+        "hops",
+        "hop",
+        "hopped",
+        "hopping"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "Lisa ____ the door five minutes ago.",
-      "options": ["opens", "opened", "open", "opening"],
-      "answerIndex": 1,
-      "explanation": "five minutes ago 表示過去時間；opened 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Yesterday, I ________ my room.",
+      "options": [
+        "cleaned",
+        "cleans",
+        "cleaning",
+        "clean"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "The boy ____ loudly in class yesterday.",
-      "options": ["talk", "talks", "talking", "talked"],
-      "answerIndex": 3,
-      "explanation": "yesterday 表示過去時間；talked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "We ________ our teacher yesterday morning.",
+      "options": [
+        "greets",
+        "greeted",
+        "greet",
+        "greeting"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "I ____ my homework last night.",
-      "options": ["finished", "finish", "finishing", "finishes"],
-      "answerIndex": 0,
-      "explanation": "last night 表示過去時間；finished 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Mia ________ the door last night.",
+      "options": [
+        "closes",
+        "closed",
+        "closing",
+        "close"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "They ____ the game yesterday.",
-      "options": ["enjoys", "enjoyed", "enjoy", "enjoying"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；enjoyed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Dad ________ off the TV last night.",
+      "options": [
+        "turn",
+        "turned",
+        "turns",
+        "turning"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "Mom ____ dinner last night.",
-      "options": ["cooking", "cooks", "cooked", "cook"],
-      "answerIndex": 2,
-      "explanation": "last night 表示過去時間；cooked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tom ________ the ball yesterday.",
+      "options": [
+        "kicks",
+        "kicking",
+        "kicked",
+        "kick"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "He ____ the teacher's question yesterday.",
-      "options": ["answer", "answered", "answering", "answers"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；answered 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Mom ________ dinner last night.",
+      "options": [
+        "cook",
+        "cooks",
+        "cooking",
+        "cooked"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "We ____ for the bus yesterday morning.",
-      "options": ["waited", "waits", "wait", "waiting"],
-      "answerIndex": 0,
-      "explanation": "yesterday morning 表示過去時間；waited 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "We ________ at home last weekend.",
+      "options": [
+        "stays",
+        "staying",
+        "stayed",
+        "stay"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "Nina ____ a picture yesterday.",
-      "options": ["paints", "painting", "painted", "paint"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；painted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "I ________ to music last night.",
+      "options": [
+        "listening",
+        "listened",
+        "listen",
+        "listens"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "I ____ my bag before school yesterday.",
-      "options": ["packing", "pack", "packed", "packs"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；packed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "My father ________ the car last weekend.",
+      "options": [
+        "washed",
+        "washes",
+        "washing",
+        "wash"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "The team ____ hard yesterday.",
-      "options": ["working", "work", "worked", "works"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；worked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The boy ________ loudly in class yesterday.",
+      "options": [
+        "talked",
+        "talking",
+        "talks",
+        "talk"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "Tony ____ a new notebook yesterday.",
-      "options": ["want", "wanting", "wanted", "wants"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；wanted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tony ________ a new notebook yesterday.",
+      "options": [
+        "want",
+        "wanted",
+        "wanting",
+        "wants"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "We ____ our teacher yesterday morning.",
-      "options": ["greets", "greeted", "greet", "greeting"],
-      "answerIndex": 1,
-      "explanation": "yesterday morning 表示過去時間；greeted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The team ________ hard yesterday.",
+      "options": [
+        "working",
+        "worked",
+        "works",
+        "work"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "Amy ____ the flowers yesterday.",
-      "options": ["watering", "waters", "watered", "water"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；watered 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Mary ________ her friend yesterday evening.",
+      "options": [
+        "calls",
+        "called",
+        "calling",
+        "call"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "The children ____ in the yard yesterday.",
-      "options": ["jumped", "jump", "jumps", "jumping"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；jumped 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Ben ________ a question in class yesterday.",
+      "options": [
+        "asked",
+        "asking",
+        "asks",
+        "ask"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "The girls ____ at the picture yesterday.",
-      "options": ["look", "looks", "looked", "looking"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；looked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "I ________ my bag before school yesterday.",
+      "options": [
+        "packed",
+        "pack",
+        "packs",
+        "packing"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "Ben ____ a question in class yesterday.",
-      "options": ["asks", "asking", "asked", "ask"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；asked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tom ________ basketball after school yesterday.",
+      "options": [
+        "played",
+        "plays",
+        "play",
+        "playing"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "The class ____ at eight yesterday.",
-      "options": ["started", "start", "starts", "starting"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；started 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Lisa ________ a pencil yesterday.",
+      "options": [
+        "picking",
+        "picked",
+        "pick",
+        "picks"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "She ____ her grandma last Sunday.",
-      "options": ["visited", "visit", "visits", "visiting"],
-      "answerIndex": 0,
-      "explanation": "last Sunday 表示過去時間；visited 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tom ________ a trip last week.",
+      "options": [
+        "plan",
+        "planning",
+        "plans",
+        "planned"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "They ____ English yesterday.",
-      "options": ["learn", "learns", "learned", "learning"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；learned 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The baby ________ the toy yesterday.",
+      "options": [
+        "touched",
+        "touch",
+        "touches",
+        "touching"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "Kevin ____ a book from the library yesterday.",
-      "options": ["borrows", "borrowed", "borrow", "borrowing"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；borrowed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "We ________ for the bus yesterday morning.",
+      "options": [
+        "waited",
+        "waiting",
+        "waits",
+        "wait"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "I ____ my answer yesterday.",
-      "options": ["checking", "check", "checks", "checked"],
-      "answerIndex": 3,
-      "explanation": "yesterday 表示過去時間；checked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tom ________ at the party yesterday.",
+      "options": [
+        "dancing",
+        "dances",
+        "danced",
+        "dance"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "The boy ____ the tree yesterday.",
-      "options": ["climbed", "climb", "climbs", "climbing"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；climbed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Tom ________ in Taipei last year.",
+      "options": [
+        "living",
+        "lived",
+        "live",
+        "lives"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "Dad ____ off the TV last night.",
-      "options": ["turns", "turning", "turned", "turn"],
-      "answerIndex": 2,
-      "explanation": "last night 表示過去時間；turned 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The children ________ in the yard yesterday.",
+      "options": [
+        "jumping",
+        "jumped",
+        "jump",
+        "jumps"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "We ____ at home last weekend.",
-      "options": ["stay", "stays", "staying", "stayed"],
-      "answerIndex": 3,
-      "explanation": "last weekend 表示過去時間；stayed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Dad ________ the box yesterday.",
+      "options": [
+        "carries",
+        "carried",
+        "carrying",
+        "carry"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "The students ____ loudly yesterday.",
-      "options": ["shouted", "shout", "shouts", "shouting"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；shouted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The boy ________ the tree yesterday.",
+      "options": [
+        "climb",
+        "climbs",
+        "climbed",
+        "climbing"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "Tom ____ the ball yesterday.",
-      "options": ["kick", "kicks", "kicked", "kicking"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；kicked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Lisa ________ the door five minutes ago.",
+      "options": [
+        "open",
+        "opens",
+        "opening",
+        "opened"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "Lisa ____ a pencil yesterday.",
-      "options": ["picked", "pick", "picks", "picking"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；picked 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The baby ________ last night.",
+      "options": [
+        "crying",
+        "cries",
+        "cried",
+        "cry"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "The baby ____ the toy yesterday.",
-      "options": ["touch", "touches", "touching", "touched"],
-      "answerIndex": 3,
-      "explanation": "yesterday 表示過去時間；touched 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "We ________ TV last night.",
+      "options": [
+        "watches",
+        "watched",
+        "watching",
+        "watch"
+      ],
+      "answerIndex": 1
     },
     {
-      "prompt": "I ____ my teeth this morning.",
-      "options": ["brushed", "brush", "brushes", "brushing"],
-      "answerIndex": 0,
-      "explanation": "this morning 在這裡表示已發生的過去時間；brushed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Jack ________ his mother yesterday.",
+      "options": [
+        "help",
+        "helping",
+        "helped",
+        "helps"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "Dad ____ my bike yesterday.",
-      "options": ["fix", "fixes", "fixed", "fixing"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；fixed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The girls ________ at the picture yesterday.",
+      "options": [
+        "looks",
+        "look",
+        "looked",
+        "looking"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "The girl ____ the door yesterday.",
-      "options": ["pulling", "pull", "pulled", "pulls"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；pulled 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Amy ________ English last night.",
+      "options": [
+        "study",
+        "studies",
+        "studying",
+        "studied"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "The boys ____ the box yesterday.",
-      "options": ["pushes", "pushed", "push", "pushing"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；pushed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "I ________ my homework last night.",
+      "options": [
+        "finished",
+        "finish",
+        "finishing",
+        "finishes"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "We ____ the street yesterday.",
-      "options": ["cross", "crosses", "crossed", "crossing"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；crossed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The students ________ loudly yesterday.",
+      "options": [
+        "shouts",
+        "shouting",
+        "shout",
+        "shouted"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "Mom ____ the soup last night.",
-      "options": ["mixed", "mix", "mixes", "mixing"],
-      "answerIndex": 0,
-      "explanation": "last night 表示過去時間；mixed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "He ________ the teacher's question yesterday.",
+      "options": [
+        "answered",
+        "answering",
+        "answer",
+        "answers"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "I ____ the paper yesterday.",
-      "options": ["fold", "folds", "folding", "folded"],
-      "answerIndex": 3,
-      "explanation": "yesterday 表示過去時間；folded 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The class ________ at eight yesterday.",
+      "options": [
+        "starts",
+        "starting",
+        "start",
+        "started"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "Grandpa ____ a tree last year.",
-      "options": ["plants", "planted", "plant", "planting"],
-      "answerIndex": 1,
-      "explanation": "last year 表示過去時間；planted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The girl ________ the door yesterday.",
+      "options": [
+        "pulled",
+        "pulls",
+        "pull",
+        "pulling"
+      ],
+      "answerIndex": 0
     },
     {
-      "prompt": "The children ____ the apples yesterday.",
-      "options": ["count", "counted", "counts", "counting"],
-      "answerIndex": 1,
-      "explanation": "yesterday 表示過去時間；counted 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "I ________ my teeth yesterday morning.",
+      "options": [
+        "brushes",
+        "brush",
+        "brushing",
+        "brushed"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "We ____ after lunch yesterday.",
-      "options": ["rested", "rest", "rests", "resting"],
-      "answerIndex": 0,
-      "explanation": "yesterday 表示過去時間；rested 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "The bus ________ here yesterday.",
+      "options": [
+        "stop",
+        "stopping",
+        "stopped",
+        "stops"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "I ____ a ruler yesterday.",
-      "options": ["need", "needs", "needed", "needing"],
-      "answerIndex": 2,
-      "explanation": "yesterday 表示過去時間；needed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "They ________ the game yesterday.",
+      "options": [
+        "enjoys",
+        "enjoying",
+        "enjoy",
+        "enjoyed"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "The movie ____ late last night.",
-      "options": ["ends", "ended", "end", "ending"],
-      "answerIndex": 1,
-      "explanation": "last night 表示過去時間；ended 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "Dad ________ my bike yesterday.",
+      "options": [
+        "fixes",
+        "fixing",
+        "fix",
+        "fixed"
+      ],
+      "answerIndex": 3
     },
     {
-      "prompt": "The plane ____ this morning.",
-      "options": ["landing", "lands", "landed", "land"],
-      "answerIndex": 2,
-      "explanation": "this morning 在這裡表示已發生的過去時間；landed 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "She ________ her grandma last Sunday.",
+      "options": [
+        "visiting",
+        "visits",
+        "visited",
+        "visit"
+      ],
+      "answerIndex": 2
     },
     {
-      "prompt": "It ____ yesterday afternoon.",
-      "options": ["rains", "rained", "rain", "raining"],
-      "answerIndex": 1,
-      "explanation": "yesterday afternoon 表示過去時間；rained 是規則動詞過去式，字尾加 -ed。"
+      "prompt": "We ________ in the park yesterday morning.",
+      "options": [
+        "walking",
+        "walks",
+        "walked",
+        "walk"
+      ],
+      "answerIndex": 2
     }
   ]
 }

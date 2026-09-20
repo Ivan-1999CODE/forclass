@@ -4,15 +4,505 @@
   "date": "2026-07-29",
   "defaultTimeLimitSec": 20,
   "questions": [
-    { "prompt": "Mia ________ her room yesterday.", "options": ["cleans", "cleaned", "is cleaning", "clean"], "answerIndex": 1 },
-    { "prompt": "They ________ TV last night.", "options": ["watch", "are watching", "watched", "watches"], "answerIndex": 2 },
-    { "prompt": "Did Leo ________ basketball yesterday?", "options": ["played", "plays", "playing", "play"], "answerIndex": 3 },
-    { "prompt": "Amy didn't ________ the door this morning.", "options": ["open", "opened", "opens", "opening"], "answerIndex": 0 },
-    { "prompt": "________ Ben wash the dishes last night?", "options": ["Was", "Does", "Did", "Is"], "answerIndex": 2 },
-    { "prompt": "Jack ________ home two hours ago.", "options": ["goes", "is going", "went", "go"], "answerIndex": 2 },
-    { "prompt": "They ________ lunch at school yesterday.", "options": ["eat", "ate", "are eating", "eats"], "answerIndex": 1 },
-    { "prompt": "Mia didn't ________ her teacher last week.", "options": ["saw", "sees", "seeing", "see"], "answerIndex": 3 },
-    { "prompt": "Leo didn't ________ a new bag yesterday.", "options": ["bought", "buy", "buys", "buying"], "answerIndex": 1 },
-    { "prompt": "________ Amy come home late yesterday?", "options": ["Does", "Was", "Did", "Is"], "answerIndex": 2 }
+    {
+      "prompt": "Mia ________ her teacher at the park yesterday.",
+      "options": [
+        "see",
+        "saw",
+        "sees",
+        "is seeing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Tom didn't ________ at the party yesterday.",
+      "options": [
+        "dancing",
+        "dance",
+        "dances",
+        "danced"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Leo ________ a photo yesterday because his camera was broken.",
+      "options": [
+        "doesn't take",
+        "didn't took",
+        "isn't taking",
+        "didn't take"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "They ________ lunch at school yesterday.",
+      "options": [
+        "are eating",
+        "eats",
+        "eat",
+        "ate"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "________ Mia sing a song yesterday?",
+      "options": [
+        "Did",
+        "Is",
+        "Was",
+        "Does"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Did Mom ________ a cake last night?",
+      "options": [
+        "makes",
+        "made",
+        "making",
+        "make"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Tom ________ at the party yesterday.",
+      "options": [
+        "danced",
+        "dance",
+        "is dancing",
+        "dances"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "The bus ________ here yesterday.",
+      "options": [
+        "is stopping",
+        "stops",
+        "stop",
+        "stopped"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Amy ________ a letter last night.",
+      "options": [
+        "write",
+        "wrote",
+        "writes",
+        "is writing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Leo didn't ________ a new bag yesterday.",
+      "options": [
+        "bought",
+        "buy",
+        "buys",
+        "buying"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Ben didn't ________ milk yesterday.",
+      "options": [
+        "drank",
+        "drinks",
+        "drinking",
+        "drink"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Jack ________ home two hours ago.",
+      "options": [
+        "go",
+        "goes",
+        "went",
+        "is going"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Amy ________ a letter last night because she was too tired.",
+      "options": [
+        "didn't write",
+        "didn't wrote",
+        "isn't writing",
+        "doesn't write"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Tom didn't ________ to school yesterday.",
+      "options": [
+        "running",
+        "runs",
+        "ran",
+        "run"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Mia ________ the door last night because she was busy with her homework.",
+      "options": [
+        "doesn't close",
+        "didn't close",
+        "isn't closing",
+        "didn't closed"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "The bus ________ here yesterday because the road was closed.",
+      "options": [
+        "didn't stopped",
+        "isn't stopping",
+        "doesn't stop",
+        "didn't stop"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Dad ________ a new bike last week.",
+      "options": [
+        "buy",
+        "bought",
+        "buys",
+        "is buying"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Tom ________ to school yesterday.",
+      "options": [
+        "is running",
+        "ran",
+        "runs",
+        "run"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Dad ________ the box yesterday.",
+      "options": [
+        "is carrying",
+        "carries",
+        "carried",
+        "carry"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "________ Amy write a letter last night?",
+      "options": [
+        "Does",
+        "Did",
+        "Is",
+        "Was"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Leo ________ a photo yesterday.",
+      "options": [
+        "took",
+        "takes",
+        "is taking",
+        "take"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Ben ________ milk yesterday.",
+      "options": [
+        "drank",
+        "is drinking",
+        "drinks",
+        "drink"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Did Leo ________ basketball yesterday?",
+      "options": [
+        "playing",
+        "plays",
+        "play",
+        "played"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Did Tom ________ at the party yesterday?",
+      "options": [
+        "dance",
+        "dancing",
+        "danced",
+        "dances"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "________ Ben wash the dishes last night?",
+      "options": [
+        "Did",
+        "Does",
+        "Is",
+        "Was"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Amy didn't ________ the door yesterday morning.",
+      "options": [
+        "opened",
+        "opens",
+        "open",
+        "opening"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Mia didn't ________ her teacher last week.",
+      "options": [
+        "saw",
+        "sees",
+        "see",
+        "seeing"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Mia ________ the door last night.",
+      "options": [
+        "is closing",
+        "close",
+        "closes",
+        "closed"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "________ Leo wash his hands before dinner yesterday?",
+      "options": [
+        "Is",
+        "Did",
+        "Was",
+        "Does"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Mia ________ her room yesterday.",
+      "options": [
+        "cleaned",
+        "clean",
+        "cleans",
+        "is cleaning"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Mia ________ a song yesterday.",
+      "options": [
+        "sang",
+        "sings",
+        "sing",
+        "is singing"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Amy didn't ________ English last night.",
+      "options": [
+        "study",
+        "studies",
+        "studied",
+        "studying"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "The baby ________ last night.",
+      "options": [
+        "cries",
+        "is crying",
+        "cry",
+        "cried"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Leo ________ his hands before dinner yesterday.",
+      "options": [
+        "is washing",
+        "washed",
+        "washes",
+        "wash"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Mia ________ a song yesterday because she was busy with her homework.",
+      "options": [
+        "doesn't sing",
+        "isn't singing",
+        "didn't sing",
+        "didn't sang"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Amy ________ English last night.",
+      "options": [
+        "studies",
+        "study",
+        "studied",
+        "is studying"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Dad didn't ________ the box yesterday.",
+      "options": [
+        "carried",
+        "carrying",
+        "carries",
+        "carry"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "________ Leo take a photo yesterday?",
+      "options": [
+        "Does",
+        "Did",
+        "Is",
+        "Was"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Mom didn't ________ a cake last night.",
+      "options": [
+        "made",
+        "make",
+        "makes",
+        "making"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Leo ________ his hands before dinner yesterday because there was no water.",
+      "options": [
+        "isn't washing",
+        "didn't washed",
+        "didn't wash",
+        "doesn't wash"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Tom ________ a trip last week.",
+      "options": [
+        "is planning",
+        "plans",
+        "planned",
+        "plan"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "They ________ TV last night.",
+      "options": [
+        "are watching",
+        "watched",
+        "watch",
+        "watches"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Did Dad ________ the box yesterday?",
+      "options": [
+        "carried",
+        "carries",
+        "carry",
+        "carrying"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "________ the bus stop here yesterday?",
+      "options": [
+        "Did",
+        "Was",
+        "Does",
+        "Is"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Did Amy ________ English last night?",
+      "options": [
+        "studied",
+        "studying",
+        "study",
+        "studies"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "________ Amy come home late yesterday?",
+      "options": [
+        "Is",
+        "Does",
+        "Was",
+        "Did"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Did Tom ________ to school yesterday?",
+      "options": [
+        "run",
+        "runs",
+        "ran",
+        "running"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "________ Mia close the door last night?",
+      "options": [
+        "Was",
+        "Is",
+        "Did",
+        "Does"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Mom ________ a cake last night.",
+      "options": [
+        "made",
+        "is making",
+        "make",
+        "makes"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Did Ben ________ milk yesterday?",
+      "options": [
+        "drinks",
+        "drank",
+        "drinking",
+        "drink"
+      ],
+      "answerIndex": 3
+    }
   ]
 }

@@ -48,11 +48,14 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   const { quizzes } = await quizResponse.json();
   assert.ok(quizzes.length > 1);
 
-  const tenQuestionQuiz = quizzes.find((quiz) => quiz.questionCount === 10);
-  assert.ok(tenQuestionQuiz, "測試資料中應至少有一份 10 題題庫");
-  for (const questionCount of [5, 10, 15, 20]) {
+  const smallestQuiz = quizzes.reduce((smallest, quiz) =>
+    quiz.questionCount < smallest.questionCount ? quiz : smallest
+  );
+  assert.ok(smallestQuiz.questionCount > 0, "測試題庫應包含題目");
+  // 同時驗證少於、等於與多於來源題數，不依賴正式題庫固定有 10 題。
+  for (const questionCount of new Set([5, 10, 15, 20, smallestQuiz.questionCount, smallestQuiz.questionCount + 5])) {
     const sizedRoom = await emitAck(host, "host:createRoom", {
-      quizId: tenQuestionQuiz.id,
+      quizId: smallestQuiz.id,
       questionCount
     });
     assert.equal(sizedRoom.ok, true);
