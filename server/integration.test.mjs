@@ -75,7 +75,13 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   assert.equal(noQuizSelected.error, "請先勾選至少一個題庫。");
 
   // 舊版單一 quizId 格式仍可建立場次，避免既有客戶端更新期間中斷。
-  const created = await emitAck(host, "host:createRoom", { quizId: quizzes[0].id, questionCount: 1 });
+  const quizDetails = await Promise.all(quizzes.map(async (quiz) => {
+    const response = await fetch(`${baseUrl}/api/quizzes/${encodeURIComponent(quiz.id)}`);
+    return (await response.json()).quiz;
+  }));
+  const explainedQuiz = quizDetails.find((quiz) => quiz.questions.every((question) => question.explanation?.trim()));
+  assert.ok(explainedQuiz, "需要含有解析的題庫驗證錯題回顧");
+  const created = await emitAck(host, "host:createRoom", { quizId: explainedQuiz.id, questionCount: 1 });
   assert.equal(created.ok, true);
   const hostToken = created.hostToken;
   const roomCode = created.roomCode;
@@ -99,6 +105,8 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   const [studentAResults, studentBResults] = await Promise.all([studentAResultsUpdate, studentBResultsUpdate]);
   assert.equal(hostResults.status, "results");
   assert.equal(hostResults.questionResults.length, 2);
+  assert.equal(hostResults.questionResults.find((student) => student.id === joinedA.studentId).selectedIndex, 0);
+  assert.equal(hostResults.questionResults.find((student) => student.id === joinedB.studentId).selectedIndex, 1);
   for (const studentResults of [studentAResults, studentBResults]) {
     assert.equal(studentResults.ranking.length, 2);
     assert.deepEqual(studentResults.ranking.map((student) => student.rank), [1, 2]);
@@ -162,6 +170,11 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   assert.equal(finishedStudent.status, "finished");
   assert.equal(finishedStudent.wrongAnswers.length, 1);
   assert.equal(finishedStudent.wrongAnswers[0].questionIndex, 0);
+  assert.equal(finishedStudent.wrongAnswers[0].selectedIndex, wrongResult.selectedIndex);
+  assert.equal(finishedStudent.wrongAnswers[0].correctIndex, hostResults.question.answerIndex);
+  assert.deepEqual(finishedStudent.wrongAnswers[0].options, hostResults.question.options);
+  assert.equal(finishedStudent.wrongAnswers[0].explanation, hostResults.question.explanation);
+  assert.ok(finishedStudent.wrongAnswers[0].explanation.length > 0, "錯題回顧應保留題庫解析");
   assert.equal(finishedStudent.questionResults, undefined);
 
   const invalidReport = await emitAck(studentA, "student:report", {
@@ -199,6 +212,20 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   });
   assert.equal(duplicateReport.ok, false);
   assert.equal(duplicateReport.error, "每位學生每場只能檢舉一次。");
+
+  const unansweredRoom = await emitAck(host, "host:createRoom", { quizId: quizzes[0].id, questionCount: 1 });
+  const unansweredJoin = await emitAck(studentA, "student:join", { roomCode: unansweredRoom.roomCode, name: "未作答學生" });
+  const unansweredCredentials = { roomCode: unansweredRoom.roomCode, hostToken: unansweredRoom.hostToken };
+  await emitAck(host, "host:startGame", unansweredCredentials);
+  const unansweredHostUpdate = waitForSocketEvent(host, "host:update", (snapshot) => snapshot.status === "results");
+  await emitAck(host, "host:closeQuestion", unansweredCredentials);
+  const unansweredHost = await unansweredHostUpdate;
+  assert.deepEqual(unansweredHost.questionResults, [{ id: unansweredJoin.studentId, name: "未作答學生", selectedIndex: null, outcome: "unanswered" }]);
+  const unansweredFinishedUpdate = waitForSocketEvent(studentA, "student:update", (snapshot) => snapshot.status === "finished");
+  await emitAck(host, "host:endGame", unansweredCredentials);
+  const unansweredFinished = await unansweredFinishedUpdate;
+  assert.equal(unansweredFinished.wrongAnswers[0].selectedIndex, null);
+  assert.equal(unansweredFinished.wrongAnswers[0].explanation, unansweredHost.question.explanation);
 
   if (server.exitCode !== null) {
     assert.fail(`伺服器提早結束：${serverOutput}`);

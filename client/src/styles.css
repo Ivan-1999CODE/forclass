@@ -1118,7 +1118,33 @@ p {
   gap: 8px;
 }
 
+.student-answer-summary {
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.student-review-explanation h4 {
+  margin: 16px 0 8px;
+}
+
+.student-review-explanation .explanation {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.question-result-answer {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.question-result-row > span {
+  flex-shrink: 0;
+}
+
 .question-result-row {
+  gap: 12px;
   align-items: center;
   background: #fff;
   border-left: 4px solid #c7d2dc;

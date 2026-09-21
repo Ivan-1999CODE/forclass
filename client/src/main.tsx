@@ -43,7 +43,7 @@ type Snapshot = {
   students: Array<{ id: string; name: string; connected: boolean; totalScore: number; answeredCurrent: boolean }>;
   ranking: Array<{ id: string; name: string; rank: number; totalScore: number; correctCount: number; avgResponseMs: number }>;
   stats: null | { optionCounts: number[]; answered: number; unanswered: number; correct: number };
-  questionResults?: Array<{ id: string; name: string; outcome: "correct" | "wrong" | "unanswered" }>;
+  questionResults?: Array<{ id: string; name: string; selectedIndex: number | null; outcome: "correct" | "wrong" | "unanswered" }>;
   teacherMessages?: Array<{ id: string; targetStudentId: string; targetName: string; text: string; sentAt: number; seenAt: number | null }>;
   wrongAnswers?: Array<{
     questionIndex: number;
@@ -1225,8 +1225,15 @@ function StudentWrongAnswerReview({ wrongAnswers }: { wrongAnswers: NonNullable<
                   );
                 })}
               </div>
-              {question.selectedIndex === null && <p className="student-unanswered-label">你的作答：未作答</p>}
-              {question.explanation && <p className="explanation">{question.explanation}</p>}
+              <p className="student-answer-summary">
+                你的答案：{question.selectedIndex === null ? "未作答" : `${String.fromCharCode(65 + question.selectedIndex)}. ${question.options[question.selectedIndex]}（答錯）`}
+                <br />
+                正確答案：{String.fromCharCode(65 + question.correctIndex)}. {question.options[question.correctIndex]}
+              </p>
+              <section className="student-review-explanation">
+                <h4>解析</h4>
+                <p className="explanation">{question.explanation.trim() || "這題尚未提供解析，可以請老師補充說明。"}</p>
+              </section>
             </article>
           ))}
         </div>
@@ -1245,10 +1252,16 @@ function QuestionResults({ snapshot }: { snapshot: Snapshot }) {
   return (
     <section className="question-results">
       <h3>這一題誰對誰錯</h3>
+      {snapshot.question?.answerIndex != null && (
+        <p>正確答案：{String.fromCharCode(65 + snapshot.question.answerIndex)}. {snapshot.question.options[snapshot.question.answerIndex]}</p>
+      )}
       <div className="question-result-list">
         {(snapshot.questionResults || []).map((student) => (
           <div className={`question-result-row ${student.outcome}`} key={student.id}>
-            <strong>{student.name}</strong>
+            <div className="question-result-answer">
+              <strong>{student.name}</strong>
+              <span>{student.selectedIndex == null ? "未選擇選項" : `選了 ${String.fromCharCode(65 + student.selectedIndex)}. ${snapshot.question?.options[student.selectedIndex] ?? ""}`}</span>
+            </div>
             <span>{outcomeText[student.outcome]}</span>
           </div>
         ))}

@@ -895,6 +895,7 @@ function buildQuestionResults(room) {
     return {
       id: student.id,
       name: student.name,
+      selectedIndex: answer?.selectedIndex ?? null,
       outcome: !answer ? "unanswered" : answer.isCorrect ? "correct" : "wrong"
     };
   });
