@@ -5,504 +5,554 @@
   "defaultTimeLimitSec": 20,
   "questions": [
     {
-      "prompt": "what 的中文意思是什麼？",
+      "prompt": "「What is in the bag?」中的 What 是在詢問什麼？",
       "options": [
-        "誰",
-        "哪裡",
-        "什麼",
-        "何時"
+        "事物",
+        "人物",
+        "地點",
+        "時間"
       ],
-      "answerIndex": 2
+      "answerIndex": 0,
+      "explanation": "What 表示「什麼」，用來詢問事物。"
     },
     {
-      "prompt": "who 的中文意思是什麼？",
+      "prompt": "「Who is your music teacher?」中的 Who 是在詢問什麼？",
       "options": [
-        "為什麼",
-        "誰",
-        "如何",
-        "哪裡"
+        "事物",
+        "地點",
+        "時間",
+        "人物"
       ],
-      "answerIndex": 1
+      "answerIndex": 3,
+      "explanation": "Who 表示「誰」，用來詢問人物。"
     },
     {
-      "prompt": "where 的中文意思是什麼？",
+      "prompt": "「Where is the toy shop?」中的 Where 是在詢問什麼？",
       "options": [
-        "何時",
-        "什麼",
-        "誰",
-        "哪裡"
+        "事物",
+        "人物",
+        "地點",
+        "時間"
       ],
-      "answerIndex": 3
+      "answerIndex": 2,
+      "explanation": "Where 表示「哪裡」，用來詢問地點。"
     },
     {
-      "prompt": "when 的中文意思是什麼？",
+      "prompt": "「When is the party?」中的 When 是在詢問什麼？",
       "options": [
-        "何時",
-        "如何",
-        "為什麼",
-        "什麼"
+        "事物",
+        "時間",
+        "人物",
+        "地點"
       ],
-      "answerIndex": 0
+      "answerIndex": 1,
+      "explanation": "When 表示「何時」，用來詢問時間。"
     },
     {
-      "prompt": "why 的中文意思是什麼？",
+      "prompt": "「Why is the baby crying?」中的 Why 是在詢問什麼？",
       "options": [
-        "哪裡",
-        "誰",
-        "為什麼",
-        "何時"
+        "原因",
+        "事物",
+        "人物",
+        "地點"
       ],
-      "answerIndex": 2
+      "answerIndex": 0,
+      "explanation": "Why 表示「為什麼」，用來詢問原因。"
     },
     {
-      "prompt": "how 的中文意思是什麼？",
+      "prompt": "「How do you make this cake?」中的 How 是在詢問什麼？",
       "options": [
-        "什麼",
-        "如何",
-        "誰",
-        "哪裡"
+        "事物",
+        "人物",
+        "地點",
+        "方法"
       ],
-      "answerIndex": 1
+      "answerIndex": 3,
+      "explanation": "How 表示「如何」，用來詢問方法。"
     },
     {
-      "prompt": "「什麼」的英文是哪一個？",
+      "prompt": "想問「你午餐吃什麼？」，應用哪個疑問詞開頭？",
       "options": [
-        "what",
-        "who",
-        "when",
-        "why"
+        "Who",
+        "Where",
+        "What",
+        "When"
       ],
-      "answerIndex": 0
+      "answerIndex": 2,
+      "explanation": "這句詢問事物，所以要用 What。"
     },
     {
-      "prompt": "「誰」的英文是哪一個？",
+      "prompt": "想問「誰是你的同學？」，應用哪個疑問詞開頭？",
       "options": [
-        "where",
-        "why",
-        "who",
-        "how"
+        "What",
+        "Who",
+        "Where",
+        "When"
       ],
-      "answerIndex": 2
+      "answerIndex": 1,
+      "explanation": "這句詢問人物，所以要用 Who。"
     },
     {
-      "prompt": "「哪裡」的英文是哪一個？",
+      "prompt": "想問「你的球在哪裡？」，應用哪個疑問詞開頭？",
       "options": [
-        "when",
-        "where",
-        "what",
-        "who"
+        "Where",
+        "What",
+        "Who",
+        "When"
       ],
-      "answerIndex": 1
+      "answerIndex": 0,
+      "explanation": "這句詢問地點，所以要用 Where。"
     },
     {
-      "prompt": "「何時」的英文是哪一個？",
+      "prompt": "想問「運動會在什麼時候？」，應用哪個疑問詞開頭？",
       "options": [
-        "why",
-        "how",
-        "where",
-        "when"
+        "What",
+        "Who",
+        "Where",
+        "When"
       ],
-      "answerIndex": 3
+      "answerIndex": 3,
+      "explanation": "這句詢問時間，所以要用 When。"
     },
     {
-      "prompt": "「為什麼」的英文是哪一個？",
+      "prompt": "想問「你為什麼高興？」，應用哪個疑問詞開頭？",
       "options": [
-        "why",
-        "who",
-        "what",
-        "when"
+        "What",
+        "Who",
+        "Why",
+        "Where"
       ],
-      "answerIndex": 0
+      "answerIndex": 2,
+      "explanation": "這句詢問原因，所以要用 Why。"
     },
     {
-      "prompt": "「如何／怎麼樣」的英文是哪一個？",
+      "prompt": "想問「你怎麼去學校？」，應用哪個疑問詞開頭？",
       "options": [
-        "when",
-        "where",
-        "how",
-        "why"
+        "What",
+        "How",
+        "Who",
+        "Where"
       ],
-      "answerIndex": 2
+      "answerIndex": 1,
+      "explanation": "這句詢問方法，所以要用 How。"
     },
     {
-      "prompt": "book 的複數是哪一個？",
+      "prompt": "請填入 cat（貓）的複數：two ______。",
       "options": [
-        "bookes",
-        "books",
-        "book",
-        "bookies"
+        "cats",
+        "cat",
+        "cates",
+        "caties"
       ],
-      "answerIndex": 1
+      "answerIndex": 0,
+      "explanation": "cat 的複數直接加 -s，寫成 cats。"
     },
     {
-      "prompt": "pen 的複數是哪一個？",
+      "prompt": "請填入 dog（狗）的複數：three ______。",
       "options": [
-        "pens",
-        "penes",
-        "pen",
-        "penses"
+        "dog",
+        "doges",
+        "dogies",
+        "dogs"
       ],
-      "answerIndex": 0
+      "answerIndex": 3,
+      "explanation": "dog 的複數直接加 -s，寫成 dogs。"
     },
     {
-      "prompt": "cup 的複數是哪一個？",
+      "prompt": "請填入 bag（袋子）的複數：two ______。",
       "options": [
-        "cupps",
-        "cupes",
-        "cups",
-        "cup"
+        "bag",
+        "bages",
+        "bags",
+        "bagies"
       ],
-      "answerIndex": 2
+      "answerIndex": 2,
+      "explanation": "bag 的複數直接加 -s，寫成 bags。"
     },
     {
-      "prompt": "pencil 的複數是哪一個？",
+      "prompt": "請填入 chair（椅子）的複數：three ______。",
       "options": [
-        "penciles",
-        "pencil",
-        "pencilses",
-        "pencils"
+        "chair",
+        "chairs",
+        "chaires",
+        "chairies"
       ],
-      "answerIndex": 3
+      "answerIndex": 1,
+      "explanation": "chair 的複數直接加 -s，寫成 chairs。"
     },
     {
-      "prompt": "watch 的複數是哪一個？",
+      "prompt": "請填入 cake（蛋糕）的複數：two ______。",
       "options": [
-        "watchs",
-        "watches",
-        "watch",
-        "watchies"
+        "cakes",
+        "cake",
+        "cakees",
+        "cakeies"
       ],
-      "answerIndex": 1
+      "answerIndex": 0,
+      "explanation": "cake 的複數直接加 -s，寫成 cakes。"
     },
     {
-      "prompt": "class 的複數是哪一個？",
+      "prompt": "請填入 fox（狐狸）的複數：three ______。",
       "options": [
-        "classes",
-        "classs",
-        "class",
-        "classies"
+        "fox",
+        "foxs",
+        "foxies",
+        "foxes"
       ],
-      "answerIndex": 0
+      "answerIndex": 3,
+      "explanation": "fox 的複數字尾加 -es，寫成 foxes。"
     },
     {
-      "prompt": "box 的複數是哪一個？",
+      "prompt": "請填入 peach（桃子）的複數：two ______。",
       "options": [
-        "boxs",
-        "box",
-        "boxes",
-        "boxies"
+        "peach",
+        "peachs",
+        "peaches",
+        "peachies"
       ],
-      "answerIndex": 2
+      "answerIndex": 2,
+      "explanation": "peach 的複數字尾加 -es，寫成 peaches。"
     },
     {
-      "prompt": "brush 的複數是哪一個？",
+      "prompt": "請填入 lunch（午餐）的複數：three ______。",
       "options": [
-        "brushs",
-        "brush",
-        "brushies",
-        "brushes"
+        "lunch",
+        "lunches",
+        "lunchs",
+        "lunchies"
       ],
-      "answerIndex": 3
+      "answerIndex": 1,
+      "explanation": "lunch 的複數字尾加 -es，寫成 lunches。"
     },
     {
-      "prompt": "This is a ______.",
+      "prompt": "請填入 kiss（親吻）的複數：two ______。",
       "options": [
-        "books",
-        "bookes",
-        "book",
-        "booking"
+        "kisses",
+        "kiss",
+        "kisss",
+        "kissies"
       ],
-      "answerIndex": 2
+      "answerIndex": 0,
+      "explanation": "kiss 的複數字尾加 -es，寫成 kisses。"
     },
     {
-      "prompt": "These are my ______.",
+      "prompt": "請填入 sandwich（三明治）的複數：three ______。",
       "options": [
-        "pencils",
-        "pencil",
-        "penciles",
-        "a pencil"
+        "sandwich",
+        "sandwichs",
+        "sandwichies",
+        "sandwiches"
       ],
-      "answerIndex": 0
+      "answerIndex": 3,
+      "explanation": "sandwich 的複數字尾加 -es，寫成 sandwiches。"
     },
     {
-      "prompt": "That is ______ eraser.",
+      "prompt": "There is a ______ on my bed.（玩具機器人）",
       "options": [
+        "robots",
+        "robotes",
+        "robot",
+        "a robots"
+      ],
+      "answerIndex": 2,
+      "explanation": "A 後接單數可數名詞 robot。"
+    },
+    {
+      "prompt": "These are five ______ for the game.（球）",
+      "options": [
+        "ball",
+        "balls",
+        "a ball",
+        "balles"
+      ],
+      "answerIndex": 1,
+      "explanation": "Five 後接複數名詞 balls。"
+    },
+    {
+      "prompt": "Dad has ______ umbrella in his car.",
+      "options": [
+        "an",
         "a",
         "two",
-        "these",
+        "these"
+      ],
+      "answerIndex": 0,
+      "explanation": "Umbrella 的字首是母音音素，單數前用 an。"
+    },
+    {
+      "prompt": "There are six ______ in the park.（長椅）",
+      "options": [
+        "bench",
+        "benchs",
+        "a bench",
+        "benches"
+      ],
+      "answerIndex": 3,
+      "explanation": "Six 後接複數，bench 的複數是 benches。"
+    },
+    {
+      "prompt": "I can see two ______ in the picture.（公車）",
+      "options": [
+        "bus",
+        "a bus",
+        "buses",
+        "busies"
+      ],
+      "answerIndex": 2,
+      "explanation": "Two 後接複數，bus 的複數是 buses。"
+    },
+    {
+      "prompt": "______ hat is on my head.",
+      "options": [
+        "These",
+        "This",
+        "Those",
+        "They"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hat 是單數，選項中只有 This 可以修飾它。"
+    },
+    {
+      "prompt": "______ shoes are clean.",
+      "options": [
+        "Those",
+        "That",
+        "This",
+        "It"
+      ],
+      "answerIndex": 0,
+      "explanation": "Shoes 是複數，要用複數指示詞 Those。"
+    },
+    {
+      "prompt": "May has ______ egg for breakfast.",
+      "options": [
+        "a",
+        "three",
+        "those",
         "an"
       ],
-      "answerIndex": 3
+      "answerIndex": 3,
+      "explanation": "Egg 的字首是母音音素，單數前用 an。"
     },
     {
-      "prompt": "Those are three ______.",
+      "prompt": "Ben wants ______ banana.",
       "options": [
-        "box",
-        "boxes",
-        "boxs",
-        "a box"
+        "an",
+        "two",
+        "a",
+        "these"
       ],
-      "answerIndex": 1
+      "answerIndex": 2,
+      "explanation": "Banana 的字首是子音音素，單數前用 a。"
     },
     {
-      "prompt": "I have two ______.",
+      "prompt": "One ______ is under the sofa.（襪子）",
       "options": [
-        "watches",
-        "watch",
-        "watchs",
-        "a watch"
+        "socks",
+        "sock",
+        "sockes",
+        "a socks"
       ],
-      "answerIndex": 0
+      "answerIndex": 1,
+      "explanation": "One 後接單數名詞 sock。"
     },
     {
-      "prompt": "______ cup is on the desk.",
+      "prompt": "My ______ are on the chair.（夾克）",
+      "options": [
+        "jackets",
+        "jacket",
+        "a jacket",
+        "jacketes"
+      ],
+      "answerIndex": 0,
+      "explanation": "句中用 are，這裡要選複數名詞 jackets。"
+    },
+    {
+      "prompt": "______ are my kites over there.",
+      "options": [
+        "That",
+        "This",
+        "It",
+        "Those"
+      ],
+      "answerIndex": 3,
+      "explanation": "Kites 是複數，over there 表示在那邊，所以用 Those。"
+    },
+    {
+      "prompt": "______ is a toy car next to me.",
       "options": [
         "These",
         "Those",
         "This",
         "They"
       ],
-      "answerIndex": 2
+      "answerIndex": 2,
+      "explanation": "A toy car 是單數，next to me 表示在我旁邊，所以用 This。"
     },
     {
-      "prompt": "______ books are interesting.",
+      "prompt": "A: What is this?\nB: ______ a ruler.",
       "options": [
-        "That",
-        "Those",
-        "This",
-        "It"
+        "They're",
+        "It's",
+        "We're",
+        "You're"
       ],
-      "answerIndex": 1
+      "answerIndex": 1,
+      "explanation": "This 指單數物品，回答用 It's。"
     },
     {
-      "prompt": "She has ______ orange.",
-      "options": [
-        "a",
-        "two",
-        "this",
-        "an"
-      ],
-      "answerIndex": 3
-    },
-    {
-      "prompt": "A: What is this?\nB: ______ a pencil.",
-      "options": [
-        "They’re",
-        "It’s",
-        "We’re",
-        "You’re"
-      ],
-      "answerIndex": 1
-    },
-    {
-      "prompt": "A: What is that?\nB: It’s ______ eraser.",
+      "prompt": "A: What is that?\nB: It's ______ elephant.",
       "options": [
         "an",
         "a",
         "two",
-        "these"
+        "those"
       ],
-      "answerIndex": 0
+      "answerIndex": 0,
+      "explanation": "Elephant 的字首是母音音素，單數前用 an。"
     },
     {
-      "prompt": "A: What are these?\nB: ______ my books.",
+      "prompt": "A: What are these?\nB: ______ small drums.",
       "options": [
-        "It’s",
-        "He’s",
-        "They’re",
-        "She’s"
+        "It's",
+        "He's",
+        "She's",
+        "They're"
       ],
-      "answerIndex": 2
+      "answerIndex": 3,
+      "explanation": "These 指複數物品，回答用 They're。"
     },
     {
-      "prompt": "A: What are those?\nB: They’re three ______.",
+      "prompt": "A: What are those?\nB: They're two ______.（風箏）",
       "options": [
-        "cup",
-        "cups",
-        "a cup",
-        "cupes"
+        "kite",
+        "a kite",
+        "kites",
+        "kitees"
       ],
-      "answerIndex": 1
+      "answerIndex": 2,
+      "explanation": "Two 後面接複數名詞 kites。"
     },
     {
-      "prompt": "A: What ______ these?\nB: They’re books.",
-      "options": [
-        "am",
-        "is",
-        "are",
-        "be"
-      ],
-      "answerIndex": 2
-    },
-    {
-      "prompt": "A: What ______ that?\nB: It’s a cup.",
+      "prompt": "A: What ______ these?\nB: They're toy trains.",
       "options": [
         "is",
         "are",
         "am",
         "be"
       ],
-      "answerIndex": 0
+      "answerIndex": 1,
+      "explanation": "These 是複數，be 動詞用 are。"
     },
     {
-      "prompt": "「這是什麼？」的正確英文是哪一個？",
+      "prompt": "A: What ______ that?\nB: It's a camera.",
       "options": [
+        "is",
+        "are",
+        "am",
+        "be"
+      ],
+      "answerIndex": 0,
+      "explanation": "That 是單數，be 動詞用 is。"
+    },
+    {
+      "prompt": "你指著手邊的一顆球問「這是什麼？」，應該怎麼說？",
+      "options": [
+        "What are this?",
+        "What is these?",
         "Who is this?",
-        "Where is this?",
-        "What is this?",
-        "What are this?"
+        "What is this?"
       ],
-      "answerIndex": 2
+      "answerIndex": 3,
+      "explanation": "手邊的一個物品用 this，問句是 What is this?"
     },
     {
-      "prompt": "「那些是什麼？」的正確英文是哪一個？",
+      "prompt": "你指著遠處的幾個玩具問「那些是什麼？」，應該怎麼說？",
       "options": [
         "What is those?",
-        "What are those?",
         "What are that?",
-        "Where are those?"
+        "What are those?",
+        "Who are those?"
       ],
-      "answerIndex": 1
+      "answerIndex": 2,
+      "explanation": "遠處的複數物品用 those，問句是 What are those?"
     },
     {
-      "prompt": "「它是一個盒子。」的正確英文是哪一個？",
+      "prompt": "「它是一隻兔子。」的英文是哪一句？",
       "options": [
-        "It’s a box.",
-        "They’re boxes.",
-        "It’s boxes.",
-        "They’re a box."
+        "They're a rabbit.",
+        "It's a rabbit.",
+        "It's rabbits.",
+        "They're rabbits."
       ],
-      "answerIndex": 0
+      "answerIndex": 1,
+      "explanation": "它是單數，用 It's，後面接 a rabbit。"
     },
     {
-      "prompt": "「它們是我的手錶。」的正確英文是哪一個？",
+      "prompt": "「它們是我的帽子。」的英文是哪一句？",
       "options": [
-        "It’s my watch.",
-        "They’re my watch.",
-        "It’s my watches.",
-        "They’re my watches."
+        "They're my hats.",
+        "It's my hat.",
+        "They're my hat.",
+        "It's my hats."
       ],
-      "answerIndex": 3
+      "answerIndex": 0,
+      "explanation": "它們用 They're，帽子要用複數 hats。"
     },
     {
-      "prompt": "How old ______ you?",
+      "prompt": "How old ______ your little sister?",
       "options": [
-        "am",
-        "is",
-        "are",
-        "be"
-      ],
-      "answerIndex": 2
-    },
-    {
-      "prompt": "How old ______ your brother?",
-      "options": [
-        "is",
         "are",
         "am",
-        "be"
-      ],
-      "answerIndex": 0
-    },
-    {
-      "prompt": "How old ______ she?",
-      "options": [
-        "am",
-        "are",
         "be",
         "is"
       ],
-      "answerIndex": 3
+      "answerIndex": 3,
+      "explanation": "Your little sister 是單數，be 動詞用 is。"
     },
     {
-      "prompt": "A: How old are you?\nB: ______ twelve years old.",
+      "prompt": "How old ______ Jack and Leo?",
       "options": [
-        "He’s",
-        "I’m",
-        "They’re",
-        "She’s"
+        "is",
+        "am",
+        "are",
+        "be"
       ],
-      "answerIndex": 1
+      "answerIndex": 2,
+      "explanation": "Jack and Leo 是兩個人，be 動詞用 are。"
     },
     {
-      "prompt": "A: How old is Tom?\nB: ______ nine years old.",
+      "prompt": "A: How old are you?\nB: ______ eight years old.",
       "options": [
-        "He’s",
-        "I’m",
-        "We’re",
-        "They’re"
+        "He's",
+        "I'm",
+        "She's",
+        "They're"
       ],
-      "answerIndex": 0
+      "answerIndex": 1,
+      "explanation": "別人問你的年齡，回答用 I'm。"
     },
     {
-      "prompt": "dish 的複數是哪一個？",
+      "prompt": "A: How old is your mother?\nB: ______ thirty-five years old.",
       "options": [
-        "dishs",
-        "dishes",
-        "dish",
-        "dishies"
+        "She's",
+        "He's",
+        "I'm",
+        "They're"
       ],
-      "answerIndex": 1
+      "answerIndex": 0,
+      "explanation": "Your mother 是女性單數，回答用 She's。"
     },
     {
-      "prompt": "bus 的複數是哪一個？",
+      "prompt": "A: How old is your father?\nB: He's forty ______ old.",
       "options": [
-        "buss",
-        "bus",
-        "busies",
-        "buses"
+        "year",
+        "a year",
+        "year's",
+        "years"
       ],
-      "answerIndex": 3
-    },
-    {
-      "prompt": "Those are four ______.",
-      "options": [
-        "class",
-        "classs",
-        "classes",
-        "a class"
-      ],
-      "answerIndex": 2
-    },
-    {
-      "prompt": "She has ______ apple.",
-      "options": [
-        "an",
-        "a",
-        "two",
-        "these"
-      ],
-      "answerIndex": 0
-    },
-    {
-      "prompt": "My sister has one ______.",
-      "options": [
-        "watches",
-        "watchs",
-        "watching",
-        "watch"
-      ],
-      "answerIndex": 3
-    },
-    {
-      "prompt": "「那是什麼？」的正確英文是哪一個？",
-      "options": [
-        "What are that?",
-        "What is that?",
-        "Where is that?",
-        "Who is that?"
-      ],
-      "answerIndex": 1
-    },
-    {
-      "prompt": "「這些是什麼？」的正確英文是哪一個？",
-      "options": [
-        "What is this?",
-        "Where are these?",
-        "What are these?",
-        "What is these?"
-      ],
-      "answerIndex": 2
+      "answerIndex": 3,
+      "explanation": "Forty 是複數數量，年齡用 forty years old。"
     }
   ]
 }
