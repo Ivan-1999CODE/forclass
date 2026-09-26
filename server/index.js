@@ -512,9 +512,11 @@ function validateQuiz(quiz, source) {
 }
 
 function createRoom(quiz) {
+  // 避免字母與數字外形混淆（包含 E、I、L、O、0、1）。
+  const alphabet = "ACFHJKMNPRTUVWXY234679";
   let code = "";
   do {
-    code = crypto.randomBytes(3).toString("hex").toUpperCase();
+    code = Array.from({ length: 6 }, () => alphabet[crypto.randomInt(alphabet.length)]).join("");
   } while (rooms.has(code));
   const room = {
     code,

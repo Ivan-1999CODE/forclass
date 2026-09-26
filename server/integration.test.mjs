@@ -59,6 +59,7 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
       questionCount
     });
     assert.equal(sizedRoom.ok, true);
+    assert.match(sizedRoom.roomCode, /^[ACFHJKMNPRTUVWXY234679]{6}$/, "加入碼應為 6 碼且不含易混淆字元");
     assert.equal(sizedRoom.snapshot.quiz.questionCount, questionCount, `應建立 ${questionCount} 題的場次`);
   }
 
@@ -86,7 +87,7 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   const hostToken = created.hostToken;
   const roomCode = created.roomCode;
 
-  const joinedA = await emitAck(studentA, "student:join", { roomCode, name: "測試學生甲" });
+  const joinedA = await emitAck(studentA, "student:join", { roomCode: ` ${roomCode.toLowerCase()} `, name: "測試學生甲" });
   const joinedB = await emitAck(studentB, "student:join", { roomCode, name: "測試學生乙" });
   assert.equal(joinedA.ok, true);
   assert.equal(joinedB.ok, true);

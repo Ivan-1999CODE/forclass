@@ -721,7 +721,7 @@ function JoinPage() {
           <h1>加入課堂問答</h1>
           <label>
             房間代碼
-            <input value={roomCode} onChange={(event) => setRoomCode(event.target.value.toUpperCase())} placeholder="例如 A1B2C3" />
+            <input value={roomCode} onChange={(event) => setRoomCode(event.target.value.toUpperCase())} placeholder="例如 A4K7M9" />
           </label>
           <label>
             姓名
