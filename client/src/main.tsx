@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { io, Socket } from "socket.io-client";
 import { QRCodeSVG } from "qrcode.react";
@@ -381,6 +381,15 @@ function HostPage() {
     });
   };
 
+  const kickStudent = (studentId: string) => {
+    if (!snapshot?.hostToken) return;
+    const student = snapshot.students.find((item) => item.id === studentId);
+    if (!student || !window.confirm(`確定要踢除「${student.name}」嗎？此帳號將移出本場名單與排名，不再列入等待作答人數。`)) return;
+    socket.timeout(5000).emit("host:kickStudent", { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken, studentId }, (error: Error | null, reply: SocketReply) => {
+      if (error || !reply.ok) setMessage(reply?.error || "踢除未確認，請檢查連線後再試。");
+    });
+  };
+
   const hostAction = (eventName: string) => {
     if (!snapshot?.hostToken) return;
     if (eventName === "host:endGame" && !window.confirm("確定要結束遊戲嗎？結束後不能回到這一題繼續作答。")) return;
@@ -571,7 +580,7 @@ function HostPage() {
             <p className="empty">建立場次後會顯示連結和加入碼。</p>
           )}
           <p className="hint">老師頁重新整理通常可以恢復；但 Render 重新部署、重啟或免費方案睡著後，進行中的場次會失效。已保存到 Supabase 的歷史資料不會消失。</p>
-          {snapshot && <RoomPanel snapshot={snapshot} embedded onRename={renameStudent} />}
+          {snapshot && <RoomPanel snapshot={snapshot} embedded onRename={renameStudent} onKick={kickStudent} />}
         </div>
       </section>
 
@@ -675,42 +684,104 @@ function JoinPage() {
   const [studentId, setStudentId] = useState(savedStudent?.id || "");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [message, setMessage] = useState("");
+  const [joining, setJoining] = useState(false);
+  const [connected, setConnected] = useState(socket.connected);
+  const joinPending = useRef(false);
+  const activeStudent = useRef<{ roomCode: string; studentId: string; name: string } | null>(null);
+
+  const acceptSession = (reply: SocketReply) => {
+    if (!reply.studentId || !reply.snapshot?.me) return;
+    const session = { roomCode: reply.snapshot.roomCode, studentId: reply.studentId, name: reply.snapshot.me.name };
+    activeStudent.current = session;
+    setStudentId(session.studentId);
+    setRoomCode(session.roomCode);
+    localStorage.setItem(studentStorageKey, JSON.stringify({ id: session.studentId, roomCode: session.roomCode, name: session.name }));
+    setSnapshot(reply.snapshot);
+  };
 
   useEffect(() => {
-    socket.on("student:update", setSnapshot);
+    const update = (next: Snapshot) => {
+      if (activeStudent.current?.studentId !== next.me?.id || activeStudent.current?.roomCode !== next.roomCode) return;
+      activeStudent.current.name = next.me!.name;
+      setSnapshot(next);
+    };
+    const removed = ({ error }: { error: string }) => {
+      activeStudent.current = null;
+      localStorage.removeItem(studentStorageKey);
+      setStudentId("");
+      setSnapshot(null);
+      setMessage(error);
+    };
+    const checkConnection = (request: { roomCode: string; studentId: string }, acknowledge: (reply: { ok: boolean }) => void) => {
+      acknowledge({ ok: activeStudent.current?.roomCode === request.roomCode && activeStudent.current?.studentId === request.studentId });
+    };
+    socket.on("student:update", update);
+    socket.on("student:removed", removed);
+    socket.on("student:checkConnection", checkConnection);
     return () => {
-      socket.off("student:update", setSnapshot);
+      socket.off("student:update", update);
+      socket.off("student:removed", removed);
+      socket.off("student:checkConnection", checkConnection);
     };
   }, []);
 
   useEffect(() => {
     const resume = () => {
-      if (!studentId || !roomCode || !snapshot?.me?.name) return;
-      socket.emit("student:join", { roomCode, name: snapshot.me.name, studentId }, (reply: SocketReply) => {
-        if (reply.ok && reply.snapshot) setSnapshot(reply.snapshot);
+      setConnected(socket.connected);
+      const session = activeStudent.current;
+      if (!session || !socket.connected || document.visibilityState === "hidden" || joinPending.current) return;
+      joinPending.current = true;
+      socket.timeout(5000).emit("student:join", session, (error: Error | null, reply: SocketReply) => {
+        joinPending.current = false;
+        if (activeStudent.current !== session) return;
+        if (!error && reply.ok) acceptSession(reply);
+        else if (reply?.removed) {
+          activeStudent.current = null;
+          localStorage.removeItem(studentStorageKey);
+          setStudentId("");
+          setSnapshot(null);
+          setMessage(reply.error || "此帳號已被移出。");
+        }
       });
     };
+    const disconnected = () => setConnected(false);
 
     socket.on("connect", resume);
+    socket.on("disconnect", disconnected);
     window.addEventListener("focus", resume);
     document.addEventListener("visibilitychange", resume);
+    // 回到頁面或短暫重連時若前一個請求尚未結束，下一次同步仍能修復狀態。
+    const syncTimer = window.setInterval(resume, 10000);
     return () => {
+      window.clearInterval(syncTimer);
       socket.off("connect", resume);
+      socket.off("disconnect", disconnected);
       window.removeEventListener("focus", resume);
       document.removeEventListener("visibilitychange", resume);
     };
-  }, [roomCode, snapshot?.me?.name, studentId]);
+  }, []);
 
   const join = () => {
+    if (joinPending.current) return;
+    if (!socket.connected) {
+      setMessage("尚未連上伺服器，請稍候再試。");
+      return;
+    }
+    joinPending.current = true;
+    setJoining(true);
     setMessage("");
-    socket.emit("student:join", { roomCode, name, studentId }, (reply: SocketReply) => {
-      if (!reply.ok || !reply.studentId || !reply.snapshot) {
-        setMessage(reply.error || "加入失敗。");
+    socket.timeout(5000).emit("student:join", { roomCode, name, studentId }, (error: Error | null, reply: SocketReply) => {
+      joinPending.current = false;
+      setJoining(false);
+      if (error || !reply.ok || !reply.studentId || !reply.snapshot) {
+        if (reply?.removed) {
+          localStorage.removeItem(studentStorageKey);
+          setStudentId("");
+        }
+        setMessage(reply?.error || "尚未收到加入回覆，請再試一次。");
         return;
       }
-      setStudentId(reply.studentId);
-      localStorage.setItem(studentStorageKey, JSON.stringify({ id: reply.studentId, roomCode, name: reply.snapshot?.me?.name || name }));
-      setSnapshot(reply.snapshot);
+      acceptSession(reply);
     });
   };
 
@@ -727,17 +798,17 @@ function JoinPage() {
             姓名
             <input value={name} onChange={(event) => setName(event.target.value)} placeholder="請輸入你的名字" />
           </label>
-          <button onClick={join}>加入等待室</button>
+          <button onClick={join} disabled={joining || !connected}>{joining ? "加入中…" : connected ? "加入等待室" : "連線中…"}</button>
           {message && <p className="notice error">{message}</p>}
         </section>
       </main>
     );
   }
 
-  return <StudentGame snapshot={snapshot} roomCode={roomCode} studentId={studentId} />;
+  return <StudentGame snapshot={snapshot} roomCode={roomCode} studentId={studentId} connected={connected} />;
 }
 
-function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; roomCode: string; studentId: string }) {
+function StudentGame({ snapshot, roomCode, studentId, connected }: { snapshot: Snapshot; roomCode: string; studentId: string; connected: boolean }) {
   const [message, setMessage] = useState("");
 
   const answer = (selectedIndex: number) => {
@@ -760,6 +831,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
         </span>
       </header>
 
+      {!connected && <p className="notice error" role="status">連線中斷，正在重新連線。你的作答資格仍會保留。</p>}
       <TeacherMessageInbox messages={snapshot.teacherMessages || []} roomCode={roomCode} studentId={studentId} />
 
       {snapshot.status === "waiting" && (
@@ -776,7 +848,7 @@ function StudentGame({ snapshot, roomCode, studentId }: { snapshot: Snapshot; ro
           <QuestionOptions
             snapshot={snapshot}
             onAnswer={answer}
-            disabled={snapshot.status !== "question" || Boolean(snapshot.me?.answeredCurrent)}
+            disabled={!connected || snapshot.status !== "question" || Boolean(snapshot.me?.answeredCurrent)}
             showCounts={snapshot.status === "results"}
           />
           {message && <p className="notice error">{message}</p>}
@@ -858,9 +930,26 @@ function DisplayPage({ roomCode }: { roomCode: string }) {
   );
 }
 
-function RoomPanel({ snapshot, embedded = false, onRename }: { snapshot: Snapshot; embedded?: boolean; onRename?: (studentId: string, newName: string) => void }) {
+function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot: Snapshot; embedded?: boolean; onRename?: (studentId: string, newName: string) => void; onKick?: (studentId: string) => void }) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
+  const [checking, setChecking] = useState(false);
+  const [connectionMessage, setConnectionMessage] = useState("");
+
+  const checkConnections = () => {
+    if (!snapshot.hostToken || checking) return;
+    setChecking(true);
+    setConnectionMessage("");
+    socket.timeout(5000).emit("host:checkConnections", { roomCode: snapshot.roomCode, hostToken: snapshot.hostToken }, (error: Error | null, reply: SocketReply) => {
+      setChecking(false);
+      if (error || !reply.ok || !reply.snapshot) {
+        setConnectionMessage(reply?.error || "檢查未完成，請確認老師端網路後再試。");
+        return;
+      }
+      const onlineCount = reply.snapshot.students.filter((student) => student.connected).length;
+      setConnectionMessage(`檢查完成：${onlineCount} 人在線，${reply.snapshot.students.length - onlineCount} 人離線或未回應。`);
+    });
+  };
 
   const startEdit = (student: Snapshot["students"][0]) => {
     setEditingId(student.id);
@@ -876,9 +965,14 @@ function RoomPanel({ snapshot, embedded = false, onRename }: { snapshot: Snapsho
 
   return (
     <div className={embedded ? "room-panel embedded" : "panel room-panel"}>
-      <h2>等待室</h2>
+      <h2>{snapshot.status === "waiting" ? "等待室" : "學生名單"}</h2>
       <p className="big-code">{snapshot.roomCode}</p>
       <p className="hint">這是加入碼。學生點連結會自動帶入；沒有連結時，也可以在加入頁輸入這組代碼。</p>
+      {onKick && <>
+        <button className="secondary" onClick={checkConnections} disabled={checking}>{checking ? "檢查中…" : "檢查連線"}</button>
+        <p className="hint">離線且尚未作答的學生仍會列入等待。全員答完才倒數 3 秒；原定答題時間到仍會公布答案。重複帳號可按「踢除」。</p>
+        {connectionMessage && <p role="status" className="hint">{connectionMessage}</p>}
+      </>}
       <div className="student-list">
         {snapshot.students.map((student) => (
           <div className="student-row" key={student.id}>
@@ -908,8 +1002,9 @@ function RoomPanel({ snapshot, embedded = false, onRename }: { snapshot: Snapsho
             )}
             <span className="student-score">{student.totalScore} 分</span>
             <span className={`student-status ${student.connected ? "online" : "offline"}`}>
-              {student.answeredCurrent ? "已答" : student.connected ? "在線" : "離線"}
+              {student.connected ? "在線" : "離線"}{snapshot.status === "question" ? student.answeredCurrent ? "・已答" : "・未答" : ""}
             </span>
+            {onKick && <button className="danger btn-sm" onClick={() => onKick(student.id)} aria-label={`踢除 ${student.name}`}>踢除</button>}
           </div>
         ))}
         {snapshot.students.length === 0 && <p className="empty">尚無學生加入。</p>}
@@ -1541,6 +1636,7 @@ function statusText(status: Snapshot["status"]) {
 }
 
 type SocketReply = {
+  removed?: boolean;
   ok: boolean;
   error?: string;
   roomCode?: string;

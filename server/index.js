@@ -242,6 +242,34 @@ io.on("connection", (socket) => {
     callback?.({ ok: true });
   });
 
+  socket.on("host:kickStudent", ({ roomCode, hostToken, studentId }, callback) => {
+    const room = getAuthorizedRoom(roomCode, hostToken);
+    if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
+    const student = room.students.get(studentId);
+    if (!student) return callback?.({ ok: false, error: "找不到這位學生。" });
+    room.kickedStudentIds.add(studentId);
+    room.students.delete(studentId);
+    room.questionParticipantIds.delete(studentId);
+    const studentSocket = io.sockets.sockets.get(student.socketId);
+    if (studentSocket) {
+      studentSocket.emit("student:removed", { error: "老師已將此帳號移出本場。需要參加時，請確認後重新加入。" });
+      detachStudentSocket(studentSocket);
+    }
+    scheduleAutoRevealIfReady(room);
+    void saveSessionStatus(room);
+    broadcastRoom(room);
+    callback?.({ ok: true });
+  });
+
+  socket.on("host:checkConnections", async ({ roomCode, hostToken }, callback) => {
+    const room = getAuthorizedRoom(roomCode, hostToken);
+    if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
+    // 分享同一次檢查，避免連按造成多組探測互相覆寫。
+    room.connectionCheck ??= checkStudentConnections(room).finally(() => { room.connectionCheck = null; });
+    await room.connectionCheck;
+    callback?.({ ok: true, snapshot: buildHostSnapshot(room) });
+  });
+
   socket.on("host:sendStudentMessage", ({ roomCode, hostToken, studentId, text }, callback) => {
     const room = getAuthorizedRoom(roomCode, hostToken);
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
@@ -269,8 +297,21 @@ io.on("connection", (socket) => {
     const cleanName = normalizeName(name);
     if (!cleanName) return callback?.({ ok: false, error: "請輸入姓名。" });
 
-    let student = studentId ? room.students.get(studentId) : null;
+    if (room.kickedStudentIds.has(studentId)) {
+      return callback?.({ ok: false, removed: true, error: "此帳號已被老師移出，請確認後重新加入。" });
+    }
+    // 相同連線重送加入請求時沿用帳號，即使第一次回覆仍在路上。
+    let student = socket.data.roomCode === room.code ? room.students.get(socket.data.studentId) : null;
+    student ??= studentId ? room.students.get(studentId) : null;
+    if (socket.data.roomCode && (socket.data.roomCode !== room.code || socket.data.studentId !== student?.id)) {
+      detachStudentSocket(socket);
+    }
     if (student) {
+      const previousSocket = io.sockets.sockets.get(student.socketId);
+      if (previousSocket && previousSocket.id !== socket.id) {
+        previousSocket.emit("student:removed", { error: "此帳號已在另一個頁面連線，請使用新頁面繼續作答。" });
+        detachStudentSocket(previousSocket);
+      }
       student.socketId = socket.id;
       student.connected = true;
     } else {
@@ -290,6 +331,11 @@ io.on("connection", (socket) => {
     socket.join(roomChannel(room.code));
     socket.data.roomCode = room.code;
     socket.data.studentId = student.id;
+    student.connectionVersion = (student.connectionVersion || 0) + 1;
+    if (room.status === "question") {
+      room.questionParticipantIds.add(student.id);
+      scheduleAutoRevealIfReady(room);
+    }
     callback?.({ ok: true, studentId: student.id, snapshot: buildStudentSnapshot(room, student.id) });
     broadcastRoom(room);
   });
@@ -344,6 +390,9 @@ io.on("connection", (socket) => {
     const room = getRoom(roomCode);
     const student = room?.students.get(studentId);
     if (!room || !student) return callback?.({ ok: false, error: "學生或房間不存在。" });
+    if (student.socketId !== socket.id || socket.data.studentId !== student.id || socket.data.roomCode !== room.code) {
+      return callback?.({ ok: false, error: "連線已變更，請重新加入。" });
+    }
     if (room.status !== "question") return callback?.({ ok: false, error: "目前不能作答。" });
     if (student.answers.has(room.currentQuestionIndex)) return callback?.({ ok: false, error: "你已經作答過了。" });
     const question = room.quiz.questions[room.currentQuestionIndex];
@@ -382,7 +431,7 @@ io.on("connection", (socket) => {
     const { roomCode, studentId } = socket.data;
     const room = getRoom(roomCode);
     const student = room?.students.get(studentId);
-    if (student) {
+    if (student && student.socketId === socket.id) {
       student.connected = false;
       broadcastRoom(room);
     }
@@ -532,6 +581,7 @@ function createRoom(quiz) {
     autoRevealTimer: null,
     autoRevealEndsAt: null,
     students: new Map(),
+    kickedStudentIds: new Set(),
     reports: [],
     teacherMessages: [],
     createdAt: Date.now(),
@@ -726,25 +776,72 @@ function clearRoomTimer(room) {
 }
 
 function scheduleAutoRevealIfReady(room) {
-  if (room.status !== "question" || room.autoRevealTimer) return;
-  const participantIds = room.questionParticipantIds || new Set([...room.students.keys()]);
-  if (participantIds.size === 0) return;
-  const allAnswered = [...participantIds].every((studentId) => {
-    const student = room.students.get(studentId);
-    return !student || !student.connected || student.answers.has(room.currentQuestionIndex);
-  });
-  if (!allAnswered) return;
+  if (room.status !== "question") return;
+  if (!allParticipantsAnswered(room)) {
+    if (room.autoRevealTimer) {
+      clearTimeout(room.autoRevealTimer);
+      room.autoRevealTimer = null;
+      room.autoRevealEndsAt = null;
+      // 倒數中有新學生加入時，恢復這題原本的截止時間。
+      room.timer = setTimeout(() => closeQuestion(room), Math.max(0, room.questionEndsAt - Date.now()));
+    }
+    return;
+  }
+  if (room.autoRevealTimer) return;
 
   if (room.timer) clearTimeout(room.timer);
   room.timer = null;
   room.autoRevealEndsAt = Date.now() + autoRevealDelayMs;
-  room.autoRevealTimer = setTimeout(() => closeQuestion(room), autoRevealDelayMs);
+  room.autoRevealTimer = setTimeout(() => {
+    if (allParticipantsAnswered(room)) closeQuestion(room);
+    else scheduleAutoRevealIfReady(room);
+  }, autoRevealDelayMs);
+}
+
+function allParticipantsAnswered(room) {
+  return room.questionParticipantIds.size > 0 && [...room.questionParticipantIds].every((id) =>
+    room.students.get(id)?.answers.has(room.currentQuestionIndex)
+  );
+}
+
+function detachStudentSocket(socket) {
+  const room = getRoom(socket.data.roomCode);
+  const student = room?.students.get(socket.data.studentId);
+  if (student?.socketId === socket.id) {
+    student.connected = false;
+    student.socketId = null;
+  }
+  if (room) socket.leave(roomChannel(room.code));
+  delete socket.data.roomCode;
+  delete socket.data.studentId;
+  if (room) broadcastRoom(room);
+}
+
+async function checkStudentConnections(room) {
+  await Promise.all([...room.students.values()].map(async (student) => {
+    const socketId = student.socketId;
+    const connectionVersion = student.connectionVersion;
+    const studentSocket = io.sockets.sockets.get(socketId);
+    let connected = false;
+    if (studentSocket?.connected) {
+      connected = await new Promise((resolve) => {
+        studentSocket.timeout(3000).emit("student:checkConnection", { roomCode: room.code, studentId: student.id }, (error, reply) => {
+          resolve(!error && reply?.ok === true);
+        });
+      });
+    }
+    // 探測期間若重新連線或已被踢除，不使用舊連線的結果。
+    if (room.students.get(student.id) === student && student.socketId === socketId && student.connectionVersion === connectionVersion) {
+      student.connected = connected && Boolean(io.sockets.sockets.get(socketId)?.connected);
+    }
+  }));
+  broadcastRoom(room);
 }
 
 function broadcastRoom(room) {
   io.to(roomChannel(room.code)).emit("room:update", buildDisplaySnapshot(room));
   for (const student of room.students.values()) {
-    io.to(student.socketId).emit("student:update", buildStudentSnapshot(room, student.id));
+    if (student.socketId) io.to(student.socketId).emit("student:update", buildStudentSnapshot(room, student.id));
   }
   if (room.hostSocketId) {
     io.to(room.hostSocketId).emit("host:update", buildHostSnapshot(room));

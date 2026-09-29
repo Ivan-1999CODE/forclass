@@ -233,11 +233,179 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
   }
 });
 
-async function waitForServer(server) {
+test("踢除、連線檢查與全員答完倒數不受斷線誤判影響", async (t) => {
+  const testUrl = "http://127.0.0.1:3138";
+  const server = spawn(process.execPath, ["server/index.js"], {
+    cwd: process.cwd(),
+    env: {
+      ...process.env,
+      PORT: "3138",
+      NODE_ENV: "production",
+      SUPABASE_URL: "",
+      SUPABASE_SERVICE_ROLE_KEY: "",
+      SUPABASE_SERVICE_KEY: "",
+      AUTO_REVEAL_DELAY_MS: "300"
+    },
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  t.after(() => server.kill());
+  await waitForServer(server, testUrl);
+  const sockets = [];
+  const connect = async () => {
+    const socket = io(testUrl, { transports: ["websocket"] });
+    sockets.push(socket);
+    await once(socket, "connect");
+    return socket;
+  };
+  t.after(() => sockets.forEach((socket) => socket.close()));
+  const host = await connect();
+  const a = await connect();
+  const b = await connect();
+  const { quizzes } = await (await fetch(`${testUrl}/api/quizzes`)).json();
+  let credentials;
+  const create = async () => {
+    const created = await emitAck(host, "host:createRoom", { quizId: quizzes[0].id, questionCount: 2 });
+    credentials = { roomCode: created.roomCode, hostToken: created.hostToken };
+    return created;
+  };
+  const join = (socket, name, studentId) => emitAck(socket, "student:join", { roomCode: credentials.roomCode, name, studentId });
+  const snapshot = async () => (await emitAck(host, "host:resume", credentials)).snapshot;
+  const answer = (socket, studentId) => emitAck(socket, "student:answer", { roomCode: credentials.roomCode, studentId, selectedIndex: 0 });
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  await t.test("連按加入沿用帳號；離線未答者不觸發提前倒數", async () => {
+    await create();
+    const [joinedA, repeatedA] = await Promise.all([join(a, "甲"), join(a, "甲")]);
+    assert.equal(joinedA.studentId, repeatedA.studentId);
+    const joinedB = await join(b, "乙");
+    assert.equal((await snapshot()).students.length, 2);
+    await emitAck(host, "host:startGame", credentials);
+    const offline = waitForSocketEvent(host, "host:update", (state) => state.students.some((student) => student.id === joinedB.studentId && !student.connected));
+    b.disconnect();
+    await offline;
+    await answer(a, joinedA.studentId);
+    await pause(450);
+    assert.equal((await snapshot()).status, "question");
+    assert.equal((await snapshot()).autoRevealRemainingMs, 0);
+    b.connect();
+    await once(b, "connect");
+    const resumed = await join(b, "乙", joinedB.studentId);
+    assert.equal(resumed.studentId, joinedB.studentId);
+    assert.equal(resumed.snapshot.me.answeredCurrent, false);
+    assert.equal(resumed.snapshot.students.length, 2);
+    const results = waitForSocketEvent(host, "host:update", (state) => state.status === "results");
+    await answer(b, joinedB.studentId);
+    assert.ok((await snapshot()).autoRevealRemainingMs > 0);
+    await results;
+  });
+
+  await t.test("新連線取代舊連線後，舊連線不能答題也不能把學生標成離線", async () => {
+    await create();
+    const joined = await join(a, "甲");
+    const replacement = await connect();
+    const removed = waitForSocketEvent(a, "student:removed", () => true);
+    const resumed = await join(replacement, "甲", joined.studentId);
+    await removed;
+    assert.equal(resumed.studentId, joined.studentId);
+    a.disconnect();
+    await pause(50);
+    assert.equal((await snapshot()).students[0].connected, true);
+    a.connect();
+    await once(a, "connect");
+    await emitAck(host, "host:startGame", credentials);
+    assert.equal((await answer(a, joined.studentId)).ok, false);
+    assert.equal((await answer(replacement, joined.studentId)).ok, true);
+  });
+
+  await t.test("只有老師能踢除；移除未答帳號後自動揭曉且舊帳號不會自動回來", async () => {
+    await create();
+    const joinedA = await join(a, "甲");
+    const joinedB = await join(b, "甲");
+    await emitAck(host, "host:startGame", credentials);
+    await answer(a, joinedA.studentId);
+    const denied = await emitAck(b, "host:kickStudent", { ...credentials, hostToken: "wrong", studentId: joinedA.studentId });
+    assert.equal(denied.ok, false);
+    assert.equal((await snapshot()).students.length, 2);
+    const removed = waitForSocketEvent(b, "student:removed", () => true);
+    const results = waitForSocketEvent(host, "host:update", (state) => state.status === "results");
+    assert.equal((await emitAck(host, "host:kickStudent", { ...credentials, studentId: joinedB.studentId })).ok, true);
+    await removed;
+    assert.equal((await answer(b, joinedB.studentId)).ok, false);
+    const rejectedResume = await join(b, "甲", joinedB.studentId);
+    assert.equal(rejectedResume.ok, false);
+    assert.equal(rejectedResume.removed, true);
+    const revealed = await results;
+    assert.equal(revealed.students.length, 1);
+    assert.equal(revealed.ranking.length, 1);
+    assert.equal(revealed.stats.answered, 1);
+    const deliberateRejoin = await join(b, "甲");
+    assert.equal(deliberateRejoin.ok, true);
+    assert.notEqual(deliberateRejoin.studentId, joinedB.studentId);
+  });
+
+  await t.test("倒數途中加入會取消倒數，等待新學生作答", async () => {
+    await create();
+    const joinedA = await join(a, "甲");
+    await emitAck(host, "host:startGame", credentials);
+    await answer(a, joinedA.studentId);
+    assert.ok((await snapshot()).autoRevealRemainingMs > 0);
+    const joinedB = await join(b, "乙");
+    assert.equal(joinedB.snapshot.autoRevealRemainingMs, 0);
+    await pause(450);
+    assert.equal((await snapshot()).status, "question");
+    const results = waitForSocketEvent(host, "host:update", (state) => state.status === "results");
+    await answer(b, joinedB.studentId);
+    await results;
+  });
+
+  await t.test("探測正常與未回應頁面；未回應不代表已作答，重新同步會恢復在線", async () => {
+    await create();
+    const joinedA = await join(a, "甲");
+    const joinedB = await join(b, "乙");
+    const acknowledge = (_request, ack) => ack({ ok: true });
+    a.on("student:checkConnection", acknowledge);
+    assert.equal((await emitAck(a, "host:checkConnections", { ...credentials, hostToken: "wrong" })).ok, false);
+    const check = await emitAck(host, "host:checkConnections", credentials, 5000);
+    assert.equal(check.ok, true);
+    assert.equal(check.snapshot.students.find((student) => student.id === joinedA.studentId).connected, true);
+    assert.equal(check.snapshot.students.find((student) => student.id === joinedB.studentId).connected, false);
+    await emitAck(host, "host:startGame", credentials);
+    await answer(a, joinedA.studentId);
+    await pause(450);
+    assert.equal((await snapshot()).status, "question");
+    const resumed = await join(b, "乙", joinedB.studentId);
+    assert.equal(resumed.snapshot.students.find((student) => student.id === joinedB.studentId).connected, true);
+    // 探測發出後，同一連線重新同步，不應被稍後逾時的舊探測覆寫。
+    const probing = waitForSocketEvent(b, "student:checkConnection", () => true);
+    const pendingCheck = emitAck(host, "host:checkConnections", credentials, 5000);
+    await probing;
+    await join(b, "乙", joinedB.studentId);
+    const checked = await pendingCheck;
+    assert.equal(checked.snapshot.students.find((student) => student.id === joinedB.studentId).connected, true);
+    a.off("student:checkConnection", acknowledge);
+  });
+
+  await t.test("移除最後一人不會因空名單觸發全員作答；離線帳號也可踢除", async () => {
+    await create();
+    const joined = await join(b, "乙");
+    await emitAck(host, "host:startGame", credentials);
+    const offline = waitForSocketEvent(host, "host:update", (state) => state.students[0]?.connected === false);
+    b.disconnect();
+    await offline;
+    assert.equal((await emitAck(host, "host:kickStudent", { ...credentials, studentId: joined.studentId })).ok, true);
+    await pause(450);
+    const state = await snapshot();
+    assert.equal(state.students.length, 0);
+    assert.equal(state.status, "question");
+    assert.equal(state.autoRevealRemainingMs, 0);
+  });
+});
+
+async function waitForServer(server, url = baseUrl) {
   for (let attempt = 0; attempt < 50; attempt += 1) {
     if (server.exitCode !== null) throw new Error(`測試伺服器無法啟動，退出碼 ${server.exitCode}`);
     try {
-      const response = await fetch(`${baseUrl}/api/network-info`);
+      const response = await fetch(`${url}/api/network-info`);
       if (response.ok) return;
     } catch {
       // 伺服器尚在啟動。
@@ -247,9 +415,9 @@ async function waitForServer(server) {
   throw new Error("等待測試伺服器啟動逾時");
 }
 
-function emitAck(socket, eventName, payload) {
+function emitAck(socket, eventName, payload, timeoutMs = 3000) {
   return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new Error(`${eventName} 回覆逾時`)), 3000);
+    const timeout = setTimeout(() => reject(new Error(`${eventName} 回覆逾時`)), timeoutMs);
     socket.emit(eventName, payload, (reply) => {
       clearTimeout(timeout);
       resolve(reply);
