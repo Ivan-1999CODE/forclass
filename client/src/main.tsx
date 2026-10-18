@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { io, Socket } from "socket.io-client";
 import { QRCodeSVG } from "qrcode.react";
+import { VocabularySelector, VocabularyCatalogue } from "./VocabularySelector";
 import "./styles.css";
 
 type QuizSummary = {
@@ -200,6 +201,10 @@ function HomePage() {
 function HostPage() {
   const [quizzes, setQuizzes] = useState<QuizSummary[]>([]);
   const [selectedQuizIds, setSelectedQuizIds] = useState<string[]>([]);
+  const [vocabularyLessons, setVocabularyLessons] = useState<number[]>([]);
+  const [vocabularyCatalogue, setVocabularyCatalogue] = useState<VocabularyCatalogue | null>(null);
+  const [creatingRoom, setCreatingRoom] = useState(false);
+  const previewRequest = useRef(0);
   const [questionCount, setQuestionCount] = useState("10");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [networkInfo, setNetworkInfo] = useState<NetworkInfo | null>(null);
@@ -302,9 +307,11 @@ function HostPage() {
   }, [snapshot?.roomCode, snapshot?.hostToken]);
 
   useEffect(() => {
+    previewRequest.current += 1;
     setPreviewQuiz(null);
     setPreviewMessage("");
-  }, [selectedQuizIds]);
+    setPreviewLoading(false);
+  }, [selectedQuizIds, vocabularyLessons]);
 
   const loginTeacher = () => {
     setAuthMessage("");
@@ -323,10 +330,13 @@ function HostPage() {
   };
 
   const createRoom = () => {
+    if (creatingRoom) return;
+    setCreatingRoom(true);
     setMessage("");
-    socket.emit("host:createRoom", { quizIds: selectedQuizIds, questionCount }, (reply: SocketReply) => {
-      if (!reply.ok || !reply.roomCode || !reply.hostToken || !reply.snapshot) {
-        setMessage(reply.error || "建立房間失敗。");
+    socket.timeout(120000).emit("host:createRoom", { quizIds: selectedQuizIds, vocabularyLessons, questionCount }, (error: Error | null, reply: SocketReply) => {
+      setCreatingRoom(false);
+      if (error || !reply?.ok || !reply.roomCode || !reply.hostToken || !reply.snapshot) {
+        setMessage(reply?.error || "建立房間未完成，請檢查連線後重試。");
         return;
       }
       localStorage.setItem(hostStorageKey, JSON.stringify({ roomCode: reply.roomCode, hostToken: reply.hostToken, quizTitle: reply.snapshot?.quiz.title }));
@@ -400,16 +410,20 @@ function HostPage() {
   };
 
   const previewSelectedQuiz = () => {
-    if (selectedQuizIds.length === 0) return;
+    if (selectedQuizIds.length === 0 && vocabularyLessons.length === 0) return;
+    const requestId = ++previewRequest.current;
     setPreviewLoading(true);
     setPreviewMessage("");
-    Promise.all(selectedQuizIds.map(async (quizId) => {
-      const response = await fetch(`/api/quizzes/${encodeURIComponent(quizId)}`);
+    const urls = selectedQuizIds.map((quizId) => `/api/quizzes/${encodeURIComponent(quizId)}`);
+    if (vocabularyLessons.length) urls.push(`/api/vocabulary/preview?lessons=${vocabularyLessons.join(",")}`);
+    Promise.all(urls.map(async (url) => {
+      const response = await fetch(url);
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "載入題目預覽失敗。");
       return data.quiz as QuizDetail;
     }))
       .then((selectedQuizzes) => {
+        if (requestId !== previewRequest.current) return;
         if (selectedQuizzes.length === 1) {
           setPreviewQuiz(selectedQuizzes[0]);
           return;
@@ -428,10 +442,11 @@ function HostPage() {
         });
       })
       .catch((error) => {
+        if (requestId !== previewRequest.current) return;
         setPreviewQuiz(null);
         setPreviewMessage(error.message);
       })
-      .finally(() => setPreviewLoading(false));
+      .finally(() => { if (requestId === previewRequest.current) setPreviewLoading(false); });
   };
 
   const toggleQuiz = (quizId: string) => {
@@ -444,7 +459,10 @@ function HostPage() {
 
   const selectedQuestionTotal = quizzes
     .filter((quiz) => selectedQuizIds.includes(quiz.id))
-    .reduce((total, quiz) => total + quiz.questionCount, 0);
+    .reduce((total, quiz) => total + quiz.questionCount, 0)
+    + (vocabularyCatalogue?.lessons.filter((item) => vocabularyLessons.includes(item.lesson)).reduce((sum, item) => sum + item.wordCount, 0) || 0);
+  const hasSelection = selectedQuizIds.length > 0 || vocabularyLessons.length > 0;
+  const selectionLocked = Boolean(snapshot) || creatingRoom;
 
   const isLocalOrigin = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
   const joinUrl = snapshot ? `${window.location.origin}/join?room=${snapshot.roomCode}` : "";
@@ -508,7 +526,7 @@ function HostPage() {
           )}
           <div className="quiz-checklist" aria-label="題庫選擇">
             {groupQuizzes(quizzes).map((group) => (
-              <fieldset className="quiz-checklist-group" key={group.topic.key} disabled={Boolean(snapshot)}>
+              <fieldset className="quiz-checklist-group" key={group.topic.key} disabled={selectionLocked}>
                 <legend>{group.topic.label}</legend>
                 {group.items.map((quiz) => {
                   const difficulty = quizDifficulty(quiz);
@@ -530,23 +548,25 @@ function HostPage() {
             ))}
             {quizzes.length === 0 && <p className="empty">目前沒有可用的題庫。</p>}
           </div>
+          <VocabularySelector selected={vocabularyLessons} onChange={setVocabularyLessons} catalogue={vocabularyCatalogue} onCatalogue={setVocabularyCatalogue} disabled={selectionLocked} />
           <div className="quiz-selection-summary">
-            <span>已選 {selectedQuizIds.length} 份，共 {selectedQuestionTotal} 題</span>
+            <span aria-live="polite">已選 {selectedQuizIds.length} 份題庫{vocabularyLessons.length > 0 ? `＋${vocabularyLessons.length} 課單字` : ""}，共 {selectedQuestionTotal} 題</span>
             <div className="actions compact">
-              <button className="secondary btn-sm" onClick={() => setSelectedQuizIds(quizzes.map((quiz) => quiz.id))} disabled={Boolean(snapshot) || selectedQuizIds.length === quizzes.length}>
-                全選
+              <button className="secondary btn-sm" onClick={() => setSelectedQuizIds(quizzes.map((quiz) => quiz.id))} disabled={selectionLocked || selectedQuizIds.length === quizzes.length}>
+                全選上方題庫
               </button>
-              <button className="secondary btn-sm" onClick={() => setSelectedQuizIds([])} disabled={Boolean(snapshot) || selectedQuizIds.length === 0}>
-                清除
+              <button className="secondary btn-sm" onClick={() => { setSelectedQuizIds([]); setVocabularyLessons([]); }} disabled={selectionLocked || !hasSelection}>
+                全部清除
               </button>
-              <button className="secondary btn-sm" onClick={previewSelectedQuiz} disabled={selectedQuizIds.length === 0 || previewLoading}>
+              <button className="secondary btn-sm" onClick={previewSelectedQuiz} disabled={!hasSelection || previewLoading || creatingRoom}>
                 {previewLoading ? "載入中" : "預覽題目"}
               </button>
             </div>
           </div>
+          {vocabularyLessons.length > 0 && <p className="hint">單字題會交錯測英文與中文，每個單字先出一題；選項與出題順序隨機排列。{selectedQuizIds.length > 0 && <>目前也勾選了上方題庫。<button className="secondary btn-sm" onClick={() => setSelectedQuizIds([])} disabled={selectionLocked}>只測單字</button></>}</p>}
           <label>
             每場題數
-            <select value={questionCount} onChange={(event) => setQuestionCount(event.target.value)} disabled={Boolean(snapshot)}>
+            <select value={questionCount} onChange={(event) => setQuestionCount(event.target.value)} disabled={selectionLocked}>
               <option value="10">隨機 10 題</option>
               <option value="5">隨機 5 題</option>
               <option value="15">隨機 15 題</option>
@@ -555,8 +575,8 @@ function HostPage() {
             </select>
           </label>
           <div className="actions">
-            <button onClick={createRoom} disabled={selectedQuizIds.length === 0 || Boolean(snapshot)}>建立場次</button>
-            <button className="secondary" onClick={resetRoom}>建立新場次</button>
+            <button onClick={createRoom} disabled={!hasSelection || selectionLocked}>{creatingRoom ? "正在建立場次…" : "建立場次"}</button>
+            <button className="secondary" onClick={resetRoom} disabled={creatingRoom}>建立新場次</button>
           </div>
           {message && <p className="notice error">{message}</p>}
           {previewMessage && <p className="notice error">{previewMessage}</p>}

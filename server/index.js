@@ -6,6 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import express from "express";
 import { Server } from "socket.io";
+import { vocabularyReader, normalizeVocabularyLessons, alternateVocabularyDirections } from "./english-quest.js";
 import {
   deleteExpiredSessions,
   getSessionDetail,
@@ -80,6 +81,19 @@ app.get("/api/quizzes/:quizId", async (req, res) => {
   }
 });
 
+app.get("/api/vocabulary/catalogue", async (_req, res) => {
+  try { res.json(await vocabularyReader.catalogue()); }
+  catch (error) { res.status(503).json({ error: error.message }); }
+});
+
+app.get("/api/vocabulary/preview", async (req, res) => {
+  try {
+    const lessons = typeof req.query.lessons === "string" && req.query.lessons
+      ? req.query.lessons.split(",").map(Number) : [];
+    res.json({ quiz: await vocabularyReader.quiz(lessons) });
+  } catch (error) { res.status(400).json({ error: error.message }); }
+});
+
 app.get("/api/persistence/status", (_req, res) => {
   res.json(persistenceStatus);
 });
@@ -120,10 +134,12 @@ app.get("/api/history/:sessionId", async (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  socket.on("host:createRoom", async ({ quizIds, quizId, questionCount }, callback) => {
+  socket.on("host:createRoom", async ({ quizIds, quizId, questionCount, vocabularyLessons }, callback) => {
     try {
-      const selectedIds = normalizeQuizIds(quizIds, quizId);
+      const lessons = normalizeVocabularyLessons(vocabularyLessons);
+      const selectedIds = normalizeQuizIds(quizIds, quizId, lessons.length > 0);
       const quizzes = await Promise.all(selectedIds.map((id) => loadQuizById(id)));
+      if (lessons.length) quizzes.push(await vocabularyReader.quiz(lessons));
       const quiz = combineQuizzes(quizzes);
       const room = createRoom(selectQuestionsForSession(quiz, questionCount));
       void saveSessionCreated(room);
@@ -504,10 +520,10 @@ async function loadQuizById(quizId) {
   throw new Error("找不到指定的測驗。");
 }
 
-function normalizeQuizIds(quizIds, legacyQuizId) {
+function normalizeQuizIds(quizIds, legacyQuizId, allowEmpty = false) {
   const requestedIds = Array.isArray(quizIds) ? quizIds : [legacyQuizId];
   const uniqueIds = [...new Set(requestedIds.filter((id) => typeof id === "string" && id.trim()))];
-  if (uniqueIds.length === 0) throw new Error("請先勾選至少一個題庫。");
+  if (uniqueIds.length === 0 && !allowEmpty) throw new Error("請先勾選至少一個題庫或單字課次。");
   return uniqueIds;
 }
 
@@ -600,7 +616,7 @@ function selectQuestionsForSession(quiz, requestedQuestionCount) {
   if (!Number.isInteger(questionLimit) || questionLimit <= 0) {
     return {
       ...quiz,
-      questions: quiz.questions.map(prepareQuestion)
+      questions: alternateVocabularyDirections(quiz.questions).map(prepareQuestion)
     };
   }
 
@@ -620,7 +636,7 @@ function selectQuestionsForSession(quiz, requestedQuestionCount) {
 
   return {
     ...quiz,
-    questions: selectedQuestions.map(prepareQuestion)
+    questions: alternateVocabularyDirections(selectedQuestions).map(prepareQuestion)
   };
 }
 

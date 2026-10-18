@@ -73,7 +73,7 @@ test("老師可看單題結果、個別留言，學生結束後可看自己的�
 
   const noQuizSelected = await emitAck(host, "host:createRoom", { quizIds: [], questionCount: 10 });
   assert.equal(noQuizSelected.ok, false);
-  assert.equal(noQuizSelected.error, "請先勾選至少一個題庫。");
+  assert.equal(noQuizSelected.error, "請先勾選至少一個題庫或單字課次。");
 
   // 舊版單一 quizId 格式仍可建立場次，避免既有客戶端更新期間中斷。
   const quizDetails = await Promise.all(quizzes.map(async (quiz) => {
