@@ -1,0 +1,508 @@
+{
+  "id": "國一-基礎練習4-U4can助動詞與問答-2026-10-29",
+  "title": "國一｜基礎練習 4｜U4 can 助動詞與問答｜2026-10-29",
+  "date": "2026-10-29",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "老師不准學生在圖書館說話。\nStudent: Can't we talk in the library?\nTeacher: ________",
+      "options": [
+        "Yes, you can't.",
+        "No, you can't.",
+        "Yes, you can.",
+        "No, you can."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: ________ can we go?\nB: At three.",
+      "options": [
+        "What",
+        "Where",
+        "Who",
+        "When"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "You can sit down here.（你可以坐這裡，已獲得許可。）\n這裡的 can 表示什麼？",
+      "options": [
+        "請求",
+        "可能性",
+        "許可",
+        "能力"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "我不會唱這首歌。\nI ________ this song.",
+      "options": [
+        "am not can sing",
+        "don't can sing",
+        "can't sings",
+        "can't sing"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "孩子們在這裡不可以製造噪音。\nA: What can't the children do here?\nB: They ________.",
+      "options": [
+        "can't make noise",
+        "can make noise",
+        "can't makes noise",
+        "don't can make noise"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "My sister can sing.（我妹妹會唱歌。）\n這裡的 can 表示什麼？",
+      "options": [
+        "請求",
+        "許可",
+        "可能性",
+        "能力"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "哥哥會唱歌。\nMy brother ________ sing.",
+      "options": [
+        "cans",
+        "does can",
+        "can",
+        "is can"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "I can ________ your voice.",
+      "options": [
+        "hear",
+        "hearing",
+        "hears",
+        "to hear"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "這隻狗能站起來。\nA: Can the dog stand up?\nB: Yes, ________.",
+      "options": [
+        "it is",
+        "it can",
+        "it does",
+        "they can"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "我們不可以在馬路上玩。\nWe ________ on the road.",
+      "options": [
+        "cannot to play",
+        "cannot play",
+        "cannot plays",
+        "cannot playing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "The boy cannot ________.",
+      "options": [
+        "swims",
+        "swimming",
+        "to swim",
+        "swim"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "他們不可以在這裡過馬路。\nThey ________ the road here.",
+      "options": [
+        "aren't can cross",
+        "cannot crossing",
+        "cannot cross",
+        "don't can cross"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "He can ________ and dance.",
+      "options": [
+        "sing",
+        "sings",
+        "to sing",
+        "singing"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "She can ________ a bag.",
+      "options": [
+        "designing",
+        "design",
+        "designs",
+        "to design"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "我們可以在這裡下載這首歌。\nWe ________ download the song here.",
+      "options": [
+        "can to",
+        "does can",
+        "can",
+        "are can"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "妹妹會游泳。\nA: Can't your sister swim?\nB: ________",
+      "options": [
+        "No, she can.",
+        "No, she can't.",
+        "Yes, she can't.",
+        "Yes, she can."
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "哥哥不會唱歌。\nA: Can't your brother sing?\nB: ________",
+      "options": [
+        "Yes, he can.",
+        "Yes, he can't.",
+        "No, he can.",
+        "No, he can't."
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "你想詢問 Ben 在這裡不能做什麼。哪個問句正確？",
+      "options": [
+        "What can't you does here?",
+        "What can't you do here?",
+        "What can't you doing here?",
+        "What don't can you do here?"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Can your dad ________?",
+      "options": [
+        "swim",
+        "swims",
+        "to swim",
+        "swimming"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "女孩們會唱歌。\nA: Can the girls sing?\nB: Yes, ________.",
+      "options": [
+        "they are",
+        "she can",
+        "they can",
+        "they do"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "使用 can 改寫：She makes a table.\nShe ________ a table.",
+      "options": [
+        "can to make",
+        "can make",
+        "can making",
+        "can makes"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "你想詢問「我們什麼時候可以去？」哪個問句正確？",
+      "options": [
+        "When can we go?",
+        "When can we to go?",
+        "When do we can go?",
+        "When we can go?"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "你會做什麼？\nWhat can you ________?",
+      "options": [
+        "does",
+        "do",
+        "doing",
+        "to do"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: When can we go?\nB: We can go ________.",
+      "options": [
+        "with Ms. Lin",
+        "on the ground",
+        "in the park",
+        "at three"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "女孩們現在不能過馬路。請選擇正確的否定詳答。\nA: Can the girls cross the road now?\nB: No, ________.",
+      "options": [
+        "they can't crosses it now",
+        "they can't cross it now",
+        "they aren't can cross it now",
+        "they don't can cross it now"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Amy 會做飯。\nBen: Can't you cook, Amy?\nAmy: ________",
+      "options": [
+        "No, you can't.",
+        "No, I can't.",
+        "Yes, I can.",
+        "Yes, you can."
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "A wet road can be dangerous.（濕滑的道路可能很危險。）\n這裡的 can 表示什麼？",
+      "options": [
+        "能力",
+        "請求",
+        "許可",
+        "可能性"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "把 Can your brother download the app? 改成否定疑問句。\n________ your brother download the app?",
+      "options": [
+        "Can't",
+        "Isn't",
+        "Don't",
+        "Doesn't"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "爸爸不會游泳。\nA: Can your dad swim?\nB: No, ________.",
+      "options": [
+        "he can",
+        "he can't",
+        "he isn't",
+        "she can't"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: ________ can the bird do?\nB: It can sing.",
+      "options": [
+        "When",
+        "Where",
+        "What",
+        "Who"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "使用 can 改寫：He is quiet.\nHe ________ quiet.",
+      "options": [
+        "can being",
+        "can are",
+        "can is",
+        "can be"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "A: ________ can I ask?\nB: You can ask Ms. Lin.",
+      "options": [
+        "What",
+        "Who",
+        "Where",
+        "When"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "把 The girls can sing. 改成問句。\n________ the girls sing?",
+      "options": [
+        "Can",
+        "Do",
+        "Are",
+        "Does"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "A: ________ can I take a photo?\nB: In the park.",
+      "options": [
+        "Where",
+        "What",
+        "Who",
+        "When"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "A: Who can I ask?\nB: ________",
+      "options": [
+        "You can ask at three.",
+        "You can ask Ms. Lin.",
+        "Yes, you can.",
+        "You can ask in the park."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Can you help me, please?（請你幫我，好嗎？）\n這裡的 can 表示什麼？",
+      "options": [
+        "請求",
+        "可能性",
+        "能力",
+        "許可"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Dad: Can you cook, Leo?\nLeo: Yes, ________.",
+      "options": [
+        "I am",
+        "he can",
+        "I can",
+        "you can"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "cannot 的正確縮寫是哪個？",
+      "options": [
+        "doesn't can",
+        "don't can",
+        "isn't can",
+        "can't"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "老師允許 Amy 和 Ben 現在過馬路。\nAmy and Ben: Can we cross the road now?\nTeacher: Yes, ________.",
+      "options": [
+        "we can",
+        "you can",
+        "they can",
+        "you do"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "把 He can design a bag. 改成否定句。\nHe ________ a bag.",
+      "options": [
+        "doesn't can design",
+        "isn't can design",
+        "cannot designs",
+        "cannot design"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "她不可以整天看電視。\nShe ________ TV all the time.",
+      "options": [
+        "doesn't can watch",
+        "can't watching",
+        "can't watch",
+        "isn't can watch"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "They can ________ early.",
+      "options": [
+        "be",
+        "are",
+        "is",
+        "being"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "The dog can ________ up.",
+      "options": [
+        "to stand",
+        "standing",
+        "stands",
+        "stand"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "A: What can your sister do?\nB: ________",
+      "options": [
+        "In the park.",
+        "Yes, she can.",
+        "She can design a bag.",
+        "At three."
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "My sister can sing and ________.",
+      "options": [
+        "dances",
+        "dancing",
+        "dance",
+        "to dance"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "A: What can the bird do?\nB: It ________.",
+      "options": [
+        "can sing",
+        "can singing",
+        "can to sing",
+        "can sings"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "A: Where can I take a photo?\nB: ________",
+      "options": [
+        "You can take one at three.",
+        "You can take one in the park.",
+        "You can take one with Ben.",
+        "Yes, you can."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "You can't ________ noise in the library.",
+      "options": [
+        "make",
+        "making",
+        "makes",
+        "to make"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Amy: Can I sit here?\nBen: Yes, ________.",
+      "options": [
+        "you are",
+        "she can",
+        "you can",
+        "I can"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "You can't ________ late for school.",
+      "options": [
+        "be",
+        "being",
+        "is",
+        "are"
+      ],
+      "answerIndex": 0
+    }
+  ]
+}

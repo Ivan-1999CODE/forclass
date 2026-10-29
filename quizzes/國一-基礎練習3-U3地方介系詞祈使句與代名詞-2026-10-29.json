@@ -1,0 +1,508 @@
+{
+  "id": "國一-基礎練習3-U3地方介系詞祈使句與代名詞-2026-10-29",
+  "title": "國一｜基礎練習 3｜U3 地方介系詞、祈使句與代名詞｜2026-10-29",
+  "date": "2026-10-29",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "父母不在廚房。\nA: Are your parents in the kitchen?\nB: No, ________.",
+      "options": [
+        "they aren't",
+        "they isn't",
+        "he isn't",
+        "we aren't"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Mary is my sister. ________ is in the living room.",
+      "options": [
+        "Hers",
+        "She's",
+        "Her",
+        "She"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "公園就在房子附近。\nThe park is ________ the house.",
+      "options": [
+        "near",
+        "in",
+        "under",
+        "on"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Ben 出現在電視節目裡；毛毯放在床面上。\nBen is ________, and the blanket is ________.",
+      "options": [
+        "in TV / at bed",
+        "on the TV / in bed",
+        "on TV / on the bed",
+        "at TV / under bed"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Nancy, ________ the door, please.",
+      "options": [
+        "to open",
+        "opening",
+        "opens",
+        "open"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "媽媽現在在家。\nMom is ________ now.",
+      "options": [
+        "on home",
+        "at home",
+        "at to home",
+        "to home"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "狗在門後面。\nThe dog is ________ the door.",
+      "options": [
+        "between",
+        "above",
+        "on",
+        "behind"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "狗在教室外面的前方。\nThe dog is ________ the classroom.",
+      "options": [
+        "in front of",
+        "in back of",
+        "in the back of",
+        "in the front of"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "工具箱放在房子外面的後方。\nThe box of tools is ________ the house.",
+      "options": [
+        "in the back of",
+        "in back of",
+        "in the front of",
+        "in front of"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Always ________ nice to others.",
+      "options": [
+        "are",
+        "be",
+        "is",
+        "being"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "工具放在箱子裡。\nThe tools are ________ the box.",
+      "options": [
+        "above",
+        "behind",
+        "on",
+        "in"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Ben is outside. Let ________ come in and sit beside me.",
+      "options": [
+        "he's",
+        "he",
+        "him",
+        "his"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Where ________ my smartphone?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "那些蘋果長在樹上。\nThe apples are ________ the tree.",
+      "options": [
+        "on",
+        "at",
+        "under",
+        "in"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Where ________ the tools?",
+      "options": [
+        "am",
+        "be",
+        "is",
+        "are"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "我們都在這裡。請和我們一起坐。\nPlease sit with ________.",
+      "options": [
+        "our",
+        "we",
+        "ours",
+        "us"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Let's ________ quiet in the library.",
+      "options": [
+        "being",
+        "be",
+        "is",
+        "are"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "駕駛坐在車內的前方。\nThe driver is ________ the car.",
+      "options": [
+        "in the front of",
+        "in back of",
+        "in front of",
+        "in the back of"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "這些照片很好看。請看它們。\nPlease look at ________.",
+      "options": [
+        "they",
+        "their",
+        "theirs",
+        "them"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "照片在牆上。\nA: Is the photo on the wall?\nB: Yes, ________.",
+      "options": [
+        "it are",
+        "they are",
+        "it is",
+        "it's"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "放學後，我們一起回家吧。\nLet's ________.",
+      "options": [
+        "go to home",
+        "go in home",
+        "go at home",
+        "go home"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "貓在椅子正下方。\nThe cat is ________ the chair.",
+      "options": [
+        "in",
+        "under",
+        "on",
+        "between"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Please ________ quiet.",
+      "options": [
+        "being",
+        "are",
+        "is",
+        "be"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "我們不要買那張昂貴的椅子吧。\n________ that expensive chair.",
+      "options": [
+        "Let's not buying",
+        "Let's don't buy",
+        "Let's not buy",
+        "Let's not buys"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "A: Where is your blanket?\nB: ________",
+      "options": [
+        "Yes, it is.",
+        "It is on the bed.",
+        "No, it isn't.",
+        "It is soft."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Ben 坐在公車內的後方。\nBen is ________ the bus.",
+      "options": [
+        "in the front of",
+        "in front of",
+        "in the back of",
+        "in back of"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "哥哥不在臥室。\nA: Is your brother in the bedroom?\nB: No, ________.",
+      "options": [
+        "she isn't",
+        "he aren't",
+        "they aren't",
+        "he isn't"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "爸爸在門口，媽媽在書桌旁。\nDad is ________ the door, and Mom is ________ the desk.",
+      "options": [
+        "on / in",
+        "at / at",
+        "in / on",
+        "under / between"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "A: ________ are the photos of our house?\nB: They are on the desk.",
+      "options": [
+        "When",
+        "Where",
+        "Who",
+        "What"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "把 The photo is on the wall. 改成 Yes／No 問句。",
+      "options": [
+        "Does the photo on the wall?",
+        "Are the photo on the wall?",
+        "Am the photo on the wall?",
+        "Is the photo on the wall?"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "照片放在電視機的上面。\nThe photo is ________.",
+      "options": [
+        "on TV",
+        "on the TV",
+        "in the TV",
+        "at the TV"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "爸爸正躺在床上睡覺。\nDad is ________ bed.",
+      "options": [
+        "at",
+        "to",
+        "in",
+        "on"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "書桌在床與門之間。\nThe desk is ________ the bed and the door.",
+      "options": [
+        "near",
+        "between",
+        "with",
+        "behind"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "鳥停在樹的枝葉間。\nThe bird is ________ the tree.",
+      "options": [
+        "at",
+        "on",
+        "in",
+        "under"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Nancy is here. Please help ________.",
+      "options": [
+        "she's",
+        "hers",
+        "she",
+        "her"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Don't ________ late for school.",
+      "options": [
+        "are",
+        "being",
+        "be",
+        "is"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "毛毯在這裡，工具在那裡。哪一句的用法正確？",
+      "options": [
+        "The blanket is here, and the tools are there.",
+        "The blanket is at here, and the tools are at there.",
+        "The blanket here is, and the tools there are.",
+        "The blanket are here, and the tools is there."
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "絕對不要在廚房裡跑。\nNever ________ in the kitchen.",
+      "options": [
+        "run",
+        "running",
+        "runs",
+        "to run"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Where ________ I?",
+      "options": [
+        "am",
+        "be",
+        "are",
+        "is"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Please ________ a photo of your bedroom.",
+      "options": [
+        "to upload",
+        "uploads",
+        "upload",
+        "uploading"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "燈在餐桌正上方，沒有碰到桌面。\nThe light is ________ the table.",
+      "options": [
+        "on",
+        "above",
+        "under",
+        "in"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "浴室就在臥室旁邊。\nThe bathroom is ________ the bedroom.",
+      "options": [
+        "next to",
+        "behind",
+        "inside",
+        "in front of"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Amy: Are you in the bathroom, Ben?\nBen: Yes, ________.",
+      "options": [
+        "you are",
+        "I are",
+        "I am",
+        "he is"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Let's ________ a theme for the room.",
+      "options": [
+        "choosing",
+        "chooses",
+        "choose",
+        "to choose"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "請選出正確的祈使句。",
+      "options": [
+        "Ben, please to open the door.",
+        "Ben, please open the door.",
+        "Ben, please is open the door.",
+        "Ben, please opens the door."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "老師問 Amy 和 Ben 是否都在教室裡。兩人都在。\nTeacher: Are you in the classroom?\nAmy and Ben: Yes, ________.",
+      "options": [
+        "we are",
+        "we're",
+        "I am",
+        "they are"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "請不要在廚房裡跑。\n________ in the kitchen.",
+      "options": [
+        "Don't run",
+        "Doesn't run",
+        "Not run",
+        "Don't running"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "我六點到家。\nI get ________ at six.",
+      "options": [
+        "on home",
+        "in home",
+        "home",
+        "to home"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Mary has a smartphone. ________ smartphone is on the desk.",
+      "options": [
+        "Her",
+        "She",
+        "She's",
+        "Hers"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "毛毯平放在床面上。\nThe blanket is ________ the bed.",
+      "options": [
+        "on",
+        "under",
+        "in",
+        "between"
+      ],
+      "answerIndex": 0
+    }
+  ]
+}

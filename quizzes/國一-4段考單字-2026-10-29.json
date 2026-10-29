@@ -1,0 +1,388 @@
+{
+  "id": "國一-4段考單字-2026-10-29",
+  "title": "國一-4段考單字",
+  "date": "2026-10-29",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "「聽」的英文是？",
+      "options": [
+        "make",
+        "warn",
+        "talk",
+        "listen"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "voice 的中文是？",
+      "options": [
+        "聲音；歌喉",
+        "設計",
+        "噪音",
+        "歌曲"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「站起來」的英文是？",
+      "options": [
+        "sit down",
+        "check out",
+        "watch out",
+        "stand up"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "sit down 的中文是？",
+      "options": [
+        "拍照",
+        "坐下",
+        "查看",
+        "站起來"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「拍照」的英文是？",
+      "options": [
+        "stand up",
+        "take a photo",
+        "check out",
+        "watch out"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "make 的中文是？",
+      "options": [
+        "製造",
+        "跨越",
+        "設計",
+        "下載"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「任何（的）」的英文是？",
+      "options": [
+        "oncoming",
+        "special",
+        "other",
+        "any"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "noise 的中文是？",
+      "options": [
+        "紅綠燈",
+        "聲音；歌喉",
+        "歌曲",
+        "噪音"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「不能；不會；不可以」的英文是？",
+      "options": [
+        "can",
+        "can't",
+        "isn't",
+        "don't"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "talk 的中文是？",
+      "options": [
+        "警告",
+        "聽",
+        "下載",
+        "講話"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「吵鬧的」的英文是？",
+      "options": [
+        "special",
+        "noisy",
+        "early",
+        "late"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "late 的中文是？",
+      "options": [
+        "晚的；遲到的",
+        "真的；真實的",
+        "早的；初期的",
+        "特別的"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「早的；初期的」的英文是？",
+      "options": [
+        "late",
+        "early",
+        "noisy",
+        "real"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "sidewalk 的中文是？",
+      "options": [
+        "道路",
+        "小路；小巷",
+        "斑馬線",
+        "人行道"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「歌曲」的英文是？",
+      "options": [
+        "voice",
+        "way",
+        "song",
+        "noise"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "check out 的中文是？",
+      "options": [
+        "站起來",
+        "查看",
+        "小心；注意",
+        "坐下"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「跨越」的英文是？",
+      "options": [
+        "cross",
+        "make",
+        "warn",
+        "download"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "road 的中文是？",
+      "options": [
+        "小路；小巷",
+        "人行道",
+        "道路",
+        "斑馬線"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「小心；注意」的英文是？",
+      "options": [
+        "check out",
+        "watch out",
+        "take a photo",
+        "stand up"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "real 的中文是？",
+      "options": [
+        "真的；真實的",
+        "吵鬧的",
+        "其他的",
+        "特別的"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「一直」的英文是？",
+      "options": [
+        "around the world",
+        "all the time",
+        "come in",
+        "in fact"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Guess what? 的中文是？",
+      "options": [
+        "查看",
+        "小心；注意",
+        "你猜怎麼著？",
+        "一直"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「紅綠燈」的英文是？",
+      "options": [
+        "crosswalk",
+        "sidewalk",
+        "traffic lights",
+        "ground"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "ground 的中文是？",
+      "options": [
+        "小路；小巷",
+        "道路",
+        "地面",
+        "人行道"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「設計」的英文是？",
+      "options": [
+        "make",
+        "download",
+        "warn",
+        "design"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "user 的中文是？",
+      "options": [
+        "使用者",
+        "道路",
+        "聲音；歌喉",
+        "歌曲"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「下載」的英文是？",
+      "options": [
+        "upload",
+        "talk",
+        "design",
+        "download"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "warn 的中文是？",
+      "options": [
+        "講話",
+        "聽",
+        "製造",
+        "警告"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「迎面而來的」的英文是？",
+      "options": [
+        "oncoming",
+        "special",
+        "early",
+        "noisy"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "crosswalk 的中文是？",
+      "options": [
+        "斑馬線",
+        "小路；小巷",
+        "人行道",
+        "道路"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「而且；也」的英文是？",
+      "options": [
+        "also",
+        "all the time",
+        "again and again",
+        "other"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "the USA 的中文是？",
+      "options": [
+        "日本",
+        "臺灣",
+        "美國",
+        "英國"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「特別的」的英文是？",
+      "options": [
+        "real",
+        "special",
+        "oncoming",
+        "noisy"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "lane 的中文是？",
+      "options": [
+        "斑馬線",
+        "道路",
+        "小路；小巷",
+        "人行道"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「方式；方法；路」的英文是？",
+      "options": [
+        "step",
+        "theme",
+        "way",
+        "type"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "other 的中文是？",
+      "options": [
+        "真的；真實的",
+        "任何（的）",
+        "其他的",
+        "特別的"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「聽……」的英文是？",
+      "options": [
+        "look at...",
+        "listen to",
+        "watch out",
+        "take a photo"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "again and again 的中文是？",
+      "options": [
+        "一再地；再三地",
+        "世界各地",
+        "下課後",
+        "事實上"
+      ],
+      "answerIndex": 0
+    }
+  ]
+}

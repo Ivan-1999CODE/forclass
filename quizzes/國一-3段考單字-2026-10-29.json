@@ -1,0 +1,468 @@
+{
+  "id": "國一-3段考單字-2026-10-29",
+  "title": "國一-3段考單字",
+  "date": "2026-10-29",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "「客廳」的英文是？",
+      "options": [
+        "living room",
+        "bedroom",
+        "dining room",
+        "bathroom"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "bedroom 的中文是？",
+      "options": [
+        "廚房",
+        "客廳",
+        "臥室",
+        "浴室"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「浴室」的英文是？",
+      "options": [
+        "bathroom",
+        "dining room",
+        "bedroom",
+        "kitchen"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "dining room 的中文是？",
+      "options": [
+        "浴室",
+        "飯廳",
+        "客廳",
+        "臥室"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「在……後面」的英文是？",
+      "options": [
+        "in front of",
+        "behind",
+        "between",
+        "inside"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "in front of 的中文是？",
+      "options": [
+        "在……附近",
+        "在……裡面；在室內",
+        "在……前面",
+        "在……後面"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「在……中間」的英文是？",
+      "options": [
+        "behind",
+        "around",
+        "between",
+        "near"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "next to 的中文是？",
+      "options": [
+        "在……後面",
+        "在……旁邊",
+        "在……前面",
+        "在……中間"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「在……附近」的英文是？",
+      "options": [
+        "inside",
+        "near",
+        "behind",
+        "between"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "please 的中文是？",
+      "options": [
+        "我們一起……吧",
+        "我了解了。",
+        "請",
+        "好主意！"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「房子」的英文是？",
+      "options": [
+        "tool",
+        "house",
+        "world",
+        "kitchen"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "quiet 的中文是？",
+      "options": [
+        "硬的",
+        "昂貴的",
+        "柔軟的",
+        "安靜的"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「風格；款式」的英文是？",
+      "options": [
+        "theme",
+        "question",
+        "style",
+        "photo"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "idea 的中文是？",
+      "options": [
+        "主題",
+        "問題",
+        "步驟；一步",
+        "想法；點子"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「我們一起……吧」的英文是？",
+      "options": [
+        "I see.",
+        "Great idea!",
+        "let's",
+        "please"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "get 的中文是？",
+      "options": [
+        "獲得",
+        "上傳",
+        "選擇",
+        "等待"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「一些的；一些」的英文是？",
+      "options": [
+        "with",
+        "near",
+        "some",
+        "around"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "tool 的中文是？",
+      "options": [
+        "相片",
+        "工具",
+        "智慧型手機",
+        "毛毯"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「智慧型手機」的英文是？",
+      "options": [
+        "blanket",
+        "smartphone",
+        "photo",
+        "tool"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "step 的中文是？",
+      "options": [
+        "問題",
+        "風格；款式",
+        "種類",
+        "步驟；一步"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「上傳」的英文是？",
+      "options": [
+        "upload",
+        "download",
+        "choose",
+        "wait"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "photo 的中文是？",
+      "options": [
+        "智慧型手機",
+        "相片",
+        "毛毯",
+        "工具"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「選擇」的英文是？",
+      "options": [
+        "get",
+        "upload",
+        "wait",
+        "choose"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "type 的中文是？",
+      "options": [
+        "風格；款式",
+        "主題",
+        "步驟；一步",
+        "種類"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「主題」的英文是？",
+      "options": [
+        "photo",
+        "idea",
+        "question",
+        "theme"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "wait 的中文是？",
+      "options": [
+        "等待",
+        "上傳",
+        "獲得",
+        "選擇"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「昂貴的」的英文是？",
+      "options": [
+        "soft",
+        "hard",
+        "expensive",
+        "quiet"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "with 的中文是？",
+      "options": [
+        "對……來說；和",
+        "在……後面",
+        "在……裡面；在室內",
+        "圍繞；到處"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「問題」的英文是？",
+      "options": [
+        "idea",
+        "question",
+        "type",
+        "theme"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "I see. 的中文是？",
+      "options": [
+        "請",
+        "好主意！",
+        "我了解了。",
+        "我們一起……吧"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「柔軟的」的英文是？",
+      "options": [
+        "expensive",
+        "soft",
+        "quiet",
+        "hard"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "hard 的中文是？",
+      "options": [
+        "柔軟的",
+        "安靜的",
+        "昂貴的",
+        "硬的"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "「事實上」的英文是？",
+      "options": [
+        "around the world",
+        "in fact",
+        "come in",
+        "be OK with..."
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "around 的中文是？",
+      "options": [
+        "圍繞；到處",
+        "在……裡面；在室內",
+        "在……中間",
+        "在……後面"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「世界」的英文是？",
+      "options": [
+        "house",
+        "ice",
+        "theme",
+        "world"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "kitchen 的中文是？",
+      "options": [
+        "廚房",
+        "浴室",
+        "臥室",
+        "客廳"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「在……旁邊」的英文是？",
+      "options": [
+        "between",
+        "behind",
+        "in front of",
+        "beside"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "ice 的中文是？",
+      "options": [
+        "毛毯",
+        "冰",
+        "工具",
+        "相片"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "「在……裡面；在室內」的英文是？",
+      "options": [
+        "near",
+        "around",
+        "behind",
+        "inside"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "blanket 的中文是？",
+      "options": [
+        "毛毯",
+        "工具",
+        "相片",
+        "智慧型手機"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「進入」的英文是？",
+      "options": [
+        "come in",
+        "look at...",
+        "around the world",
+        "get... from..."
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Great idea! 的中文是？",
+      "options": [
+        "我們一起……吧",
+        "我了解了。",
+        "好主意！",
+        "請"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "「從……得到……」的英文是？",
+      "options": [
+        "around the world",
+        "be OK with...",
+        "look at...",
+        "get... from..."
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "look at... 的中文是？",
+      "options": [
+        "看……",
+        "進入",
+        "從……得到……",
+        "某人對某事沒問題"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "「某人對某事沒問題」的英文是？",
+      "options": [
+        "be OK with...",
+        "get... from...",
+        "look at...",
+        "in fact"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "around the world 的中文是？",
+      "options": [
+        "進入",
+        "看……",
+        "世界各地",
+        "事實上"
+      ],
+      "answerIndex": 2
+    }
+  ]
+}
