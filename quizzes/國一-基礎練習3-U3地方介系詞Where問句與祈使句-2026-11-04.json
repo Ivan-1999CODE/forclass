@@ -1,26 +1,26 @@
 {
-  "id": "國一-基礎練習3-U3地方介系詞祈使句與代名詞-2026-10-29",
-  "title": "國一｜基礎練習 3｜U3 地方介系詞、祈使句與代名詞｜2026-10-29",
-  "date": "2026-10-29",
+  "id": "國一-基礎練習3-U3地方介系詞Where問句與祈使句-2026-11-04",
+  "title": "國一｜基礎練習 3｜U3 地方介系詞、Where 問句與祈使句（含 Let's）｜2026-11-04",
+  "date": "2026-11-04",
   "defaultTimeLimitSec": 20,
   "questions": [
     {
-      "prompt": "父母不在廚房。\nA: Are your parents in the kitchen?\nB: No, ________.",
+      "prompt": "想問「那些書在哪裡？」，應該怎麼說？",
       "options": [
-        "they aren't",
-        "they isn't",
-        "he isn't",
-        "we aren't"
+        "Where are the books?",
+        "Where is the books?",
+        "Where the books are?",
+        "Where do the books?"
       ],
       "answerIndex": 0
     },
     {
-      "prompt": "Mary is my sister. ________ is in the living room.",
+      "prompt": "椅子就在書桌旁邊。\nThe chair is ________ the desk.",
       "options": [
-        "Hers",
-        "She's",
-        "Her",
-        "She"
+        "under",
+        "in",
+        "on",
+        "beside"
       ],
       "answerIndex": 3
     },
@@ -35,12 +35,12 @@
       "answerIndex": 0
     },
     {
-      "prompt": "Ben 出現在電視節目裡；毛毯放在床面上。\nBen is ________, and the blanket is ________.",
+      "prompt": "Ben 出現在電視節目裡。\nBen is ________.",
       "options": [
-        "in TV / at bed",
-        "on the TV / in bed",
-        "on TV / on the bed",
-        "at TV / under bed"
+        "in TV",
+        "on the TV",
+        "on TV",
+        "at the TV"
       ],
       "answerIndex": 2
     },
@@ -95,12 +95,12 @@
       "answerIndex": 1
     },
     {
-      "prompt": "Always ________ nice to others.",
+      "prompt": "在圖書館請保持安靜。\n________ quiet in the library, please.",
       "options": [
-        "are",
-        "be",
-        "is",
-        "being"
+        "Are",
+        "Be",
+        "Is",
+        "Being"
       ],
       "answerIndex": 1
     },
@@ -115,17 +115,17 @@
       "answerIndex": 3
     },
     {
-      "prompt": "Ben is outside. Let ________ come in and sit beside me.",
+      "prompt": "Let's ________ the classroom.",
       "options": [
-        "he's",
-        "he",
-        "him",
-        "his"
+        "cleaning",
+        "cleans",
+        "clean",
+        "to clean"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "Where ________ my smartphone?",
+      "prompt": "Where ________ the smartphone?",
       "options": [
         "am",
         "is",
@@ -155,12 +155,12 @@
       "answerIndex": 3
     },
     {
-      "prompt": "我們都在這裡。請和我們一起坐。\nPlease sit with ________.",
+      "prompt": "請不要打開門。\nPlease ________ open the door.",
       "options": [
-        "our",
-        "we",
-        "ours",
-        "us"
+        "not",
+        "doesn't",
+        "isn't",
+        "don't"
       ],
       "answerIndex": 3
     },
@@ -185,32 +185,32 @@
       "answerIndex": 0
     },
     {
-      "prompt": "這些照片很好看。請看它們。\nPlease look at ________.",
+      "prompt": "我們不要在圖書館吃東西吧。\nLet's ________ eat in the library.",
       "options": [
-        "they",
-        "their",
-        "theirs",
-        "them"
+        "isn't",
+        "doesn't",
+        "aren't",
+        "not"
       ],
       "answerIndex": 3
     },
     {
-      "prompt": "照片在牆上。\nA: Is the photo on the wall?\nB: Yes, ________.",
+      "prompt": "貓在箱子裡面。請依照中文回答。\nA: Where are the cats?\nB: ________",
       "options": [
-        "it are",
-        "they are",
-        "it is",
-        "it's"
+        "They are outside the box.",
+        "They are under the box.",
+        "They are inside the box.",
+        "They are on the box."
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "放學後，我們一起回家吧。\nLet's ________.",
+      "prompt": "Let's ________ to the park.",
       "options": [
-        "go to home",
-        "go in home",
-        "go at home",
-        "go home"
+        "goes",
+        "going",
+        "to go",
+        "go"
       ],
       "answerIndex": 3
     },
@@ -225,7 +225,7 @@
       "answerIndex": 1
     },
     {
-      "prompt": "Please ________ quiet.",
+      "prompt": "Please ________ careful.",
       "options": [
         "being",
         "are",
@@ -238,14 +238,14 @@
       "prompt": "我們不要買那張昂貴的椅子吧。\n________ that expensive chair.",
       "options": [
         "Let's not buying",
-        "Let's don't buy",
+        "Let's not to buy",
         "Let's not buy",
         "Let's not buys"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "A: Where is your blanket?\nB: ________",
+      "prompt": "A: Where is the blanket?\nB: ________",
       "options": [
         "Yes, it is.",
         "It is on the bed.",
@@ -265,12 +265,12 @@
       "answerIndex": 2
     },
     {
-      "prompt": "哥哥不在臥室。\nA: Is your brother in the bedroom?\nB: No, ________.",
+      "prompt": "狗在房子外面。請依照中文回答。\nA: Where is the dog?\nB: ________",
       "options": [
-        "she isn't",
-        "he aren't",
-        "they aren't",
-        "he isn't"
+        "The dog is inside the house.",
+        "The dog is on the house.",
+        "The dog is under the house.",
+        "The dog is outside the house."
       ],
       "answerIndex": 3
     },
@@ -285,7 +285,7 @@
       "answerIndex": 1
     },
     {
-      "prompt": "A: ________ are the photos of our house?\nB: They are on the desk.",
+      "prompt": "A: ________ are the photos?\nB: They are on the desk.",
       "options": [
         "When",
         "Where",
@@ -295,12 +295,12 @@
       "answerIndex": 1
     },
     {
-      "prompt": "把 The photo is on the wall. 改成 Yes／No 問句。",
+      "prompt": "針對 The photo is on the wall. 的地點 on the wall 提問，應該怎麼說？",
       "options": [
-        "Does the photo on the wall?",
-        "Are the photo on the wall?",
-        "Am the photo on the wall?",
-        "Is the photo on the wall?"
+        "Where the photo is?",
+        "Where are the photo?",
+        "Is the photo on the wall?",
+        "Where is the photo?"
       ],
       "answerIndex": 3
     },
@@ -345,12 +345,12 @@
       "answerIndex": 2
     },
     {
-      "prompt": "Nancy is here. Please help ________.",
+      "prompt": "請坐在椅子上。\n________ on the chair, please.",
       "options": [
-        "she's",
-        "hers",
-        "she",
-        "her"
+        "Sitting",
+        "Sits",
+        "To sit",
+        "Sit"
       ],
       "answerIndex": 3
     },
@@ -365,22 +365,22 @@
       "answerIndex": 2
     },
     {
-      "prompt": "毛毯在這裡，工具在那裡。哪一句的用法正確？",
+      "prompt": "把 Touch the photo. 改成否定祈使句。",
       "options": [
-        "The blanket is here, and the tools are there.",
-        "The blanket is at here, and the tools are at there.",
-        "The blanket here is, and the tools there are.",
-        "The blanket are here, and the tools is there."
+        "Don't touch the photo.",
+        "Not touch the photo.",
+        "Doesn't touch the photo.",
+        "Don't touching the photo."
       ],
       "answerIndex": 0
     },
     {
-      "prompt": "絕對不要在廚房裡跑。\nNever ________ in the kitchen.",
+      "prompt": "我們不要遲到吧。\nLet's not ________ late.",
       "options": [
-        "run",
-        "running",
-        "runs",
-        "to run"
+        "be",
+        "being",
+        "are",
+        "to be"
       ],
       "answerIndex": 0
     },
@@ -395,12 +395,12 @@
       "answerIndex": 0
     },
     {
-      "prompt": "Please ________ a photo of your bedroom.",
+      "prompt": "Please ________ the window.",
       "options": [
-        "to upload",
-        "uploads",
-        "upload",
-        "uploading"
+        "to close",
+        "closes",
+        "close",
+        "closing"
       ],
       "answerIndex": 2
     },
@@ -425,17 +425,17 @@
       "answerIndex": 0
     },
     {
-      "prompt": "Amy: Are you in the bathroom, Ben?\nBen: Yes, ________.",
+      "prompt": "Where ________ Amy and Ben?",
       "options": [
-        "you are",
-        "I are",
-        "I am",
-        "he is"
+        "is",
+        "am",
+        "are",
+        "be"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "Let's ________ a theme for the room.",
+      "prompt": "Let's ________ a book.",
       "options": [
         "choosing",
         "chooses",
@@ -455,12 +455,12 @@
       "answerIndex": 1
     },
     {
-      "prompt": "老師問 Amy 和 Ben 是否都在教室裡。兩人都在。\nTeacher: Are you in the classroom?\nAmy and Ben: Yes, ________.",
+      "prompt": "依中文選出兩句的開頭。\n① 不要在教室裡吃東西。\n② 我們不要在教室裡吃東西吧。\n① ________ eat in the classroom.\n② ________ eat in the classroom.",
       "options": [
-        "we are",
-        "we're",
-        "I am",
-        "they are"
+        "Don't / Let's not",
+        "Not / Let's not",
+        "Don't / Not",
+        "Let's not / Don't"
       ],
       "answerIndex": 0
     },
@@ -475,22 +475,22 @@
       "answerIndex": 0
     },
     {
-      "prompt": "我六點到家。\nI get ________ at six.",
+      "prompt": "我們不要在公車上喝水吧。\nLet's ________ drink water on the bus.",
       "options": [
-        "on home",
-        "in home",
-        "home",
-        "to home"
+        "to",
+        "is",
+        "not",
+        "are"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "Mary has a smartphone. ________ smartphone is on the desk.",
+      "prompt": "依中文選出正確句子：我們不要太吵吧。",
       "options": [
-        "Her",
-        "She",
-        "She's",
-        "Hers"
+        "Let's not be noisy.",
+        "Not be noisy.",
+        "Let's not is noisy.",
+        "Let's not being noisy."
       ],
       "answerIndex": 0
     },
