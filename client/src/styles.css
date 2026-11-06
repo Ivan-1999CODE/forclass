@@ -137,10 +137,22 @@ p {
   align-items: center;
   display: inline-flex;
   gap: 10px;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.student-score-pill > span,
+.student-name,
+.rank-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .student-score-pill strong {
   color: #176b5d;
+  flex-shrink: 0;
 }
 
 .grid {
@@ -417,6 +429,14 @@ p {
   color: #9f2525;
 }
 
+input[aria-invalid="true"] {
+  border-color: #9f2525;
+}
+
+.name-validation-error {
+  color: #9f2525;
+}
+
 .resume-card {
   background: #f5f7fa;
   border: 1px solid #d7e0e8;
@@ -464,6 +484,7 @@ p {
 .rank-row {
   align-items: center;
   flex-direction: row;
+  min-width: 0;
 }
 
 .student-name {
@@ -737,6 +758,8 @@ p {
   color: #fff;
   min-width: 54px;
   padding: 6px 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .rank-row.rank-award {
@@ -829,6 +852,8 @@ p {
   color: #176b5d;
   min-width: 92px;
   padding: 6px 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .history-table {
@@ -971,6 +996,14 @@ p {
 .question-panel h2 {
   font-size: 28px;
   line-height: 1.25;
+}
+
+/* 限定學生題幹與選項；保留輸入欄位、老師頁及錯題回顧的文字選取。 */
+.student-question-content,
+.student-question-content * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .option-grid,
@@ -1268,8 +1301,17 @@ button.btn-sm {
   padding: 0 10px;
 }
 
-.student-rename-input {
+.student-rename-field {
   flex: 1;
+  min-width: 120px;
+}
+
+.student-rename-field p {
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.student-rename-input {
   min-height: 32px;
   padding: 4px 8px;
 }

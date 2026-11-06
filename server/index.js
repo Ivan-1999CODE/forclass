@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { Server } from "socket.io";
 import { vocabularyReader, normalizeVocabularyLessons, alternateVocabularyDirections } from "./english-quest.js";
+import { STUDENT_NAME_MAX_LENGTH, normalizeStudentName, truncateStudentName, validateStudentName } from "../shared/student-name.js";
 import {
   deleteExpiredSessions,
   getSessionDetail,
@@ -251,8 +252,9 @@ io.on("connection", (socket) => {
     if (!room) return callback?.({ ok: false, error: "老師權限無效。" });
     const student = room.students.get(studentId);
     if (!student) return callback?.({ ok: false, error: "找不到這位學生。" });
-    const cleanName = normalizeName(newName);
-    if (!cleanName) return callback?.({ ok: false, error: "請輸入新名字。" });
+    const nameError = validateStudentName(newName);
+    if (nameError) return callback?.({ ok: false, error: nameError });
+    const cleanName = normalizeStudentName(newName);
     student.name = uniqueStudentName(room, cleanName, studentId);
     broadcastRoom(room);
     callback?.({ ok: true });
@@ -310,15 +312,17 @@ io.on("connection", (socket) => {
   socket.on("student:join", ({ roomCode, name, studentId }, callback) => {
     const room = getRoom(roomCode);
     if (!room) return callback?.({ ok: false, error: "找不到這個房間代碼。" });
-    const cleanName = normalizeName(name);
-    if (!cleanName) return callback?.({ ok: false, error: "請輸入姓名。" });
-
     if (room.kickedStudentIds.has(studentId)) {
       return callback?.({ ok: false, removed: true, error: "此帳號已被老師移出，請確認後重新加入。" });
     }
     // 相同連線重送加入請求時沿用帳號，即使第一次回覆仍在路上。
     let student = socket.data.roomCode === room.code ? room.students.get(socket.data.studentId) : null;
     student ??= studentId ? room.students.get(studentId) : null;
+    // 重連只恢復既有帳號，不改姓名；舊頁面保存的長名不能阻止學生回來作答。
+    if (!student) {
+      const nameError = validateStudentName(name);
+      if (nameError) return callback?.({ ok: false, error: nameError });
+    }
     if (socket.data.roomCode && (socket.data.roomCode !== room.code || socket.data.studentId !== student?.id)) {
       detachStudentSocket(socket);
     }
@@ -334,7 +338,7 @@ io.on("connection", (socket) => {
       const id = crypto.randomUUID();
       student = {
         id,
-        name: uniqueStudentName(room, cleanName),
+        name: uniqueStudentName(room, normalizeStudentName(name)),
         socketId: socket.id,
         connected: true,
         totalScore: 0,
@@ -1097,10 +1101,6 @@ function roomChannel(roomCode) {
   return `room:${roomCode}`;
 }
 
-function normalizeName(name) {
-  return String(name || "").trim().replace(/\s+/g, " ").slice(0, 24);
-}
-
 function normalizeTeacherMessage(message) {
   return String(message || "").trim().replace(/\r\n/g, "\n").slice(0, 500);
 }
@@ -1109,8 +1109,13 @@ function uniqueStudentName(room, baseName, excludeId = null) {
   const existing = new Set([...room.students.values()].filter((s) => s.id !== excludeId).map((student) => student.name));
   if (!existing.has(baseName)) return baseName;
   let index = 2;
-  while (existing.has(`${baseName} (${index})`)) index += 1;
-  return `${baseName} (${index})`;
+  let candidate;
+  do {
+    const suffix = ` (${index})`;
+    candidate = `${truncateStudentName(baseName, STUDENT_NAME_MAX_LENGTH - suffix.length)}${suffix}`;
+    index += 1;
+  } while (existing.has(candidate));
+  return candidate;
 }
 
 function getQuestionLimitMs(room, index) {

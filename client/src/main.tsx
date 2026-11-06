@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { io, Socket } from "socket.io-client";
 import { QRCodeSVG } from "qrcode.react";
 import { VocabularySelector, VocabularyCatalogue } from "./VocabularySelector";
+import { STUDENT_NAME_MAX_LENGTH, getStudentNameLength, normalizeStudentName, validateStudentName } from "../../shared/student-name.js";
 import "./styles.css";
 
 type QuizSummary = {
@@ -708,6 +709,8 @@ function JoinPage() {
   const [connected, setConnected] = useState(socket.connected);
   const joinPending = useRef(false);
   const activeStudent = useRef<{ roomCode: string; studentId: string; name: string } | null>(null);
+  const nameLength = getStudentNameLength(name);
+  const nameError = nameLength > STUDENT_NAME_MAX_LENGTH ? validateStudentName(name) : "";
 
   const acceptSession = (reply: SocketReply) => {
     if (!reply.studentId || !reply.snapshot?.me) return;
@@ -715,6 +718,7 @@ function JoinPage() {
     activeStudent.current = session;
     setStudentId(session.studentId);
     setRoomCode(session.roomCode);
+    setName(session.name);
     localStorage.setItem(studentStorageKey, JSON.stringify({ id: session.studentId, roomCode: session.roomCode, name: session.name }));
     setSnapshot(reply.snapshot);
   };
@@ -783,6 +787,11 @@ function JoinPage() {
 
   const join = () => {
     if (joinPending.current) return;
+    const validationError = validateStudentName(name);
+    if (validationError) {
+      setMessage(validationError);
+      return;
+    }
     if (!socket.connected) {
       setMessage("尚未連上伺服器，請稍候再試。");
       return;
@@ -790,7 +799,7 @@ function JoinPage() {
     joinPending.current = true;
     setJoining(true);
     setMessage("");
-    socket.timeout(5000).emit("student:join", { roomCode, name, studentId }, (error: Error | null, reply: SocketReply) => {
+    socket.timeout(5000).emit("student:join", { roomCode, name: normalizeStudentName(name), studentId }, (error: Error | null, reply: SocketReply) => {
       joinPending.current = false;
       setJoining(false);
       if (error || !reply.ok || !reply.studentId || !reply.snapshot) {
@@ -816,9 +825,17 @@ function JoinPage() {
           </label>
           <label>
             姓名
-            <input value={name} onChange={(event) => setName(event.target.value)} placeholder="請輸入你的名字" />
+            <input
+              value={name}
+              onChange={(event) => { setName(event.target.value); setMessage(""); }}
+              placeholder={`請輸入你的名字（最多 ${STUDENT_NAME_MAX_LENGTH} 個字）`}
+              aria-invalid={Boolean(nameError)}
+              aria-describedby={nameError ? "student-name-hint student-name-error" : "student-name-hint"}
+            />
           </label>
-          <button onClick={join} disabled={joining || !connected}>{joining ? "加入中…" : connected ? "加入等待室" : "連線中…"}</button>
+          <p id="student-name-hint" className="hint">姓名最多 {STUDENT_NAME_MAX_LENGTH} 個字，目前 {nameLength} / {STUDENT_NAME_MAX_LENGTH} 字。</p>
+          {nameError && <p id="student-name-error" className="notice error" role="alert">{nameError}</p>}
+          <button onClick={join} disabled={joining || !connected || Boolean(nameError)}>{joining ? "加入中…" : connected ? "加入等待室" : "連線中…"}</button>
           {message && <p className="notice error">{message}</p>}
         </section>
       </main>
@@ -846,7 +863,7 @@ function StudentGame({ snapshot, roomCode, studentId, connected }: { snapshot: S
           <h1>{snapshot.quiz.title}</h1>
         </div>
         <span className="status-pill student-score-pill">
-          <span>{snapshot.me?.name}</span>
+          <span title={snapshot.me?.name}>{snapshot.me?.name}</span>
           <strong>{snapshot.me?.totalScore ?? 0} 分</strong>
         </span>
       </header>
@@ -864,13 +881,15 @@ function StudentGame({ snapshot, roomCode, studentId, connected }: { snapshot: S
       {(snapshot.status === "question" || snapshot.status === "results") && snapshot.question && (
         <section className="panel question-panel">
           <StudentTimerBar snapshot={snapshot} />
-          <h2>{snapshot.question.prompt}</h2>
-          <QuestionOptions
-            snapshot={snapshot}
-            onAnswer={answer}
-            disabled={!connected || snapshot.status !== "question" || Boolean(snapshot.me?.answeredCurrent)}
-            showCounts={snapshot.status === "results"}
-          />
+          <div className="student-question-content">
+            <h2>{snapshot.question.prompt}</h2>
+            <QuestionOptions
+              snapshot={snapshot}
+              onAnswer={answer}
+              disabled={!connected || snapshot.status !== "question" || Boolean(snapshot.me?.answeredCurrent)}
+              showCounts={snapshot.status === "results"}
+            />
+          </div>
           {message && <p className="notice error">{message}</p>}
           {snapshot.status === "results" && (
             <>
@@ -953,6 +972,9 @@ function DisplayPage({ roomCode }: { roomCode: string }) {
 function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot: Snapshot; embedded?: boolean; onRename?: (studentId: string, newName: string) => void; onKick?: (studentId: string) => void }) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
+  const [renameMessage, setRenameMessage] = useState("");
+  const editNameLength = getStudentNameLength(editName);
+  const editNameError = editNameLength > STUDENT_NAME_MAX_LENGTH ? validateStudentName(editName) : renameMessage;
   const [checking, setChecking] = useState(false);
   const [connectionMessage, setConnectionMessage] = useState("");
 
@@ -974,11 +996,17 @@ function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot:
   const startEdit = (student: Snapshot["students"][0]) => {
     setEditingId(student.id);
     setEditName(student.name);
+    setRenameMessage("");
   };
 
   const commitEdit = () => {
-    if (editingId && editName.trim() && onRename) {
-      onRename(editingId, editName.trim());
+    const validationError = validateStudentName(editName);
+    if (validationError) {
+      setRenameMessage(validationError);
+      return;
+    }
+    if (editingId && onRename) {
+      onRename(editingId, normalizeStudentName(editName));
     }
     setEditingId(null);
   };
@@ -998,23 +1026,30 @@ function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot:
           <div className="student-row" key={student.id}>
             {onRename && editingId === student.id ? (
               <>
-                <input
-                  className="student-rename-input"
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") commitEdit();
-                    if (e.key === "Escape") setEditingId(null);
-                  }}
-                  autoFocus
-                  maxLength={24}
-                />
-                <button className="btn-sm" onClick={commitEdit}>確認</button>
+                <div className="student-rename-field">
+                  <input
+                    className="student-rename-input"
+                    value={editName}
+                    onChange={(e) => { setEditName(e.target.value); setRenameMessage(""); }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.nativeEvent.isComposing) commitEdit();
+                      if (e.key === "Escape") setEditingId(null);
+                    }}
+                    autoFocus
+                    aria-label="學生姓名"
+                    aria-invalid={Boolean(editNameError)}
+                    aria-describedby={`rename-hint-${student.id}`}
+                  />
+                  <p id={`rename-hint-${student.id}`} className={editNameError ? "name-validation-error" : "hint"} role={editNameError ? "alert" : undefined}>
+                    {editNameError || `${editNameLength} / ${STUDENT_NAME_MAX_LENGTH} 字`}
+                  </p>
+                </div>
+                <button className="btn-sm" onClick={commitEdit} disabled={Boolean(editNameError)}>確認</button>
                 <button className="secondary btn-sm" onClick={() => setEditingId(null)}>取消</button>
               </>
             ) : (
               <>
-                <span className="student-name">{student.name}</span>
+                <span className="student-name" title={student.name}>{student.name}</span>
                 {onRename && (
                   <button className="secondary btn-sm" onClick={() => startEdit(student)}>改名</button>
                 )}
@@ -1421,7 +1456,7 @@ function Leaderboard({ snapshot, compact = false, studentId }: { snapshot: Snaps
           >
             <span className="rank-badge">#{student.rank}</span>
             <span className="rank-name-with-report">
-              <strong className="rank-name">{student.name}</strong>
+              <strong className="rank-name" title={student.name}>{student.name}</strong>
               {isCurrentStudent && <span className="current-student-badge">你</span>}
             </span>
             <span className="score-badge">{student.totalScore} 分</span>

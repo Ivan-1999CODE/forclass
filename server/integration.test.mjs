@@ -3,6 +3,7 @@ import { once } from "node:events";
 import { spawn } from "node:child_process";
 import test from "node:test";
 import { io } from "socket.io-client";
+import { getStudentNameLength } from "../shared/student-name.js";
 
 const port = 3137;
 const baseUrl = `http://127.0.0.1:${port}`;
@@ -398,6 +399,122 @@ test("踢除、連線檢查與全員答完倒數不受斷線誤判影響", async
     assert.equal(state.students.length, 0);
     assert.equal(state.status, "question");
     assert.equal(state.autoRevealRemainingMs, 0);
+  });
+});
+
+test("姓名最多 10 個可見字元，重名編號與重連維持正確", async (t) => {
+  const testUrl = "http://127.0.0.1:3140";
+  const server = spawn(process.execPath, ["server/index.js"], {
+    cwd: process.cwd(),
+    env: {
+      ...process.env,
+      PORT: "3140",
+      NODE_ENV: "production",
+      SUPABASE_URL: "",
+      SUPABASE_SERVICE_ROLE_KEY: "",
+      SUPABASE_SERVICE_KEY: "",
+      TEACHER_PASSWORD: ""
+    },
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  t.after(() => server.kill());
+  await waitForServer(server, testUrl);
+  const sockets = [];
+  const connect = async () => {
+    const socket = io(testUrl, { transports: ["websocket"] });
+    sockets.push(socket);
+    await once(socket, "connect");
+    return socket;
+  };
+  t.after(() => sockets.forEach((socket) => socket.close()));
+  const host = await connect();
+  const { quizzes } = await (await fetch(`${testUrl}/api/quizzes`)).json();
+  let credentials;
+  const create = async () => {
+    const created = await emitAck(host, "host:createRoom", { quizId: quizzes[0].id, questionCount: 1 });
+    assert.equal(created.ok, true);
+    credentials = { roomCode: created.roomCode, hostToken: created.hostToken };
+  };
+  const join = (socket, name, studentId) => emitAck(socket, "student:join", { roomCode: credentials.roomCode, name, studentId });
+  const snapshot = async () => (await emitAck(host, "host:resume", credentials)).snapshot;
+  const tooLongError = "名字太長，最多只能輸入 10 個字。";
+
+  await t.test("中文、英文與組合表情符號的 10 字可加入，11 字不建立學生", async () => {
+    for (const character of ["甲", "A", "👨‍👩‍👧‍👦", "e\u0301"]) {
+      await create();
+      const student = await connect();
+      const rejected = await join(student, character.repeat(11));
+      assert.equal(rejected.ok, false);
+      assert.equal(rejected.error, tooLongError);
+      assert.equal((await snapshot()).students.length, 0, "拒絕加入時不能留下截斷姓名的學生");
+      const accepted = await join(student, character.repeat(10));
+      assert.equal(accepted.ok, true);
+      assert.equal(accepted.snapshot.me.name, character.repeat(10), "有效姓名應完整保留");
+      assert.equal(getStudentNameLength(accepted.snapshot.me.name), 10);
+    }
+  });
+
+  await t.test("姓名先去除前後空白、合併中間空白；空白或非文字姓名不可加入", async () => {
+    await create();
+    const student = await connect();
+    for (const invalid of ["", "   \t\n", null, 123, { name: "甲" }]) {
+      const rejected = await join(student, invalid);
+      assert.equal(rejected.ok, false);
+      assert.equal(rejected.error, "請輸入姓名。");
+    }
+    const accepted = await join(student, "  abcd   efghi \n");
+    assert.equal(accepted.ok, true);
+    assert.equal(accepted.snapshot.me.name, "abcd efghi");
+    assert.equal((await snapshot()).students.length, 1);
+  });
+
+  await t.test("重名的自動編號也不超過 10 字，兩位數編號不會撞名", async () => {
+    await create();
+    const names = [];
+    const baseName = "👨‍👩‍👧‍👦".repeat(10);
+    let lastStudent;
+    let lastJoin;
+    for (let index = 0; index < 11; index += 1) {
+      lastStudent = await connect();
+      lastJoin = await join(lastStudent, baseName);
+      assert.equal(lastJoin.ok, true);
+      names.push(lastJoin.snapshot.me.name);
+    }
+    assert.equal(names[0], baseName);
+    assert.equal(names[1], `${"👨‍👩‍👧‍👦".repeat(6)} (2)`);
+    assert.equal(names[9], `${"👨‍👩‍👧‍👦".repeat(5)} (10)`);
+    assert.equal(new Set(names).size, names.length);
+    assert.ok(names.every((name) => getStudentNameLength(name) <= 10));
+    const resumed = await join(lastStudent, lastJoin.snapshot.me.name, lastJoin.studentId);
+    assert.equal(resumed.ok, true);
+    assert.equal(resumed.studentId, lastJoin.studentId);
+    assert.equal(resumed.snapshot.me.name, names.at(-1));
+    assert.equal(resumed.snapshot.students.length, 11);
+  });
+
+  await t.test("老師改名同樣驗證，舊頁面重連不會覆蓋老師改名或被舊長名阻擋", async () => {
+    await create();
+    const student = await connect();
+    const joined = await join(student, "原名");
+    const rename = (newName) => emitAck(host, "host:renameStudent", { ...credentials, studentId: joined.studentId, newName });
+    assert.equal((await rename("一二三四五六七八九十甲")).error, tooLongError);
+    assert.equal((await snapshot()).students[0].name, "原名");
+    assert.equal((await rename("  ")).ok, false);
+    assert.equal((await rename(" 一二三四五六七八九十 ")).ok, true);
+    assert.equal((await snapshot()).students[0].name, "一二三四五六七八九十");
+
+    const anotherStudent = await connect();
+    await join(anotherStudent, "甲");
+    assert.equal((await rename("甲")).ok, true);
+    assert.equal((await snapshot()).students.find(({ id }) => id === joined.studentId).name, "甲 (2)");
+
+    student.disconnect();
+    const replacement = await connect();
+    const resumed = await join(replacement, "舊頁面保存的超過十個字的名字", joined.studentId);
+    assert.equal(resumed.ok, true);
+    assert.equal(resumed.studentId, joined.studentId);
+    assert.equal(resumed.snapshot.me.name, "甲 (2)");
+    assert.equal(resumed.snapshot.students.length, 2);
   });
 });
 
