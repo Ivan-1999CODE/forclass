@@ -1024,6 +1024,7 @@ function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot:
       <div className="student-list">
         {snapshot.students.map((student) => (
           <div className="student-row" key={student.id}>
+            <div className="student-identity">
             {onRename && editingId === student.id ? (
               <>
                 <div className="student-rename-field">
@@ -1048,18 +1049,19 @@ function RoomPanel({ snapshot, embedded = false, onRename, onKick }: { snapshot:
                 <button className="secondary btn-sm" onClick={() => setEditingId(null)}>取消</button>
               </>
             ) : (
-              <>
-                <span className="student-name" title={student.name}>{student.name}</span>
-                {onRename && (
-                  <button className="secondary btn-sm" onClick={() => startEdit(student)}>改名</button>
-                )}
-              </>
+              <span className="student-name">{student.name}</span>
             )}
+            </div>
+            <div className="student-details">
             <span className="student-score">{student.totalScore} 分</span>
             <span className={`student-status ${student.connected ? "online" : "offline"}`}>
               {student.connected ? "在線" : "離線"}{snapshot.status === "question" ? student.answeredCurrent ? "・已答" : "・未答" : ""}
             </span>
+            {onRename && editingId !== student.id && (
+              <button className="secondary btn-sm" onClick={() => startEdit(student)}>改名</button>
+            )}
             {onKick && <button className="danger btn-sm" onClick={() => onKick(student.id)} aria-label={`踢除 ${student.name}`}>踢除</button>}
+            </div>
           </div>
         ))}
         {snapshot.students.length === 0 && <p className="empty">尚無學生加入。</p>}

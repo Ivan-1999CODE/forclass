@@ -142,7 +142,6 @@ p {
 }
 
 .student-score-pill > span,
-.student-name,
 .rank-name {
   min-width: 0;
   overflow: hidden;
@@ -490,10 +489,28 @@ input[aria-invalid="true"] {
 .student-name {
   flex: 1;
   font-weight: 800;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .student-row {
+  align-items: stretch;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.student-identity,
+.student-details {
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.student-details .student-status {
+  white-space: nowrap;
 }
 
 .student-score {
