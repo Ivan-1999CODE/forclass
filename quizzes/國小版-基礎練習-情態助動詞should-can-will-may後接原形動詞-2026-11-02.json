@@ -1,0 +1,508 @@
+{
+  "id": "國小版-基礎練習-情態助動詞should-can-will-may後接原形動詞-2026-11-02",
+  "title": "國小版｜基礎練習｜情態助動詞 should、can、will、may 後接原形動詞｜2026-11-02",
+  "date": "2026-11-02",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "Amy should ________ to bed early.",
+      "options": [
+        "goes",
+        "going",
+        "to go",
+        "go"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "The children should ________ more fruit.",
+      "options": [
+        "eats",
+        "eat",
+        "eating",
+        "to eat"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "He may ________ a new bag tomorrow.",
+      "options": [
+        "buys",
+        "to buy",
+        "buy",
+        "buying"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "You should ________ quiet in the library.",
+      "options": [
+        "is",
+        "being",
+        "be",
+        "to be"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "We will ________ Grandma tomorrow.",
+      "options": [
+        "visiting",
+        "to visit",
+        "visits",
+        "visit"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "The cat may ________ under the bed.",
+      "options": [
+        "sleep",
+        "sleeps",
+        "sleeping",
+        "to sleep"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Amy may ________ late today.",
+      "options": [
+        "being",
+        "is",
+        "to be",
+        "be"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "The boys can ________ basketball.",
+      "options": [
+        "plays",
+        "playing",
+        "to play",
+        "play"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "It may ________ tomorrow.",
+      "options": [
+        "rains",
+        "rain",
+        "to rain",
+        "raining"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "She can ________ this song.",
+      "options": [
+        "sing",
+        "sings",
+        "to sing",
+        "singing"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "You will ________ your friends tomorrow.",
+      "options": [
+        "sees",
+        "see",
+        "to see",
+        "seeing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "They can ________ us after school.",
+      "options": [
+        "to help",
+        "helps",
+        "helping",
+        "help"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "The dog can ________ fast.",
+      "options": [
+        "runs",
+        "to run",
+        "run",
+        "running"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "You may ________ a cookie after lunch.",
+      "options": [
+        "eats",
+        "to eat",
+        "eating",
+        "eat"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Amy can ________ the door.",
+      "options": [
+        "open",
+        "to open",
+        "opening",
+        "opens"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "You can ________ my pen.",
+      "options": [
+        "uses",
+        "using",
+        "to use",
+        "use"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "They will ________ soccer after school.",
+      "options": [
+        "to play",
+        "play",
+        "plays",
+        "playing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "You may ________ my ruler.",
+      "options": [
+        "to borrow",
+        "borrow",
+        "borrows",
+        "borrowing"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "The baby will ________ one year old next week.",
+      "options": [
+        "to be",
+        "be",
+        "being",
+        "is"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "We should ________ more water.",
+      "options": [
+        "drink",
+        "drinks",
+        "to drink",
+        "drinking"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "They should ________ the door quietly.",
+      "options": [
+        "closing",
+        "closes",
+        "close",
+        "to close"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "She should ________ English every day.",
+      "options": [
+        "studying",
+        "study",
+        "studies",
+        "to study"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "We will ________ lunch at home tomorrow.",
+      "options": [
+        "has",
+        "having",
+        "have",
+        "to have"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "We should ________ our teacher.",
+      "options": [
+        "listens to",
+        "to listen to",
+        "listening to",
+        "listen to"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "He can ________ his name.",
+      "options": [
+        "to write",
+        "write",
+        "writing",
+        "writes"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "My parents will ________ home soon.",
+      "options": [
+        "coming",
+        "comes",
+        "come",
+        "to come"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "We may ________ a movie tonight.",
+      "options": [
+        "watches",
+        "watching",
+        "watch",
+        "to watch"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "You may ________ the window.",
+      "options": [
+        "opening",
+        "opens",
+        "open",
+        "to open"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "You should ________ your hands before lunch.",
+      "options": [
+        "washes",
+        "to wash",
+        "washing",
+        "wash"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "She will ________ a letter tonight.",
+      "options": [
+        "write",
+        "writing",
+        "to write",
+        "writes"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "They may ________ at home this weekend.",
+      "options": [
+        "stay",
+        "to stay",
+        "staying",
+        "stays"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "We can ________ the bus to school.",
+      "options": [
+        "take",
+        "takes",
+        "to take",
+        "taking"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "My brother should ________ a coat today.",
+      "options": [
+        "wear",
+        "wears",
+        "to wear",
+        "wearing"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Mom will ________ some milk later.",
+      "options": [
+        "to buy",
+        "buying",
+        "buys",
+        "buy"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "My sister can ________ very well.",
+      "options": [
+        "to swim",
+        "swims",
+        "swim",
+        "swimming"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "Tom should ________ his room today.",
+      "options": [
+        "to clean",
+        "clean",
+        "cleans",
+        "cleaning"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "You may ________ here.",
+      "options": [
+        "sits",
+        "sit",
+        "sitting",
+        "to sit"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "We may ________ to the park on Sunday.",
+      "options": [
+        "to go",
+        "goes",
+        "going",
+        "go"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "Dad will ________ dinner tonight.",
+      "options": [
+        "cook",
+        "cooking",
+        "to cook",
+        "cooks"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "My dad can ________ dinner.",
+      "options": [
+        "cooks",
+        "to cook",
+        "cook",
+        "cooking"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "I can ________ a cat.",
+      "options": [
+        "to draw",
+        "drawing",
+        "draw",
+        "draws"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "I will ________ my room tomorrow.",
+      "options": [
+        "clean",
+        "cleaning",
+        "to clean",
+        "cleans"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "Ben should ________ his mother at home.",
+      "options": [
+        "help",
+        "to help",
+        "helping",
+        "helps"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "He will ________ his homework tonight.",
+      "options": [
+        "does",
+        "do",
+        "doing",
+        "to do"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Tom will ________ the dog this evening.",
+      "options": [
+        "feed",
+        "to feed",
+        "feeding",
+        "feeds"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "You should ________ your books to class.",
+      "options": [
+        "bring",
+        "bringing",
+        "brings",
+        "to bring"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "He should ________ his homework after school.",
+      "options": [
+        "does",
+        "do",
+        "doing",
+        "to do"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "My sister may ________ to the party.",
+      "options": [
+        "to come",
+        "comes",
+        "come",
+        "coming"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "My brother can ________ a bike.",
+      "options": [
+        "riding",
+        "ride",
+        "to ride",
+        "rides"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "Learning English can ________ fun.",
+      "options": [
+        "to be",
+        "being",
+        "is",
+        "be"
+      ],
+      "answerIndex": 3
+    }
+  ]
+}

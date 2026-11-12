@@ -1,0 +1,450 @@
+﻿國一｜基礎練習 4｜U4 can 助動詞與問答｜2026-10-29
+完整原題檢視版｜共 50 題｜保留原題順序、選項與設定答案
+來源：quizzes\國一-基礎練習4-U4can助動詞與問答-2026-10-29.json
+
+第 1 題
+老師不准學生在圖書館說話。
+Student: Can't we talk in the library?
+Teacher: ________
+A. Yes, you can't.
+B. No, you can't.
+C. Yes, you can.
+D. No, you can.
+原題庫答案：B（No, you can't.）
+
+第 2 題
+A: ________ can we go?
+B: At three.
+A. What
+B. Where
+C. Who
+D. When
+原題庫答案：D（When）
+
+第 3 題
+You can sit down here.（你可以坐這裡，已獲得許可。）
+這裡的 can 表示什麼？
+A. 請求
+B. 可能性
+C. 許可
+D. 能力
+原題庫答案：C（許可）
+
+第 4 題
+我不會唱這首歌。
+I ________ this song.
+A. am not can sing
+B. don't can sing
+C. can't sings
+D. can't sing
+原題庫答案：D（can't sing）
+
+第 5 題
+孩子們在這裡不可以製造噪音。
+A: What can't the children do here?
+B: They ________.
+A. can't make noise
+B. can make noise
+C. can't makes noise
+D. don't can make noise
+原題庫答案：A（can't make noise）
+
+第 6 題
+My sister can sing.（我妹妹會唱歌。）
+這裡的 can 表示什麼？
+A. 請求
+B. 許可
+C. 可能性
+D. 能力
+原題庫答案：D（能力）
+
+第 7 題
+哥哥會唱歌。
+My brother ________ sing.
+A. cans
+B. does can
+C. can
+D. is can
+原題庫答案：C（can）
+
+第 8 題
+I can ________ your voice.
+A. hear
+B. hearing
+C. hears
+D. to hear
+原題庫答案：A（hear）
+
+第 9 題
+這隻狗能站起來。
+A: Can the dog stand up?
+B: Yes, ________.
+A. it is
+B. it can
+C. it does
+D. they can
+原題庫答案：B（it can）
+
+第 10 題
+我們不可以在馬路上玩。
+We ________ on the road.
+A. cannot to play
+B. cannot play
+C. cannot plays
+D. cannot playing
+原題庫答案：B（cannot play）
+
+第 11 題
+The boy cannot ________.
+A. swims
+B. swimming
+C. to swim
+D. swim
+原題庫答案：D（swim）
+
+第 12 題
+他們不可以在這裡過馬路。
+They ________ the road here.
+A. aren't can cross
+B. cannot crossing
+C. cannot cross
+D. don't can cross
+原題庫答案：C（cannot cross）
+
+第 13 題
+He can ________ and dance.
+A. sing
+B. sings
+C. to sing
+D. singing
+原題庫答案：A（sing）
+
+第 14 題
+She can ________ a bag.
+A. designing
+B. design
+C. designs
+D. to design
+原題庫答案：B（design）
+
+第 15 題
+我們可以在這裡下載這首歌。
+We ________ download the song here.
+A. can to
+B. does can
+C. can
+D. are can
+原題庫答案：C（can）
+
+第 16 題
+妹妹會游泳。
+A: Can't your sister swim?
+B: ________
+A. No, she can.
+B. No, she can't.
+C. Yes, she can't.
+D. Yes, she can.
+原題庫答案：D（Yes, she can.）
+
+第 17 題
+哥哥不會唱歌。
+A: Can't your brother sing?
+B: ________
+A. Yes, he can.
+B. Yes, he can't.
+C. No, he can.
+D. No, he can't.
+原題庫答案：D（No, he can't.）
+
+第 18 題
+你想詢問 Ben 在這裡不能做什麼。哪個問句正確？
+A. What can't you does here?
+B. What can't you do here?
+C. What can't you doing here?
+D. What don't can you do here?
+原題庫答案：B（What can't you do here?）
+
+第 19 題
+Can your dad ________?
+A. swim
+B. swims
+C. to swim
+D. swimming
+原題庫答案：A（swim）
+
+第 20 題
+女孩們會唱歌。
+A: Can the girls sing?
+B: Yes, ________.
+A. they are
+B. she can
+C. they can
+D. they do
+原題庫答案：C（they can）
+
+第 21 題
+使用 can 改寫：She makes a table.
+She ________ a table.
+A. can to make
+B. can make
+C. can making
+D. can makes
+原題庫答案：B（can make）
+
+第 22 題
+你想詢問「我們什麼時候可以去？」哪個問句正確？
+A. When can we go?
+B. When can we to go?
+C. When do we can go?
+D. When we can go?
+原題庫答案：A（When can we go?）
+
+第 23 題
+你會做什麼？
+What can you ________?
+A. does
+B. do
+C. doing
+D. to do
+原題庫答案：B（do）
+
+第 24 題
+A: When can we go?
+B: We can go ________.
+A. with Ms. Lin
+B. on the ground
+C. in the park
+D. at three
+原題庫答案：D（at three）
+
+第 25 題
+女孩們現在不能過馬路。請選擇正確的否定詳答。
+A: Can the girls cross the road now?
+B: No, ________.
+A. they can't crosses it now
+B. they can't cross it now
+C. they aren't can cross it now
+D. they don't can cross it now
+原題庫答案：B（they can't cross it now）
+
+第 26 題
+Amy 會做飯。
+Ben: Can't you cook, Amy?
+Amy: ________
+A. No, you can't.
+B. No, I can't.
+C. Yes, I can.
+D. Yes, you can.
+原題庫答案：C（Yes, I can.）
+
+第 27 題
+A wet road can be dangerous.（濕滑的道路可能很危險。）
+這裡的 can 表示什麼？
+A. 能力
+B. 請求
+C. 許可
+D. 可能性
+原題庫答案：D（可能性）
+
+第 28 題
+把 Can your brother download the app? 改成否定疑問句。
+________ your brother download the app?
+A. Can't
+B. Isn't
+C. Don't
+D. Doesn't
+原題庫答案：A（Can't）
+
+第 29 題
+爸爸不會游泳。
+A: Can your dad swim?
+B: No, ________.
+A. he can
+B. he can't
+C. he isn't
+D. she can't
+原題庫答案：B（he can't）
+
+第 30 題
+A: ________ can the bird do?
+B: It can sing.
+A. When
+B. Where
+C. What
+D. Who
+原題庫答案：C（What）
+
+第 31 題
+使用 can 改寫：He is quiet.
+He ________ quiet.
+A. can being
+B. can are
+C. can is
+D. can be
+原題庫答案：D（can be）
+
+第 32 題
+A: ________ can I ask?
+B: You can ask Ms. Lin.
+A. What
+B. Who
+C. Where
+D. When
+原題庫答案：B（Who）
+
+第 33 題
+把 The girls can sing. 改成問句。
+________ the girls sing?
+A. Can
+B. Do
+C. Are
+D. Does
+原題庫答案：A（Can）
+
+第 34 題
+A: ________ can I take a photo?
+B: In the park.
+A. Where
+B. What
+C. Who
+D. When
+原題庫答案：A（Where）
+
+第 35 題
+A: Who can I ask?
+B: ________
+A. You can ask at three.
+B. You can ask Ms. Lin.
+C. Yes, you can.
+D. You can ask in the park.
+原題庫答案：B（You can ask Ms. Lin.）
+
+第 36 題
+Can you help me, please?（請你幫我，好嗎？）
+這裡的 can 表示什麼？
+A. 請求
+B. 可能性
+C. 能力
+D. 許可
+原題庫答案：A（請求）
+
+第 37 題
+Dad: Can you cook, Leo?
+Leo: Yes, ________.
+A. I am
+B. he can
+C. I can
+D. you can
+原題庫答案：C（I can）
+
+第 38 題
+cannot 的正確縮寫是哪個？
+A. doesn't can
+B. don't can
+C. isn't can
+D. can't
+原題庫答案：D（can't）
+
+第 39 題
+老師允許 Amy 和 Ben 現在過馬路。
+Amy and Ben: Can we cross the road now?
+Teacher: Yes, ________.
+A. we can
+B. you can
+C. they can
+D. you do
+原題庫答案：B（you can）
+
+第 40 題
+把 He can design a bag. 改成否定句。
+He ________ a bag.
+A. doesn't can design
+B. isn't can design
+C. cannot designs
+D. cannot design
+原題庫答案：D（cannot design）
+
+第 41 題
+她不可以整天看電視。
+She ________ TV all the time.
+A. doesn't can watch
+B. can't watching
+C. can't watch
+D. isn't can watch
+原題庫答案：C（can't watch）
+
+第 42 題
+They can ________ early.
+A. be
+B. are
+C. is
+D. being
+原題庫答案：A（be）
+
+第 43 題
+The dog can ________ up.
+A. to stand
+B. standing
+C. stands
+D. stand
+原題庫答案：D（stand）
+
+第 44 題
+A: What can your sister do?
+B: ________
+A. In the park.
+B. Yes, she can.
+C. She can design a bag.
+D. At three.
+原題庫答案：C（She can design a bag.）
+
+第 45 題
+My sister can sing and ________.
+A. dances
+B. dancing
+C. dance
+D. to dance
+原題庫答案：C（dance）
+
+第 46 題
+A: What can the bird do?
+B: It ________.
+A. can sing
+B. can singing
+C. can to sing
+D. can sings
+原題庫答案：A（can sing）
+
+第 47 題
+A: Where can I take a photo?
+B: ________
+A. You can take one at three.
+B. You can take one in the park.
+C. You can take one with Ben.
+D. Yes, you can.
+原題庫答案：B（You can take one in the park.）
+
+第 48 題
+You can't ________ noise in the library.
+A. make
+B. making
+C. makes
+D. to make
+原題庫答案：A（make）
+
+第 49 題
+Amy: Can I sit here?
+Ben: Yes, ________.
+A. you are
+B. she can
+C. you can
+D. I can
+原題庫答案：C（you can）
+
+第 50 題
+You can't ________ late for school.
+A. be
+B. being
+C. is
+D. are
+原題庫答案：A（be）

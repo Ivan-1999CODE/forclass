@@ -1,0 +1,58 @@
+{
+  "id": "國小版-基礎練習-指示詞與疑問詞中英互譯-2026-11-12",
+  "title": "國小版｜基礎練習｜超基礎：指示詞與疑問詞中英互譯｜2026-11-12",
+  "date": "2026-11-12",
+  "defaultTimeLimitSec": 20,
+  "questions": [
+    {
+      "prompt": "【英文翻中文】this 是什麼意思？",
+      "options": ["那個", "這個", "那些", "這些"],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "【中文翻英文】「那個」的英文是什麼？",
+      "options": ["these", "this", "those", "that"],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "【英文翻中文】these 是什麼意思？",
+      "options": ["這些", "那些", "這個", "那個"],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "【中文翻英文】「那些」的英文是什麼？",
+      "options": ["that", "these", "those", "this"],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "【英文翻中文】where 是什麼意思？",
+      "options": ["誰", "什麼時候", "哪裡", "為什麼"],
+      "answerIndex": 2
+    },
+    {
+      "prompt": "【中文翻英文】「什麼時候」的英文是什麼？",
+      "options": ["when", "where", "what", "why"],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "【英文翻中文】why 是什麼意思？",
+      "options": ["如何", "哪裡", "什麼", "為什麼"],
+      "answerIndex": 3
+    },
+    {
+      "prompt": "【中文翻英文】「誰」的英文是什麼？",
+      "options": ["how", "who", "what", "which"],
+      "answerIndex": 1
+    },
+    {
+      "prompt": "【英文翻中文】how 是什麼意思？",
+      "options": ["如何", "什麼時候", "哪一個", "誰"],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "【中文翻英文】「什麼」的英文是什麼？",
+      "options": ["why", "which", "what", "where"],
+      "answerIndex": 2
+    }
+  ]
+}

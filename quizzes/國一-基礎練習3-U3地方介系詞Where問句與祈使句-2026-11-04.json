@@ -155,12 +155,12 @@
       "answerIndex": 3
     },
     {
-      "prompt": "請不要打開門。\nPlease ________ open the door.",
+      "prompt": "請不要打開門。\n________ open the door, please.",
       "options": [
-        "not",
-        "doesn't",
-        "isn't",
-        "don't"
+        "Not",
+        "Doesn't",
+        "Isn't",
+        "Don't"
       ],
       "answerIndex": 3
     },
@@ -185,11 +185,11 @@
       "answerIndex": 0
     },
     {
-      "prompt": "我們不要在圖書館吃東西吧。\nLet's ________ eat in the library.",
+      "prompt": "依本課句型表達「我們不要在圖書館吃東西吧」。\nLet's ________ eat in the library.",
       "options": [
         "isn't",
+        "don't",
         "doesn't",
-        "aren't",
         "not"
       ],
       "answerIndex": 3
@@ -197,9 +197,9 @@
     {
       "prompt": "貓在箱子裡面。請依照中文回答。\nA: Where are the cats?\nB: ________",
       "options": [
-        "They are outside the box.",
+        "They are behind the box.",
         "They are under the box.",
-        "They are inside the box.",
+        "They are in the box.",
         "They are on the box."
       ],
       "answerIndex": 2
@@ -225,22 +225,22 @@
       "answerIndex": 1
     },
     {
-      "prompt": "Please ________ careful.",
+      "prompt": "請不要太吵。\n________ be noisy, please.",
       "options": [
-        "being",
-        "are",
-        "is",
-        "be"
+        "Doesn't",
+        "Not",
+        "Isn't",
+        "Don't"
       ],
       "answerIndex": 3
     },
     {
-      "prompt": "我們不要買那張昂貴的椅子吧。\n________ that expensive chair.",
+      "prompt": "依本課句型表達「我們不要買那張昂貴的椅子吧」。\nLet's ________ buy that expensive chair.",
       "options": [
-        "Let's not buying",
-        "Let's not to buy",
-        "Let's not buy",
-        "Let's not buys"
+        "don't",
+        "isn't",
+        "not",
+        "doesn't"
       ],
       "answerIndex": 2
     },
@@ -265,12 +265,12 @@
       "answerIndex": 2
     },
     {
-      "prompt": "狗在房子外面。請依照中文回答。\nA: Where is the dog?\nB: ________",
+      "prompt": "狗在房子後面。請依照中文回答。\nA: Where is the dog?\nB: ________",
       "options": [
-        "The dog is inside the house.",
+        "The dog is in the house.",
         "The dog is on the house.",
         "The dog is under the house.",
-        "The dog is outside the house."
+        "The dog is behind the house."
       ],
       "answerIndex": 3
     },
@@ -355,32 +355,32 @@
       "answerIndex": 3
     },
     {
-      "prompt": "Don't ________ late for school.",
+      "prompt": "不要在公車上吃東西。\n________ eat on the bus.",
       "options": [
-        "are",
-        "being",
-        "be",
-        "is"
+        "Not",
+        "Isn't",
+        "Don't",
+        "Doesn't"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "把 Touch the photo. 改成否定祈使句。",
+      "prompt": "不要碰那張照片。\n________ touch the photo.",
       "options": [
-        "Don't touch the photo.",
-        "Not touch the photo.",
-        "Doesn't touch the photo.",
-        "Don't touching the photo."
+        "Don't",
+        "Not",
+        "Doesn't",
+        "Isn't"
       ],
       "answerIndex": 0
     },
     {
-      "prompt": "我們不要遲到吧。\nLet's not ________ late.",
+      "prompt": "依本課句型表達「我們不要打開窗戶吧」。\nLet's ________ open the window.",
       "options": [
-        "be",
-        "being",
-        "are",
-        "to be"
+        "not",
+        "don't",
+        "doesn't",
+        "isn't"
       ],
       "answerIndex": 0
     },
@@ -395,12 +395,12 @@
       "answerIndex": 0
     },
     {
-      "prompt": "Please ________ the window.",
+      "prompt": "不要關上窗戶。\n________ close the window.",
       "options": [
-        "to close",
-        "closes",
-        "close",
-        "closing"
+        "Doesn't",
+        "Not",
+        "Don't",
+        "Isn't"
       ],
       "answerIndex": 2
     },
@@ -419,7 +419,7 @@
       "options": [
         "next to",
         "behind",
-        "inside",
+        "under",
         "in front of"
       ],
       "answerIndex": 0
@@ -435,62 +435,62 @@
       "answerIndex": 2
     },
     {
-      "prompt": "Let's ________ a book.",
+      "prompt": "依本課句型表達「我們不要選那本書吧」。\nLet's ________ choose that book.",
       "options": [
-        "choosing",
-        "chooses",
-        "choose",
-        "to choose"
+        "isn't",
+        "doesn't",
+        "not",
+        "don't"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "請選出正確的祈使句。",
+      "prompt": "不要在廚房裡跑。\n________ run in the kitchen.",
       "options": [
-        "Ben, please to open the door.",
-        "Ben, please open the door.",
-        "Ben, please is open the door.",
-        "Ben, please opens the door."
+        "Not",
+        "Don't",
+        "Doesn't",
+        "Isn't"
       ],
       "answerIndex": 1
     },
     {
-      "prompt": "依中文選出兩句的開頭。\n① 不要在教室裡吃東西。\n② 我們不要在教室裡吃東西吧。\n① ________ eat in the classroom.\n② ________ eat in the classroom.",
+      "prompt": "依本課句型表達「我們不要遲到吧」。\nLet's ________ be late.",
       "options": [
-        "Don't / Let's not",
-        "Not / Let's not",
-        "Don't / Not",
-        "Let's not / Don't"
-      ],
-      "answerIndex": 0
-    },
-    {
-      "prompt": "請不要在廚房裡跑。\n________ in the kitchen.",
-      "options": [
-        "Don't run",
-        "Doesn't run",
-        "Not run",
-        "Don't running"
-      ],
-      "answerIndex": 0
-    },
-    {
-      "prompt": "我們不要在公車上喝水吧。\nLet's ________ drink water on the bus.",
-      "options": [
-        "to",
-        "is",
         "not",
-        "are"
+        "don't",
+        "isn't",
+        "doesn't"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "不要上學遲到。\n________ be late for school.",
+      "options": [
+        "Don't",
+        "Doesn't",
+        "Not",
+        "Isn't"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "prompt": "依本課句型表達「我們不要在公車上喝水吧」。\nLet's ________ drink water on the bus.",
+      "options": [
+        "don't",
+        "doesn't",
+        "not",
+        "isn't"
       ],
       "answerIndex": 2
     },
     {
-      "prompt": "依中文選出正確句子：我們不要太吵吧。",
+      "prompt": "依本課句型表達「我們不要太吵吧」。\nLet's ________ be noisy.",
       "options": [
-        "Let's not be noisy.",
-        "Not be noisy.",
-        "Let's not is noisy.",
-        "Let's not being noisy."
+        "not",
+        "doesn't",
+        "don't",
+        "isn't"
       ],
       "answerIndex": 0
     },

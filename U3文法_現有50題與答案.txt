@@ -1,0 +1,498 @@
+﻿國一｜基礎練習 3｜U3 地方介系詞、Where 問句與祈使句（含 Let's）｜2026-11-04
+調整後完整題目｜共 50 題｜依目前題庫順序列出題目、選項與答案
+分配：地方介系詞 20 題、Where 問句 10 題、祈使句 10 題、Let's 10 題。
+祈使句與 Let's 各有 7 題否定字辨認、3 題肯定句原形動詞；否定字題每題均包含 don't 與 not。
+本課判分句型：Let's not + 原形動詞；Don't + 原形動詞。
+來源：quizzes\國一-基礎練習3-U3地方介系詞Where問句與祈使句-2026-11-04.json
+
+第 1 題
+考點：Where 問句與回答
+想問「那些書在哪裡？」，應該怎麼說？
+A. Where are the books?
+B. Where is the books?
+C. Where the books are?
+D. Where do the books?
+答案：A（Where are the books?）
+
+第 2 題
+考點：地方介系詞
+椅子就在書桌旁邊。
+The chair is ________ the desk.
+A. under
+B. in
+C. on
+D. beside
+答案：D（beside）
+
+第 3 題
+考點：地方介系詞
+公園就在房子附近。
+The park is ________ the house.
+A. near
+B. in
+C. under
+D. on
+答案：A（near）
+
+第 4 題
+考點：地方介系詞
+Ben 出現在電視節目裡。
+Ben is ________.
+A. in TV
+B. on the TV
+C. on TV
+D. at the TV
+答案：C（on TV）
+
+第 5 題
+考點：祈使句：肯定句原形動詞
+Nancy, ________ the door, please.
+A. to open
+B. opening
+C. opens
+D. open
+答案：D（open）
+
+第 6 題
+考點：地方介系詞
+媽媽現在在家。
+Mom is ________ now.
+A. on home
+B. at home
+C. at to home
+D. to home
+答案：B（at home）
+
+第 7 題
+考點：地方介系詞
+狗在門後面。
+The dog is ________ the door.
+A. between
+B. above
+C. on
+D. behind
+答案：D（behind）
+
+第 8 題
+考點：地方介系詞
+狗在教室外面的前方。
+The dog is ________ the classroom.
+A. in front of
+B. in back of
+C. in the back of
+D. in the front of
+答案：A（in front of）
+
+第 9 題
+考點：地方介系詞
+工具箱放在房子外面的後方。
+The box of tools is ________ the house.
+A. in the back of
+B. in back of
+C. in the front of
+D. in front of
+答案：B（in back of）
+
+第 10 題
+考點：祈使句：肯定句原形動詞
+在圖書館請保持安靜。
+________ quiet in the library, please.
+A. Are
+B. Be
+C. Is
+D. Being
+答案：B（Be）
+
+第 11 題
+考點：地方介系詞
+工具放在箱子裡。
+The tools are ________ the box.
+A. above
+B. behind
+C. on
+D. in
+答案：D（in）
+
+第 12 題
+考點：Let's：肯定句原形動詞
+Let's ________ the classroom.
+A. cleaning
+B. cleans
+C. clean
+D. to clean
+答案：C（clean）
+
+第 13 題
+考點：Where 問句與回答
+Where ________ the smartphone?
+A. am
+B. is
+C. are
+D. be
+答案：B（is）
+
+第 14 題
+考點：地方介系詞
+那些蘋果長在樹上。
+The apples are ________ the tree.
+A. on
+B. at
+C. under
+D. in
+答案：A（on）
+
+第 15 題
+考點：Where 問句與回答
+Where ________ the tools?
+A. am
+B. be
+C. is
+D. are
+答案：D（are）
+
+第 16 題
+考點：祈使句：辨認否定字 Don't / Not
+請不要打開門。
+________ open the door, please.
+A. Not
+B. Doesn't
+C. Isn't
+D. Don't
+答案：D（Don't）
+
+第 17 題
+考點：Let's：肯定句原形動詞
+Let's ________ quiet in the library.
+A. being
+B. be
+C. is
+D. are
+答案：B（be）
+
+第 18 題
+考點：地方介系詞
+駕駛坐在車內的前方。
+The driver is ________ the car.
+A. in the front of
+B. in back of
+C. in front of
+D. in the back of
+答案：A（in the front of）
+
+第 19 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要在圖書館吃東西吧」。
+Let's ________ eat in the library.
+A. isn't
+B. don't
+C. doesn't
+D. not
+答案：D（not）
+
+第 20 題
+考點：Where 問句與回答
+貓在箱子裡面。請依照中文回答。
+A: Where are the cats?
+B: ________
+A. They are behind the box.
+B. They are under the box.
+C. They are in the box.
+D. They are on the box.
+答案：C（They are in the box.）
+
+第 21 題
+考點：Let's：肯定句原形動詞
+Let's ________ to the park.
+A. goes
+B. going
+C. to go
+D. go
+答案：D（go）
+
+第 22 題
+考點：地方介系詞
+貓在椅子正下方。
+The cat is ________ the chair.
+A. in
+B. under
+C. on
+D. between
+答案：B（under）
+
+第 23 題
+考點：祈使句：辨認否定字 Don't / Not
+請不要太吵。
+________ be noisy, please.
+A. Doesn't
+B. Not
+C. Isn't
+D. Don't
+答案：D（Don't）
+
+第 24 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要買那張昂貴的椅子吧」。
+Let's ________ buy that expensive chair.
+A. don't
+B. isn't
+C. not
+D. doesn't
+答案：C（not）
+
+第 25 題
+考點：Where 問句與回答
+A: Where is the blanket?
+B: ________
+A. Yes, it is.
+B. It is on the bed.
+C. No, it isn't.
+D. It is soft.
+答案：B（It is on the bed.）
+
+第 26 題
+考點：地方介系詞
+Ben 坐在公車內的後方。
+Ben is ________ the bus.
+A. in the front of
+B. in front of
+C. in the back of
+D. in back of
+答案：C（in the back of）
+
+第 27 題
+考點：Where 問句與回答
+狗在房子後面。請依照中文回答。
+A: Where is the dog?
+B: ________
+A. The dog is in the house.
+B. The dog is on the house.
+C. The dog is under the house.
+D. The dog is behind the house.
+答案：D（The dog is behind the house.）
+
+第 28 題
+考點：地方介系詞
+爸爸在門口，媽媽在書桌旁。
+Dad is ________ the door, and Mom is ________ the desk.
+A. on / in
+B. at / at
+C. in / on
+D. under / between
+答案：B（at / at）
+
+第 29 題
+考點：Where 問句與回答
+A: ________ are the photos?
+B: They are on the desk.
+A. When
+B. Where
+C. Who
+D. What
+答案：B（Where）
+
+第 30 題
+考點：Where 問句與回答
+針對 The photo is on the wall. 的地點 on the wall 提問，應該怎麼說？
+A. Where the photo is?
+B. Where are the photo?
+C. Is the photo on the wall?
+D. Where is the photo?
+答案：D（Where is the photo?）
+
+第 31 題
+考點：地方介系詞
+照片放在電視機的上面。
+The photo is ________.
+A. on TV
+B. on the TV
+C. in the TV
+D. at the TV
+答案：B（on the TV）
+
+第 32 題
+考點：地方介系詞
+爸爸正躺在床上睡覺。
+Dad is ________ bed.
+A. at
+B. to
+C. in
+D. on
+答案：C（in）
+
+第 33 題
+考點：地方介系詞
+書桌在床與門之間。
+The desk is ________ the bed and the door.
+A. near
+B. between
+C. with
+D. behind
+答案：B（between）
+
+第 34 題
+考點：地方介系詞
+鳥停在樹的枝葉間。
+The bird is ________ the tree.
+A. at
+B. on
+C. in
+D. under
+答案：C（in）
+
+第 35 題
+考點：祈使句：肯定句原形動詞
+請坐在椅子上。
+________ on the chair, please.
+A. Sitting
+B. Sits
+C. To sit
+D. Sit
+答案：D（Sit）
+
+第 36 題
+考點：祈使句：辨認否定字 Don't / Not
+不要在公車上吃東西。
+________ eat on the bus.
+A. Not
+B. Isn't
+C. Don't
+D. Doesn't
+答案：C（Don't）
+
+第 37 題
+考點：祈使句：辨認否定字 Don't / Not
+不要碰那張照片。
+________ touch the photo.
+A. Don't
+B. Not
+C. Doesn't
+D. Isn't
+答案：A（Don't）
+
+第 38 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要打開窗戶吧」。
+Let's ________ open the window.
+A. not
+B. don't
+C. doesn't
+D. isn't
+答案：A（not）
+
+第 39 題
+考點：Where 問句與回答
+Where ________ I?
+A. am
+B. be
+C. are
+D. is
+答案：A（am）
+
+第 40 題
+考點：祈使句：辨認否定字 Don't / Not
+不要關上窗戶。
+________ close the window.
+A. Doesn't
+B. Not
+C. Don't
+D. Isn't
+答案：C（Don't）
+
+第 41 題
+考點：地方介系詞
+燈在餐桌正上方，沒有碰到桌面。
+The light is ________ the table.
+A. on
+B. above
+C. under
+D. in
+答案：B（above）
+
+第 42 題
+考點：地方介系詞
+浴室就在臥室旁邊。
+The bathroom is ________ the bedroom.
+A. next to
+B. behind
+C. under
+D. in front of
+答案：A（next to）
+
+第 43 題
+考點：Where 問句與回答
+Where ________ Amy and Ben?
+A. is
+B. am
+C. are
+D. be
+答案：C（are）
+
+第 44 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要選那本書吧」。
+Let's ________ choose that book.
+A. isn't
+B. doesn't
+C. not
+D. don't
+答案：C（not）
+
+第 45 題
+考點：祈使句：辨認否定字 Don't / Not
+不要在廚房裡跑。
+________ run in the kitchen.
+A. Not
+B. Don't
+C. Doesn't
+D. Isn't
+答案：B（Don't）
+
+第 46 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要遲到吧」。
+Let's ________ be late.
+A. not
+B. don't
+C. isn't
+D. doesn't
+答案：A（not）
+
+第 47 題
+考點：祈使句：辨認否定字 Don't / Not
+不要上學遲到。
+________ be late for school.
+A. Don't
+B. Doesn't
+C. Not
+D. Isn't
+答案：A（Don't）
+
+第 48 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要在公車上喝水吧」。
+Let's ________ drink water on the bus.
+A. don't
+B. doesn't
+C. not
+D. isn't
+答案：C（not）
+
+第 49 題
+考點：Let's：辨認否定字 not / don't
+依本課句型表達「我們不要太吵吧」。
+Let's ________ be noisy.
+A. not
+B. doesn't
+C. don't
+D. isn't
+答案：A（not）
+
+第 50 題
+考點：地方介系詞
+毛毯平放在床面上。
+The blanket is ________ the bed.
+A. on
+B. under
+C. in
+D. between
+答案：A（on）
